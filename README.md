@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kutchi Roots — Mombasa
 
-## Getting Started
+A cultural archive for Mombasa Kutchi words, family histories, and documented community stories. The public site includes a dictionary, a draft orthography guide, and a history archive. The private administrator space manages genealogy, entries, articles, recordings, and publication.
 
-First, run the development server:
+The repository is a Next.js 16 App Router and TypeScript modular monolith. Supabase PostgreSQL is the only content database; Supabase Auth and private Storage provide identity and media. No family records or historical claims are preloaded. The migration seeds only the six expressions supplied by the project owner and Draft 0.3 writing conventions.
+
+## Start locally
+
+1. Install Node.js and npm, Docker, and the Supabase CLI.
+2. Run `npm ci`.
+3. Run `npx supabase start` and `npx supabase db reset` **only against your local development stack**.
+4. Copy `.env.example` to `.env.local`; set the local Supabase URL and publishable key from `npx supabase status`.
+5. Run `npm run dev` and open `http://localhost:3000`.
+
+See [local setup and administrator provisioning](docs/setup.md) for the first account, Auth redirect settings, and hosted environments. The first visitor is never made an administrator; public registration must remain disabled. A configured Supabase project is required for content editing and live data. Without it, the public pages show honest unavailable states and private endpoints reject access.
+
+## Checks
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run typecheck
+npm run lint
+npm run test:e2e
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Playwright tests cover public responsive pages, exact-spelling display, article citations and private-link handling, unauthenticated access denial, relationship validation, request size and origin checks, and media signatures. With a configured Supabase project, the live browser test also exercises administrator creation, editing, and sign-in with disposable accounts. [Database smoke tests](docs/backend-api.md#local-database-smoke-test) cover schema invariants and RLS using PostgreSQL test stubs. The [quality workflow](.github/workflows/quality.yml) runs lint, type checking, build, database smoke, and browser tests when GitHub is connected.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Documentation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [Architecture and data decisions](docs/architecture.md)
+- [Implementation plan](docs/implementation-plan.md)
+- [Product design system](docs/design-system.md)
+- [API contract](docs/backend-api.md)
+- [Backup and recovery](docs/backup-recovery.md)
+- [Engineering and security review](docs/reviews/engineering-security-round1.md)
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Media uploads go directly to private Supabase Storage with an administrator-issued upload intent, then the server validates the stored object before creating metadata. Public media needs recorded consent, administrator approval, and an association to published dictionary or history content. A database export does not include photograph or audio bytes; back up the bucket independently.
