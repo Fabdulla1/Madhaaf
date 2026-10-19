@@ -13,5 +13,5 @@ export default async function DictionaryEntryPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  return <PublicShell><DictionaryDetail id={id} /></PublicShell>;
+  return <PublicShell><DictionaryDetail key={id} id={id} /></PublicShell>;
 }

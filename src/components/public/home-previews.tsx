@@ -25,8 +25,11 @@ export function HomePreviews({ kind }: { kind: "dictionary" | "history" }) {
   if (!result) return <LoadingState label={kind === "dictionary" ? "Loading dictionary entries…" : "Loading stories…"} />;
   if (result.status !== "success") {
     return <ContentState
-      title="The archive is unavailable right now"
-      description="Please try this section again later."
+      title={kind === "dictionary" ? "Dictionary entries are unavailable" : "Stories are unavailable"}
+      description={kind === "dictionary"
+        ? "The word list could not be loaded. The writing guide remains available."
+        : "Published articles could not be loaded. Please return later."}
+      action={kind === "dictionary" ? { label: "Read the writing guide", href: "/orthography" } : undefined}
     />;
   }
   const items = Array.isArray(result.data) ? result.data.slice(0, 3) : [];

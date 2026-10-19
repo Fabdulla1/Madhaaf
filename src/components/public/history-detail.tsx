@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { type ApiResult, type HistoryArticle, readPublicApi } from "./content-api";
 import { ContentState, LoadingState } from "./content-state";
@@ -15,13 +16,24 @@ function publishedDate(value?: string | null) {
 
 export function HistoryDetail({ slug }: { slug: string }) {
   const [result, setResult] = useState<ApiResult<HistoryArticle> | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const controller = new AbortController();
     readPublicApi<HistoryArticle>(`/api/history/${encodeURIComponent(slug)}`, controller.signal)
-      .then(setResult).catch(() => {});
+      .then((response) => {
+        if (
+          response.status === "success" &&
+          response.data.slug !== slug &&
+          /^[a-z0-9]+(-[a-z0-9]+)*$/.test(response.data.slug)
+        ) {
+          router.replace(`/history/${response.data.slug}`);
+          return;
+        }
+        setResult(response);
+      }).catch(() => {});
     return () => controller.abort();
-  }, [slug]);
+  }, [slug, router]);
 
   return (
     <div className="page-width interior-page detail-page">
@@ -43,6 +55,7 @@ export function HistoryDetail({ slug }: { slug: string }) {
 }
 
 function ArticleContent({ article }: { article: HistoryArticle }) {
+  const sources = article.sources ?? [];
   return (
     <article className="history-article">
       <header className="history-article__header">
@@ -85,6 +98,23 @@ function ArticleContent({ article }: { article: HistoryArticle }) {
             ))}
           </section>
         ) : null}
+        {sources.length > 0 && (
+          <section className="article-sources" aria-labelledby="article-sources-heading">
+            <h2 id="article-sources-heading">Sources</h2>
+            <ol>
+              {sources.map((source) => {
+                const url = source.url && /^https?:\/\//i.test(source.url) ? source.url : null;
+                return (
+                  <li key={source.id}>
+                    <strong>{source.title}</strong>
+                    {source.citation && <cite>{source.citation}</cite>}
+                    {url && <a href={url} rel="noopener noreferrer">View source <span aria-hidden="true">↗</span></a>}
+                  </li>
+                );
+              })}
+            </ol>
+          </section>
+        )}
       </div>
       <div className="article-return"><Link className="text-link" href="/history">← Back to history &amp; culture</Link></div>
     </article>

@@ -38,6 +38,7 @@ export type HistoryArticle = {
   body_markdown?: string | null;
   published_at?: string | null;
   categories?: Array<{ id: string; title: string; slug: string }>;
+  sources?: Array<{ id: string; title: string; citation?: string | null; url?: string | null }>;
   media?: PublicMedia[];
 };
 

@@ -9,7 +9,9 @@ function renderInline(value: string): ReactNode[] {
     const link = token.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
     if (link) {
       const href = link[2].trim();
-      if (href.startsWith("/") && !href.startsWith("//")) {
+      // Editorial links only point to public sections. Backslashes and
+      // protocol-relative paths are rejected before Next resolves the URL.
+      if (/^\/(?:dictionary(?:\/[a-f0-9-]+)?|history(?:\/[a-z0-9-]+)?|orthography)\/?$/i.test(href)) {
         return <Link key={index} href={href}>{link[1]}</Link>;
       }
       if (/^https?:\/\//i.test(href)) {

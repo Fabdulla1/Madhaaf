@@ -10,7 +10,9 @@ export async function GET(request: Request, context: { params: Promise<{ resourc
   const table = resourceTables[resource]
   const url = new URL(request.url)
   const limit = Math.min(Math.max(Number(url.searchParams.get('limit')) || 100, 1), 200)
-  let query = admin.supabase.from(table).select('*').limit(limit)
+  const page = Math.min(Math.max(Number(url.searchParams.get('page')) || 1, 1), 10000)
+  const offset = (page-1)*limit
+  let query = admin.supabase.from(table).select('*',{count:'exact'}).order('id').range(offset,offset+limit-1)
   const parentColumn: Partial<Record<typeof resource, string>> = {
     spellings: 'lexeme_id', senses: 'lexeme_id', examples: 'sense_id',
   }
@@ -19,12 +21,17 @@ export async function GET(request: Request, context: { params: Promise<{ resourc
   if (['members','relationships','lexemes','articles','orthography'].includes(resource) && url.searchParams.get('status')) {
     query = query.eq('status', url.searchParams.get('status')!)
   }
-  if (resource === 'members' && url.searchParams.get('q')) {
-    query = query.ilike('preferred_name', `%${url.searchParams.get('q')!.slice(0, 100)}%`)
+  const searchColumn: Partial<Record<typeof resource, string>> = {
+    members: 'preferred_name', lexemes: 'headword', articles: 'title',
+    categories: 'title', orthography: 'title', sources: 'title',
   }
-  const { data, error: dbError } = await query
+  const q = url.searchParams.get('q')?.trim().slice(0,100)
+  if (q && searchColumn[resource]) query = query.ilike(searchColumn[resource], `%${q}%`)
+  const { data, error: dbError, count } = await query
   if (dbError) return error('Unable to load records', 500)
-  return json(data)
+  return Response.json({ data, pagination: {
+    page, limit, total: count || 0, hasMore: offset+(data?.length || 0) < (count || 0),
+  } }, { headers: { 'Cache-Control': 'private, no-store' } })
 }
 
 export async function POST(request: Request, context: { params: Promise<{ resource: string }> }) {

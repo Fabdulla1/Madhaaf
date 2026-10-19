@@ -60,7 +60,8 @@ create table public.media_assets (
     (kind = 'image' and mime_type in ('image/jpeg','image/png','image/webp')) or
     (kind = 'audio' and mime_type in ('audio/mpeg','audio/mp4','audio/ogg','audio/webm','audio/wav'))
   ),
-  constraint public_media_needs_consent check (not public_approved or consent_confirmed)
+  constraint public_media_needs_consent check (not public_approved or consent_confirmed),
+  constraint public_image_needs_alt check (not public_approved or kind <> 'image' or length(btrim(coalesce(alt_text,''))) > 0)
 );
 create trigger touch_media before update on public.media_assets for each row execute function public.touch_record();
 
@@ -255,6 +256,15 @@ begin
     ) then
       raise exception 'A published entry needs a preferred spelling and at least one meaning' using errcode='23514';
     end if;
+    if tg_op='UPDATE' and old.status is distinct from 'published' and (
+      exists(select 1 from public.lexeme_media lm join public.media_assets m on m.id=lm.media_id
+        where lm.lexeme_id=new.id and not (m.consent_confirmed and m.public_approved)) or
+      exists(select 1 from public.example_media em join public.examples e on e.id=em.example_id
+        join public.senses s on s.id=e.sense_id join public.media_assets m on m.id=em.media_id
+        where s.lexeme_id=new.id and not (m.consent_confirmed and m.public_approved))
+    ) then
+      raise exception 'Approve all attached recordings before publishing this entry' using errcode='23514';
+    end if;
   end if;
   return new;
 end $$;
@@ -319,19 +329,29 @@ create table public.lexeme_sources (
 
 create function public.guard_published_lexeme_child() returns trigger language plpgsql
 set search_path = '' as $$
-declare target_lexeme uuid;
+declare old_lexeme uuid; new_lexeme uuid;
 begin
   if tg_table_name in ('word_forms','senses','lexeme_media','lexeme_sources','related_lexemes') then
-    target_lexeme := coalesce(new.lexeme_id,old.lexeme_id);
+    if tg_op <> 'INSERT' then old_lexeme := old.lexeme_id; end if;
+    if tg_op <> 'DELETE' then new_lexeme := new.lexeme_id; end if;
   elsif tg_table_name='examples' then
-    select lexeme_id into target_lexeme from public.senses
-      where id=coalesce(new.sense_id,old.sense_id);
+    if tg_op <> 'INSERT' then
+      select lexeme_id into old_lexeme from public.senses where id=old.sense_id;
+    end if;
+    if tg_op <> 'DELETE' then
+      select lexeme_id into new_lexeme from public.senses where id=new.sense_id;
+    end if;
   elsif tg_table_name='example_media' then
-    select s.lexeme_id into target_lexeme from public.examples e
-      join public.senses s on s.id=e.sense_id
-      where e.id=coalesce(new.example_id,old.example_id);
+    if tg_op <> 'INSERT' then
+      select s.lexeme_id into old_lexeme from public.examples e
+        join public.senses s on s.id=e.sense_id where e.id=old.example_id;
+    end if;
+    if tg_op <> 'DELETE' then
+      select s.lexeme_id into new_lexeme from public.examples e
+        join public.senses s on s.id=e.sense_id where e.id=new.example_id;
+    end if;
   end if;
-  if exists(select 1 from public.lexemes where id=target_lexeme and status='published') then
+  if exists(select 1 from public.lexemes where id in (old_lexeme,new_lexeme) and status='published') then
     raise exception 'Unpublish this dictionary entry before editing its details' using errcode='23514';
   end if;
   return coalesce(new,old);
@@ -414,6 +434,25 @@ create table public.articles (
   version integer not null default 1,
   constraint publication_date_check check (status <> 'published' or published_at is not null)
 );
+create table public.article_slug_history (
+  slug text primary key check (slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'),
+  article_id uuid not null references public.articles(id) on delete cascade,
+  changed_at timestamptz not null default now()
+);
+create index article_slug_history_article_idx on public.article_slug_history(article_id);
+create function public.preserve_article_slug() returns trigger language plpgsql
+set search_path = '' as $$
+begin
+  if new.slug is distinct from old.slug then
+    if exists(select 1 from public.article_slug_history where slug=new.slug) then
+      raise exception 'This article slug is reserved by an earlier link' using errcode='23505';
+    end if;
+    insert into public.article_slug_history(slug,article_id) values(old.slug,old.id);
+  end if;
+  return new;
+end $$;
+create trigger preserve_article_slug_before_update before update of slug on public.articles
+for each row execute function public.preserve_article_slug();
 create index articles_status_date_idx on public.articles(status, published_at desc);
 create trigger touch_articles before update on public.articles for each row execute function public.touch_record();
 create function public.validate_article_edit() returns trigger language plpgsql
@@ -423,6 +462,12 @@ begin
     row(new.slug,new.title,new.summary,new.body_markdown)
       is distinct from row(old.slug,old.title,old.summary,old.body_markdown) then
     raise exception 'Move the article to draft before editing published content' using errcode='23514';
+  end if;
+  if new.status='published' and old.status is distinct from 'published' and exists(
+    select 1 from public.article_media am join public.media_assets m on m.id=am.media_id
+    where am.article_id=new.id and not (m.consent_confirmed and m.public_approved)
+  ) then
+    raise exception 'Approve all attached media before publishing this article' using errcode='23514';
   end if;
   return new;
 end $$;
@@ -452,8 +497,11 @@ create table public.article_lexemes (
 );
 create function public.guard_published_article_child() returns trigger language plpgsql
 set search_path = '' as $$
+declare old_article uuid; new_article uuid;
 begin
-  if exists(select 1 from public.articles where id=coalesce(new.article_id,old.article_id) and status='published') then
+  if tg_op <> 'INSERT' then old_article := old.article_id; end if;
+  if tg_op <> 'DELETE' then new_article := new.article_id; end if;
+  if exists(select 1 from public.articles where id in (old_article,new_article) and status='published') then
     raise exception 'Move the article to draft before editing attachments or references' using errcode='23514';
   end if;
   return coalesce(new,old);
@@ -502,6 +550,31 @@ create trigger audit_lexemes after insert or update or delete on public.lexemes 
 create trigger audit_articles after insert or update or delete on public.articles for each row execute function public.capture_change();
 create trigger audit_media after insert or update or delete on public.media_assets for each row execute function public.capture_change();
 
+-- A public asset must have an approved published use and no family link at
+-- all. This definer function evaluates the negative family check without the
+-- caller's RLS hiding private member_media rows. It returns only public access
+-- eligibility, never private association details.
+create function public.is_public_media(asset_id uuid) returns boolean language sql stable security definer
+set search_path = '' as $$
+  select exists(
+    select 1 from public.media_assets m
+    where m.id=asset_id and m.public_approved and m.consent_confirmed
+      and not exists(select 1 from public.member_media mm where mm.media_id=m.id)
+      and not exists(select 1 from public.family_members fm where fm.portrait_media_id=m.id)
+      and (
+        exists(select 1 from public.article_media am join public.articles a on a.id=am.article_id
+          where am.media_id=m.id and a.status='published') or
+        exists(select 1 from public.lexeme_media lm join public.lexemes l on l.id=lm.lexeme_id
+          where lm.media_id=m.id and l.status='published') or
+        exists(select 1 from public.example_media em join public.examples e on e.id=em.example_id
+          join public.senses s on s.id=e.sense_id join public.lexemes l on l.id=s.lexeme_id
+          where em.media_id=m.id and l.status='published')
+      )
+  );
+$$;
+revoke all on function public.is_public_media(uuid) from public;
+grant execute on function public.is_public_media(uuid) to anon, authenticated;
+
 -- RLS: every table is enabled; grants are limited to the JWT's role and then
 -- narrowed by policy. No family table has an anonymous SELECT policy.
 do $$ declare t text; begin
@@ -509,7 +582,7 @@ do $$ declare t text; begin
     'app_users','sources','media_assets','media_upload_intents','family_members','member_names',
     'family_relationships','member_media','member_sources','orthography_versions',
     'lexemes','word_forms','senses','examples','lexeme_media','example_media',
-    'related_lexemes','lexeme_sources','categories','articles',
+    'related_lexemes','lexeme_sources','categories','articles','article_slug_history',
     'article_categories','article_media','article_sources','article_lexemes',
     'editorial_revisions','audit_events'
   ] loop
@@ -530,6 +603,8 @@ create policy public_examples on public.examples for select to anon, authenticat
   exists(select 1 from public.senses s join public.lexemes l on l.id = s.lexeme_id where s.id = sense_id and l.status = 'published'));
 create policy public_orthography on public.orthography_versions for select to anon, authenticated using (status = 'published');
 create policy public_articles on public.articles for select to anon, authenticated using (status = 'published');
+create policy public_article_slug_history on public.article_slug_history for select to anon, authenticated using (
+  exists(select 1 from public.articles a where a.id=article_id and a.status='published'));
 create policy public_categories on public.categories for select to anon, authenticated using (true);
 create policy public_article_categories on public.article_categories for select to anon, authenticated using (
   exists(select 1 from public.articles a where a.id = article_id and a.status = 'published'));
@@ -543,13 +618,9 @@ create policy public_related_lexemes on public.related_lexemes for select to ano
   exists(select 1 from public.lexemes l where l.id=lexeme_id and l.status='published') and
   exists(select 1 from public.lexemes l where l.id=related_lexeme_id and l.status='published'));
 create policy public_media_metadata on public.media_assets for select to anon, authenticated using (
-  public_approved and consent_confirmed and (
-    exists(select 1 from public.article_media am join public.articles a on a.id=am.article_id where am.media_id=media_assets.id and a.status='published') or
-    exists(select 1 from public.lexeme_media lm join public.lexemes l on l.id=lm.lexeme_id where lm.media_id=media_assets.id and l.status='published') or
-    exists(select 1 from public.example_media em join public.examples e on e.id=em.example_id join public.senses s on s.id=e.sense_id join public.lexemes l on l.id=s.lexeme_id where em.media_id=media_assets.id and l.status='published')
-  ));
+  (select public.is_public_media(id)));
 grant select on public.lexemes, public.word_forms, public.senses, public.examples,
-  public.orthography_versions, public.articles, public.categories, public.article_categories,
+  public.orthography_versions, public.articles, public.article_slug_history, public.categories, public.article_categories,
   public.article_media, public.lexeme_media, public.example_media, public.related_lexemes,
   public.media_assets to anon;
 
@@ -566,6 +637,12 @@ where exists (
   where x.source_id=s.id and l.status='published'
 );
 grant select on public.published_sources to anon, authenticated;
+create view public.published_article_sources with (security_barrier = true) as
+select x.article_id, s.id, s.title, s.citation, s.url
+from public.article_sources x
+join public.articles a on a.id=x.article_id and a.status='published'
+join public.sources s on s.id=x.source_id;
+grant select on public.published_article_sources to anon, authenticated;
 
 -- All objects remain private. The API grants short-lived signed URLs only
 -- after checking the media metadata's RLS visibility.
@@ -578,10 +655,7 @@ create policy admin_storage_select on storage.objects for select to authenticate
 create policy approved_storage_select on storage.objects for select to anon, authenticated
   using (bucket_id='heritage-media' and exists (
     select 1 from public.media_assets m where m.storage_path = name
-      and m.public_approved and m.consent_confirmed
-      and (exists(select 1 from public.article_media am join public.articles a on a.id=am.article_id where am.media_id=m.id and a.status='published')
-        or exists(select 1 from public.lexeme_media lm join public.lexemes l on l.id=lm.lexeme_id where lm.media_id=m.id and l.status='published')
-        or exists(select 1 from public.example_media em join public.examples e on e.id=em.example_id join public.senses s on s.id=e.sense_id join public.lexemes l on l.id=s.lexeme_id where em.media_id=m.id and l.status='published'))
+      and (select public.is_public_media(m.id))
   ));
 create policy admin_storage_insert on storage.objects for insert to authenticated
   with check (bucket_id='heritage-media' and (select public.is_admin()));

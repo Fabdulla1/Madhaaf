@@ -11,5 +11,5 @@ export default async function HistoryArticlePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  return <PublicShell><HistoryDetail slug={slug} /></PublicShell>;
+  return <PublicShell><HistoryDetail key={slug} slug={slug} /></PublicShell>;
 }

@@ -11,9 +11,9 @@ This guide describes the intended configured environment. It does not imply that
 ## Local application
 
 1. Run `npm ci` from the repository root.
-2. Start the local Supabase stack with `npx supabase start` once `supabase/config.toml` is present. Read the local API URL and publishable key from `npx supabase status`; do not copy its service-role key into client variables.
+2. Start the local Supabase stack with `npx supabase start` using the committed `supabase/config.toml`. Read the local API URL and publishable key from `npx supabase status`; do not copy its service-role key into client variables.
 3. Apply migrations and seeds using the repository's documented reset command, normally `npx supabase db reset` for **local data only**. This destroys the local database contents; do not run it against a shared or production project.
-4. Copy `.env.example` to `.env.local` and set the Supabase URL and publishable key. If the app has a server-only management credential, keep it server-only and use the minimum required scope. Set the site URL and Auth callback origin to the local application URL.
+4. Copy `.env.example` to `.env.local` and set the Supabase URL and publishable key. This application uses the administrator's Supabase session and does not require a service-role key. Set the site URL and Auth callback origin to the local application URL.
 5. Run `npm run dev`. Run the repository's lint, typecheck, tests, and production build scripts before publishing changes.
 
 The migration creates the private `heritage-media` bucket and its administrator-only object policies. The six owner-supplied dictionary examples and Draft 0.3 orthography are seeded. Family members and historical claims are intentionally absent.

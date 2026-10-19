@@ -231,6 +231,15 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
 .article-media img { width: 100%; height: auto; object-fit: contain; background: #eae8de; }
 .article-media figcaption { margin-top: 12px; color: var(--ink-muted); font-size: .82rem; }
 .article-media figcaption small { display: block; }
+.article-sources { margin-top: 60px; border-top: 1px solid var(--line); padding-top: 30px; }
+.article-sources h2 { font-size: 2rem; }
+.article-sources ol { padding-left: 24px; }
+.article-sources li { padding: 14px 0 14px 8px; border-bottom: 1px solid var(--line); }
+.article-sources li::marker { color: var(--terracotta-ink); }
+.article-sources strong, .article-sources cite, .article-sources a { display: block; }
+.article-sources strong { font-family: var(--font-editorial); font-size: 1.15rem; font-weight: 400; }
+.article-sources cite { margin-top: 5px; color: var(--ink-muted); font-size: .89rem; font-style: normal; }
+.article-sources a { width: fit-content; margin-top: 8px; border-bottom: 1px solid currentColor; font-size: .82rem; font-weight: 700; }
 .article-return { margin-top: 75px; padding-top: 22px; border-top: 1px solid var(--line); }
 
 /* Orthography */
