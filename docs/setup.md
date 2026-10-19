@@ -41,4 +41,6 @@ Only trusted project operators should run this SQL. Do not expose a public web e
 
 Use separate Supabase projects for preview and production if preview work may contain private data. In each environment, apply the same migrations, configure Auth allowed redirect URLs and email delivery, set environment variables in Vercel settings, and then deploy compatible application code. Store production secrets only in protected settings. Verify private storage, RLS, and admin provisioning in the target project before inviting users or publishing content.
 
+For Vercel production, define the exact names `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, and `SUPABASE_SECRET_KEY`. The Supabase integration may provide names prefixed with the store name; those do not satisfy the application configuration. Keep `SUPABASE_SECRET_KEY` server only. Redeploy after adding or changing variables, since the public values are included in the Next.js build.
+
 Password reset requires a configured Auth email sender and approved redirect URL. Until a real reset email has been received and completed in that environment, report this path as unverified.
