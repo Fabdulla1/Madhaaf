@@ -1,0 +1,26 @@
+import { createPublicClient, supabaseConfigured } from '@/lib/supabase/server'
+import { error, json } from '@/lib/server/http'
+
+import { connection } from 'next/server'
+
+export async function GET(_request: Request, context: { params: Promise<{ slug: string }> }) {
+  await connection()
+  if (!supabaseConfigured()) return error('Service is not configured', 503)
+  const { slug } = await context.params
+  if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug)) return error('Not found', 404)
+  const db = createPublicClient()
+  const { data, error: dbError } = await db.from('articles')
+    .select('id,slug,title,summary,body_markdown,published_at,article_categories(categories(id,slug,title)),article_media(display_order,media_assets(id,kind,storage_path,alt_text,caption,speaker_name,attribution))')
+    .eq('slug', slug).eq('status','published').maybeSingle()
+  if (dbError) return error('Unable to load article', 500)
+  if (!data) return error('Not found', 404)
+  const media = await Promise.all((data.article_media || []).filter(x => x.media_assets).map(async x => {
+    const asset = x.media_assets as unknown as { id: string; kind: string; storage_path: string; alt_text: string | null; caption: string | null; speaker_name: string | null; attribution: string | null }
+    const { data: signed } = await db.storage.from('heritage-media').createSignedUrl(asset.storage_path, 300)
+    return signed ? { ...asset, display_order: x.display_order, url: signed.signedUrl } : null
+  }))
+  const categories = (data.article_categories || []).flatMap(x => x.categories ? [x.categories] : [])
+  return json({ id: data.id, slug: data.slug, title: data.title, summary: data.summary,
+    body_markdown: data.body_markdown, published_at: data.published_at,
+    categories, media: media.filter(Boolean) })
+}

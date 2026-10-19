@@ -1,0 +1,34 @@
+import { expect, test } from "@playwright/test";
+
+test("public routes, responsive layouts, and private family gate", async ({ page }) => {
+  for (const width of [1440, 768, 375]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+    await expect(page.getByRole("heading", { name: "Our people. Our words. Our story." })).toBeVisible();
+    await page.screenshot({ path: `test-results/home-${width}.png`, fullPage: true });
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 2);
+    expect(overflow, `home overflow at ${width}px`).toBe(false);
+  }
+  await page.goto("/dictionary");
+  await expect(page.getByRole("heading", { name: /dictionary/i }).first()).toBeVisible();
+  await page.screenshot({ path: "test-results/dictionary-375.png", fullPage: true });
+  await page.goto("/history");
+  await expect(page.getByRole("heading", { name: /history/i }).first()).toBeVisible();
+  await page.screenshot({ path: "test-results/history-375.png", fullPage: true });
+  await page.goto("/orthography");
+  await expect(page.getByText(/draft 0\.3/i).first()).toBeVisible();
+  await page.goto("/family");
+  await expect(page.getByText(/private/i).first()).toBeVisible();
+  await page.goto("/family/tree");
+  await expect(page).toHaveURL(/\/login/);
+  await page.screenshot({ path: "test-results/login-375.png", fullPage: true });
+});
+
+test("admin data routes reject unauthenticated requests", async ({ request }) => {
+  for (const path of ["/api/admin/tree", "/api/admin/members", "/api/admin/media"]) {
+    const response = await request.get(path);
+    expect(response.status(), `${path} should not return private data`).not.toBe(200);
+  }
+  const response = await request.post("/api/admin/lexemes", { data: { headword: "unauthorized" } });
+  expect(response.status()).not.toBe(201);
+});
