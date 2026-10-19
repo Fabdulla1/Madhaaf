@@ -171,6 +171,56 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
 .content-state--loading { min-height: 150px; flex-direction: row; align-items: center; gap: 18px; }
 .loading-mark { width: 20px; height: 20px; border: 2px solid var(--line); border-top-color: var(--ink); border-radius: 50%; animation: spin .8s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* Family explorer: a calm, readable map with motion only on active connections. */
+.family-tree-canvas {
+  background-image: radial-gradient(circle at 18% 15%, rgba(227, 236, 222, .9), transparent 35%),
+    radial-gradient(circle at 85% 82%, rgba(242, 224, 204, .65), transparent 38%);
+}
+.family-tree-canvas .react-flow__node.family-tree-node {
+  padding: 16px;
+  border: 1px solid #a4b5aa;
+  border-radius: 14px;
+  background: #fffcf6;
+  color: #163e3a;
+  box-shadow: 0 7px 22px rgba(22, 62, 58, .12);
+  transition: background .3s ease, border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+}
+.family-tree-canvas .react-flow__node.family-tree-node:hover,
+.family-tree-canvas .react-flow__node.family-tree-node--related {
+  border-color: #487c70;
+  box-shadow: 0 10px 26px rgba(22, 62, 58, .19);
+}
+.family-tree-canvas .react-flow__node.family-tree-node--active {
+  border: 2px solid #bb765b;
+  background: #163e3a;
+  color: #fff;
+  box-shadow: 0 12px 30px rgba(22, 62, 58, .27);
+}
+.family-tree-canvas .react-flow__node.family-tree-node:focus-visible {
+  outline: 3px solid #bb765b;
+  outline-offset: 4px;
+}
+.family-tree-node-content { display: flex; align-items: center; gap: 12px; }
+.family-tree-node-avatar {
+  display: grid; flex: 0 0 42px; width: 42px; height: 42px; place-items: center;
+  border-radius: 50%; background: #e3ece2; color: #163e3a;
+  font-family: Georgia, serif; font-size: 1.3rem;
+}
+.family-tree-node--active .family-tree-node-avatar { background: #d7b39c; }
+.family-tree-canvas .react-flow__edge-path { transition: stroke .3s ease, stroke-width .3s ease; }
+.family-tree-canvas .react-flow__controls { border-radius: 10px; overflow: hidden; box-shadow: 0 4px 18px rgba(22,62,58,.14); }
+.family-tree-guide-line { display: inline-block; width: 25px; margin-right: 6px; border-top: 2px solid #487c70; vertical-align: middle; }
+.family-tree-guide-line--partner { border-color: #b7674e; }
+.family-tree-guide-line--uncertain { border-style: dashed; }
+.family-tree-details { animation: family-tree-reveal .35s ease both; }
+@keyframes family-tree-reveal { from { opacity: .55; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .family-tree-canvas .react-flow__edge.animated path { animation: none !important; }
+  .family-tree-canvas .react-flow__node.family-tree-node,
+  .family-tree-canvas .react-flow__edge-path { transition: none; }
+  .family-tree-details { animation: none; }
+}
 .breadcrumbs { display: flex; gap: 13px; margin-bottom: 60px; color: var(--ink-muted); font-size: .82rem; }
 .breadcrumbs a { text-decoration: underline; text-underline-offset: 4px; }
 .detail-page { padding-top: 36px; }
@@ -343,3 +393,5 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
 @media (prefers-reduced-motion: reduce) {
   .public-site *, .public-site *::before, .public-site *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+.family-tree-canvas .react-flow__handle { display: none; }

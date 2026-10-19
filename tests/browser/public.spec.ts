@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-test("public routes, responsive layouts, and private family gate", async ({ page }) => {
+test("public routes and responsive layouts", async ({ page }) => {
   for (const width of [1440, 768, 375]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
@@ -20,7 +20,8 @@ test("public routes, responsive layouts, and private family gate", async ({ page
   await page.goto("/family");
   await expect(page.getByText(/private/i).first()).toBeVisible();
   await page.goto("/family/tree");
-  await expect(page).toHaveURL(/\/login/);
+  await expect(page.getByRole("heading", { name: /family tree/i }).first()).toBeVisible();
+  await page.goto("/login");
   await page.screenshot({ path: "test-results/login-375.png", fullPage: true });
 });
 

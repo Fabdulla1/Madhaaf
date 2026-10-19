@@ -48,4 +48,7 @@ jobs:
       - run: sudo apt-get update && sudo apt-get install -y postgresql-client
       - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/bootstrap.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610190001_foundation.sql
+      - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610190002_lexeme_preferred_form.sql
+      - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610190003_public_family_tree.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/foundation.sql
+      - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/public_family.sql
