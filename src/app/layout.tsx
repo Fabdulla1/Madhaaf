@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     "A developing archive for Mombasa Kutchi words, family histories, and cultural memory.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>{children}</body>
