@@ -10,10 +10,10 @@ test("public routes, responsive layouts, and private family gate", async ({ page
     expect(overflow, `home overflow at ${width}px`).toBe(false);
   }
   await page.goto("/dictionary");
-  await expect(page.getByRole("heading", { name: /dictionary/i }).first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Words to carry forward." })).toBeVisible();
   await page.screenshot({ path: "test-results/dictionary-375.png", fullPage: true });
   await page.goto("/history");
-  await expect(page.getByRole("heading", { name: /history/i }).first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Stories, carefully told." })).toBeVisible();
   await page.screenshot({ path: "test-results/history-375.png", fullPage: true });
   await page.goto("/orthography");
   await expect(page.getByText(/draft 0\.3/i).first()).toBeVisible();
@@ -25,7 +25,7 @@ test("public routes, responsive layouts, and private family gate", async ({ page
 });
 
 test("admin data routes reject unauthenticated requests", async ({ request }) => {
-  for (const path of ["/api/admin/tree", "/api/admin/members", "/api/admin/media"]) {
+  for (const path of ["/api/admin/tree", "/api/admin/members", "/api/admin/media", "/api/admin/users"]) {
     const response = await request.get(path);
     expect(response.status(), `${path} should not return private data`).not.toBe(200);
   }

@@ -23,5 +23,5 @@ export const resources: Record<string, ResourceConfig> = {
 };
 
 export const navigation = [
-  {href:"/admin",label:"Overview"}, {href:"/admin/family-members",label:"Family members"}, {href:"/admin/family-relationships",label:"Family relationships"}, {href:"/admin/dictionary",label:"Dictionary"}, {href:"/admin/history",label:"History and culture"}, {href:"/admin/media",label:"Media library"}, {href:"/admin/drafts",label:"Drafts and publishing"}, {href:"/admin/settings",label:"Settings"},
+  {href:"/admin",label:"Overview"}, {href:"/admin/family-members",label:"Family members"}, {href:"/admin/family-relationships",label:"Family relationships"}, {href:"/admin/dictionary",label:"Dictionary"}, {href:"/admin/history",label:"History and culture"}, {href:"/admin/media",label:"Media library"}, {href:"/admin/drafts",label:"Drafts and publishing"}, {href:"/admin/users",label:"Users"}, {href:"/admin/settings",label:"Settings"},
 ];

@@ -5,6 +5,7 @@ import { RelationshipManager } from "@/components/admin/relationship-manager";
 import { MediaManager } from "@/components/admin/media-manager";
 import { DraftsPage } from "@/components/admin/drafts-page";
 import { SettingsPage } from "@/components/admin/settings-page";
+import { UsersPage } from "@/components/admin/users-page";
 
 export default async function AdminSection({params}:{params:Promise<{section:string}>}) {
   const {section}=await params;
@@ -12,6 +13,7 @@ export default async function AdminSection({params}:{params:Promise<{section:str
   if(section==="media") return <MediaManager/>;
   if(section==="drafts") return <DraftsPage/>;
   if(section==="settings") return <SettingsPage/>;
+  if(section==="users") return <UsersPage/>;
   if(resources[section]) return <ResourceList section={section} config={resources[section]}/>;
   notFound();
 }

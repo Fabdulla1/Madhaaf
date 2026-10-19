@@ -23,7 +23,7 @@ npm run test:e2e
 npm run build
 ```
 
-Playwright tests cover public responsive pages, exact-spelling display, article citations and private-link handling, unauthenticated access denial, relationship validation, request size and origin checks, and media signatures without a configured Supabase project. [Database smoke tests](docs/backend-api.md#local-database-smoke-test) cover schema invariants and RLS using PostgreSQL test stubs. The [quality workflow](.github/workflows/quality.yml) runs lint, type checking, build, database smoke, and browser tests when GitHub is connected. Authentication, uploads, and full editorial workflows still require verification in a configured Supabase environment.
+Playwright tests cover public responsive pages, exact-spelling display, article citations and private-link handling, unauthenticated access denial, relationship validation, request size and origin checks, and media signatures. With a configured Supabase project, the live browser test also exercises administrator creation, editing, and sign-in with disposable accounts. [Database smoke tests](docs/backend-api.md#local-database-smoke-test) cover schema invariants and RLS using PostgreSQL test stubs. The [quality workflow](.github/workflows/quality.yml) runs lint, type checking, build, database smoke, and browser tests when GitHub is connected.
 
 ## Documentation
 
