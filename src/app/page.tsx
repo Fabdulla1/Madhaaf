@@ -1,138 +1,137 @@
 import Link from "next/link";
-import { HomePreviews } from "@/components/public/home-previews";
 import { PublicShell } from "@/components/public/shell";
 
 export default function Home() {
   return (
     <PublicShell>
-      <section className="hero">
-        <div className="page-width hero__grid">
-          <div className="hero__copy">
-            <p className="eyebrow">Kutchi Roots <span aria-hidden="true">/</span> Mombasa</p>
-            <h1>Our people. Our words. Our story.</h1>
-            <p className="hero__intro">
-              A growing home for the words, memories, and histories of Mombasa
-              Kutchi. Explore the public archive and the language as it is
-              documented, one contribution at a time.
+      <section className="home-hero" aria-labelledby="home-title">
+        <div className="page-width home-hero__grid">
+          <div className="home-hero__copy">
+            <h1 id="home-title">What we carry, we can keep.</h1>
+            <p>
+              A language heard at home. A family connection remembered. A story
+              passed from one generation to the next. Madhaaf gives these
+              pieces of our shared history a place to live and grow.
             </p>
             <div className="action-row">
-              <Link className="button button--primary" href="/dictionary">
-                Explore the dictionary <span aria-hidden="true">↗</span>
+              <Link className="button home-hero__button" href="/history">
+                Explore our stories <span aria-hidden="true">↗</span>
               </Link>
-              <Link className="text-link" href="/history">
-                Browse history <span aria-hidden="true">↗</span>
+              <Link className="home-hero__quiet-link" href="#the-journey">
+                Discover the archive <span aria-hidden="true">↓</span>
               </Link>
             </div>
           </div>
-          <div className="hero-art" aria-hidden="true">
-            <div className="hero-art__ring hero-art__ring--one" />
-            <div className="hero-art__ring hero-art__ring--two" />
-            <div className="hero-art__ring hero-art__ring--three" />
-            <div className="hero-art__center">
-              <span>WORDS</span>
-              <span>MEMORY</span>
-              <span>FAMILY</span>
-            </div>
-            <span className="hero-art__caption">An archive in the making</span>
+          <div className="home-hero__art" aria-hidden="true">
+            <div className="home-hero__halo home-hero__halo--outer" />
+            <div className="home-hero__halo home-hero__halo--inner" />
+            <div className="home-hero__sun" />
+            <div className="home-hero__path home-hero__path--one" />
+            <div className="home-hero__path home-hero__path--two" />
+            <div className="home-hero__path home-hero__path--three" />
+            <span className="home-hero__point home-hero__point--one" />
+            <span className="home-hero__point home-hero__point--two" />
+            <span className="home-hero__point home-hero__point--three" />
+            <span className="home-hero__art-caption">Many lives, one unfolding story</span>
           </div>
+        </div>
+        <div className="page-width home-hero__foot">
+          <span>Language</span><span>Family</span><span>History</span>
         </div>
       </section>
 
-      <section className="intro-section section-space">
-        <div className="page-width intro-grid">
-          <p className="eyebrow">01 / The archive</p>
+      <section id="the-journey" className="home-intro" aria-labelledby="home-intro-title">
+        <div className="page-width home-intro__grid">
+          <span className="home-intro__mark" aria-hidden="true" />
           <div>
-            <h2>A place to hold what matters, with care.</h2>
+            <h2 id="home-intro-title">Every story begins somewhere.</h2>
             <p>
-              Kutchi Roots begins with Mombasa Kutchi, the East African variety
-              spoken in Mombasa. Its dictionary uses a developing Latin
-              orthography. The family archive has different privacy needs, so
-              access to those records is limited to authorized people.
+              It might begin with a familiar phrase, a relative’s name, or a
+              memory of a place. Here, those threads become a growing record of
+              language and belonging, gathered with care and shared with context.
             </p>
-            <Link className="text-link" href="/orthography">
-              How we write Mombasa Kutchi <span aria-hidden="true">↗</span>
-            </Link>
           </div>
         </div>
       </section>
 
-      <section className="section-space section-border">
+      <section className="home-chapters" aria-label="Explore the archive">
         <div className="page-width">
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">02 / Language</p>
-              <h2>Find a word. Follow its meaning.</h2>
+          <article className="home-chapter home-chapter--language">
+            <div className="home-chapter__copy">
+              <h2>Language lives in a voice worth hearing again.</h2>
+              <p>
+                Everyday speech holds more than definitions. Explore documented
+                Kutchi expressions, their meanings, and the developing writing
+                guide that helps preserve how they are spoken.
+              </p>
+              <div className="home-chapter__links">
+                <Link className="text-link" href="/dictionary">Enter the dictionary <span aria-hidden="true">↗</span></Link>
+                <Link className="text-link" href="/orthography">Read the writing guide <span aria-hidden="true">↗</span></Link>
+              </div>
             </div>
-            <p>
-              Search Mombasa Kutchi spellings or English meanings. An
-              apostrophe and <code>(n)</code> are meaningful parts of the
-              working spelling system.
-            </p>
-          </div>
-          <form className="dictionary-search dictionary-search--home" action="/dictionary" method="get" role="search">
-            <label htmlFor="home-word-search">Search the dictionary</label>
-            <div className="search-field">
-              <input id="home-word-search" name="q" type="search" placeholder="Word or meaning" />
-              <button type="submit" aria-label="Search dictionary">Search <span aria-hidden="true">↗</span></button>
+            <div className="home-chapter__art home-chapter__art--language" aria-hidden="true">
+              <span className="home-language-mark home-language-mark--one" />
+              <span className="home-language-mark home-language-mark--two" />
+              <span className="home-language-mark home-language-mark--three" />
+              <span className="home-language-mark home-language-mark--four" />
+              <span className="home-art-label">Spoken / remembered / recorded</span>
             </div>
-          </form>
-          <HomePreviews kind="dictionary" />
+          </article>
+
+          <article className="home-chapter home-chapter--family">
+            <div className="home-chapter__copy">
+              <h2>Family gives us a place in the story.</h2>
+              <p>
+                A family tree is more than a list of names. Follow the
+                connections that have been reviewed for public sharing, and
+                see how generations meet. Private family records stay protected.
+              </p>
+              <Link className="text-link" href="/family">Explore the family space <span aria-hidden="true">↗</span></Link>
+            </div>
+            <div className="home-chapter__art home-chapter__art--family" aria-hidden="true">
+              <span className="home-family-line home-family-line--trunk" />
+              <span className="home-family-line home-family-line--left" />
+              <span className="home-family-line home-family-line--right" />
+              <span className="home-family-node home-family-node--one" />
+              <span className="home-family-node home-family-node--two" />
+              <span className="home-family-node home-family-node--three" />
+              <span className="home-family-node home-family-node--four" />
+              <span className="home-art-label">Lives linked across generations</span>
+            </div>
+          </article>
+
+          <article className="home-chapter home-chapter--history">
+            <div className="home-chapter__copy">
+              <h2>History becomes a record we can return to.</h2>
+              <p>
+                The history archive brings together documented accounts,
+                images, and oral traditions. Each published story has room
+                for its sources, the people behind it, and the context it needs.
+              </p>
+              <Link className="text-link" href="/history">Read the histories <span aria-hidden="true">↗</span></Link>
+            </div>
+            <div className="home-chapter__art home-chapter__art--history" aria-hidden="true">
+              <span className="home-history-frame home-history-frame--back" />
+              <span className="home-history-frame home-history-frame--front" />
+              <span className="home-history-sun" />
+              <span className="home-history-horizon" />
+              <span className="home-art-label">A record still taking shape</span>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section className="section-space family-section">
-        <div className="page-width family-grid">
-          <div className="family-illustration" aria-hidden="true">
-            <span className="family-illustration__line" />
-            <span className="family-illustration__node family-illustration__node--one" />
-            <span className="family-illustration__node family-illustration__node--two" />
-            <span className="family-illustration__node family-illustration__node--three" />
-            <span className="family-illustration__node family-illustration__node--four" />
-          </div>
+      <section className="home-closing" aria-labelledby="home-closing-title">
+        <div className="page-width home-closing__grid">
+          <span className="home-closing__mark" aria-hidden="true" />
           <div>
-            <p className="eyebrow">03 / Family</p>
-            <h2>Every connection deserves context.</h2>
+            <h2 id="home-closing-title">There is always more to remember.</h2>
             <p>
-              The family tree brings biographies, relationships, and memories
-              together. Family information is private by default and available
-              only to authorized people.
+              Madhaaf is a growing archive. Its entries and histories are
+              reviewed before publication, so the record can grow with care.
             </p>
-            <Link className="button button--outline" href="/family">
-              About the family space <span aria-hidden="true">↗</span>
-            </Link>
+            <Link className="button button--outline" href="/history">Spend time in the archive <span aria-hidden="true">↗</span></Link>
           </div>
-        </div>
-      </section>
-
-      <section className="section-space section-border">
-        <div className="page-width">
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">04 / History &amp; culture</p>
-              <h2>Stories with sources.</h2>
-            </div>
-            <p>
-              An editorial home for community histories, oral traditions, and
-              cultural practices as documented material becomes available.
-            </p>
-          </div>
-          <HomePreviews kind="history" />
-          <Link className="text-link section-end-link" href="/history">
-            Explore history &amp; culture <span aria-hidden="true">↗</span>
-          </Link>
-        </div>
-      </section>
-      <section className="closing-note">
-        <div className="page-width">
-          <p className="eyebrow">The work continues</p>
-          <h2>Preservation begins with listening.</h2>
-          <p>
-            As this archive grows, each word and story can carry its own
-            spelling, sources, attribution, and context.
-          </p>
-          <Link className="text-link" href="/orthography">
-            Learn about the writing guide <span aria-hidden="true">↗</span>
-          </Link>
         </div>
       </section>
     </PublicShell>

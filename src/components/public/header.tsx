@@ -30,16 +30,13 @@ export function PublicHeader() {
   return (
     <header className="site-header">
       <div className="site-header__inner page-width">
-        <Link className="wordmark" href="/" aria-label="Kutchi Roots, home">
+        <Link className="wordmark" href="/" aria-label="Madhaaf, home">
           <span className="wordmark__symbol" aria-hidden="true">
             <span />
             <span />
             <span />
           </span>
-          <span className="wordmark__text">
-            Kutchi Roots
-            <small>Mombasa</small>
-          </span>
+          <span className="wordmark__text">Madhaaf</span>
         </Link>
         <nav className="desktop-nav" aria-label="Main navigation">
           {navigation.map((item) => (

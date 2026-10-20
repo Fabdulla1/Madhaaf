@@ -11,7 +11,7 @@ export async function GET(_request: Request, context: { params: Promise<{ id: st
   if (!z.string().uuid().safeParse(id).success) return error('Not found', 404)
   const db = createPublicClient()
   const { data, error: dbError } = await db.from('lexemes')
-    .select('id,headword,part_of_speech,usage_note,etymology_note,orthography_version_id,word_forms(id,spelling,is_preferred,note),senses(id,gloss_en,definition_en,display_order,examples(id,kutchi_text,english_translation,note,display_order))')
+    .select('id,headword,part_of_speech,morphology_note,linguistic_tags,usage_note,etymology_note,orthography_version_id,word_forms(id,spelling,is_preferred,note),senses(id,gloss_en,definition_en,display_order,examples(id,kutchi_text,english_translation,note,display_order))')
     .eq('id', id).eq('status', 'published').maybeSingle()
   if (dbError) return error('Unable to load entry', 500)
   if (!data) return error('Not found', 404)

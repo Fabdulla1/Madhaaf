@@ -32,6 +32,7 @@ export const createSchemas = {
   }),
   lexemes: z.object({
     headword: short, part_of_speech: z.string().max(100).nullable().optional(),
+    morphology_note: note, linguistic_tags: z.array(z.string().trim().min(1).max(60)).max(20).optional(),
     usage_note: note, etymology_note: note,
     orthography_version_id: uuid.nullable().optional(), status: status.optional(),
   }).strict(),

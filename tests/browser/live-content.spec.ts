@@ -43,13 +43,22 @@ test("administrator can draft and publish a word, and open content editors", asy
     await expect(page.getByRole("heading", { name: "Dictionary", exact: true })).toBeVisible();
     await page.goto("/admin/dictionary/new");
     await page.getByLabel("Headword").fill(headword);
+    await page.getByLabel("Part of speech").fill("verb");
+    await page.getByLabel("Morphology").fill("reduplicated root");
+    await page.getByLabel("Linguistic tags").fill("verb, coastal");
+    await page.getByLabel("English meaning").fill(`Gather ${suffix}`);
+    await page.getByLabel("Definition or nuance").fill("To bring people together for a shared task.");
+    await page.getByLabel("Use in a Kutchi sentence").fill("A sample Kutchi sentence.");
+    await page.getByLabel("English translation of the sentence").fill("A sample translated sentence.");
     await page.getByRole("button", { name: "Save draft" }).click();
-    await expect(page.getByText("Saved successfully.")).toBeVisible();
+    await expect(page.getByText("Draft created with its first meaning and example.")).toBeVisible();
     await expect(page).toHaveURL(/\/admin\/dictionary\/[a-f0-9-]{36}$/);
     lexemeId = page.url().split("/").at(-1);
     await page.reload();
     await expect(page.getByText(headword, { exact: true }).first()).toBeVisible();
     await expect(page.getByText("Preferred", { exact: true })).toBeVisible();
+    await expect(page.getByText(`Gather ${suffix}`, { exact: true }).first()).toBeVisible();
+    await expect(page.getByText("A sample Kutchi sentence.", { exact: true })).toBeVisible();
 
     await page.getByLabel("English meaning").fill(`Test meaning ${suffix}`);
     await page.getByRole("button", { name: "Add meaning" }).click();
@@ -61,6 +70,9 @@ test("administrator can draft and publish a word, and open content editors", asy
     const published = await popup;
     await published.waitForLoadState();
     await expect(published.getByText(headword, { exact: true }).first()).toBeVisible();
+    await expect(published.getByText("reduplicated root", { exact: true })).toBeVisible();
+    await expect(published.getByText("coastal", { exact: true })).toBeVisible();
+    await expect(published.getByText("A sample translated sentence.", { exact: true })).toBeVisible();
   } finally {
     if (!lexemeId) {
       const { data: found } = await manager.from("lexemes").select("id").eq("headword", headword).maybeSingle();

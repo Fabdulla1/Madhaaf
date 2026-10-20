@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     const allowed: Record<string, string[]> = {
       members: ['preferred_name','birth_date_text','death_date_text','living_status','birthplace','places_lived','short_bio','biography','private_notes','portrait_media_id','status','visibility'],
       relationships: ['person_a_id','person_b_id','kind','parent_kind','confidence','note','status'],
-      lexemes: ['headword','part_of_speech','usage_note','etymology_note','orthography_version_id','status'],
+      lexemes: ['headword','part_of_speech','morphology_note','linguistic_tags','usage_note','etymology_note','orthography_version_id','status'],
       articles: ['slug','title','summary','body_markdown','status','published_at'],
       orthography: ['label','title','body_markdown','status'],
     }

@@ -4,7 +4,7 @@ import { OrthographyContent } from "@/components/public/orthography-content";
 import { PublicShell } from "@/components/public/shell";
 
 export const metadata: Metadata = {
-  title: "How we write Mombasa Kutchi",
+  title: "Writing guide",
   description: "The developing Mombasa Kutchi Latin Orthography, Draft 0.3.",
 };
 
@@ -18,7 +18,7 @@ export default function OrthographyPage() {
         </nav>
         <div className="page-intro">
           <p className="eyebrow">Language / Writing</p>
-          <h1>How we write Mombasa Kutchi.</h1>
+          <h1>How we write Kutchi.</h1>
           <p>
             This is a working Latin orthography. It takes some initial
             influence from Roman Urdu while keeping Mombasa Kutchi forms

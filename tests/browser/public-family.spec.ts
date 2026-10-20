@@ -19,6 +19,9 @@ test("public family tree shows reviewed people without admin controls", async ({
   await expect(page.getByRole("heading", { name: "Our family tree" })).toBeVisible();
   await expect(page.getByText("Amina", { exact: true }).first()).toBeVisible();
   await expect(page.getByText("Hassan", { exact: true }).first()).toBeVisible();
+  await expect(page.locator(".react-flow__edge")).toHaveCount(1);
+  await expect.poll(async () => (await page.locator(".react-flow__edge-path").boundingBox())?.height ?? 0).toBeGreaterThan(20);
+  await expect(page.locator(".react-flow__edge-path")).toBeInViewport();
   await page.screenshot({ path: "test-results/family-tree-desktop.png", fullPage: true });
   await expect(page.getByRole("link", { name: "Manage people" })).toHaveCount(0);
   await expect(page.getByRole("link", { name: "Full profile" })).toHaveCount(0);

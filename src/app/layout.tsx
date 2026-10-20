@@ -3,11 +3,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Kutchi Roots — Mombasa",
-    template: "%s | Kutchi Roots",
+    default: "Madhaaf",
+    template: "%s | Madhaaf",
   },
   description:
-    "A developing archive for Mombasa Kutchi words, family histories, and cultural memory.",
+    "A living archive of Kutchi language, family histories, and cultural memory.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -12,6 +12,8 @@ export type DictionaryEntry = {
   id: string;
   headword: string;
   part_of_speech?: string | null;
+  morphology_note?: string | null;
+  linguistic_tags?: string[];
   usage_note?: string | null;
   etymology_note?: string | null;
   word_forms?: Array<{ id: string; spelling: string; is_preferred: boolean; note?: string | null }>;

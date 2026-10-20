@@ -40,10 +40,11 @@ function EntryContent({ entry }: { entry: DictionaryEntry }) {
   return (
     <article className="entry-detail">
       <div className="entry-detail__header">
-        <p className="eyebrow">Mombasa Kutchi / Dictionary</p>
+        <p className="eyebrow">Madhaaf / Dictionary</p>
         <h1>{entry.headword}</h1>
         <div className="entry-meta">
           {entry.part_of_speech && <span>{entry.part_of_speech}</span>}
+          {entry.linguistic_tags?.map(tag => <span key={tag}>{tag}</span>)}
           {entry.orthography_version?.label && <span>Orthography {entry.orthography_version.label}</span>}
         </div>
       </div>
@@ -75,6 +76,7 @@ function EntryContent({ entry }: { entry: DictionaryEntry }) {
             ) : <p>Meanings are being prepared for this entry.</p>}
           </section>
           {entry.usage_note && <section className="entry-section"><h2>Usage notes</h2><p>{entry.usage_note}</p></section>}
+          {entry.morphology_note && <section className="entry-section"><h2>Morphology</h2><p>{entry.morphology_note}</p></section>}
           {entry.etymology_note && <section className="entry-section"><h2>Word history</h2><p>{entry.etymology_note}</p></section>}
           {audio.length > 0 && (
             <section className="entry-section">

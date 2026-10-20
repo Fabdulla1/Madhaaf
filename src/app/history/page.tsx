@@ -5,7 +5,7 @@ import { PublicShell } from "@/components/public/shell";
 
 export const metadata: Metadata = {
   title: "History & culture",
-  description: "Published articles and oral histories in the Kutchi Roots archive.",
+  description: "Published articles and oral histories in the Madhaaf archive.",
 };
 export const instant = false;
 
