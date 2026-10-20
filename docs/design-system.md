@@ -69,7 +69,7 @@ Journey: enter exact Kutchi spelling or English meaning → inspect ranked resul
 - Search is the first visual focus. Preserve apostrophes and parentheses in display and exact matching. If approximate matches exist, label them **“Possible matches”** after exact results; never silently merge distinct forms.
 - Provide alphabetical browse and a short explanation of the draft orthography. Use clear empty, no-result, loading, and error states. No-result copy should repeat the query safely and offer a spelling tip without implying that markers can be ignored.
 - Entry page: headword; pronunciation control only when audio exists; spelling variants; concise meanings; parts of speech when documented; examples with translations and recordings; usage and source information; related words; orthography version. Omit absent fields rather than showing a wall of empty placeholders.
-- The “How We Write Mombasa Kutchi” page shows **Draft 0.3** prominently, a compact rule table, and separate “current working conventions” and “questions still being studied” sections. Every rule remains editable through the dashboard.
+- The “How We Write Mombasa Kutchi” page shows the published draft version (falling back to **Draft 0.3**), the project-supplied letter reference, and separate versioned editorial notes. The shared letter list lives in `src/lib/orthography.ts` and appears on the public guide and in expandable references beside dictionary headwords, spelling variants, and Kutchi examples. Editorial notes remain editable through the dashboard and may document earlier draft choices. The reference is guidance only; it does not restrict or normalize stored spellings.
 
 ### History and culture
 

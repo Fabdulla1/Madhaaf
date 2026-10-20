@@ -4,22 +4,11 @@ import { useEffect, useState } from "react";
 import { type ApiResult, type OrthographyVersion, readPublicApi } from "./content-api";
 import { ContentState, LoadingState } from "./content-state";
 import { MarkdownContent } from "./markdown";
-
-const rules = [
-  { symbol: "a", rule: "Short A — provisional" },
-  { symbol: "aa", rule: "Long A — provisional" },
-  { symbol: "n", rule: "Fully pronounced N" },
-  { symbol: "(n)", rule: "Nasalization of the preceding vowel" },
-  { symbol: "l", rule: "Ordinary L" },
-  { symbol: "'l", rule: "Proposed special L; pronunciation under investigation" },
-  { symbol: "gh", rule: "Provisional consonant spelling" },
-  { symbol: "ch", rule: "Provisional consonant spelling" },
-];
+import { LetterReferenceTable } from "@/components/letter-reference";
 
 export function OrthographyContent() {
   const [result, setResult] = useState<ApiResult<OrthographyVersion | null> | null>(null);
   const published = result?.status === "success" ? result.data : null;
-  const showInitialRules = !published || published.label === "0.3";
 
   useEffect(() => {
     const controller = new AbortController();
@@ -41,46 +30,41 @@ export function OrthographyContent() {
             formally established community or academic standard.
           </p>
         </div>
-        {showInitialRules && <section className="orthography-rules">
-          <h2>Working conventions</h2>
+        <section className="orthography-rules">
+          <h2>Letters and intended use</h2>
           <p>
-            The following rules were supplied for this project. Spellings
-            retain the apostrophe and <code>(n)</code> exactly.
+            This working letter list was supplied for the project. Use it as a
+            reference when writing Kutchi words and examples. Preserve apostrophes,
+            vowel marks, and <code>(n)</code> exactly as written.
           </p>
-          <div className="rules-table" role="table" aria-label="Working spelling conventions">
-            <div role="row" className="rules-table__heading"><span role="columnheader">Symbol</span><span role="columnheader">Current use</span></div>
-            {rules.map((rule) => (
-              <div role="row" key={rule.symbol}>
-                <code role="cell">{rule.symbol}</code>
-                <span role="cell">{rule.rule}</span>
-              </div>
-            ))}
-          </div>
-        </section>}
+          <LetterReferenceTable />
+        </section>
         <section className="orthography-editorial">
-          <h2>{showInitialRules ? "Editorial notes" : "Current guide"}</h2>
+          <h2>Published editorial notes</h2>
+          <p>These versioned notes document the development of the writing system and may describe earlier draft choices.</p>
           {!result ? <LoadingState label="Loading editorial notes…" /> : result.status === "success" && result.data ? (
             result.data.body_markdown
               ? <MarkdownContent content={result.data.body_markdown} />
               : <ContentState title="Notes are being prepared" description="Further examples and explanations will appear after editorial review." />
           ) : result.status === "success" ? <ContentState
             title="No published editorial notes yet"
-            description="The working conventions above were provided for the initial archive."
+            description="The project’s working letter reference is available above."
           /> : <ContentState
             title="Editorial notes unavailable"
             description="The working conventions above remain available. Further notes could not be loaded right now."
           />}
         </section>
       </div>
-      {showInitialRules && <aside className="side-note">
-        <p className="eyebrow">Open questions</p>
-        <h2>Still under study.</h2>
+      <aside className="side-note">
+        <p className="eyebrow">Writing together</p>
+        <h2>A working reference.</h2>
         <p>
-          The values of <code>a</code>, <code>aa</code>, <code>gh</code>, and
-          <code> ch</code> remain provisional. The exact phonetic realization
-          of <code>&apos;l</code> is still being investigated.
+          Long vowels are shown with doubled letters and their marked forms:
+          <code> aa (ā)</code>, <code>ee (ē)</code>, and <code>oo (ō)</code>.
+          The list also includes <code>(n)</code> and <code>‘l</code>.
         </p>
-      </aside>}
+        <p>Sound descriptions are working labels for this project. Record pronunciation and usage notes as you develop each entry.</p>
+      </aside>
     </div>
   );
 }
