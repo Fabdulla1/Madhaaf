@@ -42,11 +42,6 @@ function EntryContent({ entry }: { entry: DictionaryEntry }) {
       <div className="entry-detail__header">
         <p className="eyebrow">Madhaaf / Dictionary</p>
         <h1>{entry.headword}</h1>
-        <div className="entry-meta">
-          {entry.part_of_speech && <span>{entry.part_of_speech}</span>}
-          {entry.linguistic_tags?.map(tag => <span key={tag}>{tag}</span>)}
-          {entry.orthography_version?.label && <span>Orthography {entry.orthography_version.label}</span>}
-        </div>
       </div>
       <div className="detail-grid">
         <div className="reading-column">
@@ -75,6 +70,23 @@ function EntryContent({ entry }: { entry: DictionaryEntry }) {
               </ol>
             ) : <p>Meanings are being prepared for this entry.</p>}
           </section>
+          {(entry.part_of_speech || entry.linguistic_tags?.length) && (
+            <section className="entry-section entry-linguistics">
+              <h2>Linguistic notes</h2>
+              {entry.part_of_speech && <p><strong>Part of speech</strong> {entry.part_of_speech}</p>}
+              {!!entry.linguistic_tags?.length && (
+                <div>
+                  <h3>Tags</h3>
+                  <ul className="entry-linguistics__tags">
+                    {entry.linguistic_tags.map(tag => <li key={tag}>{tag}</li>)}
+                  </ul>
+                </div>
+              )}
+              <p className="entry-linguistics__note">
+                These labels are inferred from the supplied English meanings and remain open to community review.
+              </p>
+            </section>
+          )}
           {entry.usage_note && <section className="entry-section"><h2>Usage notes</h2><p>{entry.usage_note}</p></section>}
           {entry.morphology_note && <section className="entry-section"><h2>Morphology</h2><p>{entry.morphology_note}</p></section>}
           {entry.etymology_note && <section className="entry-section"><h2>Word history</h2><p>{entry.etymology_note}</p></section>}
