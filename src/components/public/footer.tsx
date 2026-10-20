@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function PublicFooter() {
   return (
@@ -24,7 +25,10 @@ export function PublicFooter() {
       </div>
       <div className="page-width footer-support">
         <span>Supported by</span>
-        <a href="https://www.tokenworks.ai/" rel="noopener noreferrer">TokenWorks</a>
+        <a href="https://www.tokenworks.ai/" rel="noopener noreferrer">
+          <Image src="/tokenworks-logo.png" width={44} height={44} alt="" />
+          TokenWorks
+        </a>
       </div>
     </footer>
   );

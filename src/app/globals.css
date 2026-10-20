@@ -60,8 +60,9 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
 .site-footer nav { display: flex; flex-direction: column; gap: 14px; font-size: .88rem; }
 .site-footer a:hover { color: #f1aa90; }
 .footer-note { border-left: 1px solid rgba(255,255,255,.3); padding-left: 26px; }
-.footer-support { display: flex; align-items: baseline; gap: .45rem; border-top: 1px solid rgba(255,255,255,.18); padding-block: 20px 26px; color: #b9c9c1; font-size: .78rem; }
-.footer-support a { color: #f2efe7; font-weight: 700; text-decoration: underline; text-decoration-color: rgba(255,255,255,.4); text-underline-offset: 3px; }
+.footer-support { display: flex; align-items: center; gap: .55rem; border-top: 1px solid rgba(255,255,255,.18); padding-block: 16px 22px; color: #b9c9c1; font-size: .78rem; }
+.footer-support a { display: inline-flex; align-items: center; gap: .35rem; color: #f2efe7; font-weight: 700; text-decoration: underline; text-decoration-color: rgba(255,255,255,.4); text-underline-offset: 3px; }
+.footer-support img { width: 44px; height: 44px; object-fit: contain; }
 .footer-support a:hover { color: #f1aa90; text-decoration-color: currentColor; }
 
 /* Editorial home */
