@@ -23,7 +23,11 @@ export function LocationField({ config, control }: { config: Field; control: Con
   const savedMatches: LocationOption[] = kind === "all" ? saved
     .filter(place => queryTokens.every(token => normalizePlace(place).includes(token)))
     .slice(0, 10).map(label => ({ id: `saved-${label}`, label, kind: "saved" })) : [];
-  const options = [...savedMatches, ...(current?.data ?? []).filter(place => !savedMatches.some(saved => saved.label === place.label))];
+  // Backspacing broadens the query. Show still-relevant prior results until
+  // the broader response arrives, including when the field becomes empty.
+  const previous = !current && result?.kind === kind && normalizePlace(result.query).startsWith(normalizePlace(value))
+    ? result.data.filter(place => queryTokens.every(token => normalizePlace(place.label).includes(token))) : [];
+  const options = [...savedMatches, ...(current?.data ?? previous).filter(place => !savedMatches.some(saved => saved.label === place.label))];
   const activeOption = options[active];
 
   useEffect(() => {
@@ -56,7 +60,7 @@ export function LocationField({ config, control }: { config: Field; control: Con
       } catch {
         if (!controller.signal.aborted) { setResult({ data: [], hasMore: false, query: value, kind, failed: true }); setActive(-1); }
       }
-    }, 200);
+    }, value ? 200 : 0);
     return () => { clearTimeout(timeout); controller.abort(); };
   }, [value, kind, open]);
 
@@ -98,7 +102,7 @@ export function LocationField({ config, control }: { config: Field; control: Con
       </ul>}
     </div>
     <p id={`${config.key}-status`} role="status" aria-live="polite" className="mt-2 text-xs leading-5 text-[#4f625f]">
-      {open && !current ? "Searching places…" : open && current?.failed ? "Location search is unavailable. You can still type and save a place." : open && options.length === 0 ? "No matching places. You can keep the place you typed, including historical names." : open && current?.hasMore ? "More matches are available. Type a more specific name or include the country." : "Choose a suggestion, or keep your own spelling. Leave blank when unknown."}
+      {open && !current ? options.length ? "Updating place suggestions…" : "Searching places…" : open && current?.failed ? "Location search is unavailable. You can still type and save a place." : open && options.length === 0 ? "No matching places. You can keep the place you typed, including historical names." : open && current?.hasMore ? "More matches are available. Type a more specific name or include the country." : "Choose a suggestion, or keep your own spelling. Leave blank when unknown."}
     </p>
     <p className="mt-2 text-xs text-[#4f625f]">Location data: <a href="https://github.com/dr5hn/countries-states-cities-database" target="_blank" rel="noreferrer" className="underline">Countries States Cities Database</a> (<a href="https://opendatacommons.org/licenses/odbl/1-0/" target="_blank" rel="noreferrer" className="underline">ODbL</a>).</p>
   </div>;

@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { useWatch, type Control } from "react-hook-form";
 import type { EditorValues } from "@/lib/admin-config";
-import type { DuplicateConfirmation, DuplicateEntity, DuplicateMatch, DuplicateReview } from "@/lib/duplicate-matching";
+import { normalizeDuplicateText, type DuplicateConfirmation, type DuplicateEntity, type DuplicateMatch, type DuplicateReview } from "@/lib/duplicate-matching";
 
 function ReviewModal({ title, children, onDismiss }: { title: string; children: React.ReactNode; onDismiss: () => void }) {
   const ref = useRef<HTMLDialogElement>(null);
@@ -46,6 +46,15 @@ export function DuplicateSuggestions({ entity, value, onUse }: { entity: Duplica
   const [result, setResult] = useState<{ query: string; review?: DuplicateReview; failed?: boolean } | null>(null);
   const [selected, setSelected] = useState<DuplicateMatch | null>(null);
   const current = result?.query === query ? result : null;
+  // Keep the last relevant suggestions visible while a shorter query loads.
+  // Clearing a person name retains the previous suggestions until the field is
+  // used again, so backspacing does not make the list vanish abruptly.
+  const previous = !current && result?.review && (query ? result.query.startsWith(query) : entity === "people") ? result.review : null;
+  const visible = current?.review ?? previous;
+  const normalizedQuery = normalizeDuplicateText(query, entity);
+  const matches = (visible?.matches ?? []).filter(match =>
+    !normalizedQuery || normalizeDuplicateText(match.matchedText, entity).includes(normalizedQuery),
+  ).map(match => ({ ...match, exact: !!normalizedQuery && normalizeDuplicateText(match.matchedText, entity) === normalizedQuery }));
   useEffect(() => {
     if (!query || query.length > 200) return;
     const controller = new AbortController();
@@ -60,11 +69,11 @@ export function DuplicateSuggestions({ entity, value, onUse }: { entity: Duplica
     }, 300);
     return () => { clearTimeout(timeout); controller.abort(); };
   }, [query, entity]);
-  if (!query || query.length > 200) return null;
+  if (query.length > 200 || (!query && !matches.length)) return null;
   return <div className="mt-3 text-sm">
-    <p role="status" aria-live="polite" className="text-xs leading-5 text-[#4f625f]">{!current ? "Checking for existing matches…" : current.failed ? "Suggestions are unavailable. Saving will check for exact matches again." : current.review?.matches.length ? entity === "dictionary" ? "Did you mean one of these words? Select a suggestion to preview it." : "Could this be someone already recorded? Select a person to preview their details." : "No matching records found."}</p>
-    {!!current?.review?.matches.length && <ul aria-label={entity === "dictionary" ? "Similar dictionary entries" : "Similar people"} className="mt-2 space-y-2">
-      {current.review.matches.map(match => <li key={match.id}><button type="button" onClick={() => setSelected(match)}
+    <p role="status" aria-live="polite" className="text-xs leading-5 text-[#4f625f]">{!query ? "Previous suggestions. Type another name to update them." : !current ? matches.length ? "Updating suggestions…" : "Checking for existing matches…" : current.failed ? "Suggestions are unavailable. Saving will check for exact matches again." : matches.length ? entity === "dictionary" ? "Did you mean one of these words? Select a suggestion to preview it." : "Could this be someone already recorded? Select a person to preview their details." : "No matching records found."}</p>
+    {!!matches.length && <ul aria-label={entity === "dictionary" ? "Similar dictionary entries" : "Similar people"} className="mt-2 space-y-2">
+      {matches.map(match => <li key={match.id}><button type="button" onClick={() => setSelected(match)}
         className="min-h-12 w-full break-words rounded border border-[#cad7cd] bg-[#edf1ec] px-3 py-3 text-left hover:border-[#163e3a] focus-visible:outline-2 focus-visible:outline-offset-2">
         <span className="font-semibold">{match.label}</span><span className="ml-2 text-xs text-[#4f625f]">{match.exact ? "Exact match" : "Similar"}</span>
         {match.summary && <span className="mt-1 block break-words text-xs leading-5 text-[#4f625f]">{match.summary}</span>}
