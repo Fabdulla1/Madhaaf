@@ -1,16 +1,16 @@
-import { birthplaceOptions, linguisticTagOptions, partOfSpeechOptions } from "./editor-options";
+import { linguisticTagOptions, partOfSpeechOptions } from "./editor-options";
 
 export type EditorValues = Record<string, string | string[]>;
 export type Field = {
-  key: string; label: string; type?: "text" | "textarea" | "select" | "tags";
+  key: string; label: string; type?: "text" | "textarea" | "select" | "tags" | "date" | "location";
   options?: readonly string[]; placeholder?: string; defaultValue?: string;
-  optionsUrl?: string; customLabel?: string; help?: string; required?: boolean;
+  help?: string; required?: boolean;
 };
 export type ResourceConfig = { title: string; singular: string; api: string; label: string; fields: Field[]; publicPath?: string; publicPathKey?: string };
 
 export const resources: Record<string, ResourceConfig> = {
   "family-members": { title: "Family members", singular: "Family member", api: "members", label: "preferred_name", fields: [
-    {key:"preferred_name",label:"Preferred name",required:true}, {key:"birth_date_text",label:"Birth date or approximate period",help:"Leave blank when unknown; do not invent a day."}, {key:"death_date_text",label:"Death date or approximate period"}, {key:"living_status",label:"Living status",type:"select",options:["unknown","living","deceased"],defaultValue:"unknown"}, {key:"birthplace",label:"Birthplace",type:"select",options:birthplaceOptions,optionsUrl:"/api/admin/birthplaces",placeholder:"Not recorded",customLabel:"Other place",help:"Choose a place from the list, or add another place. Leave unrecorded when unknown."}, {key:"short_bio",label:"Short biography",type:"textarea"}, {key:"biography",label:"Extended biography",type:"textarea"}, {key:"private_notes",label:"Private editorial notes",type:"textarea"}, {key:"visibility",label:"Visibility",type:"select",options:["private","family","public"],defaultValue:"private"}
+    {key:"preferred_name",label:"Preferred name",required:true}, {key:"birth_date_text",label:"Birth date",type:"date",help:"Choose how much of the date is known. Use approximate dates for uncertain or historical records."}, {key:"death_date_text",label:"Death date",type:"date",help:"Choose how much of the date is known. Leave unrecorded when unknown."}, {key:"living_status",label:"Living status",type:"select",options:["unknown","living","deceased"],defaultValue:"unknown"}, {key:"birthplace",label:"Birthplace",type:"location",help:"Type a city, state, region, or country, then choose a matching place. Historical or missing places can also be entered."}, {key:"short_bio",label:"Short biography",type:"textarea"}, {key:"biography",label:"Extended biography",type:"textarea"}, {key:"private_notes",label:"Private editorial notes",type:"textarea"}, {key:"visibility",label:"Visibility",type:"select",options:["private","family","public"],defaultValue:"private"}
   ] },
   dictionary: { title: "Dictionary", singular: "Dictionary entry", api: "lexemes", label: "headword", publicPath: "/dictionary/", publicPathKey: "id", fields: [
     {key:"headword",label:"Headword",required:true,help:"Preserve apostrophes, vowel marks, and (n) exactly as written."}, {key:"part_of_speech",label:"Part of speech",type:"select",options:partOfSpeechOptions,placeholder:"Not specified",help:"Choose the word’s grammatical role. Use notes for more detail."}, {key:"morphology_note",label:"Morphology",type:"textarea",help:"Describe roots, affixes, inflections, or word formation."}, {key:"linguistic_tags",label:"Linguistic tags",type:"tags",options:linguisticTagOptions,placeholder:"Choose a tag to add",help:"Choose one or more labels. Remove a selected label to deselect it."}, {key:"usage_note",label:"Usage notes",type:"textarea"}, {key:"etymology_note",label:"Etymology or borrowing notes",type:"textarea"}

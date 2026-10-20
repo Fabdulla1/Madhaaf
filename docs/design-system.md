@@ -81,8 +81,9 @@ Journey: scan topic overview → select a published article → read in an unclu
 ### Structured editor fields
 
 - Dictionary part of speech uses an optional dropdown; linguistic tags use a dropdown to add multiple removable selections. Existing values remain visible and retain their exact stored form, even if absent from the suggested vocabulary.
-- Family birthplace uses a dropdown combining project suggestions with saved birthplaces from all record pages. It starts unselected and supports “Other place” for a new location. Place suggestions are available only to administrators and are never assigned automatically. Living status defaults to Unknown and visibility to Private.
-- Names, headwords, meanings, approximate dates, biographies, morphology, and notes remain free-form. Relationship, parentage, confidence, and editorial-state fields already use dropdowns.
+- Family birthplace is a searchable, keyboard-accessible combobox for cities/towns, states/regions, and countries. Suggestions combine a server-side worldwide dataset with saved birthplaces; results show geographic context to distinguish namesakes. Searches are debounced, bounded, and available only to administrators. Editors can retain a historical or missing place as typed. No place is assigned automatically. Living status defaults to Unknown and visibility to Private.
+- Birth and death dates have explicit precision: Not recorded, Full date, Month and year, Year only, or Approximate/historical. Years can be typed or selected; month and day use dropdowns, with leap-year validation. Exact values save as `YYYY-MM-DD`, `YYYY-MM`, or `YYYY`; older free-text values remain unchanged. Incomplete exact dates block saving instead of inventing missing components.
+- Names, headwords, meanings, biographies, morphology, and notes remain free-form. Relationship, parentage, confidence, and editorial-state fields already use dropdowns.
 
 ### Family tree and profile
 

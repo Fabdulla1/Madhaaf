@@ -1,0 +1,11 @@
+# Family location choices
+
+The birthplace combobox searches cities/towns, states/regions, and countries in `@countrystatecity/countries` **2.0.0**, pinned in the lockfile. Its bundled snapshot reports 250 countries/territories, 5,328 states/regions, and 152,152 cities/towns (source release `v4.0-export.50`, October 12, 2026). Coverage is broad, not exhaustive; historical names and missing settlements can be saved as typed.
+
+Data source: [Countries States Cities Database](https://github.com/dr5hn/countries-states-cities-database). Contains information from that database, made available under the [Open Database License (ODbL) v1.0](https://opendatacommons.org/licenses/odbl/1-0/). The original dataset and its license are available at the source link; the package is unmodified. The picker also displays this attribution. Local search builds only a temporary in-memory index of that public dataset; private family records remain separate.
+
+`GET /api/admin/locations?q=...&kind=all|country|state|city` requires administrator authentication. Queries are limited to 100 characters and responses to 30 results, with `hasMore` prompting a narrower search. Matching ignores case/diacritics and accepts geographic context and available native/translated names. Exact names rank first, then prefixes. No remote geocoding request or API key is needed; the browser receives only matching labels, not the whole database. Saved profile birthplaces are loaded separately from the existing private endpoint.
+
+Next.js keeps the package server-side and explicitly includes its data files in the locations route's output trace for deployment. Keep that tracing rule when changing the package. A missing/incomplete dataset returns 503 and the field retains manual entry. Upgrade the package deliberately to update geographic coverage, and verify representative countries, regions, and cities before deploying.
+
+Dates continue to use `birth_date_text` and `death_date_text`, so no migration is required. Full/partial dates use Gregorian `YYYY-MM-DD`, `YYYY-MM`, and `YYYY`; historical or uncertain text is preserved. The picker accepts CE years 1–9999; other calendar systems and BCE dates use the historical-text option.
