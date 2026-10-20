@@ -78,6 +78,12 @@ Journey: scan topic overview → select a published article → read in an unclu
 - Overview includes Diaspora, Mombasa community, Language and oral traditions, Food and cultural practices, and approved Family stories as editorial categories. A category with no published articles has an honest empty state.
 - Article page uses a readable column with captioned media, pull quotes only when sourced, visible publication and update dates when available, and citations/source notes near the end. Links to family records appear only after audience authorization checks.
 
+### Structured editor fields
+
+- Dictionary part of speech uses an optional dropdown; linguistic tags use a dropdown to add multiple removable selections. Existing values remain visible and retain their exact stored form, even if absent from the suggested vocabulary.
+- Family birthplace uses a dropdown combining project suggestions with saved birthplaces from all record pages. It starts unselected and supports “Other place” for a new location. Place suggestions are available only to administrators and are never assigned automatically. Living status defaults to Unknown and visibility to Private.
+- Names, headwords, meanings, approximate dates, biographies, morphology, and notes remain free-form. Relationship, parentage, confidence, and editorial-state fields already use dropdowns.
+
 ### Family tree and profile
 
 Journey for an authorized user: open tree → locate a person with search or generation controls → center and inspect connections → open quick view → open full profile → return to preserved tree context.

@@ -43,9 +43,10 @@ test("administrator can draft and publish a word, and open content editors", asy
     await expect(page.getByRole("heading", { name: "Dictionary", exact: true })).toBeVisible();
     await page.goto("/admin/dictionary/new");
     await page.getByLabel("Headword").fill(headword);
-    await page.getByLabel("Part of speech").fill("verb");
+    await page.getByLabel("Part of speech").selectOption("verb");
     await page.getByLabel("Morphology").fill("reduplicated root");
-    await page.getByLabel("Linguistic tags").fill("verb, coastal");
+    await page.getByLabel("Linguistic tags", { exact: true }).selectOption("verb");
+    await page.getByLabel("Linguistic tags", { exact: true }).selectOption("coastal");
     await page.getByLabel("English meaning").fill(`Gather ${suffix}`);
     await page.getByLabel("Definition or nuance").fill("To bring people together for a shared task.");
     await page.getByLabel("Use in a Kutchi sentence").fill("A sample Kutchi sentence.");
@@ -57,6 +58,8 @@ test("administrator can draft and publish a word, and open content editors", asy
     await page.reload();
     await expect(page.getByText(headword, { exact: true }).first()).toBeVisible();
     await expect(page.getByText("Preferred", { exact: true })).toBeVisible();
+    await expect(page.getByLabel("Part of speech")).toHaveValue("verb");
+    await expect(page.getByRole("button", { name: "Remove coastal", exact: true })).toBeVisible();
     await expect(page.getByText(`Gather ${suffix}`, { exact: true }).first()).toBeVisible();
     await expect(page.getByText("A sample Kutchi sentence.", { exact: true })).toBeVisible();
 
