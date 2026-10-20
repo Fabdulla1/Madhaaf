@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { PublicShell } from "@/components/public/shell";
 
 export default function Home() {
@@ -50,6 +51,27 @@ export default function Home() {
               memory of a place. Here, those threads become a growing record of
               language and belonging, gathered with care and shared with context.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="home-support" aria-labelledby="home-support-title">
+        <div className="page-width home-support__inner">
+          <div className="home-support__copy">
+            <p className="eyebrow">Our supporter</p>
+            <h2 id="home-support-title">A partner in preserving what matters.</h2>
+            <p>
+              Madhaaf is made possible with support from TokenWorks. Together,
+              we are building a place for language, family memory, and history
+              to be preserved with care.
+            </p>
+            <a className="text-link" href="https://www.tokenworks.ai/" rel="noopener noreferrer">
+              Meet TokenWorks <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <div className="home-support__brand">
+            <Image src="/tokenworks-logo.png" width={160} height={160} alt="" />
+            <span>TokenWorks</span>
           </div>
         </div>
       </section>
