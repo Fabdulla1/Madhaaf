@@ -22,6 +22,10 @@ export function PublicFooter() {
           published only when reviewed.
         </p>
       </div>
+      <div className="page-width footer-support">
+        <span>Supported by</span>
+        <a href="https://www.tokenworks.ai/" rel="noopener noreferrer">TokenWorks</a>
+      </div>
     </footer>
   );
 }
