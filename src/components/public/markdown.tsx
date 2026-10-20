@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { safeExternalUrl } from "@/lib/safe-external-url";
 
 // A deliberately small, safe renderer for the supported editorial Markdown.
 // Text and unrecognised HTML are escaped by React; no raw HTML is injected.
@@ -14,8 +15,9 @@ function renderInline(value: string): ReactNode[] {
       if (/^\/(?:dictionary(?:\/[a-f0-9-]+)?|history(?:\/[a-z0-9-]+)?|orthography)\/?$/i.test(href)) {
         return <Link key={index} href={href}>{link[1]}</Link>;
       }
-      if (/^https?:\/\//i.test(href)) {
-        return <a key={index} href={href} rel="noopener noreferrer">{link[1]}</a>;
+      const externalUrl = safeExternalUrl(href);
+      if (externalUrl) {
+        return <a key={index} href={externalUrl} rel="noopener noreferrer">{link[1]}</a>;
       }
       return link[1];
     }

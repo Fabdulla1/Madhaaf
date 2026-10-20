@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { type ApiResult, type HistoryArticle, readPublicApi } from "./content-api";
 import { ContentState, LoadingState } from "./content-state";
 import { MarkdownContent } from "./markdown";
+import { safeExternalUrl } from "@/lib/safe-external-url";
 
 function publishedDate(value?: string | null) {
   if (!value) return null;
@@ -103,7 +104,7 @@ function ArticleContent({ article }: { article: HistoryArticle }) {
             <h2 id="article-sources-heading">Sources</h2>
             <ol>
               {sources.map((source) => {
-                const url = source.url && /^https?:\/\//i.test(source.url) ? source.url : null;
+                const url = source.url ? safeExternalUrl(source.url) : null;
                 return (
                   <li key={source.id}>
                     <strong>{source.title}</strong>

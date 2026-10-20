@@ -10,7 +10,11 @@ export function error(message: string, status = 400) {
 
 export function sameOrigin(request: Request) {
   const origin = request.headers.get('origin')
-  if (!origin) return true // Non-browser clients still require authentication.
+  // Fetch Metadata still identifies cross-site browser requests when Origin is
+  // omitted. CLI clients without browser headers remain subject to auth.
+  const fetchSite = request.headers.get('sec-fetch-site')
+  if (fetchSite && fetchSite !== 'same-origin' && fetchSite !== 'none') return false
+  if (!origin) return true
   try { return new URL(origin).origin === new URL(request.url).origin }
   catch { return false }
 }
@@ -47,7 +51,7 @@ export async function parseJson<S extends ZodType>(request: Request, schema: S):
 }
 
 export function requestError(cause: unknown) {
-  if (cause instanceof Error && cause.message.includes('Supabase URL and publishable key'))
+  if (cause instanceof Error && (cause.message.includes('Supabase URL and publishable key') || cause.message === 'Invalid SITE_URL configuration'))
     return error('Service is not configured', 503)
   if (cause instanceof Error && cause.message === 'Request body is too large')
     return error(cause.message, 413)

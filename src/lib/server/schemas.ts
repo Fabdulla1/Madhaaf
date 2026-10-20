@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { safeExternalUrl } from '@/lib/safe-external-url'
 
 const uuid = z.string().uuid()
 const short = z.string().trim().min(1).max(300)
@@ -42,7 +43,9 @@ export const createSchemas = {
   articles: z.object({ slug: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/).max(200), title: short, summary: note, body_markdown: z.string().max(200000).optional(), status: status.optional(), published_at: z.string().datetime().nullable().optional() }).strict(),
   categories: z.object({ slug: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/).max(100), title: short, description: note, display_order: z.number().int().min(0).optional() }).strict(),
   orthography: z.object({ label: short, title: short, body_markdown: z.string().max(200000), status: status.optional() }).strict(),
-  sources: z.object({ title: short, citation: note, url: z.string().url().max(2000).nullable().optional(), notes: note }).strict(),
+  sources: z.object({ title: short, citation: note,
+    url: z.string().max(2000).refine(value => safeExternalUrl(value) !== null, 'Use an http or https URL without embedded credentials').nullable().optional(),
+    notes: note }).strict(),
 } as const
 
 export const patchSchemas = {
