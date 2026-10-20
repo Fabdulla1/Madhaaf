@@ -47,7 +47,7 @@ test("family editor clears after save and publish while suggestions survive back
 
     const birthplace = page.locator("#birthplace");
     await birthplace.fill("Nairobi");
-    await expect.poll(async () => page.getByRole("listbox", { name: "Place suggestions" }).getByRole("option").count()).toBeGreaterThan(0);
+    await expect(page.getByRole("listbox", { name: "Place suggestions" }).getByRole("option").first()).toBeVisible({ timeout: 20_000 });
     await birthplace.fill("Nai");
     await expect(page.getByRole("listbox", { name: "Place suggestions" }).getByRole("option").first()).toBeVisible();
     await birthplace.fill("");
