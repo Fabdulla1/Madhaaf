@@ -2,8 +2,10 @@ import { z } from 'zod'
 import { getAdmin } from '@/lib/supabase/server'
 import { error, json, parseJson, requestError, sameOrigin } from '@/lib/server/http'
 import { createSchemas } from '@/lib/server/schemas'
+import { duplicateConfirmationSchema, requireDuplicateReview } from '@/lib/server/duplicate-review'
 
 const schema = z.object({
+  duplicate_confirmation: duplicateConfirmationSchema.optional(),
   member: createSchemas.members,
   relationship: z.object({
     person_a_id: z.string().uuid().optional(),
@@ -29,6 +31,8 @@ export async function POST(request: Request) {
     if (!existingId || otherId) return error('Provide exactly one existing member on the opposite side')
     if (r.kind === 'parent' && !r.parent_kind) return error('Parent relationship type is required')
     if (r.kind === 'partner' && r.parent_kind) return error('Partners cannot have a parent relationship type')
+    const review = await requireDuplicateReview(admin.supabase, 'people', args.member.preferred_name, args.duplicate_confirmation, request.signal)
+    if (review) return review
     const { data, error: dbError } = await admin.supabase.rpc('create_connected_member', {
       new_member: args.member,
       existing_member_id: existingId,

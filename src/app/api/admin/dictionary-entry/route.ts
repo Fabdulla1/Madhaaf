@@ -1,8 +1,10 @@
 import { z } from 'zod'
 import { getAdmin } from '@/lib/supabase/server'
 import { error, json, parseJson, requestError, sameOrigin } from '@/lib/server/http'
+import { duplicateConfirmationSchema, requireDuplicateReview } from '@/lib/server/duplicate-review'
 
 const entry = z.object({
+  duplicate_confirmation: duplicateConfirmationSchema.optional(),
   headword: z.string().trim().min(1).max(200),
   part_of_speech: z.string().trim().max(100).optional(),
   morphology_note: z.string().trim().max(20000).optional(),
@@ -24,7 +26,9 @@ export async function POST(request: Request) {
   const admin = await getAdmin()
   if (!admin) return error('Unauthorized', 401)
   try {
-    const input = await parseJson(request, entry)
+    const { duplicate_confirmation, ...input } = await parseJson(request, entry)
+    const review = await requireDuplicateReview(admin.supabase, 'dictionary', input.headword, duplicate_confirmation, request.signal)
+    if (review) return review
     const { data: id, error: dbError } = await admin.supabase.rpc('create_dictionary_entry', { input })
     if (dbError) return error(dbError.message, dbError.code === '23505' || dbError.code === '23514' ? 409 : 400)
     return json({ id }, 201)

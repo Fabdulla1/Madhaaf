@@ -1,0 +1,13 @@
+# Duplicate review when adding words and people
+
+New dictionary entries, family profiles, and people created with a relationship show debounced suggestions while the editor types. Clicking a suggestion opens an accessible dialog with its meaning or short biography, dates, birthplace, and editorial status. Existing entries open in a separate tab so the draft is retained. Relationship creation also offers **Use this person**, which selects the existing profile without creating another person.
+
+The administrator-only `/api/admin/duplicates` endpoint checks headwords and spelling variants, or preferred names and alternate names. All editorial states are included. It returns at most ten previews, never private editorial notes, and uses private/no-store responses. Narrow name projections are paginated across all records, then details are fetched only for the best matches. Prefixes and small spelling mistakes produce suggestions; they never merge records.
+
+Exact comparison trims surrounding whitespace, folds case, and normalizes Unicode composition. Person-name whitespace is collapsed. Kutchi apostrophes, vowel marks, nasal markers, and internal spacing remain significant. `aa` and `ā`, for example, are not exact duplicates. Similar names are not evidence that two profiles represent the same person.
+
+Every create request checks exact matches again on the server. This covers the dictionary-entry endpoint, generic lexeme/member creation, and transactional person-with-relationship creation. An exact match returns HTTP 409 with `DUPLICATE_REVIEW_REQUIRED` before writing anything. The dialog lets the editor keep editing, inspect the existing record, or explicitly confirm a different meaning/person. Confirmation is tied to the submitted name and the current matching IDs; an additional exact match requires another review. Confirmation metadata is stripped before persistence. Lookup failure returns 503 and prevents that save. Edits to existing records are unchanged.
+
+This is an application-level review workflow, not a uniqueness constraint. Homonyms and namesakes remain allowed. No existing data is merged or deleted, and no migration is required. Concurrent creation after the final check and direct authenticated database/RPC writes are outside this warning's protection. At larger archive sizes, replace full paginated name scans with indexed database matching while preserving these comparison rules and privacy boundaries.
+
+Regression coverage in `tests/browser/duplicate-review.spec.ts` checks orthography, typo matching, confirmation scope, pagination, aliases, preview privacy, ranking and failed lookups. Authenticated database integration tests need a configured Supabase project.

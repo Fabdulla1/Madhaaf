@@ -26,7 +26,7 @@ test("public routes and responsive layouts", async ({ page }) => {
 });
 
 test("admin data routes reject unauthenticated requests", async ({ request }) => {
-  for (const path of ["/api/admin/tree", "/api/admin/members", "/api/admin/media", "/api/admin/users", "/api/admin/birthplaces", "/api/admin/locations"]) {
+  for (const path of ["/api/admin/tree", "/api/admin/members", "/api/admin/media", "/api/admin/users", "/api/admin/birthplaces", "/api/admin/locations", "/api/admin/duplicates?entity=people&q=Amina"]) {
     const response = await request.get(path);
     expect(response.status(), `${path} should not return private data`).not.toBe(200);
   }

@@ -1,6 +1,8 @@
 import { getAdmin } from '@/lib/supabase/server'
 import { error, json, parseJson, requestError, sameOrigin } from '@/lib/server/http'
 import { createSchemas, isResource, resourceTables } from '@/lib/server/schemas'
+import { duplicateConfirmationSchema, requireDuplicateReview } from '@/lib/server/duplicate-review'
+import type { DuplicateConfirmation } from '@/lib/duplicate-matching'
 
 export async function GET(request: Request, context: { params: Promise<{ resource: string }> }) {
   const admin = await getAdmin()
@@ -41,7 +43,16 @@ export async function POST(request: Request, context: { params: Promise<{ resour
   const { resource } = await context.params
   if (!isResource(resource)) return error('Not found', 404)
   try {
-    const payload = await parseJson(request, createSchemas[resource]) as Record<string, unknown>
+    const schema = resource === 'members' || resource === 'lexemes'
+      ? createSchemas[resource].extend({ duplicate_confirmation: duplicateConfirmationSchema.optional() })
+      : createSchemas[resource]
+    const payload = await parseJson(request, schema) as Record<string, unknown>
+    if (resource === 'members' || resource === 'lexemes') {
+      const confirmation = payload.duplicate_confirmation as DuplicateConfirmation | undefined
+      delete payload.duplicate_confirmation
+      const review = await requireDuplicateReview(admin.supabase, resource === 'members' ? 'people' : 'dictionary', String(payload[resource === 'members' ? 'preferred_name' : 'headword']), confirmation, request.signal)
+      if (review) return review
+    }
     if (resource === 'relationships' && payload.kind === 'partner' &&
       String(payload.person_a_id) > String(payload.person_b_id)) {
       [payload.person_a_id, payload.person_b_id] = [payload.person_b_id, payload.person_a_id]
