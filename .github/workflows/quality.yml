@@ -16,6 +16,10 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -p 'test_kutchi_*_import.py'
       - run: npm run lint
       - run: npm run typecheck
       - run: npm run build
