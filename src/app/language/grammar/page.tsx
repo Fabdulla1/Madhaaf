@@ -64,6 +64,7 @@ export default function GrammarPage() {
         </header>
         <div className="grammar-status" role="note">
           <strong>Working grammar · Edition 0.2</strong>
+          <Link className="language-guide-byline" href="/about">Research notes by Farhan Abdulla ↗</Link>
           <span>These examples are part of my ongoing research, not a standardized grammar. I write n immediately before th as (n) in the working display spelling; the original forms remain evidence.</span>
         </div>
         <div className="grammar-layout">
