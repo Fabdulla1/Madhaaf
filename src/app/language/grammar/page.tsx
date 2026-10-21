@@ -84,7 +84,7 @@ export default function GrammarPage() {
           <div className="grammar-articles">
             <section id="word-order" className="grammar-section">
               <p className="eyebrow">01 / Sentence structure</p>
-              <h2>The verb does not have a fixed position.</h2>
+              <h2>Word order is not always verb-final.</h2>
               <Evidence>Three native-speaker-attested word orders</Evidence>
               <p>
                 I previously described Kutchi verbs as tending to come last.
