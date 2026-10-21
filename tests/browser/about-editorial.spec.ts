@@ -15,7 +15,7 @@ test("About page states the research scope and credits founder and support", asy
   await expect(page.getByRole("heading", { level: 1, name: /Recording Mombasa and Ethiopian Kutchi/ })).toBeVisible();
   await expect(page.getByText(/Founder and researcher/)).toBeVisible();
   await expect(page.getByText(/academic research and documentation project/)).toBeVisible();
-  await expect(page.getByText(/Kenya and Ethiopia/).first()).toBeVisible();
+  await expect(page.getByText(/Mombasa, Kenya, and communities in Ethiopia/).first()).toBeVisible();
   await expect(page.getByText(/Adam Anderson/)).toBeVisible();
   await expect(page.getByText(/TokenWorks LLC/).first()).toBeVisible();
   await expect(page.getByRole("link", { name: /Visit TokenWorks/i })).toHaveAttribute("href", "https://www.tokenworks.ai/");

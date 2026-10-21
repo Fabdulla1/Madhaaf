@@ -4,7 +4,7 @@ test("public routes and responsive layouts", async ({ page }) => {
   for (const width of [1440, 768, 375]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
-    await expect(page.getByRole("heading", { name: "What we carry, we can keep." })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Documenting Mombasa and Ethiopian Kutchi." })).toBeVisible();
     await page.screenshot({ path: `test-results/home-${width}.png`, fullPage: true });
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 2);
     expect(overflow, `home overflow at ${width}px`).toBe(false);
