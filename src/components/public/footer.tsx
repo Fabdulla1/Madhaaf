@@ -16,6 +16,7 @@ export function PublicFooter() {
           <Link href="/language">Language</Link>
           <Link href="/dictionary">Dictionary</Link>
           <Link href="/language/grammar">Grammar</Link>
+          <Link href="/language/articles">Research articles</Link>
           <Link href="/orthography">Writing guide</Link>
           <Link href="/history">History &amp; culture</Link>
           <Link href="/family">Family space</Link>

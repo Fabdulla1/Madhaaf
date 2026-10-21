@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { PublicShell } from "@/components/public/shell";
 
 export const metadata: Metadata = {
@@ -82,6 +83,24 @@ export default function LanguagePage() {
             <p><strong>Kuroo kare(n)thi?</strong><span>What are you doing? · feminine</span></p>
             <p><strong>Mere sanas kare(n)thaa</strong><span>Everyone is defecating</span></p>
           </div>
+        </section>
+
+        <section className="language-research-promo" aria-labelledby="language-research-title">
+          <div className="language-research-promo__copy">
+            <p className="eyebrow">New / Language research</p>
+            <h2 id="language-research-title">Ideas that begin with a sentence.</h2>
+            <p>
+              Five illustrated essays bring the emerging grammar into focus:
+              how ke works, why verbs change, and what noun forms reveal.
+              Every finding stays tied to speaker-supplied evidence.
+            </p>
+            <Link className="button button--outline" href="/language/articles">
+              Browse research articles <span aria-hidden="true">↗</span>
+            </Link>
+          </div>
+          <Link href="/language/articles" className="language-research-promo__image" aria-label="Explore language research articles">
+            <Image src="/language/research/noun-relations.svg" alt="" width={1100} height={650} unoptimized />
+          </Link>
         </section>
         <p className="language-method-note">
           <strong>How to read this archive:</strong> Sentence examples are provided by
