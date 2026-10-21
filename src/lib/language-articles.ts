@@ -437,8 +437,8 @@ export const researchArticles: ResearchArticle[] = [
     number: "05",
     subject: "Syntax and connected speech",
     title: "Beyond the simple sentence: questions, reasons and relative clauses",
-    summary: "I am beginning to document how I ask questions, give reasons, describe conditions and link ideas into longer Kutchi sentences.",
-    introduction: "A dictionary matters, but it does not capture everything I mean when I speak. I can ask where someone is going, explain that I am going home because I am tired, or describe the boy who is sleeping. Those are ordinary sentences to me, yet each one introduces a new question about grammar. In this article I have gathered the longer examples that began to show me how our words connect.",
+    summary: "I am documenting how I reorder sentence elements, ask questions, give reasons and link ideas in Kutchi—without assuming verbs always come last.",
+    introduction: "A dictionary matters, but it does not capture everything I mean when I speak. One lesson came when I tried moving the parts of a sentence with chad (‘let go’) around: the verb could begin, appear between other elements, or come last. I can also ask where someone is going, explain that I am tired, or describe the boy who is sleeping. I am collecting these examples to understand word order and how I connect ideas, rather than assuming a single structure for every sentence.",
     illustration: "/language/research/connected-clauses.svg",
     illustrationAlt: "Abstract editorial illustration of two branching paths crossing and joining, representing clauses connected in a sentence.",
     wordNotes: [
@@ -457,15 +457,28 @@ export const researchArticles: ResearchArticle[] = [
     ],
     sections: [
       {
+        // Retain the original ID so existing links into this article still work.
         id: "verb-final",
-        title: "The verb often finishes its clause",
+        title: "The verb can appear in different positions",
         blocks: [
-          { type: "examples", items: [
+          { type: "text", text: "I used to write that Kutchi verbs tend to come last. That goes further than the evidence I have. When I tested chad with au(n) (‘I’) and hin ke (a ke-marked phrase), I supplied three arrangements. The verb appears between the other elements, at the beginning, or at the end. I have not yet established whether these alternatives differ in topic, focus, or emphasis." },
+          { type: "examples", label: "The same grammatical elements in three orders — structural labels, not English translations", items: [
+            { kutchi: "Au(n) chada(n)tho hin ke", english: "Subject → Verb → ke-marked phrase", captionKind: "structure" },
+            { kutchi: "Chada(n)tho au(n) hin ke", english: "Verb → Subject → ke-marked phrase", captionKind: "structure" },
+            { kutchi: "hin ke au(n) chada(n)tho", english: "ke-marked phrase → Subject → Verb", captionKind: "structure" },
+          ] },
+          { type: "finding", strength: "attested", label: "A correction to my original description", text: "All three orders were supplied as possible word-order arrangements. This rules out treating the verb-final position as obligatory for this construction. I still have no representative counts to show that it is the most common order, or evidence that all verbs permit the same permutations." },
+          { type: "text", text: "I do still use verb-final sentences, including those below. I can also leave au(n) out when a form like kana(n)tho identifies the actor in context. The next step is to compare identical situations and ask how moving words changes what listeners pay attention to." },
+          { type: "examples", label: "Earlier examples with a final verb", items: [
             { kutchi: "Au(n) khadho kya(n)tho", english: "I am eating food." },
             { kutchi: "Au(n) hane ghare vina(n)tho", english: "I am going home now." },
             { kutchi: "kana(n)tho", english: "I'm taking it.", context: "Speaker explicitly permits the omitted pronoun" },
           ] },
-          { type: "text", text: "In many examples I use, the verb appears at the end of its clause. I can also leave au(n) out when a form such as kana(n)tho already makes the subject clear in context. Those are useful tendencies, but I would not claim every kind of Kutchi clause has one fixed word order." },
+          { type: "questions", items: [
+            "Do these three arrangements differ in emphasis, contrast or information that is already known?",
+            "Can I begin clauses with other action verbs in the same circumstances?",
+            "Is reordering equally natural when there is no ke-marked phrase?",
+          ] },
         ],
       },
       {
