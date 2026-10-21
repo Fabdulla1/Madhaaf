@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { DictionaryResults } from "@/components/public/dictionary-results";
+import { LanguageNavigation } from "@/components/public/language-navigation";
 import { PublicShell } from "@/components/public/shell";
 
 export const metadata: Metadata = {
@@ -26,6 +27,12 @@ export default async function DictionaryPage({
   return (
     <PublicShell>
       <div className="page-width interior-page">
+        <nav className="breadcrumbs" aria-label="Breadcrumb">
+          <Link href="/">Home</Link><span aria-hidden="true">/</span>
+          <Link href="/language">Language</Link><span aria-hidden="true">/</span>
+          <span aria-current="page">Dictionary</span>
+        </nav>
+        <LanguageNavigation active="dictionary" />
         <div className="page-intro">
           <p className="eyebrow">Language / Dictionary</p>
           <h1>Words to carry forward.</h1>
