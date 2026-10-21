@@ -28,6 +28,11 @@ test("Language pages remain navigable on narrow viewports", async ({ page }) => 
   await page.getByRole("navigation", { name: "Grammar chapters" }).getByRole("link", { name: /Case marking/ }).click();
   await expect(page).toHaveURL(/#case-marking$/);
   await expect(page.getByRole("heading", { name: "The environments of ke." })).toBeVisible();
+  await page.getByRole("link", { name: "↑ Chapters" }).click();
+  await expect(page).toHaveURL(/#grammar-chapters$/);
+  await expect(page.getByText("Browse 17 grammar chapters")).toBeInViewport();
+  await expect(page.locator("#nouns").getByText(/These recorded noun forms may be plural or contextual/)).toBeVisible();
+  await expect(page.locator("#nouns").getByRole("table", { name: /Attested noun forms/ })).toBeVisible();
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
   expect(overflow).toBe(false);
 });
@@ -51,7 +56,7 @@ test("Grammar preserves complete ke judgments and labels hypotheses", async ({ p
   await expect(caseSection.getByText("chokro ke kapetho", { exact: true })).toBeVisible();
   await expect(caseSection.getByText(/Hypothesis · demonstrative form may reflect case/)).toBeVisible();
   await expect(caseSection.getByText(/mixed combinations have not been confirmed/)).toBeVisible();
-  await expect(caseSection.getByRole("link", { name: /Find “ke” in the dictionary/ })).toHaveAttribute("href", "/dictionary?q=ke");
+  await expect(caseSection.getByRole("link", { name: /Search dictionary for “ke”/ }).last()).toHaveAttribute("href", "/dictionary?q=ke");
 });
 
 test("New grammar chapters retain forms, explicit uncertainty, and accessible tables", async ({ page }) => {

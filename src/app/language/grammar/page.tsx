@@ -76,7 +76,7 @@ const contents = [
 export default function GrammarPage() {
   return (
     <PublicShell>
-      <div className="page-width interior-page">
+      <div className="page-width interior-page grammar-page">
         <nav className="breadcrumbs" aria-label="Breadcrumb">
           <Link href="/">Home</Link><span aria-hidden="true">/</span>
           <Link href="/language">Language</Link><span aria-hidden="true">/</span>
@@ -102,7 +102,7 @@ export default function GrammarPage() {
               <a href={`#${anchor}`} key={anchor}><span aria-hidden="true">{String(index + 1).padStart(2, "0")} · </span>{label}</a>
             ))}
           </nav>
-          <details className="grammar-mobile-toc">
+          <details id="grammar-chapters" className="grammar-mobile-toc">
             <summary>Browse {contents.length} grammar chapters</summary>
             <nav aria-label="Grammar chapters">
               {contents.map(([anchor, label], index) => (
@@ -110,6 +110,7 @@ export default function GrammarPage() {
               ))}
             </nav>
           </details>
+          <a className="grammar-back-to-chapters" href="#grammar-chapters">↑ Chapters</a>
           <div className="grammar-articles">
             <section id="word-order" className="grammar-section">
               <p className="eyebrow">Sentence structure</p>
@@ -133,8 +134,10 @@ export default function GrammarPage() {
               <p className="eyebrow">Reference</p>
               <h2>Pronouns and subjects.</h2>
               <Evidence>Speaker-attested forms</Evidence>
-              <div className="grammar-table-wrap">
+              <p className="grammar-table-cue">Scroll horizontally to see all table columns.</p>
+              <div className="grammar-table-wrap" role="region" aria-label="Recorded pronouns" tabIndex={0}>
                 <table className="grammar-table">
+                  <caption>Pronouns in supplied sentences</caption>
                   <thead><tr><th scope="col">Kutchi</th><th scope="col">English</th><th scope="col">Notes</th></tr></thead>
                   <tbody>
                     <tr><td>au(n)</td><td>I</td><td>first-person singular</td></tr>
@@ -169,8 +172,10 @@ export default function GrammarPage() {
                 the recorded plural forms end in <strong>-(n)thaa</strong> in several paradigms. The (n) notation is used immediately before th where an n was previously written; its exact phonetic realization remains to be verified.
               </p>
               <h3>Eating</h3>
-              <div className="grammar-table-wrap">
+              <p className="grammar-table-cue">Scroll horizontally to see all table columns.</p>
+              <div className="grammar-table-wrap" role="region" aria-label="Eating forms" tabIndex={0}>
                 <table className="grammar-table">
+                  <caption>Recorded eating forms by subject</caption>
                   <thead><tr><th scope="col">Subject</th><th scope="col">Pronoun</th><th scope="col">Form</th><th scope="col">Example</th></tr></thead>
                   <tbody>{eating.map(([subject, pronoun, form, example]) => (
                     <tr key={subject}><th scope="row">{subject}</th><td>{pronoun}</td><td><strong>{form}</strong></td><td>{example}</td></tr>
@@ -182,8 +187,10 @@ export default function GrammarPage() {
                 The other example sentences use <em>khadho</em> (“food”).
               </p>
               <h3>Doing</h3>
-              <div className="grammar-table-wrap">
+              <p className="grammar-table-cue">Scroll horizontally to see all table columns.</p>
+              <div className="grammar-table-wrap" role="region" aria-label="Doing forms" tabIndex={0}>
                 <table className="grammar-table">
+                  <caption>Recorded doing forms by subject</caption>
                   <thead><tr><th scope="col">Subject</th><th scope="col">Form</th><th scope="col">Recorded sentence</th></tr></thead>
                   <tbody>{doing.map(([subject, form, example]) => (
                     <tr key={subject}><th scope="row">{subject}</th><td><strong>{form}</strong></td><td>{example}</td></tr>
@@ -212,8 +219,10 @@ export default function GrammarPage() {
                 written n occurs immediately before th. This is a notation
                 convention, not a claim that n is always optional.
               </p>
-              <div className="grammar-table-wrap">
+              <p className="grammar-table-cue">Scroll horizontally to see all table columns.</p>
+              <div className="grammar-table-wrap" role="region" aria-label="Eight verb present forms" tabIndex={0}>
                 <table className="grammar-table">
+                  <caption>Eight attested verb paradigms in selected present contexts</caption>
                   <thead><tr><th scope="col">Verb</th><th scope="col">I · M</th><th scope="col">You · M</th><th scope="col">He</th><th scope="col">We</th><th scope="col">They</th></tr></thead>
                   <tbody>{verbSurvey.map((v) => (
                     <tr key={v.headword}>
@@ -262,8 +271,10 @@ export default function GrammarPage() {
                 <strong> -dhose</strong>. The full sequence may also encode
                 agreement; only first-person future contexts have been elicited.
               </p>
-              <div className="grammar-table-wrap">
+              <p className="grammar-table-cue">Scroll horizontally to see all table columns.</p>
+              <div className="grammar-table-wrap" role="region" aria-label="Future past and command forms" tabIndex={0}>
                 <table className="grammar-table">
+                  <caption>Recorded future, past-time and command forms</caption>
                   <thead><tr><th scope="col">Verb</th><th scope="col">Future</th><th scope="col">Past-time form (I)</th><th scope="col">Imperative</th></tr></thead>
                   <tbody>{verbSurvey.map((v) => (
                     <tr key={v.headword}>

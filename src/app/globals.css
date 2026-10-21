@@ -571,6 +571,7 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
 .language-feature__examples span { display: block; margin-top: 6px; font-size: .82rem; }
 .language-method-note { max-width: 860px; margin: 30px 0 0; font-size: .9rem; color: var(--ink-muted); }
 .grammar-intro { max-width: 860px; }
+html:has(.grammar-page) { scroll-behavior: auto; }
 .grammar-status { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 22px; padding: 20px 24px; margin-bottom: 55px; border-left: 4px solid var(--terracotta); background: var(--paper); }
 .grammar-status strong { font-size: .88rem; }
 .grammar-status span { font-size: .87rem; color: var(--ink-muted); }
@@ -581,6 +582,7 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
 .grammar-toc a:hover { background: var(--paper); }
 .grammar-toc a:focus-visible, .grammar-mobile-toc a:focus-visible, .grammar-mobile-toc summary:focus-visible { outline: 3px solid var(--terracotta); outline-offset: 2px; }
 .grammar-mobile-toc { display: none; }
+.grammar-back-to-chapters { display: none; }
 .grammar-articles { min-width: 0; }
 .grammar-section { padding: 0 0 65px; margin-bottom: 65px; border-bottom: 1px solid var(--line); scroll-margin-top: 28px; }
 .grammar-section:last-child { border-bottom: 0; margin-bottom: 0; }
@@ -601,6 +603,7 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
 .grammar-table th, .grammar-table td { border-bottom: 1px solid var(--line); padding: 13px 12px; vertical-align: top; font-size: .87rem; overflow-wrap: anywhere; }
 .grammar-table thead th { border-top: 1px solid var(--ink); font-size: .72rem; color: var(--ink-muted); letter-spacing: .06em; text-transform: uppercase; }
 .grammar-table caption { text-align: left; padding: 0 0 8px; color: var(--ink-muted); font-size: .83rem; }
+.grammar-table-cue { display: none; }
 .grammar-table tbody th { font-weight: 700; }
 .grammar-fineprint { font-size: .85rem; }
 .grammar-note { padding: 24px; background: #e4ebe3; border-left: 3px solid var(--ocean); }
@@ -625,12 +628,16 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
   .grammar-mobile-toc summary { cursor: pointer; padding: 16px 20px; font-weight: 700; }
   .grammar-mobile-toc nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0 12px 12px; }
   .grammar-mobile-toc a { min-height: 44px; padding: 12px 8px; border-top: 1px solid var(--line); font-size: .88rem; }
+  .grammar-back-to-chapters { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; position: fixed; right: 18px; bottom: 18px; z-index: 10; padding: 10px 16px; background: var(--ink); color: var(--canvas); border-radius: 3px; box-shadow: 0 3px 14px rgba(0,0,0,.18); font-size: .82rem; font-weight: 700; }
+  .grammar-back-to-chapters:focus-visible { outline: 3px solid var(--terracotta); outline-offset: 3px; }
 }
 @media (max-width: 600px) {
   .language-section-heading { display: block; }
   .language-section-heading p { margin-top: 10px; }
   .language-feature { grid-template-columns: 1fr; margin-top: 50px; }
   .grammar-pairs { grid-template-columns: 1fr; }
+  .grammar-table-cue { display: block; margin: 16px 0 -12px; color: var(--ink-muted); font-size: .78rem; }
+  .grammar-table caption { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
   .grammar-breakdown span { padding: 12px 6px; }
   .grammar-breakdown strong { font-size: .88rem; }
   .grammar-breakdown small { font-size: .66rem; }

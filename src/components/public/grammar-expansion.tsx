@@ -9,7 +9,7 @@ function Examples({ items }: { items: readonly Sentence[] }) {
         <div key={`${kutchi}|${english}`}>
           <strong>{kutchi}</strong>
           <span>{english}</span>
-          {dictionaryWord && <Link className="grammar-example-link" href={`/dictionary?q=${encodeURIComponent(dictionaryWord)}`}>Explore “{dictionaryWord}” in the dictionary <span aria-hidden="true">↗</span></Link>}
+          {dictionaryWord && <Link className="grammar-example-link" href={`/dictionary?q=${encodeURIComponent(dictionaryWord)}`}>Search dictionary for “{dictionaryWord}” <span aria-hidden="true">↗</span></Link>}
         </div>
       ))}
     </div>
@@ -17,7 +17,7 @@ function Examples({ items }: { items: readonly Sentence[] }) {
 }
 
 function DictionaryLink({ word }: { word: string }) {
-  return <Link className="text-link" href={`/dictionary?q=${encodeURIComponent(word)}`}>Find “{word}” in the dictionary <span aria-hidden="true">↗</span></Link>;
+  return <Link className="text-link" href={`/dictionary?q=${encodeURIComponent(word)}`}>Search dictionary for “{word}” <span aria-hidden="true">↗</span></Link>;
 }
 
 function EvidenceNote({ label, children }: { label: string; children: React.ReactNode }) {
@@ -30,6 +30,7 @@ export function DemonstrativesSection() {
       <p className="eyebrow">Reference / Demonstratives</p>
       <h2 id="demonstratives-title">This, that, these and those.</h2>
       <span className="grammar-evidence">Speaker-attested contrasts</span>
+      <p className="grammar-table-cue">Scroll horizontally to see all table columns.</p>
       <div className="grammar-table-wrap" role="region" aria-label="Demonstrative forms" tabIndex={0}>
         <table className="grammar-table">
           <caption>Recorded proximal and distal forms</caption>
@@ -68,6 +69,7 @@ export function NounsSection() {
       <p className="eyebrow">Noun morphology</p>
       <h2 id="nouns-title">Nouns vary with number and context.</h2>
       <span className="grammar-evidence">Recorded contrasts; case analysis provisional</span>
+      <p className="grammar-table-cue">These recorded noun forms may be plural or contextual. Scroll horizontally to see all table columns.</p>
       <div className="grammar-table-wrap" role="region" aria-label="Noun form contrasts" tabIndex={0}>
         <table className="grammar-table">
           <caption>Attested noun forms; the right column is not always a simple plural</caption>
@@ -224,6 +226,7 @@ export function ComplexSection() {
       <p><em>Pun</em> occurs in a contrast, <em>se</em> in a cause, <em>tha poi</em> in a consequence, and <em>jikee</em> in a relative clause. Their precise syntactic roles need more examples.</p>
       <p className="grammar-fineprint">The dictionary currently has more than one <em>pun</em> entry. Its search link is for discovery, not a claim that those entries have been merged.</p>
       <h3>Question and relative words</h3>
+      <p className="grammar-table-cue">Scroll horizontally to see all table columns.</p>
       <div className="grammar-table-wrap" role="region" aria-label="Recorded question and relative words" tabIndex={0}>
         <table className="grammar-table">
           <caption>Recorded meanings in their supplied contexts</caption>
