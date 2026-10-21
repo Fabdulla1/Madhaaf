@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { OrthographyContent } from "@/components/public/orthography-content";
+import { LanguageNavigation } from "@/components/public/language-navigation";
 import { PublicShell } from "@/components/public/shell";
 
 export const metadata: Metadata = {
@@ -14,8 +15,10 @@ export default function OrthographyPage() {
       <div className="page-width interior-page">
         <nav className="breadcrumbs" aria-label="Breadcrumb">
           <Link href="/">Home</Link><span aria-hidden="true">/</span>
-          <Link href="/dictionary">Dictionary</Link>
+          <Link href="/language">Language</Link><span aria-hidden="true">/</span>
+          <span aria-current="page">Writing guide</span>
         </nav>
+        <LanguageNavigation active="writing" />
         <div className="page-intro">
           <p className="eyebrow">Language / Writing</p>
           <h1>How we write Kutchi.</h1>
