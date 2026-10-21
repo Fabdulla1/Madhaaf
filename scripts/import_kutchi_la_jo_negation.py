@@ -22,9 +22,6 @@ FORM_IDENTITY = (
     "grammatical_person", "grammatical_number", "gender", "tense", "aspect",
     "mood", "politeness",
 )
-# The older grammar import used punctuation on two commands. Reuse those exact
-# records while keeping the latest source transcription in the manifest.
-EXAMPLE_ALIASES = {"Nah vin": "Nah vin!", "Nah kar": "Nah kar!"}
 FORM_EVIDENCE_STATUS = {
     "attested_form": "attested",
     "attested_form_provisional_relationship": "provisional",
@@ -35,7 +32,10 @@ FORM_EVIDENCE_STATUS = {
 
 
 def example_key(text):
-    return EXAMPLE_ALIASES.get(text, text).casefold()
+    # Punctuation belongs to the supplied transcription. Older punctuated
+    # examples remain intact and the later unpunctuated attestations get their
+    # own source records.
+    return text.casefold()
 
 
 def sense_definition(gloss):
@@ -231,7 +231,7 @@ def plan_import(payload, state):
             continue
         if matches:
             old = matches[0]
-            if old["kutchi_text"] != EXAMPLE_ALIASES.get(row["kutchi_text"], row["kutchi_text"]):
+            if old["kutchi_text"] != row["kutchi_text"]:
                 conflicts.append(f"{row['kutchi_text']}: existing capitalization or transcription differs")
             if old["english_translation"] != row.get("english_translation"):
                 conflicts.append(f"{row['kutchi_text']}: existing translation differs")
@@ -442,10 +442,6 @@ def main():
                                old["kutchi_text"].casefold() for old in state["examples"]
                            } for row in payload["examples"]
                        ),
-                       "legacy_punctuation_retained": [
-                           text for text in EXAMPLE_ALIASES if
-                           any(row["kutchi_text"] == text for row in payload["examples"])
-                       ],
                        "planned": {key: len(value) for key, value in plan.items()},
                        "conflicts": conflicts}
             print(json.dumps(summary, ensure_ascii=False, default=str, indent=2))

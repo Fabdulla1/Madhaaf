@@ -7,7 +7,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 from import_kutchi_la_jo_negation import (  # noqa: E402
-    EXAMPLE_ALIASES,
     FORM_EVIDENCE_STATUS,
     evidence,
     example_key,
@@ -71,7 +70,7 @@ class LaJoNegationImportTests(unittest.TestCase):
         self.assertIn("Untranslated elicitation", example_note({"evidence_status": "elicitation_unresolved"}))
         self.assertEqual(FORM_EVIDENCE_STATUS["elicited_form_unresolved_roles"], "attested")
 
-    def test_plan_keeps_old_jo_gloss_and_uses_approved_punctuation_aliases(self):
+    def test_plan_keeps_old_jo_gloss_and_distinguishes_punctuation(self):
         state = empty_state()
         state["lexemes"] = [{"id": "jo-id", "headword": "jo", "status": "published",
                              "part_of_speech": None}]
@@ -81,7 +80,7 @@ class LaJoNegationImportTests(unittest.TestCase):
         self.assertEqual(conflicts, [])
         self.assertEqual([row["headword"] for row in plan["entries"]], ["la"])
         self.assertEqual({gloss["gloss_en"] for _, gloss in plan["senses"]}, {"for", "of; 's"})
-        self.assertEqual(example_key("Nah vin"), example_key(EXAMPLE_ALIASES["Nah vin"]))
+        self.assertNotEqual(example_key("Nah vin"), example_key("Nah vin!"))
         self.assertIn("jo-id", plan["draft_ids"])
 
     def test_unexpected_homograph_and_changed_jo_gloss_block_import(self):
@@ -96,7 +95,7 @@ class LaJoNegationImportTests(unittest.TestCase):
         self.assertTrue(any("la: unexpected pre-existing homograph" in item for item in conflicts))
         self.assertTrue(any("jo: previously reviewed gloss changed" in item for item in conflicts))
 
-    def test_old_punctuation_and_source_are_reused_without_rewriting_example(self):
+    def test_new_punctuation_variant_keeps_its_own_source(self):
         payload = small_payload()
         payload["entries"] = [{"headword": "nah", "action": "existing", "publication": "published",
                                "expected_existing_glosses": ["no"], "glosses": [],
@@ -119,9 +118,9 @@ class LaJoNegationImportTests(unittest.TestCase):
                               "note": "Older wording", "source_id": "old-source"}]
         plan, conflicts = plan_import(payload, state)
         self.assertEqual(conflicts, [])
-        self.assertEqual(plan["examples"], [])
-        self.assertEqual(plan["example_links"], [("Nah vin", "nah-id")])
-        self.assertEqual(set(plan["draft_ids"]), {"nah-id", "vin-id"})
+        self.assertEqual([row["kutchi_text"] for row in plan["examples"]], ["Nah vin"])
+        self.assertEqual(plan["example_links"], [])
+        self.assertEqual(set(plan["draft_ids"]), {"nah-id"})
 
     def test_same_form_with_different_source_or_note_conflicts(self):
         payload = small_payload()
