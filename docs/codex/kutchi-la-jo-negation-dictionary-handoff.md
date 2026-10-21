@@ -45,10 +45,10 @@ Record the **attested constructions**, not an invented universal negative paradi
 
 | Exact speaker form | Speaker-provided meaning / context |
 | --- | --- |
-| `Natho sume` | He is not sleeping. |
-| `Nathi sume` | She is not sleeping. |
+| `Natho sume` | He won't sleep. (Native-speaker correction: future meaning, **not** “he is not sleeping”.) |
+| `Nathi sume` | She won't sleep. (Native-speaker correction: future meaning, **not** “she is not sleeping”.) |
 | `Hee mukhe pe(n)sa natho dye` | He doesn't give me money. |
-| `Hee mukhe pe(n)sa nai dhine` | He didn't give me money. |
+| `Hee mukhe pe(n)sa nai dhine` | He hasn't given me money. (Native-speaker correction: **not** “he didn't give me money”.) |
 | `Paa(n) kaal na oosyasee` | We did not go yesterday. |
 | `Nah sum!` | Don't sleep! |
 | `Nah vin` | Don't go! |
@@ -67,7 +67,9 @@ Record the **attested constructions**, not an invented universal negative paradi
 
 Where source schema requires an English translation, store such forms as elicitation/morphology notes pending speaker clarification rather than fabricating one. The presence of `hin ke` plus `au(n)` is a live syntactic question. Likewise, `nathaa` occurs with a plural desired item, but the agreement controller is not proven.
 
-Do not claim `nai` is exclusively past: it also occurs with “there is no food.” Do not claim `nah` is exclusively imperative: a future-negative example is recorded. The future, negative and feminine suffix inventories are not proven.
+**Correction notice (speaker confirmed, 21 October 2026):** `Natho sume` and `Nathi sume` express “He won't sleep” / “She won't sleep”, *not* present progressive “isn't sleeping”. `Hee mukhe pe(n)sa nai dhine` expresses “He hasn't given me money”, *not* simple past “He didn't give me money”. These precise translations supersede the earlier working analyses wherever they occur. Reconcile imported examples if necessary without silently overwriting published evidence; retain a revision/provenance record.
+
+Do not claim `natho` or `nathi` universally encodes future: `natho dye` is attested with “doesn't give”, and other negative constructions have present readings. Do not claim that `nai` is exclusively past, present perfect, or existential: it also occurs with “there is no food.” `Hee ... nai dhine` has a confirmed English “hasn't given” translation, but the morphosyntactic means of expressing completion or current relevance has **not** been isolated. Do not claim `nah` is exclusively imperative: a future-negative example is recorded. The future, negative and feminine suffix inventories are not proven.
 
 Review and enrich existing lexemes for `natho`, `nathi`, `nathaa`, `na`, `nah`, `nai`, the imperative `de` and attested giving forms `dye`, `dhine`, `dhya(n)`, `dhineese`, `dhinose` where appropriate. Review `kan`/`kayose` (took / picked up), `khadho`/`khade`, `pe(n)sa`, `mukhe`, `hin`, `hinjo`, `mujo`, `bhaa`, `raja` and `bapa` without inventing new senses. Do not conflate `raja` meaning permission/approval with similar spellings glossed “king.”
 
@@ -86,7 +88,7 @@ Produce an auditable structured evidence manifest (e.g., `data/kutchi-la-jo-nega
 
 ## Phase 5 — Verification and deliverables
 
-Test duplicate-safe reruns, public dictionary search for `la` and `jo`, preservation of the original jo “for” gloss, exposure of additional possessive sense, and searches for recorded negative forms. Verify private/unpublished entries remain inaccessible and existing dictionary pages and inflections work.
+Test duplicate-safe reruns, public dictionary search for `la` and `jo`, preservation of the original jo “for” gloss, exposure of additional possessive sense, and searches for recorded negative forms. **Explicitly test the corrected translations** for the three sentences (`Natho sume`, `Nathi sume`, `Hee mukhe pe(n)sa nai dhine`), reject reinstatement of the earlier English readings in newly published records, and keep the existing translations for `Hee mukhe pe(n)sa natho dye` unchanged. Verify private/unpublished entries remain inaccessible and existing dictionary pages and inflections work.
 
 Run lint, typecheck, build, relevant Python/SQL/browser tests and GitHub CI; check Vercel if site behavior changed. Use a feature branch, focused commits, PR review, and resolve findings before merge. Provide a report with added/enriched entries, exemplar sentences, evidence status, source links, migration/production apply status, test results, conflicts and open linguistic questions.
 
