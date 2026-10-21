@@ -10,7 +10,7 @@ const schema = z.object({
   relationship: z.object({
     person_a_id: z.string().uuid().optional(),
     person_b_id: z.string().uuid().optional(),
-    kind: z.enum(['parent','partner']),
+    kind: z.enum(['parent','partner','sibling']),
     parent_kind: z.enum(['biological','adoptive','unknown']).nullable().optional(),
     confidence: z.enum(['confirmed','uncertain','disputed']).optional(),
     note: z.string().max(20000).nullable().optional(),
@@ -30,7 +30,7 @@ export async function POST(request: Request) {
     const otherId = args.newMemberSide === 'a' ? r.person_a_id : r.person_b_id
     if (!existingId || otherId) return error('Provide exactly one existing member on the opposite side')
     if (r.kind === 'parent' && !r.parent_kind) return error('Parent relationship type is required')
-    if (r.kind === 'partner' && r.parent_kind) return error('Partners cannot have a parent relationship type')
+    if (r.kind !== 'parent' && r.parent_kind) return error('Only a parent relationship can have a parent relationship type')
     const review = await requireDuplicateReview(admin.supabase, 'people', args.member.preferred_name, args.duplicate_confirmation, request.signal)
     if (review) return review
     const { data, error: dbError } = await admin.supabase.rpc('create_connected_member', {

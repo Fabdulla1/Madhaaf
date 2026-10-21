@@ -22,14 +22,14 @@ export const createSchemas = {
   }).strict(),
   relationships: z.object({
     person_a_id: uuid, person_b_id: uuid,
-    kind: z.enum(['parent','partner']),
+    kind: z.enum(['parent','partner','sibling']),
     parent_kind: z.enum(['biological','adoptive','unknown']).nullable().optional(),
     confidence: z.enum(['confirmed','uncertain','disputed']).optional(),
     note, status: status.optional(),
   }).strict().superRefine((v, ctx) => {
     if (v.person_a_id === v.person_b_id) ctx.addIssue({ code: 'custom', message: 'A person cannot be related to themself' })
     if (v.kind === 'parent' && !v.parent_kind) ctx.addIssue({ code: 'custom', message: 'Parent relationship type is required' })
-    if (v.kind === 'partner' && v.parent_kind) ctx.addIssue({ code: 'custom', message: 'Partners cannot have a parent relationship type' })
+    if (v.kind !== 'parent' && v.parent_kind) ctx.addIssue({ code: 'custom', message: 'Only a parent relationship can have a parent relationship type' })
   }),
   lexemes: z.object({
     headword: short, part_of_speech: z.string().max(100).nullable().optional(),
@@ -65,7 +65,7 @@ export const patchSchemas = {
   members: createSchemas.members.partial().extend({ version }),
   relationships: z.object({
     person_a_id: uuid.optional(), person_b_id: uuid.optional(),
-    kind: z.enum(['parent','partner']).optional(),
+    kind: z.enum(['parent','partner','sibling']).optional(),
     parent_kind: z.enum(['biological','adoptive','unknown']).nullable().optional(),
     confidence: z.enum(['confirmed','uncertain','disputed']).optional(), note,
     status: status.optional(), version,

@@ -303,6 +303,7 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
 .family-tree-canvas .react-flow__controls { border-radius: 10px; overflow: hidden; box-shadow: 0 4px 18px rgba(22,62,58,.14); }
 .family-tree-guide-line { display: inline-block; width: 25px; margin-right: 6px; border-top: 2px solid #487c70; vertical-align: middle; }
 .family-tree-guide-line--partner { border-color: #b7674e; }
+.family-tree-guide-line--sibling { border-color: #676d99; border-style: dashed; }
 .family-tree-guide-line--uncertain { border-style: dashed; }
 .family-tree-details { animation: family-tree-reveal .35s ease both; }
 @keyframes family-tree-reveal { from { opacity: .55; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }

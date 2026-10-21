@@ -53,7 +53,7 @@ export async function POST(request: Request, context: { params: Promise<{ resour
       const review = await requireDuplicateReview(admin.supabase, resource === 'members' ? 'people' : 'dictionary', String(payload[resource === 'members' ? 'preferred_name' : 'headword']), confirmation, request.signal)
       if (review) return review
     }
-    if (resource === 'relationships' && payload.kind === 'partner' &&
+    if (resource === 'relationships' && (payload.kind === 'partner' || payload.kind === 'sibling') &&
       String(payload.person_a_id) > String(payload.person_b_id)) {
       [payload.person_a_id, payload.person_b_id] = [payload.person_b_id, payload.person_a_id]
     }
