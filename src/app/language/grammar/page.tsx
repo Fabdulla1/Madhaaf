@@ -8,24 +8,36 @@ export const metadata: Metadata = {
 };
 
 const eating = [
-  ["I", "au(n)", "kyantho", "Au(n) khadho kyantho"],
-  ["You · masculine", "thu(n)", "kyentho", "Thu(n) khadho kyentho"],
-  ["You · feminine", "thu(n)", "kyenthi", "Thu(n) khadho kyenthi"],
+  ["I", "au(n)", "kya(n)tho", "Au(n) khadho kya(n)tho"],
+  ["You · masculine", "thu(n)", "kye(n)tho", "Thu(n) khadho kye(n)tho"],
+  ["You · feminine", "thu(n)", "kye(n)thi", "Thu(n) khadho kye(n)thi"],
   ["He", "hee", "kyetho", "Hee khadho kyetho"],
   ["She", "hee", "kyethi", "Hee khadho kyethi"],
-  ["We", "paa(n)", "kyonthaa", "Paa(n) khadho kyonthaa"],
-  ["They", "hinee", "kyenthaa", "Hinee khadho kyenthaa"],
-  ["Everyone", "mere", "kyenthaa", "Mere kuroo kyenthaa?"],
+  ["We", "paa(n)", "kyo(n)thaa", "Paa(n) khadho kyo(n)thaa"],
+  ["They", "hinee", "kye(n)thaa", "Hinee khadho kye(n)thaa"],
+  ["Everyone", "mere", "kye(n)thaa", "Mere kuroo kye(n)thaa?"],
 ] as const;
 
 const doing = [
-  ["I", "karantho", "Au(n) hee karantho"],
-  ["You · masculine", "karentho", "Kuroo karentho?"],
-  ["You · feminine", "karenthi", "Kuroo karenthi?"],
+  ["I", "kara(n)tho", "Au(n) hee kara(n)tho"],
+  ["You · masculine", "kare(n)tho", "Kuroo kare(n)tho?"],
+  ["You · feminine", "kare(n)thi", "Kuroo kare(n)thi?"],
   ["He", "karetho", "Hee hoo karetho"],
   ["She", "karethi", "Hee hoo karethi"],
-  ["We", "karonthaa", "Pa(n) masthi karonthaa"],
-  ["Everyone", "karenthaa", "Mere sanas karenthaa"],
+  ["We", "karo(n)thaa", "Pa(n) masthi karo(n)thaa"],
+  ["Everyone", "kare(n)thaa", "Mere sanas kare(n)thaa"],
+] as const;
+
+
+const verbSurvey = [
+  { headword: "dhor", gloss: "run", first: "dhora(n)tho", second: "dore(n)tho", third: "doretho", we: "doro(n)thaa", they: "dore(n)thaa", command: "dhor", past: "dhoryose", future: "dhordhose" },
+  { headword: "kan", gloss: "take", first: "kana(n)tho", second: "kane(n)tho", third: "kanetho", we: "kano(n)thaa", they: "kane(n)thaa", command: "kan", past: "kayose", future: "kandhose" },
+  { headword: "fagai", gloss: "throw", first: "fagaya(n)tho", second: "fagaye(n)tho", third: "fagayetho", we: "fagayo(n)thaa", they: "fagaye(n)thaa", command: "fagai", past: "fagayose", future: "fagayndhose" },
+  { headword: "nikro", gloss: "leave / depart", first: "nikra(n)tho", second: "nikre(n)tho", third: "nikretho", we: "nikro(n)thaa", they: "nikre(n)thaa", command: "nikar", past: "nikryose", future: "nikardhose" },
+  { headword: "vin", gloss: "go", first: "vina(n)tho", second: "vine(n)tho", third: "vinetho", we: "vino(n)thaa", they: "vine(n)thaa", command: "vin", past: "oosyose", future: "vendhose" },
+  { headword: "kar", gloss: "do", first: "kara(n)tho", second: "kare(n)tho", third: "karetho", we: "karo(n)thaa", they: "kare(n)thaa", command: "kar", past: "kyose", future: "kardhose" },
+  { headword: "chad", gloss: "let go / leave it", first: "chada(n)tho", second: "chade(n)tho", third: "chadetho", we: "chado(n)thaa", they: "chade(n)thaa", command: "chad", past: "chadidinose / chadyavose", future: "chadadhose" },
+  { headword: "sum", gloss: "sleep", first: "suma(n)tho", second: "sume(n)tho", third: "sumetho", we: "sumo(n)thaa", they: "sume(n)thaa", command: "sum", past: "suthose", future: "sumdhose" },
 ] as const;
 
 function Evidence({ children }: { children: React.ReactNode }) {
@@ -51,8 +63,8 @@ export default function GrammarPage() {
           </p>
         </header>
         <div className="grammar-status" role="note">
-          <strong>Working grammar · Edition 0.1</strong>
-          <span>Attested examples are not a complete or standardized grammar. Spellings are preserved as supplied.</span>
+          <strong>Working grammar · Edition 0.2</strong>
+          <span>Attested examples are not a complete or standardized grammar. Forms are transcribed from speaker examples, with n immediately before th written (n) according to the updated notation.</span>
         </div>
         <div className="grammar-layout">
           <nav className="grammar-toc" aria-label="On this page">
@@ -60,10 +72,13 @@ export default function GrammarPage() {
             <a href="#word-order">01 · Word order</a>
             <a href="#pronouns">02 · Pronouns</a>
             <a href="#verbs">03 · Verb agreement</a>
-            <a href="#commands">04 · Commands</a>
-            <a href="#questions">05 · Questions</a>
-            <a href="#being">06 · Being &amp; descriptions</a>
-            <a href="#open-questions">07 · Still investigating</a>
+            <a href="#verb-survey">04 · Eight-verb survey</a>
+            <a href="#tense-aspect">05 · Tense and aspect</a>
+            <a href="#negation">06 · Negation</a>
+            <a href="#commands">07 · Commands</a>
+            <a href="#questions">08 · Questions</a>
+            <a href="#being">09 · Being &amp; descriptions</a>
+            <a href="#open-questions">10 · Still investigating</a>
           </nav>
           <div className="grammar-articles">
             <section id="word-order" className="grammar-section">
@@ -75,12 +90,12 @@ export default function GrammarPage() {
                 order. This does not yet establish the order of every sentence type.
               </p>
               <div className="grammar-example">
-                <p className="grammar-example__kutchi">Au(n) khadho kyantho</p>
+                <p className="grammar-example__kutchi">Au(n) khadho kya(n)tho</p>
                 <p>I am eating food.</p>
                 <div className="grammar-breakdown" aria-label="Word-by-word analysis">
                   <span><strong>Au(n)</strong><small>subject · I</small></span>
                   <span><strong>khadho</strong><small>object · food</small></span>
-                  <span><strong>kyantho</strong><small>verb · am eating</small></span>
+                  <span><strong>kya(n)tho</strong><small>verb · am eating</small></span>
                 </div>
               </div>
             </section>
@@ -113,10 +128,10 @@ export default function GrammarPage() {
               <h2>Action verbs agree with their subjects.</h2>
               <Evidence>Attested forms; interpretation provisional</Evidence>
               <p>
-                The ongoing-action forms of “to eat” and “to do” differ by person,
+                The present forms of “to eat” and “to do” differ by person,
                 gender and number. In the recorded singular forms, masculine
-                often ends in <strong>-tho</strong> and feminine in <strong>-thi</strong>;
-                the recorded plural forms end in <strong>-thaa</strong>.
+                often ends in <strong>-(n)tho</strong> and feminine in <strong>-(n)thi</strong>;
+                the recorded plural forms end in <strong>-(n)thaa</strong> in several paradigms. The (n) notation is used immediately before th where an n was previously written; its exact phonetic realization remains to be verified.
               </p>
               <h3>Eating</h3>
               <div className="grammar-table-wrap">
@@ -128,7 +143,7 @@ export default function GrammarPage() {
                 </table>
               </div>
               <p className="grammar-fineprint">
-                The final row is a question: “Mere kuroo kyenthaa?” — “What is everyone eating?”
+                The final row is a question: “Mere kuroo kye(n)thaa?” — “What is everyone eating?”
                 The other example sentences use <em>khadho</em> (“food”).
               </p>
               <h3>Doing</h3>
@@ -143,15 +158,142 @@ export default function GrammarPage() {
               <div className="grammar-note">
                 <strong>Emerging pattern — not a fixed rule yet</strong>
                 <p>
-                  Compare <em>karantho / kyantho</em>, <em>karentho / kyentho</em>,
-                  <em> karethi / kyethi</em>, and <em>karonthaa / kyonthaa</em>.
+                  Compare <em>kara(n)tho / kya(n)tho</em>, <em>kare(n)tho / kye(n)tho</em>,
+                  <em> karethi / kyethi</em>, and <em>karo(n)thaa / kyo(n)thaa</em>.
                   The correspondence is consistent, but we have not proven
                   where stems end or individual grammatical suffixes begin.
                 </p>
               </div>
             </section>
+            <section id="verb-survey" className="grammar-section">
+              <p className="eyebrow">04 / Eight-verb survey</p>
+              <h2>A pattern across eight verbs.</h2>
+              <Evidence>Speaker-elicited paradigm; spelling convention updated</Evidence>
+              <p>
+                These present forms were elicited with the subjects “I” (masculine),
+                “you” (masculine), “he”, “we” and “they”. The full feminine
+                singular forms were also elicited for all eight verbs.
+                The spelling <strong>(n)</strong> is used wherever the previously
+                written n occurs immediately before th. This is a notation
+                convention, not a claim that n is always optional.
+              </p>
+              <div className="grammar-table-wrap">
+                <table className="grammar-table">
+                  <thead><tr><th scope="col">Verb</th><th scope="col">I · M</th><th scope="col">You · M</th><th scope="col">He</th><th scope="col">We</th><th scope="col">They</th></tr></thead>
+                  <tbody>{verbSurvey.map((v) => (
+                    <tr key={v.headword}>
+                      <th scope="row">{v.headword}<br/><small>{v.gloss}</small></th>
+                      <td>{v.first}</td><td>{v.second}</td><td>{v.third}</td><td>{v.we}</td><td>{v.they}</td>
+                    </tr>
+                  ))}</tbody>
+                </table>
+              </div>
+              <p>
+                Corresponding feminine singular forms include <em>kana(n)thi</em>,
+                <em> kane(n)thi</em>, <em>kanethi</em>, and similarly shaped forms
+                of the other verbs. The repeated patterns support person, gender,
+                and number agreement, but not a final division into morphemes.
+              </p>
+              <div className="grammar-note">
+                <strong>Pronunciation and transcription to revisit</strong>
+                <p>
+                  The “run” data contained <em>dhorantho</em> for the masculine
+                  first person but <em>doranthi</em> and <em>dorentho</em> elsewhere.
+                  Here the first-person written form is represented
+                  <em> dhora(n)tho</em> following the supplied dictionary headword.
+                  Whether dh and d reflect different pronunciations is unresolved.
+                </p>
+              </div>
+            </section>
+            <section id="tense-aspect" className="grammar-section">
+              <p className="eyebrow">05 / Tense and aspect</p>
+              <h2>The present, past and future.</h2>
+              <Evidence>Attested examples; morphological analysis provisional</Evidence>
+              <h3>The same present form can describe habits</h3>
+              <div className="grammar-pairs">
+                <div><strong>Au(n) suma(n)tho</strong><span>I am sleeping.</span></div>
+                <div><strong>Au(n) haroj suma(n)tho</strong><span>I sleep every day.</span></div>
+                <div><strong>Au(n) vina(n)tho</strong><span>I am going.</span></div>
+                <div><strong>Au(n) haroj vina(n)tho</strong><span>I go every day.</span></div>
+              </div>
+              <p>
+                <em>Haroj</em> means “every day” in these examples. Present
+                forms recur in both ongoing and habitual readings. We therefore
+                cannot call <em>-(n)tho</em> a dedicated progressive ending.
+              </p>
+              <h3>First-person future forms</h3>
+              <p>
+                The eight elicited future forms share the written sequence
+                <strong> -dhose</strong>. The full sequence may also encode
+                agreement; only first-person future contexts have been elicited.
+              </p>
+              <div className="grammar-table-wrap">
+                <table className="grammar-table">
+                  <thead><tr><th scope="col">Verb</th><th scope="col">Future</th><th scope="col">Past-time form (I)</th><th scope="col">Imperative</th></tr></thead>
+                  <tbody>{verbSurvey.map((v) => (
+                    <tr key={v.headword}>
+                      <th scope="row">{v.headword}</th>
+                      <td>{v.future}</td><td>{v.past}</td><td>{v.command}</td>
+                    </tr>
+                  ))}</tbody>
+                </table>
+              </div>
+              <p>
+                <em>Savare</em> (“tomorrow”) appears before or after the
+                subject in the supplied future sentences, including
+                <em> Savare au(n) kandhose</em> and
+                <em> au(n) savare kandhose</em>. The subject can also be omitted:
+                <em> savare fagayndhose</em>.
+              </p>
+              <h3>Past-tense stem changes and agreement</h3>
+              <div className="grammar-pairs">
+                <div><strong>Au(n) kaal oosyose</strong><span>I went yesterday · masculine</span></div>
+                <div><strong>Au(n) kaal ooseise</strong><span>I went yesterday · feminine</span></div>
+                <div><strong>Paa(n) kaal oosyasee</strong><span>We went yesterday</span></div>
+                <div><strong>Mere kaal oosyaa</strong><span>Everyone went yesterday</span></div>
+                <div><strong>Au(n) kaal suthose</strong><span>I slept yesterday · masculine</span></div>
+                <div><strong>Au(n) kaal suthese</strong><span>I slept yesterday · feminine</span></div>
+                <div><strong>Hinee kaal suthyaa</strong><span>They slept yesterday</span></div>
+                <div><strong>Mere kaal suthyaa</strong><span>Everyone slept yesterday</span></div>
+              </div>
+              <p>
+                <em>Kaal</em> means “yesterday” in these examples.
+                The past forms of <em>vin</em> (“go”) and <em>sum</em>
+                (“sleep”) differ substantially from their present stems and show
+                gender or number distinctions. We cannot yet identify a regular
+                past-tense suffix for all verbs.
+              </p>
+              <p>
+                The verb <em>chad</em> has two separately supplied past forms,
+                <em> chadidinose</em> (“I let go of it yesterday”) and
+                <em> chadyavose</em> (“I left it yesterday”).
+                Their difference in meaning or construction is still under investigation.
+              </p>
+            </section>
+            <section id="negation" className="grammar-section">
+              <p className="eyebrow">06 / Negation</p>
+              <h2>Not doing, and not going to do.</h2>
+              <Evidence>Observed negatives; scope and syntax unsettled</Evidence>
+              <div className="grammar-pairs">
+                <div><strong>Au(n) natho kara(n)</strong><span>I am not doing it.</span></div>
+                <div><strong>Natho sumaa(n)</strong><span>I am not sleeping.</span></div>
+                <div><strong>Au(n) natho chada(n)</strong><span>I am not letting go.</span></div>
+                <div><strong>Nah kardhose</strong><span>I will not do it.</span></div>
+                <div><strong>Nah vendhose</strong><span>I will not go.</span></div>
+                <div><strong>Natho vina(n)tho</strong><span>I am not going. · alternative form</span></div>
+              </div>
+              <p>
+                <em>Natho</em> recurs in present negative expressions, while
+                <em> nah</em> occurs with future forms. It is not yet clear
+                whether either is an independent negative particle or an
+                inflected auxiliary. Both <em>natho vina</em> and
+                <em> natho vina(n)tho</em> were recorded; neither is discarded.
+                Some speaker examples also place the negative element
+                after the lexical verb, so a rigid word-order rule is premature.
+              </p>
+            </section>
             <section id="commands" className="grammar-section">
-              <p className="eyebrow">04 / Imperatives</p>
+              <p className="eyebrow">07 / Imperatives</p>
               <h2>Short forms give commands.</h2>
               <Evidence>Attested</Evidence>
               <div className="grammar-pairs">
@@ -160,20 +302,23 @@ export default function GrammarPage() {
                 <div><strong>Hoodaa kar!</strong><span>Do it there!</span></div>
                 <div><strong>Sanas kar!</strong><span>Defecate!</span></div>
                 <div><strong>Khaa!</strong><span>Eat!</span></div>
+                {verbSurvey.map((v) => (
+                  <div key={v.headword}><strong>{v.command}!</strong><span>{v.gloss} · singular command</span></div>
+                ))}
               </div>
               <p>
                 <em>Kar</em> and <em>khaa</em> are attested as commands.
-                Polite and plural imperatives remain undocumented.
+                Six of the eight newly elicited singular commands match their supplied headwords; <em>nikar</em> differs from <em>nikro</em>. Polite and plural imperatives remain undocumented.
               </p>
             </section>
             <section id="questions" className="grammar-section">
-              <p className="eyebrow">05 / Questions</p>
+              <p className="eyebrow">08 / Questions</p>
               <h2>Question words appear before the verb.</h2>
               <Evidence>Observed in these examples</Evidence>
               <div className="grammar-pairs">
-                <div><strong>Kuroo karentho?</strong><span>What are you doing? · masculine</span></div>
-                <div><strong>Kuroo karenthi?</strong><span>What are you doing? · feminine</span></div>
-                <div><strong>Mere kuroo kyenthaa?</strong><span>What is everyone eating?</span></div>
+                <div><strong>Kuroo kare(n)tho?</strong><span>What are you doing? · masculine</span></div>
+                <div><strong>Kuroo kare(n)thi?</strong><span>What are you doing? · feminine</span></div>
+                <div><strong>Mere kuroo kye(n)thaa?</strong><span>What is everyone eating?</span></div>
                 <div><strong>Ai(n) kee(n) i(n)yo?</strong><span>How are you? · formal or plural</span></div>
               </div>
               <p>
@@ -182,7 +327,7 @@ export default function GrammarPage() {
               </p>
             </section>
             <section id="being" className="grammar-section">
-              <p className="eyebrow">06 / Descriptions and states</p>
+              <p className="eyebrow">09 / Descriptions and states</p>
               <h2>Several forms express “to be.”</h2>
               <Evidence>Forms attested; shared paradigm unconfirmed</Evidence>
               <div className="grammar-pairs">
@@ -199,11 +344,13 @@ export default function GrammarPage() {
               </p>
             </section>
             <section id="open-questions" className="grammar-section">
-              <p className="eyebrow">07 / Field notes</p>
+              <p className="eyebrow">10 / Field notes</p>
               <h2>What we still need to learn.</h2>
               <ul className="grammar-questions">
-                <li>Does the same verb form describe “I eat every day” and “I am eating now”?</li>
-                <li>How do past forms such as <em>kadhyose</em> change across subjects?</li>
+                <li>Do the identical present forms always permit both ongoing and habitual interpretations, including with “to eat”?</li>
+                <li>How do past forms of <em>kan</em>, <em>kar</em>, and <em>chad</em> change across subjects?</li>
+                <li>Do future forms ending in <em>-dhose</em> change with person, number or gender?</li>
+                <li>Do <em>natho</em> and <em>nah</em> have feminine and plural counterparts?</li>
                 <li>How are polite and plural commands formed?</li>
                 <li>How do adjectives and participles agree with nouns?</li>
                 <li>Do formal and plural second-person forms always coincide?</li>
@@ -211,8 +358,7 @@ export default function GrammarPage() {
               </ul>
               <p>
                 Another recorded form is <em>Au(n) khadho kadhyose</em>,
-                translated as “I ate food yesterday.” It supplies evidence
-                of a past-time construction but not enough to establish a past-tense paradigm.
+                translated as “I ate food yesterday.” It supplies an additional past-time form whose exact relationship to the newer elicited paradigms has not yet been established.
               </p>
               <Link className="text-link" href="/orthography">
                 Explore the draft writing guide <span aria-hidden="true">↗</span>
