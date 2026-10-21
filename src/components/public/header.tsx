@@ -1,18 +1,25 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { readPublicApi } from "./content-api";
 
 const navigation = [
   { href: "/", label: "Home" },
   { href: "/family", label: "Family Tree" },
-  { href: "/dictionary", label: "Dictionary" },
+  { href: "/language", label: "Language" },
   { href: "/history", label: "History" },
 ];
 
+function isCurrentSection(href: string, pathname: string) {
+  if (href === "/language") return /^\/(language|dictionary|orthography)(\/|$)/.test(pathname);
+  return href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function PublicHeader() {
   const [isAdmin, setIsAdmin] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -40,7 +47,7 @@ export function PublicHeader() {
         </Link>
         <nav className="desktop-nav" aria-label="Main navigation">
           {navigation.map((item) => (
-            <Link key={item.href} href={item.href}>
+            <Link key={item.href} href={item.href} aria-current={isCurrentSection(item.href, pathname) ? "location" : undefined}>
               {item.label}
             </Link>
           ))}
