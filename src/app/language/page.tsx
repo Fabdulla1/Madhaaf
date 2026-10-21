@@ -5,14 +5,14 @@ import { PublicShell } from "@/components/public/shell";
 
 export const metadata: Metadata = {
   title: "Language",
-  description: "Explore the Mombasa Kutchi dictionary, emerging grammar, and draft writing system.",
+  description: "Research on the language of Mombasa and Ethiopian Kutchi communities, including dictionary, grammar and writing conventions.",
 };
 
 const sections = [
   {
     number: "01",
     title: "Dictionary",
-    description: "Look up words and meanings in our growing, community-reviewed record of spoken Kutchi.",
+    description: "Consult documented words, meanings and speaker examples, with entries reviewed before publication.",
     href: "/dictionary",
     action: "Browse the dictionary",
   },
@@ -40,18 +40,18 @@ export default function LanguagePage() {
           <Link href="/">Home</Link><span aria-hidden="true">/</span><span aria-current="page">Language</span>
         </nav>
         <header className="page-intro language-hero">
-          <p className="eyebrow">The language archive</p>
-          <h1>A language in words, patterns and voices.</h1>
+          <p className="eyebrow">East African Kutchi / Language research</p>
+          <h1>Studying Mombasa and Ethiopian Kutchi.</h1>
           <p>
-            I am documenting the Kutchi I grew up speaking: the words we use,
-            how they fit together, and how we can write them. This is my
-            growing record of Mombasa Kutchi, not a finished grammar.
+            This section documents vocabulary, sentence patterns and spoken
+            usage in Mombasa and Ethiopian Kutchi communities. Analyses
+            remain provisional and are supported by recorded examples.
           </p>
         </header>
         <section aria-labelledby="language-explore">
           <div className="language-section-heading">
             <h2 id="language-explore">Explore the language</h2>
-            <p>Three ways into the same living record.</p>
+            <p>Dictionary entries, grammatical analyses and writing conventions.</p>
           </div>
           <div className="language-cards">
             {sections.map((section) => (
@@ -68,12 +68,12 @@ export default function LanguagePage() {
         </section>
         <section className="language-feature" aria-labelledby="language-feature-title">
           <div>
-            <p className="eyebrow">From the grammar notebook</p>
+            <p className="eyebrow">From the grammar studies</p>
             <h2 id="language-feature-title">One action, many forms.</h2>
             <p>
-              As I compared the different forms of “to do,” I began to see
-              how the verb changes with the subject. These are some of the
-              examples that made me want to document our grammar.
+              The attested forms of “to do” suggest differences connected
+              with grammatical person and gender. Further speaker comparisons
+              are needed to establish the complete pattern.
             </p>
             <Link className="text-link" href="/language/grammar#verbs">
               See the examples <span aria-hidden="true">↗</span>
@@ -89,12 +89,11 @@ export default function LanguagePage() {
         <section className="language-research-promo" aria-labelledby="language-research-title">
           <div className="language-research-promo__copy">
             <p className="eyebrow">New / Language research</p>
-            <h2 id="language-research-title">Ideas that begin with a sentence.</h2>
+            <h2 id="language-research-title">Studies grounded in speaker examples.</h2>
             <p>
-              My research articles follow questions I have been working
-              through—from ke and verb endings to the distinction between
-              la and jo, noun plurals, and negation. I keep each explanation
-              tied to the examples I recorded.
+              These articles examine the roles of ke, la and jo, verb endings,
+              noun forms and negation. Each analysis distinguishes attested
+              speaker examples from hypotheses that require further testing.
             </p>
             <Link className="button button--outline" href="/language/articles">
               Browse research articles <span aria-hidden="true">↗</span>
@@ -105,9 +104,9 @@ export default function LanguagePage() {
           </Link>
         </section>
         <p className="language-method-note">
-          <strong>A note on my research:</strong> I document the sentences I know
-          as a native speaker. When an explanation is still a hypothesis, I
-          say so and keep the examples available for further study.
+          <strong>Evidence and method:</strong> Recorded speaker examples and
+          translations are preserved as supplied. Proposed grammatical rules
+          are labeled as interpretations until further evidence supports them.
         </p>
       </div>
     </PublicShell>

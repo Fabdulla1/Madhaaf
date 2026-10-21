@@ -7,12 +7,12 @@ const studies = [
   "wanting-and-experiencers",
   "connecting-kutchi-clauses",
   "la-and-jo-beneficiary-and-possession",
-  "how-negation-works-in-my-kutchi",
+  "negation-in-mombasa-kutchi",
 ] as const;
 
 test("research library displays seven illustrated, navigable studies", async ({ page }) => {
   await page.goto("/language/articles");
-  await expect(page.getByRole("heading", { name: "What the sentences are teaching us." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Research on East African Kutchi." })).toBeVisible();
   const tiles = page.locator(".research-tile");
   await expect(tiles).toHaveCount(7);
   for (const slug of studies) {
@@ -91,13 +91,13 @@ test("Case and syntax papers include three word-order alternatives as analyses, 
       "Constituent order · ",
       "Constituent order · ",
     ]);
-    await expect(page.getByText(/I have not yet tested whether a different position changes the emphasis or topic|I have not yet established whether these alternatives differ in topic/)).toBeVisible();
+    await expect(page.getByText(/Differences in emphasis or topic have not yet been tested|Whether these options differ in topic, focus or emphasis has not yet been established/)).toBeVisible();
   }
 });
 
 test("the new postposition article preserves the beneficiary-versus-possessor contrast", async ({ page }) => {
   await page.goto("/language/articles/la-and-jo-beneficiary-and-possession");
-  await expect(page.getByRole("heading", { level: 1, name: /For him, or his/ })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: /La and jo: Beneficiaries and possession/ })).toBeVisible();
   const exampleText = page.locator(".research-example__sentence");
   await expect(exampleText.filter({ hasText: "Hin la au(n) pe(n)sa kayose" })).toHaveCount(2);
   await expect(exampleText.filter({ hasText: "Hin jo pe(n)sa au(n) kayose" })).toHaveCount(2);
@@ -112,8 +112,8 @@ test("the new postposition article preserves the beneficiary-versus-possessor co
 });
 
 test("the negation article keeps attested contrasts apart from untranslated elicitation examples", async ({ page }) => {
-  await page.goto("/language/articles/how-negation-works-in-my-kutchi");
-  await expect(page.getByRole("heading", { level: 1, name: /Not just one way to say no/ })).toBeVisible();
+  await page.goto("/language/articles/negation-in-mombasa-kutchi");
+  await expect(page.getByRole("heading", { level: 1, name: /Negation in Mombasa Kutchi/ })).toBeVisible();
   const examples = page.locator(".research-example__sentence");
   await expect(examples.filter({ hasText: "Natho sume" })).toHaveCount(1);
   await expect(examples.filter({ hasText: "Nathi sume" })).toHaveCount(1);
@@ -126,7 +126,7 @@ test("the negation article keeps attested contrasts apart from untranslated elic
   await expect(page.getByText("He is not sleeping.", { exact: true })).toHaveCount(0);
   await expect(page.getByText("She is not sleeping.", { exact: true })).toHaveCount(0);
   await expect(page.getByText("He didn't give me money.", { exact: true })).toHaveCount(0);
-  await expect(page.getByText("Editorial correction from the speaker", { exact: true })).toBeVisible();
+  await expect(page.getByText("Correction to the earlier translations", { exact: true })).toBeVisible();
   await expect(examples.filter({ hasText: "Hin ke au(n) pe(n)sa nai dhineese" })).toHaveCount(1);
   await expect(examples.filter({ hasText: "hin ke au(n) pe(n)sa nathi dhya(n)" })).toHaveCount(1);
   await expect(page.locator(".research-example__structure-label").filter({ hasText: "Elicitation context" })).toHaveCount(2);
@@ -141,8 +141,22 @@ test("new papers are featured in the research index, with working routes and met
   const featured = page.locator(".research-index__latest");
   await expect(featured.getByRole("link")).toHaveCount(2);
   await expect(featured.getByRole("link").first()).toHaveAttribute("href", "/language/articles/la-and-jo-beneficiary-and-possession");
-  await expect(featured.getByRole("link").last()).toHaveAttribute("href", "/language/articles/how-negation-works-in-my-kutchi");
+  await expect(featured.getByRole("link").last()).toHaveAttribute("href", "/language/articles/negation-in-mombasa-kutchi");
   await page.goto("/language/grammar");
   await expect(page.getByRole("link", { name: /Read the full research article about la and jo/i })).toHaveAttribute("href", "/language/articles/la-and-jo-beneficiary-and-possession");
-  await expect(page.getByRole("link", { name: /Read my full study of Kutchi negation/i })).toHaveAttribute("href", "/language/articles/how-negation-works-in-my-kutchi");
+  await expect(page.getByRole("link", { name: /Read the Kutchi negation study/i })).toHaveAttribute("href", "/language/articles/negation-in-mombasa-kutchi");
+});
+
+test("published articles use evidence-focused titles and no editorial em dashes", async ({ page }) => {
+  for (const slug of studies) {
+    await page.goto(`/language/articles/${slug}`);
+    const prose = await page.locator(".research-article").innerText();
+    expect(prose).not.toContain("—");
+    expect(prose).not.toMatch(/my Kutchi|my research/i);
+  }
+});
+
+test("legacy personal-voice URL redirects to the research article", async ({ page }) => {
+  await page.goto("/language/articles/how-negation-works-in-my-kutchi");
+  await expect(page).toHaveURL(/\/language\/articles\/negation-in-mombasa-kutchi$/);
 });

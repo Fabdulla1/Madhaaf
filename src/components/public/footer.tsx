@@ -8,8 +8,9 @@ export function PublicFooter() {
         <div>
           <p className="footer-wordmark">Madhaaf</p>
           <p>
-            A developing space for Mombasa Kutchi language, culture, and
-            carefully preserved family memory. Founded by Farhan Abdulla.
+            Academic research and documentation of Mombasa and Ethiopian
+            Kutchi language, cultural history and community records.
+            Founded by Farhan Abdulla.
           </p>
         </div>
         <nav aria-label="Footer navigation">
@@ -23,8 +24,8 @@ export function PublicFooter() {
           <Link href="/family">Family space</Link>
         </nav>
         <p className="footer-note">
-          This archive is growing. Entries and historical material are
-          published only when reviewed.
+          Published records distinguish original sources from interpretations.
+          Research findings remain open to revision.
         </p>
       </div>
       <div className="page-width footer-support">

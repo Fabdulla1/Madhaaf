@@ -11,9 +11,9 @@ export const octoberResearchArticles: ResearchArticle[] = [
     "editorialDate": "2026-10-21",
     "number": "06",
     "subject": "Postpositions and possession",
-    "title": "For him, or his? What la and jo reveal about my Kutchi",
-    "summary": "Two sentences about picking up money helped me separate doing something for someone from handling something that belongs to them.",
-    "introduction": "There are small words in my Kutchi that I have used all my life without needing to explain them. La and jo are two of them. When I translated sentences about money, I realized the difference was not just a choice of English words. In one sentence, I picked up money for a man; in another, I picked up the man's money. I wanted to keep the exact Kutchi sentences next to each other, because this is the kind of distinction that a dictionary—or a future translator—could easily get wrong.",
+    "title": "La and jo: Beneficiaries and possession in Mombasa Kutchi",
+    "summary": "A paired example distinguishes doing something for a person from handling property that belongs to that person.",
+    "introduction": "The recorded sentences distinguish la in a benefactive construction from jo in a possessive construction. One sentence describes picking up money for a man; the other refers to the man's money. The difference matters for grammatical analysis and future dictionary work. The study retains the exact Kutchi forms and translations rather than reducing both particles to one English gloss.",
     "illustration": "/language/research/la-jo-relations.svg",
     "illustrationAlt": "Original abstract editorial artwork with separate connected shapes illustrating a beneficiary relation and a possession relation, using Madhaaf's forest-green and terracotta palette.",
     "wordNotes": [
@@ -75,7 +75,7 @@ export const octoberResearchArticles: ResearchArticle[] = [
         "blocks": [
           {
             "type": "text",
-            "text": "I was asked how I would say ‘I picked up money for him’ and ‘I picked up his money.’ Both are ordinary things I might want to say, but they are not the same situation. Here is how I expressed them:"
+            "text": "The speaker was asked to translate ‘I picked up money for him’ and ‘I picked up his money’. The contexts differ in whether the man benefits from an action or owns the money. The two supplied translations are shown below."
           },
           {
             "type": "examples",
@@ -95,23 +95,23 @@ export const octoberResearchArticles: ResearchArticle[] = [
           },
           {
             "type": "text",
-            "text": "In the first sentence, I am picking up money for him; I have not said the money belongs to him. In the second, I identify the money as his. That distinction is explicit in the English meanings I supplied. It is stronger evidence than simply saying that both la and jo can be translated as ‘for.’"
+            "text": "In the first sentence, the man benefits from the action without any claim that the money belongs to him. The second identifies the money as his. This contrast is supported by the supplied translations, rather than by a general assumption that la and jo both mean ‘for’."
           },
           {
             "type": "finding",
             "strength": "attested",
             "label": "A confirmed semantic contrast",
-            "text": "In this pair, Hin la has a beneficiary reading (‘for him’), while Hin jo modifies pe(n)sa with a possessive reading (‘his money’). The phrases also occur in different positions, so I have not shown that replacing one particle alone—without changing the rest of the construction—would produce a natural sentence."
+            "text": "In this pair, Hin la has a beneficiary reading (‘for him’), while Hin jo modifies pe(n)sa with a possessive reading (‘his money’). Because the phrases also occupy different positions, substituting one particle without changing the rest has not been tested."
           }
         ]
       },
       {
         "id": "la-for-someone-and-something",
-        "title": "La can tell me who benefits—or what something is for",
+        "title": "La and the expression of benefit or purpose",
         "blocks": [
           {
             "type": "text",
-            "text": "With Hin la, I am identifying the person for whom I picked up the money. That makes ‘beneficiary’ a useful grammatical description for this particular use of la. But I have also used la in a phrase about food, where the relationship is closer to purpose, payment, or exchange. I do not want to flatten those readings into a universal definition too early."
+            "text": "Hin la identifies the person for whom the money was picked up. ‘Beneficiary’ is therefore a useful analysis for this context. Other recorded la phrases involve food and may express purpose, payment or exchange. Their exact range of meanings remains to be tested."
           },
           {
             "type": "examples",
@@ -133,13 +133,13 @@ export const octoberResearchArticles: ResearchArticle[] = [
           },
           {
             "type": "text",
-            "text": "The phrase khadho la comes before the main clause in one example. The phrase khade la comes at the end of the second part of my food-and-money story. Because the surrounding sentences are different, I cannot yet claim that la phrases can move freely without affecting meaning. I can say that I have recorded them in more than one position."
+            "text": "Khadho la precedes the main clause in one example; khade la occurs at the end of a later clause in the food-and-money narrative. Since the contexts are different, this does not establish unrestricted movement of la phrases. It only documents the attested positions."
           },
           {
             "type": "finding",
             "strength": "hypothesis",
             "label": "What kind of postposition is la?",
-            "text": "La follows a noun or pronoun phrase in the forms I have supplied. A benefactive or purpose-related postposition is therefore a reasonable working analysis. I still need to test what other kinds of ‘for’ relationships it can express."
+            "text": "In the recorded forms, la follows a noun or pronoun phrase. A benefactive or purpose-related postposition is a plausible working analysis, but further examples are required to establish its distribution."
           }
         ]
       },
@@ -149,7 +149,7 @@ export const octoberResearchArticles: ResearchArticle[] = [
         "blocks": [
           {
             "type": "text",
-            "text": "The other half of my money example uses Hin jo pe(n)sa: his money. That reminds me of an earlier sentence I supplied about my brother’s house. Both involve the identity of the person something belongs to, rather than who benefits from an action."
+            "text": "Hin jo pe(n)sa identifies the owner of the money. The earlier mujo bhaa jo ghar example similarly identifies who owns the house. Neither construction by itself describes the beneficiary of an action."
           },
           {
             "type": "examples",
@@ -177,23 +177,23 @@ export const octoberResearchArticles: ResearchArticle[] = [
           },
           {
             "type": "text",
-            "text": "This is enough for me to describe jo as a possessive or genitive-like element in these examples. I also have mujo and hinjo as written possessive forms. It is still an open question whether Hin jo and Hinjo behave identically in every context. The spaces in the recorded forms are part of the evidence; I will not normalize them into one spelling without checking."
+            "text": "Jo has a possessive or genitive-like function in these examples. The record also includes mujo and hinjo as written possessive forms. It remains unclear whether spaced Hin jo and unspaced Hinjo behave identically. Original spelling is retained pending speaker confirmation."
           },
           {
             "type": "finding",
             "strength": "unresolved",
             "label": "The earlier dictionary gloss ‘for’ still matters",
-            "text": "An earlier word list glossed jo as ‘for’. My new sentence pair specifically contrasts possessive jo with benefactive la; it does not establish that jo never has a ‘for’ reading elsewhere. I need a separate sentence demonstrating any additional function before changing or removing an existing dictionary sense."
+            "text": "An earlier word list glossed jo as ‘for’. The current minimal comparison establishes a possessive reading for jo and a beneficiary reading for la, but does not rule out other uses of jo. Additional attested sentences are needed before revising the earlier dictionary gloss."
           }
         ]
       },
       {
         "id": "food-forms",
-        "title": "Why khadho and khade are both in my notes",
+        "title": "The two attested forms khadho and khade",
         "blocks": [
           {
             "type": "text",
-            "text": "I was asked whether I could say khadho la rather than khade la. My answer was yes. That gives me two approved phrases for ‘for the food’, but it does not explain why the noun has two recorded shapes. I have seen similar questions with chokro/chokre and ghar/ghare(n); these could be related to case or usage, though I have not demonstrated that."
+            "text": "The speaker explicitly accepted both khadho la and khade la for ‘for the food’. The acceptance judgment does not explain the difference between the noun forms. Similar alternations occur with chokro/chokre and ghar/ghare(n), but any connection to case must be tested."
           },
           {
             "type": "examples",
@@ -215,7 +215,7 @@ export const octoberResearchArticles: ResearchArticle[] = [
             "type": "finding",
             "strength": "attested",
             "label": "No obligatory khadho → khade rule",
-            "text": "I accept both khadho la and khade la. I cannot therefore say that la obligatorily turns khadho into khade. Whether the forms differ in emphasis, register, or preferred context remains an open question."
+            "text": "Both khadho la and khade la were accepted by the speaker. It is therefore not justified to claim that la obligatorily changes khadho to khade. Effects of emphasis, context or register remain unresolved."
           }
         ]
       },
@@ -225,7 +225,7 @@ export const octoberResearchArticles: ResearchArticle[] = [
         "blocks": [
           {
             "type": "text",
-            "text": "My earlier example Au(n) hikro maru ke khadho dhinose puts ke after the man who receives the food. In Hin la au(n) pe(n)sa kayose, la describes someone for whom I act. In Hin jo pe(n)sa au(n) kayose, jo links an owner to money. Those roles overlap in everyday stories, but they are not the same grammatical relationship."
+            "text": "In Au(n) hikro maru ke khadho dhinose, ke follows a recipient. In Hin la au(n) pe(n)sa kayose, la identifies a beneficiary. In Hin jo pe(n)sa au(n) kayose, jo marks possession. These functions can overlap in real situations but are grammatically distinct in the recorded examples."
           },
           {
             "type": "table",
@@ -260,13 +260,13 @@ export const octoberResearchArticles: ResearchArticle[] = [
           },
           {
             "type": "text",
-            "text": "For Madhaaf, I want dictionary entries to capture these relationships without replacing them with one-word English equivalents. The sentence a form occurs in is as important as its shortest gloss."
+            "text": "Madhaaf dictionary entries should describe these relations in context, not collapse them into a single English equivalent. Complete example sentences are therefore part of each lexical analysis."
           }
         ]
       },
       {
         "id": "la-jo-next-tests",
-        "title": "The questions I want to answer next",
+        "title": "Questions for further elicitation",
         "blocks": [
           {
             "type": "questions",
@@ -281,31 +281,31 @@ export const octoberResearchArticles: ResearchArticle[] = [
           {
             "type": "finding",
             "strength": "hypothesis",
-            "label": "My working conclusion",
-            "text": "The clearest contrast in my current material is la for a beneficiary and jo for possession. That is a defensible description of these examples, not a finished dictionary of all uses of either word."
+            "label": "Provisional conclusion",
+            "text": "The strongest current contrast is benefactive la versus possessive jo. This conclusion is limited to the documented examples and does not establish all possible functions of either particle."
           }
         ]
       }
     ]
   },
   {
-    "slug": "how-negation-works-in-my-kutchi",
+    "slug": "negation-in-mombasa-kutchi",
     "editorialDate": "2026-10-21",
     "number": "07",
     "subject": "Negation and verb agreement",
-    "title": "Not just one way to say no: How negation works in my Kutchi",
-    "summary": "From natho and nathi to nai, na and nah, my recorded sentences suggest that negation interacts with gender, tense, commands, and even wanting.",
-    "introduction": "I can say ‘He won’t sleep’, ‘He doesn’t give me money’ and ‘He hasn’t given me money’, but my Kutchi does not express all three negatives in the same way. As I documented the language, I started noticing natho, nathi, nathaa, na, nah and nai across different contexts. I first translated Natho sume and Nathi sume as ‘is not sleeping’ in the published notes, but on reviewing my own examples I corrected both to future meanings: ‘won’t sleep’. This study preserves that correction rather than forcing the forms into a simple present-versus-past rule.",
+    "title": "Negation in Mombasa Kutchi: Forms and constructions",
+    "summary": "The recorded forms natho, nathi, nathaa, na, nah and nai suggest interactions between negation, agreement, tense and clause type.",
+    "introduction": "The recorded Mombasa Kutchi examples distinguish several ways of expressing negation, including future refusal to sleep, not giving money, and not yet having given money. An earlier draft incorrectly glossed Natho sume and Nathi sume as ‘is not sleeping’. The native speaker explicitly corrected both to ‘won't sleep’, and also clarified that Hee mukhe pe(n)sa nai dhine means ‘He hasn't given me money’, not a simple past negative. The evidence is analyzed here without imposing one tense meaning on each negative element.",
     "illustration": "/language/research/negation-patterns.svg",
     "illustrationAlt": "Original abstract editorial illustration of alternating light and dark circular forms connected by six paths, suggesting contrasting grammatical negative constructions.",
     "wordNotes": [
       {
         "word": "natho",
-        "meaning": "Negative element attested in a masculine ‘won’t sleep’ sentence and other present negative constructions, including giving and desire; meaning depends on construction."
+        "meaning": "Negative element in the confirmed ‘He won't sleep’ example, present negative giving, and other attested constructions. Not exclusively present or future."
       },
       {
         "word": "nathi",
-        "meaning": "Negative element attested in ‘She won’t sleep’ and a separate feminine-context giving elicitation; not exclusively present or future."
+        "meaning": "Negative element in ‘She won't sleep’ and in another feminine-context negative-giving elicitation. Agreement behavior is still under investigation."
       },
       {
         "word": "nathaa",
@@ -321,11 +321,11 @@ export const octoberResearchArticles: ResearchArticle[] = [
       },
       {
         "word": "nai",
-        "meaning": "Negative element attested in ‘He hasn’t given me money’ and ‘there is no food’, among other contexts; not exclusively simple past or existential."
+        "meaning": "Negative in ‘He hasn't given me money’ and ‘there is no food’, plus an earlier permission example; not exclusively past or existential."
       },
       {
         "word": "sum",
-        "meaning": "Sleep; compare sume in the speaker-confirmed ‘won’t sleep’ examples."
+        "meaning": "Sleep; compare sume in the speaker-confirmed future-meaning negative sentences."
       },
       {
         "word": "mukhe",
@@ -371,53 +371,53 @@ export const octoberResearchArticles: ResearchArticle[] = [
     "sections": [
       {
         "id": "negative-gender",
-        "title": "Natho and nathi: a correction about future sleeping",
+        "title": "Natho and nathi in confirmed future-meaning sleep clauses",
         "blocks": [
           {
             "type": "text",
-            "text": "When I reviewed two negative sentences involving sleep, I corrected an earlier translation mistake. Natho sume does not mean ‘He is not sleeping’ in my intended example; it means ‘He won’t sleep’. Nathi sume similarly means ‘She won’t sleep’. I want the correction displayed openly so the grammar and dictionary do not continue repeating the older glosses."
+            "text": "The native speaker corrected the earlier glosses of Natho sume and Nathi sume. In the contexts supplied, these sentences mean ‘He won't sleep’ and ‘She won't sleep’, rather than ‘He is not sleeping’ and ‘She is not sleeping’. The forms still show a masculine/feminine contrast, but the future interpretation must be recorded at the construction level."
           },
           {
             "type": "examples",
-            "label": "Future readings confirmed by the native speaker",
+            "label": "Future-meaning sleeping negatives confirmed by the speaker",
             "items": [
               {
                 "kutchi": "Natho sume",
                 "english": "He won't sleep.",
-                "context": "Masculine · future meaning confirmed"
+                "context": "Masculine subject; future meaning confirmed"
               },
               {
                 "kutchi": "Nathi sume",
                 "english": "She won't sleep.",
-                "context": "Feminine · future meaning confirmed"
+                "context": "Feminine subject; future meaning confirmed"
               }
             ]
           },
           {
             "type": "text",
-            "text": "The negative forms differ between the masculine and feminine subjects, while sume stays the same. That supports a gender contrast for these particular future-meaning expressions. But I also supplied natho dye for ‘doesn’t give’, a present interpretation, so I cannot claim that natho or nathi by itself always expresses future time. The verb and whole construction matter."
+            "text": "The negative element changes between natho and nathi while sume remains unchanged. This may indicate agreement expressed by the negative construction. However, natho also occurs in Hee mukhe pe(n)sa natho dye with a present negative reading, so neither natho nor nathi can be assigned an exclusively future meaning on this evidence."
           },
           {
             "type": "finding",
             "strength": "hypothesis",
             "label": "Agreement on the negative element",
-            "text": "Natho and nathi contrast in the speaker-confirmed ‘won’t sleep’ sentences. They may show agreement, but I have not yet established the morpheme boundaries, whether the future interpretation comes from the negative or verb construction, or whether this agreement works the same way with other verbs."
+            "text": "The recorded masculine and feminine future-meaning sleeping clauses support a gender distinction in this construction. Whether the negative form itself carries future reference, and how these forms behave across other persons or verbs, remains to be tested."
           },
           {
             "type": "finding",
             "strength": "attested",
-            "label": "Editorial correction from the speaker",
-            "text": "The earlier published translations ‘He is not sleeping’ and ‘She is not sleeping’ for Natho sume and Nathi sume have been superseded. Their confirmed translations are ‘He won’t sleep’ and ‘She won’t sleep’. Do not change the Kutchi spellings."
+            "label": "Correction to the earlier translations",
+            "text": "The native speaker explicitly rejected the earlier progressive readings of Natho sume and Nathi sume and confirmed ‘He won't sleep’ and ‘She won't sleep’. The Kutchi forms are unchanged; only their translations and grammatical commentary are corrected."
           }
         ]
       },
       {
         "id": "giving-time",
-        "title": "He doesn't give vs he hasn't given: a useful contrast",
+        "title": "Present negative giving and ‘hasn't given’",
         "blocks": [
           {
             "type": "text",
-            "text": "In my money-giving examples, the subject, recipient and money stay the same, but the negative construction changes. One sentence means ‘He doesn’t give me money’. I corrected the second translation: it means ‘He hasn’t given me money’, not simply ‘He didn’t give me money’. Both the negative element and the giving form differ."
+            "text": "The same subject, recipient, and money appear in both giving examples, but their supplied English interpretations differ. Hee mukhe pe(n)sa natho dye means ‘He doesn't give me money’. The speaker corrected Hee mukhe pe(n)sa nai dhine to ‘He hasn't given me money’, not ‘He didn't give me money’. The negative element and giving verb both change."
           },
           {
             "type": "examples",
@@ -431,7 +431,7 @@ export const octoberResearchArticles: ResearchArticle[] = [
               {
                 "kutchi": "Hee mukhe pe(n)sa nai dhine",
                 "english": "He hasn't given me money.",
-                "context": "Speaker-corrected ‘hasn’t given’ reading"
+                "context": "Confirmed ‘hasn't given’ interpretation"
               }
             ]
           },
@@ -439,8 +439,8 @@ export const octoberResearchArticles: ResearchArticle[] = [
             "type": "table",
             "headers": [
               "Element",
-              "He doesn't give",
-              "He hasn't given"
+              "Doesn't give",
+              "Hasn't given"
             ],
             "rows": [
               [
@@ -469,25 +469,25 @@ export const octoberResearchArticles: ResearchArticle[] = [
                 "dhine"
               ]
             ],
-            "caption": "The negative element and the giving form change together. The English meanings are speaker-confirmed, but the Kutchi morphology of completion or current relevance is not yet independently analyzed."
+            "caption": "Both the negative element and the form of ‘give’ change. The corrected English translations are speaker confirmed; the exact morphological source of the completed or currently relevant reading is not established."
           },
           {
             "type": "text",
-            "text": "I cannot tell from this pair which part independently conveys the ‘hasn’t given’ meaning: both natho → nai and dye → dhine change. I should not treat nai as a universal past marker or automatically label dhine a perfect suffix. These are attested constructions to compare with other verbs and contexts."
+            "text": "This pair does not demonstrate that nai alone marks the English present perfect. The forms natho and nai differ, as do dye and dhine. It would be premature to derive a universal tense-aspect or agreement rule from this one contrast."
           }
         ]
       },
       {
         "id": "female-elicitation",
-        "title": "Why I am not assigning every role in the feminine examples yet",
+        "title": "Unresolved participant roles in the feminine-subject examples",
         "blocks": [
           {
             "type": "text",
-            "text": "I was also asked for present and past negative giving sentences with a female giver. I gave the following forms. They are useful evidence for the negative words and giving morphology, but I need to check who is giving and receiving the money before I label the agreement conclusively. Both hin ke and au(n) occur in the sentences, and my other notes give those expressions different grammatical functions in other contexts."
+            "text": "The speaker also supplied present and past negative giving sentences in response to a prompt about a female giver. The exact grammatical roles of hin ke and au(n) were not independently confirmed for these sentences. This limits any analysis of feminine agreement; the forms are published without an invented parsing."
           },
           {
             "type": "examples",
-            "label": "Exact forms from feminine-subject elicitation — not independent English translations",
+            "label": "Exact forms from feminine-subject elicitation ,  not independent English translations",
             "items": [
               {
                 "kutchi": "Hin ke au(n) pe(n)sa nai dhineese",
@@ -507,17 +507,17 @@ export const octoberResearchArticles: ResearchArticle[] = [
             "type": "finding",
             "strength": "unresolved",
             "label": "Agreement needs its grammatical controller",
-            "text": "I know which tense I intended in these answers. I have not explicitly confirmed in these precise sentences who gives and who receives the money. Until I do, I cannot claim that dhineese or dhya(n) has a particular feminine suffix or that hin ke is the subject."
+            "text": "The speaker identified the intended tense in each response but did not separately confirm who gave and who received money in these exact sentences. Neither dhineese nor dhya(n) can therefore be assigned a feminine suffix on this evidence alone, nor can hin ke be labeled the subject."
           }
         ]
       },
       {
         "id": "negative-commands-and-future",
-        "title": "Nah with commands—and with future meaning",
+        "title": "Nah in prohibitions and future contexts",
         "blocks": [
           {
             "type": "text",
-            "text": "Some of my clearest prohibitions use nah before the command form. But I have also supplied nah with a future-tense form. That makes it important not to describe nah as exclusively an imperative marker."
+            "text": "Nah appears before commands in several attested prohibitions and also appears with a future-tense form. It should not be described as an exclusively imperative marker."
           },
           {
             "type": "examples",
@@ -549,17 +549,17 @@ export const octoberResearchArticles: ResearchArticle[] = [
             "type": "finding",
             "strength": "attested",
             "label": "An observed, not universal, command pattern",
-            "text": "The recorded command examples have nah before sum, vin and kar. The earlier future example Nah vendhose shows another environment. I still need plural, polite and other future negative forms before claiming a complete rule."
+            "text": "The prohibitions include nah before sum, vin and kar. The earlier Nah vendhose example supplies another environment. Plural, polite and additional future-negative forms remain to be tested."
           }
         ]
       },
       {
         "id": "na-and-nai",
-        "title": "Nai across ‘hasn't given’, absence and denied permission",
+        "title": "Nai: completed giving, absence, and permission",
         "blocks": [
           {
             "type": "text",
-            "text": "My recorded ‘we did not go yesterday’ uses na. My sentence ‘there is no food’ uses nai. And I now confirm that Hee mukhe pe(n)sa nai dhine means ‘He hasn’t given me money’. All three differ in their English time reference or meaning. I do not want to reduce them to one uniform English ‘not’ or teach nai as a simple past negative."
+            "text": "The examples include na in ‘We did not go yesterday’, nai in a sentence meaning ‘there is no food’, and nai dhine in a sentence now confirmed as ‘He hasn't given me money’. Those meanings are not interchangeable. The present evidence does not justify treating nai as an exclusively past-tense or exclusively existential negative."
           },
           {
             "type": "examples",
@@ -584,23 +584,23 @@ export const octoberResearchArticles: ResearchArticle[] = [
           },
           {
             "type": "text",
-            "text": "In the father's-permission sentence, nai dhine occurs where I translated the reason as ‘has not allowed me’. That is compatible with the corrected ‘hasn’t given’ reading, but I still need controlled pairs to determine the role of nai and the giving form in the interpretation."
+            "text": "Nai dhine also appears in the explanation of why permission was not given by a father. That is compatible with the corrected ‘hasn't given’ sentence, but it does not independently isolate the contribution of nai, dhine, or their combination."
           },
           {
             "type": "finding",
             "strength": "unresolved",
-            "label": "Two easy conclusions I want to avoid",
-            "text": "Nai is attested in ‘He hasn’t given me money’, ‘there is no food’, and a sentence about permission not being given. It is therefore not supported as exclusively a simple past marker or exclusively an existential negative. Na appears in a past negative, but I have not tested enough examples to restrict it to past time."
+            "label": "Generalizations not supported by the data",
+            "text": "Nai appears in negative existence, not-yet-given money, and permission not granted. Na is recorded in a different past negative. A fuller distributional and aspectual analysis requires matched contexts across more verbs and persons."
           }
         ]
       },
       {
         "id": "not-wanting",
-        "title": "When the thing I want is negated",
+        "title": "Negation in desire constructions",
         "blocks": [
           {
             "type": "text",
-            "text": "Negation also matters in the sentences where someone wants something. I have recorded the singular desired item paani (‘water’) with natho, and several desired things with nathaa. That raises a further question about agreement: what grammatical relationship controls the negative form when the person wanting is expressed with mukhe or hin ke?"
+            "text": "Desire constructions with a singular desired item paani (‘water’) use natho, while recorded examples with several desired things use nathaa. This raises the question of which grammatical element controls agreement when the experiencer is expressed by mukhe or hin ke."
           },
           {
             "type": "examples",
@@ -627,13 +627,13 @@ export const octoberResearchArticles: ResearchArticle[] = [
           },
           {
             "type": "text",
-            "text": "The negative example with plural cheejeu(n) has nathaa, but I still need feminine desired items and other plural clauses to find out whether the negative agrees with what is wanted, who wants it, or another grammatical feature. The water negative puts paani before the experiencer, whereas the affirmative example puts mukhe first. I have not held all other factors constant, so I cannot say negation itself requires that change in word order."
+            "text": "The plural cheejeu(n) example contains nathaa. Feminine desired nouns and more plural clauses are needed to determine which argument controls the form. The negative paani construction places water before the experiencer, unlike the affirmative example. Since other variables were not held constant, negation cannot yet be identified as the cause of the word-order difference."
           }
         ]
       },
       {
         "id": "negative-inventory",
-        "title": "Six forms in my notebook, not one finished paradigm",
+        "title": "Recorded negatives without a complete paradigm",
         "blocks": [
           {
             "type": "table",
@@ -645,12 +645,12 @@ export const octoberResearchArticles: ResearchArticle[] = [
             "rows": [
               [
                 "natho",
-                "‘He won’t sleep’; present negative giving; negative desire",
+                "‘He won't sleep’; present negative giving; negative desire",
                 "Full agreement system and distribution"
               ],
               [
                 "nathi",
-                "‘She won’t sleep’; present-negative feminine elicitation",
+                "‘She won't sleep’; feminine-context negative giving elicitation",
                 "Which participant controls agreement in giving"
               ],
               [
@@ -670,7 +670,7 @@ export const octoberResearchArticles: ResearchArticle[] = [
               ],
               [
                 "nai",
-                "‘There is no food’; ‘hasn’t given’ money; permission not given",
+                "‘There is no food’; ‘hasn't given’ money; denied permission",
                 "Whether one or several constructions are involved"
               ]
             ],
@@ -678,14 +678,14 @@ export const octoberResearchArticles: ResearchArticle[] = [
           },
           {
             "type": "text",
-            "text": "I want this article to help anyone reading Madhaaf understand why I am saving full sentences, not just a dictionary entry for ‘not’. A sentence lets me see which negative form occurs with which verb, subject, time reference and kind of meaning. The rules are only as reliable as the comparisons that support them."
+            "text": "Full sentences are necessary for analysing negation because a single gloss for ‘not’ does not show which form occurs with a particular verb, tense, argument or clause type. General rules must remain proportional to the available evidence."
           },
           {
             "type": "questions",
             "items": [
               "In Hin ke au(n) pe(n)sa nai dhineese, exactly who is giving the money, and who is receiving it?",
               "How does a plural person, rather than a plural desired object, affect natho/nathi/nathaa?",
-              "Can nai combine with verbs other than de with a ‘has not …’ interpretation? How is this distinct from an ordinary past negative?",
+              "Can nai combine with other verbs in a ‘has not’ interpretation, and what distinguishes this from a simple past negative?",
               "Can I change the order of a negative sentence without changing the meaning or emphasis?",
               "How do I negate future clauses with feminine and plural subjects?"
             ]
@@ -693,8 +693,8 @@ export const octoberResearchArticles: ResearchArticle[] = [
           {
             "type": "finding",
             "strength": "hypothesis",
-            "label": "My working conclusion",
-            "text": "Kutchi negation is sensitive to grammatical context: the negative element and the shape of the verb can both vary. I have not yet demonstrated a single underlying rule that predicts every negative sentence."
+            "label": "Provisional conclusion",
+            "text": "Negative forms and accompanying verbs vary by grammatical context. The evidence does not yet establish a single rule that predicts every attested negative sentence."
           }
         ]
       }

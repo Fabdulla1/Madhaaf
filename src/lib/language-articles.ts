@@ -41,8 +41,8 @@ export const researchArticles: ResearchArticle[] = [
     number: "01",
     subject: "Case and argument structure",
     title: "What does ke mark? Following a particle through Kutchi sentences",
-    summary: "I started with a question I could not answer simply: why do I say ke after some words but not others? These contrasts are my first attempt to work it out.",
-    introduction: "I grew up using ke without having to stop and explain it. Once I started writing down Kutchi sentences for Madhaaf, that little word became one of the hardest things to describe. Sometimes it follows the thing I am doing something to. Sometimes it comes after the person receiving something, or the person who wants it. And sometimes, removing it means I have to change another word as well. I wanted to put those observations side by side instead of pretending they amount to one finished rule.",
+    summary: "The uses of ke vary across object, recipient and experiencer constructions. This study compares the recorded forms and identifies questions that need further testing.",
+    introduction: "The particle ke appears in several environments in the recorded Mombasa Kutchi sentences. It can follow an object, a recipient or a person expressing desire. In some examples, removing ke requires a change elsewhere in the phrase. The study sets these contrasts side by side without assuming that one rule accounts for all of them.",
     illustration: "/language/research/ke-relations.svg",
     illustrationAlt: "Abstract editorial illustration of several lines linking separate circular forms, representing grammatical relationships.",
     wordNotes: [
@@ -61,13 +61,13 @@ export const researchArticles: ResearchArticle[] = [
         id: "a-paired-test",
         title: "The paired sentence that changed the analysis",
         blocks: [
-          { type: "text", text: "I began with two sentences that I would both translate as ‘I am seeing this boy.’ They helped me notice that the difference is not just whether ke is present. The word for ‘this’ changes too. That is why I want to keep both complete sentences in the record." },
+          { type: "text", text: "Two sentences translated as ‘I am seeing this boy’ differ in more than the presence of ke. The demonstrative changes as well. Both complete sentences must therefore be considered in the analysis." },
           { type: "examples", label: "Two acceptable constructions", items: [
             { kutchi: "Au(n) hin chokro ke disa(n)tho", english: "I am seeing this boy.", context: "With hin … ke" },
             { kutchi: "Au(n) hee chokro disa(n)tho", english: "I am seeing this boy.", context: "With hee and without ke" },
           ] },
-          { type: "finding", strength: "attested", label: "Speaker judgment", text: "When I remove ke in this example, I also have to change hin to hee. That is my grammaticality judgment. I suspect the two forms belong to different grammatical environments, perhaps something like direct and oblique forms, but I cannot confirm that from this contrast alone." },
-          { type: "text", text: "I want a future Madhaaf translator to learn this exact lesson: words cannot always be translated or deleted one at a time. It will need to recognize a whole construction and the changes that go with it." },
+          { type: "finding", strength: "attested", label: "Speaker judgment", text: "The speaker judged that removing ke from this example requires changing hin to hee. This is an attested grammaticality judgment. A direct-versus-oblique distinction is a possible explanation, but it has not been established by this pair alone." },
+          { type: "text", text: "These examples also matter for future translation tools. Treating each word as independently replaceable may obscure grammatical relationships expressed by the whole construction." },
         ],
       },
       {
@@ -80,8 +80,8 @@ export const researchArticles: ResearchArticle[] = [
             { kutchi: "Au(n) hin kadho ke kya(n)tho", english: "I am eating this food.", context: "Demonstrative-marked food object" },
             { kutchi: "Au(n) paani ke kana(n)tho", english: "I am taking water.", context: "Taking water" },
           ] },
-          { type: "text", text: "I also tried other verbs. When I talk about throwing food or water, I can leave ke out. When I talk about taking water, leaving it out changes the sense for me—closer to taking something like medicine. I am recording those differences as judgments about these specific sentences, not as a rule for every use of ke." },
-          { type: "finding", strength: "unresolved", label: "An open distribution", text: "I have not yet isolated the cause of the alternation. It may involve the verb, the noun's specificity, the demonstrative, or the meaning I intend. I need more controlled pairs before I can say whether this is general object marking or a property of certain constructions." },
+          { type: "text", text: "Additional verb comparisons show that ke can be omitted when throwing food or water. Omitting it when taking water, however, was reported to change the intended sense toward something like taking medicine. These judgments apply to the recorded sentences; they do not yet establish a universal rule." },
+          { type: "finding", strength: "unresolved", label: "An open distribution", text: "The cause of this alternation is unresolved. Relevant factors may include the verb, specificity, the demonstrative or intended meaning. Controlled minimal pairs are needed to test an object-marking analysis." },
         ],
       },
       {
@@ -94,8 +94,8 @@ export const researchArticles: ResearchArticle[] = [
             { kutchi: "Hin ke paani kapetho", english: "She wants water.", context: "ke accompanies the experiencer" },
             { kutchi: "Mukhe paani kapetho", english: "I want water.", context: "mukhe expresses the experiencer" },
           ] },
-          { type: "text", text: "In my example about giving water to a boy, the boy receives the water. In my example about wanting water, the person experiences the wanting. Both can appear with ke, although they are different grammatical relationships. That is why I currently describe ke as case-like, with possible object, recipient and experiencer uses." },
-          { type: "text", text: "The similarity between hin ke and mukhe caught my attention as well. I know I use mukhe when I say ‘I want water’ or ‘the boy gave me water.’ I am not yet ready to claim where one part of that word ends and another begins." },
+          { type: "text", text: "In the giving example, ke accompanies the recipient; in the wanting example, it accompanies the experiencer. These are different grammatical relationships. A case-like analysis with possible object, recipient and experiencer functions is plausible but provisional." },
+          { type: "text", text: "The forms hin ke and mukhe may be related. Mukhe appears in the attested ‘I want water’ and ‘the boy gave me water’ constructions. Its internal morphological structure has not yet been established." },
         ],
       },
       {
@@ -106,28 +106,28 @@ export const researchArticles: ResearchArticle[] = [
             { kutchi: "chokre ke kapetho", english: "The boy wants it." },
             { kutchi: "chokro ke kapetho", english: "The boy wants it." },
           ] },
-          { type: "text", text: "I can say both chokre ke kapetho and chokro ke kapetho for ‘the boy wants it.’ Neither needs to be corrected into the other on the evidence I have. I want to find out whether families, contexts or emphasis explain the variation." },
-          { type: "finding", strength: "hypothesis", label: "A possible second ke", text: "Another sentence complicates the picture: Mukhe kapetho ke hee chokri hadaa ache, ‘I want this girl to come here.’ Here I may be using ke to connect the wanting to an entire event. That looks different from ke after a boy who receives water, so I am keeping the proposed clause-linking use separate." },
+          { type: "text", text: "Both chokre ke kapetho and chokro ke kapetho were accepted for ‘the boy wants it’. Neither should be normalized away. Further elicitation can test whether context, emphasis or speaker variation explains the difference." },
+          { type: "finding", strength: "hypothesis", label: "A possible second ke", text: "The sentence Mukhe kapetho ke hee chokri hadaa ache, ‘I want this girl to come here’, introduces a possible clause-linking use of ke. That analysis is kept separate from recipient marking until additional clauses are tested." },
         ],
       },
       {
         id: "order-with-ke",
         title: "A ke-marked phrase can appear in more than one position",
         blocks: [
-          { type: "text", text: "Another correction emerged when I moved the parts of a sentence with chad (‘let go / leave alone’) around. I can put the subject first, the verb first, or the ke-marked phrase first. These are three arrangements I supplied for the same intended construction. I have not yet tested whether a different position changes the emphasis or topic. The labels below describe word order only; they are not separate English translations." },
-          { type: "examples", label: "Three accepted arrangements — constituent-order labels, not translations", items: [
+          { type: "text", text: "The speaker supplied three accepted arrangements of a construction containing chad (‘let go / leave alone’). The subject, verb and ke-marked phrase appear in different orders. Differences in emphasis or topic have not yet been tested. The labels below identify structure, not separate English translations." },
+          { type: "examples", label: "Three accepted arrangements ,  constituent-order labels, not translations", items: [
             { kutchi: "Au(n) chada(n)tho hin ke", english: "Subject → Verb → ke-marked phrase", captionKind: "structure" },
             { kutchi: "Chada(n)tho au(n) hin ke", english: "Verb → Subject → ke-marked phrase", captionKind: "structure" },
             { kutchi: "hin ke au(n) chada(n)tho", english: "ke-marked phrase → Subject → Verb", captionKind: "structure" },
           ] },
-          { type: "finding", strength: "attested", label: "A word-order correction", text: "I previously described Kutchi as tending to put verbs last. This was too broad. In my chad examples the verb occurs at the start, in the middle and at the end. This establishes flexibility in this construction, but not that every possible order works with every verb." },
+          { type: "finding", strength: "attested", label: "A word-order correction", text: "An earlier analysis treated Kutchi verbs as tending to appear last. The recorded chad examples establish that verb-final order is not obligatory in this construction. They do not establish that every verb permits the same options." },
         ],
       },
       {
         id: "research-agenda",
-        title: "What the evidence permits—and what it doesn't",
+        title: "What the evidence permits, and what it doesn't",
         blocks: [
-          { type: "text", text: "What I can publish confidently today is the set of forms and the contrasts I have tested. I cannot yet publish a single universal definition of ke. I would rather leave that question open than teach a tidy rule that my own speech contradicts." },
+          { type: "text", text: "The recorded forms and their confirmed contrasts can be published as evidence. A universal account of ke cannot yet be supported. Open questions should remain explicit rather than being replaced by an untested rule." },
           { type: "questions", items: [
             "Compare hee and hin with the same noun across subject, object, and postpositional positions.",
             "Repeat omission judgments across eat, throw, take, see, and give, holding the noun phrase constant.",
@@ -146,8 +146,8 @@ export const researchArticles: ResearchArticle[] = [
     number: "02",
     subject: "Verb morphology",
     title: "One action, many forms: agreement and time in Mombasa Kutchi",
-    summary: "I compared eight verbs I use in ordinary speech and began to see recurring patterns for person, gender and number—along with some surprises in past forms and negation.",
-    introduction: "The first time I laid out the forms of kar (‘do’) and kan (‘take’) in a table, I could see how much grammar I had always been using without naming it. I say different forms depending on whether I am speaking as a man or a woman, addressing someone, or talking about a group. I then tried the same exercise with six more verbs. What follows is my notebook of those comparisons, including the places where I am still unsure how to divide a verb into smaller parts.",
+    summary: "Eight verb paradigms suggest recurring distinctions in person, gender and number. Past forms and negative constructions also reveal unresolved patterns.",
+    introduction: "This study compares forms of kar (‘do’), kan (‘take’) and six other verbs across recorded subjects. Several forms suggest agreement for person, gender and number, while some past forms show changes beyond a single suffix. The tables retain complete speaker-attested forms because their internal segmentation remains under study.",
     illustration: "/language/research/verb-patterns.svg",
     illustrationAlt: "Abstract editorial illustration of repeating arcs diverging into different paths, representing related verb forms.",
     wordNotes: [
@@ -165,7 +165,7 @@ export const researchArticles: ResearchArticle[] = [
         id: "present-pattern",
         title: "Person, gender and number in the present",
         blocks: [
-          { type: "text", text: "I find kan (‘take’) particularly useful because I can compare the same action across speakers and subjects. I recorded masculine and feminine singular forms, changes with first, second and third person, and plural forms. When I repeat the exercise with other verbs, I hear a similar pattern, even where the stem itself shifts." },
+          { type: "text", text: "The verb kan (‘take’) provides comparable forms across subjects. The elicitation records masculine and feminine singular forms, person differences and plural forms. Similar patterns appear with other verbs, even where the stem itself varies." },
           { type: "table", headers: ["Subject", "Attested form of kan", "Reading"], rows: [
             ["I · masculine", "kana(n)tho", "I am taking"],
             ["I · feminine", "kana(n)thi", "I am taking"],
@@ -176,8 +176,8 @@ export const researchArticles: ResearchArticle[] = [
             ["We", "kano(n)thaa", "We are taking"],
             ["They", "kane(n)thaa", "They are taking"],
           ], caption: "Complete forms are speaker-attested; the boundaries between stem and ending have not been proven." },
-          { type: "text", text: "When I compare kara(n)tho with kana(n)tho, or suma(n)thi with kana(n)thi, the resemblance is hard to miss. I take that as good evidence that the forms show agreement. I have not yet established which pieces are independent grammatical endings, so I am keeping the full words in the table." },
-          { type: "finding", strength: "attested", label: "Orthographic convention", text: "I use (n) when a written n comes immediately before th in these documented forms—for example kara(n)tho, kane(n)thi and sume(n)thaa. This is part of the working spelling system I am developing for Madhaaf, not a claim that the sound must always be optional." },
+          { type: "text", text: "Forms such as kara(n)tho and kana(n)tho, or suma(n)thi and kana(n)thi, suggest recurring agreement patterns. Their internal divisions between stem and ending remain unconfirmed, so full recorded words are given in the table." },
+          { type: "finding", strength: "attested", label: "Orthographic convention", text: "The working spelling convention uses (n) where a written n immediately precedes th, as in kara(n)tho, kane(n)thi and sume(n)thaa. This is a transcription decision, not evidence that the sound is necessarily optional." },
         ],
       },
       {
@@ -190,7 +190,7 @@ export const researchArticles: ResearchArticle[] = [
             { kutchi: "au(n) vina(n)tho", english: "I am going.", context: "Ongoing action" },
             { kutchi: "au(n) haroj vina(n)tho", english: "I go every day.", context: "Habitual action" },
           ] },
-          { type: "text", text: "One surprise was that I could use the same present form for an action happening now and a regular habit. Haroj means ‘every day’ in my examples, and adding it can change how the sentence is understood without changing the verb. So I no longer want to label these endings ‘progressive only.’" },
+          { type: "text", text: "The same recorded present form can express an ongoing action or a regular habit. Haroj (‘every day’) changes the time interpretation without changing the verb. These endings should not yet be described as exclusively progressive." },
         ],
       },
       {
@@ -203,7 +203,7 @@ export const researchArticles: ResearchArticle[] = [
             { kutchi: "paa(n) kaal oosyasee", english: "We went yesterday." },
             { kutchi: "hinee kaal suthyaa", english: "They slept yesterday." },
           ] },
-          { type: "text", text: "Some past forms deserve their own chapter. For vin (‘go’) I supplied vina(n)tho in the present and oosyose for a masculine first-person past. For sum (‘sleep’), suma(n)tho contrasts with suthose. I cannot generate a trustworthy past form just by adding one suffix; I need to study these stem changes and past agreement separately." },
+          { type: "text", text: "The past forms require separate analysis. Vin (‘go’) has vina(n)tho in the present and oosyose in one masculine first-person past context; sum (‘sleep’) has suma(n)tho and suthose. These contrasts cannot be explained by attaching a single suffix without additional evidence." },
         ],
       },
       {
@@ -218,15 +218,15 @@ export const researchArticles: ResearchArticle[] = [
             { kutchi: "Paa(n) kaal na oosyasee", english: "We did not go yesterday." },
             { kutchi: "Nah sum!", english: "Don't sleep!" },
           ] },
-          { type: "text", text: "Many of my first-person future examples share -dhose, but my translation of ‘she will go home tomorrow’ contains vendhee. I therefore cannot assume the first-person future form works for every subject. The negative sentences add another layer: natho and nathi contrast in the sleeping examples, na appears in a past clause, and nah is used in commands." },
-          { type: "finding", strength: "hypothesis", label: "Where agreement lives", text: "I noticed that the main verb stays sume in both Natho sume and Nathi sume. Perhaps part of the grammatical agreement has shifted onto a negative auxiliary. That is an idea worth testing with more verbs and plural subjects, not yet a rule I am prepared to teach." },
+          { type: "text", text: "Several first-person future forms contain -dhose, but ‘she will go home tomorrow’ was translated with vendhee. The first-person pattern cannot yet be generalized to every subject. The negative examples also show distinct natho, nathi, na and nah environments." },
+          { type: "finding", strength: "hypothesis", label: "Where agreement lives", text: "The lexical verb sume is unchanged in Natho sume and Nathi sume. Agreement may therefore be carried partly by a negative auxiliary. This is a hypothesis to test with additional verbs and plural subjects." },
         ],
       },
       {
         id: "next-tests",
         title: "Before building a general conjugation engine",
         blocks: [
-          { type: "text", text: "For me, these tables are a starting point for preserving speech, not a machine that can produce every Kutchi verb. I want to repeat the comparisons, check them with other speakers, and keep the unusual forms visible instead of forcing them to fit the neatest pattern." },
+          { type: "text", text: "The verb tables record attested forms rather than providing a productive conjugation engine. Repeated elicitation with other speakers is needed before the patterns can be generalized, particularly where stem changes are irregular." },
           { type: "questions", items: [
             "Test feminine and plural future forms for the same three verbs.",
             "Compare ordinary present negatives against affirmative verbs in every person.",
@@ -243,8 +243,8 @@ export const researchArticles: ResearchArticle[] = [
     number: "03",
     subject: "Nouns and reference",
     title: "From chokro to chokra: number, gender and distance",
-    summary: "I looked closely at how we say boys, girls, houses and things, and found that plurals and describing words are not as uniform as a simple chart might suggest.",
-    introduction: "I thought plural nouns might be one of the easier parts of this project. Chokro becomes chokra, which is simple enough to put in a table. Then I tried other nouns. I heard chokri alongside chokreu(n), while ghar stayed ghar in one sentence but appeared as ghare(n) in another. The words for ‘big’, ‘this’ and ‘those’ changed around them too. This article is my attempt to keep those differences together, without inventing a single plural rule for the whole language.",
+    summary: "Plural nouns and descriptive words show variation by number, gender and grammatical context. The available evidence does not yet support a single plural rule.",
+    introduction: "The examples include chokro and chokra, chokri and chokreu(n), and both ghar and ghare(n) in different constructions. Demonstratives and adjectives also vary alongside these nouns. The study compares the forms without treating one observed alternation as a rule for the language as a whole.",
     illustration: "/language/research/noun-relations.svg",
     illustrationAlt: "Abstract editorial illustration of one large shape mirrored by several smaller shapes, representing singular and plural contrasts.",
     wordNotes: [
@@ -276,7 +276,7 @@ export const researchArticles: ResearchArticle[] = [
             { kutchi: "Chokri sumethi", english: "The girl is sleeping." },
             { kutchi: "Chokreu(n) sume(n)thaa", english: "The girls are sleeping." },
           ] },
-          { type: "text", text: "In the examples I gave, chokro pairs with chokra and chokri with chokreu(n). The verb also changes: the sentences about one boy or girl use different singular forms, while the sentences about groups share sume(n)thaa. I see a pattern, but I want to test many more nouns before calling it a complete declension." },
+          { type: "text", text: "The recorded pairs include chokro with chokra and chokri with chokreu(n). The accompanying verbs also differ between singular and plural subjects. These examples suggest a number pattern but are insufficient for a complete declension." },
         ],
       },
       {
@@ -289,8 +289,8 @@ export const researchArticles: ResearchArticle[] = [
             { kutchi: "itra mere ghar i(n)ye", english: "There are so many houses." },
             { kutchi: "hinee marue(n) me", english: "In these people/men.", context: "Speaker's supplied gloss" },
           ] },
-          { type: "text", text: "I also said Hinee ghare(n) me for ‘in these houses,’ but Hinee ghar vadaa i(n)ye for ‘these houses are big.’ I cannot honestly describe ghare(n) as just ‘the plural’ when ghar appears in another plural sentence. Something about the surrounding construction seems to matter." },
-          { type: "finding", strength: "hypothesis", label: "Number versus case", text: "My current guess is that -e(n) can appear in a form used before me (‘in’), perhaps an oblique or case-conditioned form. I still need the same noun tested in subject, object and location phrases before I can settle that explanation." },
+          { type: "text", text: "Hinee ghare(n) me was supplied for ‘in these houses’, while Hinee ghar vadaa i(n)ye was supplied for ‘these houses are big’. Since ghar appears in a plural context, ghare(n) cannot simply be labeled the plural form without considering the construction." },
+          { type: "finding", strength: "hypothesis", label: "Number versus case", text: "The ending -e(n) may be associated with forms used before me (‘in’), perhaps through an oblique or case-conditioned pattern. The same noun must be tested in subject, object and location phrases before this can be established." },
         ],
       },
       {
@@ -304,7 +304,7 @@ export const researchArticles: ResearchArticle[] = [
             { kutchi: "Paani thadho ai", english: "The water is cold." },
             { kutchi: "Hee bhairee thadhee ai", english: "This woman is cold." },
           ] },
-          { type: "text", text: "I can hear a difference between vado with a man, vadi with a woman, and vadaa with several houses. I gave a similar contrast for ‘cold’: thadho and thadhee. Those sentences support agreement in these descriptions, but they do not prove that every adjective will behave exactly the same way." },
+          { type: "text", text: "Vado with a man, vadi with a woman and vadaa with several houses suggest agreement in descriptive expressions. The recorded ‘cold’ forms thadho and thadhee provide another contrast. Other adjectives require independent testing." },
         ],
       },
       {
@@ -321,7 +321,7 @@ export const researchArticles: ResearchArticle[] = [
             { kutchi: "Hinee chokra dore(n)thaa", english: "These boys are running." },
             { kutchi: "Hoonee chokra dore(n)thaa", english: "Those boys are running." },
           ] },
-          { type: "text", text: "With boys running, hee and hoo distinguish ‘this’ from ‘that’, and hinee and hoonee distinguish ‘these’ from ‘those’. But another pair of sentences about seeing a boy contrasts hin … ke with hee without ke. I suspect the reference system also interacts with grammatical function, not just distance." },
+          { type: "text", text: "In running examples, hee and hoo distinguish ‘this’ from ‘that’, while hinee and hoonee distinguish ‘these’ from ‘those’. Another pair contrasts hin ... ke with hee without ke, suggesting that demonstratives may also vary with grammatical function." },
         ],
       },
       {
@@ -332,7 +332,7 @@ export const researchArticles: ResearchArticle[] = [
             { kutchi: "Hee mujo ghar ai", english: "This is my house." },
             { kutchi: "Hee mujo bhaa jo ghar ai", english: "This is my brother's house." },
           ] },
-          { type: "text", text: "When I say ‘my house,’ I use mujo ghar. When I say ‘my brother’s house,’ I use mujo bhaa jo ghar. I also use hinjo ghar for ‘his house.’ I want to see whether jo changes with feminine or plural things being owned before I write a general rule." },
+          { type: "text", text: "The attested possessive expressions include mujo ghar (‘my house’), mujo bhaa jo ghar (‘my brother’s house’) and hinjo ghar (‘his house’). Agreement with feminine or plural possessed nouns remains to be tested." },
           { type: "questions", items: [
             "Compare ‘my house’ and ‘my things’ with the same possessor.",
             "Use chokro and chokre in controlled subject, object, recipient and location contexts.",
@@ -348,8 +348,8 @@ export const researchArticles: ResearchArticle[] = [
     number: "04",
     subject: "Desire and non-finite forms",
     title: "Who wants what? Desire, experiencers and possible non-finite forms",
-    summary: "I noticed that wanting water, wanting several things and wanting to do something do not share one simple Kutchi sentence pattern.",
-    introduction: "The English word ‘want’ hid an important part of my Kutchi grammar from me. I can say that I want water, that someone else wants water, or that I want to go—but I do not build all three sentences the same way. The form mukhe keeps turning up when I am the person who wants something. I also found that kapetho does not always change when the person wanting changes, yet a plural desired item can change the predicate. These are the contrasts I am trying to understand.",
+    summary: "Expressions for wanting a thing, wanting several things and wanting an action involve different recorded constructions.",
+    introduction: "Kutchi sentences translated with English ‘want’ do not all use the same structure. Mukhe occurs in first-person desire constructions, while kapetho is unchanged in some examples with different experiencers. A plural desired item can produce a different predicate form. These contrasts motivate a closer analysis of experiencer marking and agreement.",
     illustration: "/language/research/desire-constructions.svg",
     illustrationAlt: "Abstract editorial illustration of two paths converging towards an open circular centre, representing different desire constructions.",
     wordNotes: [
@@ -373,8 +373,8 @@ export const researchArticles: ResearchArticle[] = [
             { kutchi: "Hin ke kadho kapetho", english: "He wants food." },
             { kutchi: "Mukhe hee cheej kapetho", english: "I want this thing." },
           ] },
-          { type: "text", text: "When I say Mukhe paani kapetho, I do not use au(n), the subject pronoun in many of my action sentences. When I say Hin ke paani kapetho, I am talking about another person wanting the same water, and kapetho stays the same. That makes me wonder whether the person wanting something is expressed in a dative-like form." },
-          { type: "finding", strength: "hypothesis", label: "An agreement puzzle", text: "I suspect the desired item may help determine the verb form. That would be different from the familiar pattern where an action verb agrees with the person performing it. But a change in agreement does not settle which phrase counts as the subject, so I am keeping that question open." },
+          { type: "text", text: "Mukhe paani kapetho does not contain the action-subject pronoun au(n). Hin ke paani kapetho changes the experiencer but retains kapetho. This suggests that the person expressing desire may be marked with a dative-like form." },
+          { type: "finding", strength: "hypothesis", label: "An agreement puzzle", text: "The desired item may contribute to the predicate's agreement. That would differ from the agreement found with ordinary action verbs. The grammatical status of each phrase remains to be established." },
         ],
       },
       {
@@ -386,7 +386,7 @@ export const researchArticles: ResearchArticle[] = [
             { kutchi: "Mukhe hinee cheejeu(n) kape(n)thaa", english: "I want these things." },
             { kutchi: "hoonee ke hin cheejeu(n) kape(n)theu(n)", english: "They want these things.", context: "Speaker supplied this as an example of plural agreement" },
           ] },
-          { type: "text", text: "With multiple things, I supplied both kape(n)thaa and kape(n)theu(n) in different sentences. I specifically connected the plural form to cheejeu(n). I do not yet know why two different plural-looking forms occur, and I would rather preserve both than declare one the correct form." },
+          { type: "text", text: "The plural desiderative examples include kape(n)thaa and kape(n)theu(n). The speaker linked a plural form to cheejeu(n), but the distribution of the two endings is unresolved. Both are retained rather than normalized." },
         ],
       },
       {
@@ -399,7 +399,7 @@ export const researchArticles: ResearchArticle[] = [
             { kutchi: "Mukhe fagayno ai", english: "I want to throw it." },
             { kutchi: "Miri(n) ke kheno ai", english: "Everyone wants to eat." },
           ] },
-          { type: "text", text: "When I want to perform an action, I use phrases such as sumno ai, veno ai and fagayno ai. I have also supplied cha(n)dno ai for wanting to spray something. The ending resembles -no, but I am not ready to say I can attach -no to any verb without checking it with a speaker." },
+          { type: "text", text: "The recorded desire-for-action forms include sumno ai, veno ai, fagayno ai and cha(n)dno ai. They suggest a possible -no ending, but additional verbs and speakers are needed before treating it as productive." },
         ],
       },
       {
@@ -409,8 +409,8 @@ export const researchArticles: ResearchArticle[] = [
           { type: "examples", items: [
             { kutchi: "Mukhe kapetho ke hee chokri hadaa ache", english: "I want this girl to come here." },
           ] },
-          { type: "text", text: "Wanting another person to do something produces another kind of sentence in my notes: Mukhe kapetho ke hee chokri hadaa ache. It has one person who wants an event and another who would perform it. I am treating the ke before the second clause as a possible clause-linking use until I collect more examples." },
-          { type: "finding", strength: "unresolved", label: "Two constructions, not one formula", text: "These two patterns—wanting to go myself and wanting a girl to come—may involve different non-finite or subordinate structures. I can hear the difference in the examples, but explaining every piece of the grammar will take more work." },
+          { type: "text", text: "Mukhe kapetho ke hee chokri hadaa ache expresses wanting another person to perform an action. The ke introducing the second clause may be a clause-linking element; further examples are needed." },
+          { type: "finding", strength: "unresolved", label: "Two constructions, not one formula", text: "Wanting to perform an action and wanting another person to act may involve distinct non-finite or subordinate constructions. Their internal grammar requires further elicitation." },
         ],
       },
       {
@@ -422,7 +422,7 @@ export const researchArticles: ResearchArticle[] = [
             { kutchi: "paani hin ke natho kape", english: "He doesn't want water." },
             { kutchi: "Mukhe hinee cheejeu(n) nathaa kape(n)", english: "I don't want these things." },
           ] },
-          { type: "text", text: "I also want to understand why my negative sentences put paani first in paani mukhe natho kape and paani hin ke natho kape, while an affirmative example is Mukhe paani kapetho. In a plural negative, nathaa appears with kape(n). I am recording the word orders and forms without assuming that negation always forces one order." },
+          { type: "text", text: "The negative desire examples put paani before the experiencer, while the affirmative Mukhe paani kapetho begins with mukhe. A plural negative also uses nathaa with kape(n). Since the contexts are not controlled minimal pairs, the data does not establish that negation causes this word-order difference." },
           { type: "questions", items: [
             "Test desired things with distinct grammatical genders while holding the experiencer constant.",
             "Compare kape(n)thaa and kape(n)theu(n) in the same context.",
@@ -439,8 +439,8 @@ export const researchArticles: ResearchArticle[] = [
     number: "05",
     subject: "Syntax and connected speech",
     title: "Beyond the simple sentence: questions, reasons and relative clauses",
-    summary: "I am documenting how I reorder sentence elements, ask questions, give reasons and link ideas in Kutchi—without assuming verbs always come last.",
-    introduction: "A dictionary matters, but it does not capture everything I mean when I speak. One lesson came when I tried moving the parts of a sentence with chad (‘let go’) around: the verb could begin, appear between other elements, or come last. I can also ask where someone is going, explain that I am tired, or describe the boy who is sleeping. I am collecting these examples to understand word order and how I connect ideas, rather than assuming a single structure for every sentence.",
+    summary: "Attested questions, reasons, relative clauses and reordered sentence elements are compared without assuming that verbs must always occur last.",
+    introduction: "A dictionary cannot by itself capture clause structure. In the recorded chad (‘let go’) constructions, the verb occurs first, between other elements or last. The data also includes questions, explanatory clauses and relative expressions. The aim is to document the patterns and identify which word-order differences require further testing.",
     illustration: "/language/research/connected-clauses.svg",
     illustrationAlt: "Abstract editorial illustration of two branching paths crossing and joining, representing clauses connected in a sentence.",
     wordNotes: [
@@ -463,14 +463,14 @@ export const researchArticles: ResearchArticle[] = [
         id: "verb-final",
         title: "The verb can appear in different positions",
         blocks: [
-          { type: "text", text: "I used to write that Kutchi verbs tend to come last. That goes further than the evidence I have. When I tested chad with au(n) (‘I’) and hin ke (a ke-marked phrase), I supplied three arrangements. The verb appears between the other elements, at the beginning, or at the end. I have not yet established whether these alternatives differ in topic, focus, or emphasis." },
-          { type: "examples", label: "The same grammatical elements in three orders — structural labels, not English translations", items: [
+          { type: "text", text: "An earlier description treated Kutchi as generally verb-final, but three speaker-provided chad arrangements contradict an obligatory order in this construction. Whether these options differ in topic, focus or emphasis has not yet been established." },
+          { type: "examples", label: "The same grammatical elements in three orders ,  structural labels, not English translations", items: [
             { kutchi: "Au(n) chada(n)tho hin ke", english: "Subject → Verb → ke-marked phrase", captionKind: "structure" },
             { kutchi: "Chada(n)tho au(n) hin ke", english: "Verb → Subject → ke-marked phrase", captionKind: "structure" },
             { kutchi: "hin ke au(n) chada(n)tho", english: "ke-marked phrase → Subject → Verb", captionKind: "structure" },
           ] },
-          { type: "finding", strength: "attested", label: "A correction to my original description", text: "All three orders were supplied as possible word-order arrangements. This rules out treating the verb-final position as obligatory for this construction. I still have no representative counts to show that it is the most common order, or evidence that all verbs permit the same permutations." },
-          { type: "text", text: "I do still use verb-final sentences, including those below. I can also leave au(n) out when a form like kana(n)tho identifies the actor in context. The next step is to compare identical situations and ask how moving words changes what listeners pay attention to." },
+          { type: "finding", strength: "attested", label: "A correction to my original description", text: "All three orders were supplied as possible arrangements. This rules out obligatory verb-final order for this construction, but does not establish frequency or equivalent flexibility with other verbs." },
+          { type: "text", text: "The recorded data also includes verb-final clauses and an omitted au(n) where the verb form identifies the actor. The next step is to compare the same context with different orders and test how listeners interpret them." },
           { type: "examples", label: "Earlier examples with a final verb", items: [
             { kutchi: "Au(n) khadho kya(n)tho", english: "I am eating food." },
             { kutchi: "Au(n) hane ghare vina(n)tho", english: "I am going home now." },
@@ -493,7 +493,7 @@ export const researchArticles: ResearchArticle[] = [
             { kutchi: "Kuroo kare(n)tho?", english: "What are you doing? (addressing a man)" },
             { kutchi: "Kuroo kare(n)thi?", english: "What are you doing? (addressing a woman)" },
           ] },
-          { type: "text", text: "I have recorded kadaa for ‘where’ and ku’la for ‘why’, and the question words appear before the verbs in the examples here. In my questions about doing something, the ending also changes depending on whether I address a man or a woman. I still need to test questions inside longer sentences." },
+          { type: "text", text: "The recorded question forms include kadaa (‘where’) and ku’la (‘why’). These appear before the verb in the supplied clauses. The verb ending also differs in questions addressed to a man or woman. Embedded and longer questions remain to be tested." },
         ],
       },
       {
@@ -504,7 +504,7 @@ export const researchArticles: ResearchArticle[] = [
             { kutchi: "Au(n) ghare vina(n)tho se au(n) thake’lo i(n)ya", english: "I am going home because I am tired." },
             { kutchi: "He hadaa ai, pun hoo hudaa ai", english: "He is here, but she is there." },
           ] },
-          { type: "text", text: "When I explain why I am going home, I use se for ‘because’. When I contrast where two people are, I use pun for ‘but’. I recognize these naturally, but I have not yet tried reversing the clauses or changing the sentence context to see which orders are possible." },
+          { type: "text", text: "Se (‘because’) connects a reason in the recorded home-going sentence, while pun (‘but’) connects contrasting locations. Alternative clause orders and contexts have not yet been tested." },
         ],
       },
       {
@@ -514,8 +514,8 @@ export const researchArticles: ResearchArticle[] = [
           { type: "examples", items: [
             { kutchi: "savare varsaath pondhi, tha poi au(n) ghare rondhose", english: "If it rains tomorrow, I will stay home." },
           ] },
-          { type: "text", text: "In the sentence about rain tomorrow, I explained varsaath as ‘rain’, pondhi as ‘will fall’, tha poi as ‘so then’, and rondhose as ‘I will stay’. My English translation begins with ‘if’, but I did not provide a separate word that I can safely label ‘if’ in the Kutchi example." },
-          { type: "finding", strength: "hypothesis", label: "A conditional relation", text: "I suspect that placing the rain clause before its consequence may be enough to convey the conditional meaning here. I would need other hypothetical situations, including situations that did not happen, to understand this construction." },
+          { type: "text", text: "The speaker glossed varsaath as ‘rain’, pondhi as ‘will fall’, tha poi as ‘so then’ and rondhose as ‘I will stay’. The English translation is conditional, but no separate Kutchi word was confirmed as meaning ‘if’ in this example." },
+          { type: "finding", strength: "hypothesis", label: "A conditional relation", text: "The preceding rain clause may contribute to the conditional interpretation. Other hypothetical and counterfactual contexts are required to test this analysis." },
         ],
       },
       {
@@ -527,7 +527,7 @@ export const researchArticles: ResearchArticle[] = [
             { kutchi: "Jikee cheej me ai", english: "In whichever thing it may be in.", context: "Additional use supplied by the speaker" },
             { kutchi: "Koi be sutho ai", english: "Whoever is sleeping.", context: "Speaker's alternative for an indefinite person" },
           ] },
-          { type: "text", text: "I distinguish jikee in a phrase such as ‘the boy who is sleeping’ from ker, the word I gave for asking ‘who?’ I also supplied koi be when the intended meaning was ‘whoever’. Writing down that difference reminds me how easily English can hide several Kutchi constructions under one word." },
+          { type: "text", text: "Jikee appears in the relative construction ‘the boy who is sleeping’, while ker was supplied for interrogative ‘who?’ and koi be for indefinite ‘whoever’. The English glosses conceal distinct Kutchi expressions." },
         ],
       },
       {
@@ -538,7 +538,7 @@ export const researchArticles: ResearchArticle[] = [
             { kutchi: "Chokro sumetho", english: "The boy is sleeping." },
             { kutchi: "Hee chokro sutho ai", english: "This boy is sleeping." },
           ] },
-          { type: "text", text: "I have recorded both Chokro sumetho and Hee chokro sutho ai for English ‘the boy is sleeping’. I do not want to assume those are identical in meaning just because I translated them with similar English. The next useful step is to hold the speaker, subject and situation constant and compare them directly." },
+          { type: "text", text: "Chokro sumetho and Hee chokro sutho ai were both translated as ‘the boy is sleeping’. Equivalent English translations do not establish identical Kutchi meanings; the forms should be compared with the speaker, referent and discourse context held constant." },
           { type: "questions", items: [
             "Test a question where the questioned phrase is not at the beginning of the clause.",
             "Compare a true hypothetical, an expected condition, and a counterfactual event.",

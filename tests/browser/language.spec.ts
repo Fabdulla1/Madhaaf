@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 
 test("Language hub links to dictionary, grammar and writing guide", async ({ page }) => {
   await page.goto("/language");
-  await expect(page.getByRole("heading", { name: "A language in words, patterns and voices." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Studying Mombasa and Ethiopian Kutchi." })).toBeVisible();
   await expect(page.getByRole("link", { name: /Browse the dictionary/i })).toHaveAttribute("href", "/dictionary");
   await expect(page.getByRole("link", { name: /Explore the grammar/i })).toHaveAttribute("href", "/language/grammar");
   await expect(page.getByRole("link", { name: /Read the writing guide/i })).toHaveAttribute("href", "/orthography");
@@ -46,7 +46,7 @@ test("Grammar presents speaker-attested verb-first, medial and final arrangement
     "hin ke au(n) chada(n)tho",
   ]);
   await expect(page.getByRole("heading", { name: "Verbs tend to come last." })).toHaveCount(0);
-  await expect(page.getByText(/not which is\s+most frequent in ordinary conversation/)).toBeVisible();
+  await expect(page.getByText(/do not establish which order is\s+most common/)).toBeVisible();
 });
 
 test("Word-order comparison stays readable on a small viewport", async ({ page }) => {
@@ -67,15 +67,14 @@ test("Grammar reference includes la/jo and the expanded negative evidence", asyn
   await expect(page.getByText(/natho.*nathi.*nathaa/i).first()).toBeVisible();
 });
 
-test("Grammar honors the speaker-corrected sleeping and giving negative translations", async ({ page }) => {
+test("Speaker correction in negation retains three meanings and the unchanged giving example", async ({ page }) => {
   await page.goto("/language/grammar#negation");
-  const pairs = page.locator("#negation .grammar-pairs");
-  await expect(pairs.getByText("He won't sleep. · speaker-corrected future reading", { exact: true })).toBeVisible();
-  await expect(pairs.getByText("She won't sleep. · speaker-corrected future reading", { exact: true })).toBeVisible();
-  await expect(pairs.getByText("He hasn't given me money. · speaker-corrected reading", { exact: true })).toBeVisible();
-  await expect(pairs.getByText("He doesn't give me money.", { exact: true })).toBeVisible();
+  const contrasts = page.locator("#negation .grammar-pairs");
+  await expect(contrasts.getByText("He won't sleep. · speaker-corrected future reading", { exact: true })).toBeVisible();
+  await expect(contrasts.getByText("She won't sleep. · speaker-corrected future reading", { exact: true })).toBeVisible();
+  await expect(contrasts.getByText("He hasn't given me money. · speaker-corrected reading", { exact: true })).toBeVisible();
+  await expect(contrasts.getByText("He doesn't give me money.", { exact: true })).toBeVisible();
   await expect(page.getByText("He is not sleeping.", { exact: true })).toHaveCount(0);
   await expect(page.getByText("She is not sleeping.", { exact: true })).toHaveCount(0);
   await expect(page.getByText("He didn't give me money.", { exact: true })).toHaveCount(0);
-  await expect(page.getByText(/natho.*or.*nathi.*always means future/)).toBeVisible();
 });

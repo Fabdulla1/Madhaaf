@@ -53,7 +53,6 @@ export function PublicHeader() {
           <summary>
             <span className="mobile-nav__open-label">Menu</span>
             <span className="mobile-nav__close-label">Close</span>
-            <span aria-hidden="true">☰</span>
           </summary>
           <nav aria-label="Mobile navigation">
             {navigation.map((item) => (
