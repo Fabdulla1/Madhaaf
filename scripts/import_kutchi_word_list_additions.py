@@ -13,9 +13,6 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-import psycopg
-from psycopg.rows import dict_row
-
 from import_kutchi_linguistic_evidence import connection_url, snapshot
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -283,6 +280,9 @@ def verify(cursor, before_statuses, payload):
 
 
 def main():
+    import psycopg
+    from psycopg.rows import dict_row
+
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--rehearse", action="store_true")
