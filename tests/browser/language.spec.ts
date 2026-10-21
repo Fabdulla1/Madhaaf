@@ -35,3 +35,24 @@ test("Grammar includes eight-verb survey, habitual reading, future and negation"
   await expect(page.getByText("Nah vendhose", { exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: /08 · Questions/i })).toHaveAttribute("href", "#questions");
 });
+
+
+test("Grammar presents speaker-attested verb-first, medial and final arrangements without imposing verb-final order", async ({ page }) => {
+  await page.goto("/language/grammar");
+  await expect(page.getByRole("heading", { name: "The verb does not have a fixed position." })).toBeVisible();
+  await expect(page.locator(".grammar-order-list li strong")).toHaveText([
+    "Au(n) chada(n)tho hin ke",
+    "Chada(n)tho au(n) hin ke",
+    "hin ke au(n) chada(n)tho",
+  ]);
+  await expect(page.getByRole("heading", { name: "Verbs tend to come last." })).toHaveCount(0);
+  await expect(page.getByText(/not which is\s+most frequent in ordinary conversation/)).toBeVisible();
+});
+
+test("Word-order comparison stays readable on a small viewport", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto("/language/grammar#word-order");
+  await expect(page.locator(".grammar-order-list li")).toHaveCount(3);
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+  expect(overflow).toBeLessThanOrEqual(2);
+});
