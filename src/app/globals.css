@@ -649,3 +649,9 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
 @media (prefers-reduced-motion: reduce) {
   .language-research-promo__image img { transition: none; }
 }
+
+/* Personal attribution for the research and orthography guides. */
+.public-site .language-guide-byline { display: inline-flex; align-items: center; gap: 5px; margin: 0 0 29px; color: var(--ink-muted); font-size: .84rem; line-height: 1.6; }
+.public-site a.language-guide-byline, .public-site .language-guide-byline a { color: var(--terracotta-ink); text-decoration: underline; text-underline-offset: 4px; }
+.public-site a.language-guide-byline:hover, .public-site .language-guide-byline a:hover { color: var(--ink); }
+.public-site .grammar-status .language-guide-byline { margin: 0; }
