@@ -1,6 +1,6 @@
-# Kutchi Roots — Mombasa
+# Madhaaf | Mombasa and Ethiopian Kutchi research
 
-A cultural archive for Mombasa Kutchi words, family histories, and documented community stories. The public site includes a dictionary, a draft orthography guide, and a history archive. The private administrator space manages genealogy, entries, articles, recordings, and publication.
+Madhaaf is an academic research and documentation project focused on Kutchi language, history, and cultural knowledge in Mombasa and Ethiopian communities. The public site includes a dictionary, grammatical studies, a provisional Latin orthography, and historical records. The private administrator space manages genealogy, lexical entries, articles, recordings, source records, and publication.
 
 The repository is a Next.js 16 App Router and TypeScript modular monolith. Supabase PostgreSQL is the only content database; Supabase Auth and private Storage provide identity and media. No family records or historical claims are preloaded. The migration seeds only the six expressions supplied by the project owner and Draft 0.3 writing conventions.
 
@@ -42,10 +42,12 @@ The editorial research collection lives at `/language/articles`, with one static
 
 Every published example must come from speaker-supplied elicitation, and speaker judgments must remain distinct from proposed linguistic explanations. Maintain original wording and the project's `(n)`-before-`th` display convention. Word links lead to published dictionary searches, rather than assuming fixed IDs; unpublished entries may not appear. Check this evidence policy and the mobile reading experience whenever adding or changing a study.
 
-## Founder and editorial attribution
+## Research scope, attribution and editorial policy
 
-Madhaaf was founded by **Farhan Abdulla**, a native speaker documenting East African Mombasa Kutchi as a personal language-preservation and cultural-history project. The About page (`/about`) describes the family-history context, the provisional nature of early migration accounts, and the role of **Adam Anderson** and **TokenWorks LLC** in supporting the work.
+Madhaaf was founded by **Farhan Abdulla** to document Kutchi spoken in Mombasa and Ethiopian communities, alongside relevant oral history and cultural records. **TokenWorks LLC** and **Adam Anderson** are acknowledged for research infrastructure and technical support. This does not imply formal university sponsorship or peer review.
 
-The research papers, grammar guide, and writing guide use Farhan's first-person editorial voice. Preserve the speaker's exact Kutchi examples and distinguish observed grammaticality from interpretation. Do not claim the papers are peer reviewed or have been validated across other speakers.
+The public site uses concise, evidence-focused academic language. It is not a personal memoir or a hobby project. Author credit remains visible, but project descriptions should refer to Mombasa and Ethiopian Kutchi rather than "my Kutchi". Published articles preserve native-speaker wording, original forms, supplied translations and explicit grammaticality judgments. Analyses, comparisons with Gujarati or Sindhi, and unverified historical accounts must be labeled as such. Do not claim findings are representative of speakers who have not been studied.
 
-**Research article dating policy:** The five dates displayed in the series are retrospectively assigned **2026 editorial issue dates**, not claimed historical online publication dates or verified dates of elicitation. The papers first appeared on the website in October 2026. Keep this distinction visible on the index, article pages and in publication metadata; do not backdate `publishedTime` or provenance.
+See [editorial and evidence standards](docs/editorial-policy.md) when revising content. Avoid em dashes as editorial punctuation in the research articles. Mobile interfaces should not rely on emoji or decorative arrow symbols.
+
+**Research article dating policy:** Displayed study dates are retrospectively assigned **2026 editorial issue dates**, not verified elicitation or earlier online publication dates. The articles first appeared online in October 2026. Keep that distinction visible in article and index metadata; do not backdate `publishedTime` or provenance.

@@ -689,3 +689,16 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
   line-height: 1.4;
   overflow-wrap: anywhere;
 }
+
+/* Keep mobile controls and calls to action free of decorative symbols. */
+@media (max-width: 760px) {
+  .public-site a > span[aria-hidden="true"]:not(.wordmark__symbol),
+  .public-site .button > span[aria-hidden="true"],
+  .public-site .header-signin > span[aria-hidden="true"],
+  .public-site .home-hero__quiet-link > span[aria-hidden="true"],
+  .public-site .research-index__latest-arrow,
+  .public-site .research-article__toc a[href="#word-notes"] > span,
+  .public-site .research-article__toc a[href="#source-and-method"] > span {
+    display: none;
+  }
+}

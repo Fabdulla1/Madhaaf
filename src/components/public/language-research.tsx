@@ -120,7 +120,7 @@ function ResearchBlockView({ block, article }: { block: ResearchBlock; article: 
     case "questions":
       return (
         <div className="research-questions">
-          <h3>What should we ask next?</h3>
+          <h3>Questions for further elicitation</h3>
           <ol>{block.items.map((item, index) => <li key={index}>{item}</li>)}</ol>
         </div>
       );
@@ -138,23 +138,23 @@ export function ResearchIndex() {
         </nav>
         <header className="research-index__intro">
           <p className="eyebrow">Madhaaf / Language research</p>
-          <h1>What the sentences are teaching us.</h1>
+          <h1>Research on East African Kutchi.</h1>
           <p>
-            I&apos;ve been writing down the Kutchi sentences I grew up speaking
-            and trying to understand the grammar inside them. These
-            articles are my working research notes: what I&apos;ve observed,
-            what I&apos;ve begun to understand, and what I still need to test.
+            These studies document Mombasa and Ethiopian Kutchi through
+            recorded sentences, translations and preliminary grammatical
+            analysis. Speaker-confirmed evidence is distinguished from
+            interpretations that still need testing.
           </p>
           <div className="research-index__meta">
             <span><Link href="/about">By Farhan Abdulla</Link></span>
-            <span>Research journal · March–October 2026</span>
+            <span>Research series · 2026 editorial dates</span>
             <span>First published online October 2026</span>
           </div>
         </header>
         <section className="research-index__latest" aria-labelledby="research-latest-heading">
           <div className="research-index__latest-heading">
-            <p className="eyebrow">From my latest field notes</p>
-            <h2 id="research-latest-heading">Two new questions, two new studies.</h2>
+            <p className="eyebrow">Latest language studies</p>
+            <h2 id="research-latest-heading">Recent studies</h2>
           </div>
           <div className="research-index__latest-links">
             {researchArticles.slice(-2).map((article) => (
@@ -169,11 +169,11 @@ export function ResearchIndex() {
         <div className="research-index__feature">
           <div>
             <p className="eyebrow">Begin with the evidence</p>
-            <h2>Every small word has a story.</h2>
+            <h2>What does ke mark?</h2>
             <p>
-              I kept hearing <em>ke</em> in different places and realized
-              I couldn&apos;t explain it with one English word. My first study
-              follows the sentences and comparisons that made me notice why.
+              The particle <em>ke</em> occurs in several grammatical
+              environments. This study compares recorded examples before
+              proposing how its uses may be related.
             </p>
             <Link className="button button--primary" href="/language/articles/what-ke-marks">
               Read the first study <span aria-hidden="true">↗</span>
@@ -192,7 +192,7 @@ export function ResearchIndex() {
         <section aria-labelledby="research-series-heading" className="research-index__series">
           <div className="research-index__series-heading">
             <h2 id="research-series-heading">Browse the series</h2>
-            <p>Browse my research notes and follow the highlighted Kutchi words to their contextual meanings and dictionary entries.</p>
+            <p>Browse the studies and follow highlighted Kutchi words to their contextual meanings and dictionary entries.</p>
           </div>
           <div className="research-index__grid">
             {researchArticles.map((article) => (
@@ -216,13 +216,12 @@ export function ResearchIndex() {
         <div className="research-index__closing">
           <h2>Evidence first, rules second.</h2>
           <p>
-            This is my attempt to preserve what I actually hear and say,
-            including the alternatives that don&apos;t fit a neat rule. I keep
-            unanswered questions visible because I&apos;m still learning from
-            the language. The dates are retrospective editorial dates for
-            this 2026 series; the pages first appeared online in October 2026.
+            The studies preserve alternatives that do not fit a single
+            grammatical rule. Questions remain open where evidence is
+            insufficient. The displayed issue dates are retrospective
+            editorial dates; the pages first appeared online in October 2026.
           </p>
-          <Link className="text-link" href="/language/grammar">Explore the grammar notebook ↗</Link>
+          <Link className="text-link" href="/language/grammar">Explore the grammar</Link>
         </div>
       </div>
     </PublicSiteResearchLayout>
@@ -249,7 +248,7 @@ export function ResearchArticleView({ article }: { article: ResearchArticle }) {
             <div className="research-article__meta">
               <span>By <Link href="/about">Farhan Abdulla</Link></span>
               <span>Research issue <time dateTime={article.editorialDate}>{editorialDateLabel(article.editorialDate)}</time></span>
-              <span>Working paper · First published online October 2026</span>
+              <span>Preliminary research article · First published online October 2026</span>
             </div>
           </header>
           <figure className="research-article__hero">
@@ -287,12 +286,12 @@ export function ResearchArticleView({ article }: { article: ResearchArticle }) {
                 </section>
               ))}
               <section className="research-wordnotes" id="word-notes">
-                <p className="eyebrow">A reading companion</p>
+                <p className="eyebrow">Lexical notes</p>
                 <h2>Words in this study</h2>
                 <p>
-                  I&apos;ve included the meanings I recorded in these examples.
-                  Select a word to explore its contextual meaning and look it
-                  up in the public dictionary. Some entries are still being reviewed.
+                  Word notes record meanings in their sentence contexts.
+                  Select a word for its contextual meaning and to search
+                  the public dictionary. Some entries remain under review.
                 </p>
                 <dl className="research-wordnotes__grid">
                   {article.wordNotes.map((item) => (
@@ -307,23 +306,20 @@ export function ResearchArticleView({ article }: { article: ResearchArticle }) {
                 <p className="eyebrow">Source &amp; method</p>
                 <h2>How this article was prepared</h2>
                 <p>
-                  I am a native speaker of this East African Kutchi variety.
-                  I have been collecting example sentences, translation pairs
-                  and judgments about what sounds natural in my speech. The
-                  material for these working papers includes my completed
-                  48-sentence questionnaire (Study 007), earlier verb and
-                  case comparisons, and the later targeted studies of
-                  possession and negation (Studies 008–011), documented in
-                  October 2026. I preserve the recorded forms and use my
-                  working (n)-before-th spelling convention where indicated.
+                  The published material includes native-speaker sentences,
+                  translation pairs and grammaticality judgments, including
+                  a 48-sentence questionnaire (Study 007), earlier verb and
+                  case comparisons, and targeted studies of possession and
+                  negation (Studies 008–011). Original forms remain visible,
+                  with a working (n)-before-th display spelling where indicated.
                 </p>
                 <p>
-                  These are my preliminary interpretations, not claims about
-                  every speaker or every Kutchi variety. When I have only
-                  one example, I say so. This research has not been peer
-                  reviewed or independently checked across multiple speakers.
-                  The research issue dates are editorial dates assigned to
-                  organize the 2026 series, not proof of earlier online
+                  These analyses are preliminary, not claims about every
+                  Kutchi speaker or variety. Evidence from Mombasa is not
+                  automatically treated as confirmation for Ethiopian Kutchi.
+                  The research has not been peer reviewed or independently
+                  validated across multiple speakers. Issue dates organize
+                  the 2026 series and do not indicate earlier online
                   publication; the articles first appeared online in October 2026.
                 </p>
               </section>
@@ -333,7 +329,7 @@ export function ResearchArticleView({ article }: { article: ResearchArticle }) {
         <div className="research-article__next">
           <div>
             <p className="eyebrow">Continue reading · Study {next.number}</p>
-            <h2><Link href={`/language/articles/${next.slug}`}>{next.title} ↗</Link></h2>
+            <h2><Link href={`/language/articles/${next.slug}`}>{next.title}</Link></h2>
           </div>
           <Link className="text-link" href="/language/articles">All research articles</Link>
         </div>
