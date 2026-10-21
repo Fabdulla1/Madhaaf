@@ -7,7 +7,7 @@ import { readPublicApi } from "./content-api";
 const navigation = [
   { href: "/", label: "Home" },
   { href: "/family", label: "Family Tree" },
-  { href: "/dictionary", label: "Dictionary" },
+  { href: "/language", label: "Language" },
   { href: "/history", label: "History" },
 ];
 
