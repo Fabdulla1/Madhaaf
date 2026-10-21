@@ -83,12 +83,13 @@ export default function Home() {
               <h2>Language lives in a voice worth hearing again.</h2>
               <p>
                 Everyday speech holds more than definitions. Explore documented
-                Kutchi expressions, their meanings, and the developing writing
-                guide that helps preserve how they are spoken.
+                Kutchi expressions, their meanings, emerging grammar patterns,
+                and the writing guide that preserves how they are spoken.
               </p>
               <div className="home-chapter__links">
-                <Link className="text-link" href="/dictionary">Enter the dictionary <span aria-hidden="true">↗</span></Link>
-                <Link className="text-link" href="/orthography">Read the writing guide <span aria-hidden="true">↗</span></Link>
+                <Link className="text-link" href="/language">Explore language <span aria-hidden="true">↗</span></Link>
+                <Link className="text-link" href="/dictionary">Browse the dictionary <span aria-hidden="true">↗</span></Link>
+                <Link className="text-link" href="/language/grammar">Read the grammar notes <span aria-hidden="true">↗</span></Link>
               </div>
             </div>
             <div className="home-chapter__art home-chapter__art--language" aria-hidden="true">
