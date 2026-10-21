@@ -3,12 +3,14 @@
  * Keep attested strings intact. Interpretations and grammaticality judgments must
  * remain visibly separate from hypotheses; never synthesize new Kutchi sentences.
  */
+import { octoberResearchArticles } from "./language-articles-october-2026";
+
 export type ResearchExample = {
   kutchi: string;
   english: string;
   context?: string;
   /** Indicates a word-order annotation rather than a speaker-provided English translation. */
-  captionKind?: "structure";
+  captionKind?: "structure" | "elicitation";
 };
 export type ResearchBlock =
   | { type: "text"; text: string }
@@ -547,6 +549,7 @@ export const researchArticles: ResearchArticle[] = [
       },
     ],
   },
+  ...octoberResearchArticles,
 ];
 
 /**
@@ -563,14 +566,14 @@ export const dictionaryLookups: Record<string, string> = {
   "ghar": "ghar", "ghare": "ghar", "ghare(n)": "ghar",
   "cheejeu(n)": "cheej", "cheeju(n)": "cheej", "cheej": "cheej",
   "khadho": "khadho", "kadho": "khadho",
-  "ke": "ke", "me": "me", "ai": "ai", "i(n)ya": "i(n)ya", "i(n)ye": "i(n)ye",
+  "ke": "ke", "la": "la", "me": "me", "ai": "ai", "i(n)ya": "i(n)ya", "i(n)ye": "i(n)ye",
   "kapetho": "kapetho", "kape(n)thaa": "kapetho", "kape(n)theu(n)": "kapetho",
   "natho": "natho", "nathi": "nathi", "nathaa": "nathaa", "na": "na",
   "nah": "nah", "nai": "nai", "kan": "kan", "kana(n)tho": "kan",
   "kana(n)thi": "kan", "kane(n)tho": "kan", "kane(n)thi": "kan",
   "kanetho": "kan", "kanethi": "kan", "kano(n)thaa": "kan",
-  "kane(n)thaa": "kan", "kandhose": "kan", "dhinose": "dhinose",
-  "dhine": "dhine", "sum": "sum", "sumetho": "sum", "sumethi": "sum",
+  "kane(n)thaa": "kan", "kandhose": "kan", "dhinose": "de",
+  "dhine": "de", "sum": "sum", "sumetho": "sum", "sumethi": "sum",
   "suma(n)tho": "sum", "suma(n)thi": "sum", "sume(n)thaa": "sum",
   "sume": "sum", "sumno": "sum", "sutho": "sutho",
   "kar": "kar", "kara(n)tho": "kar", "kare(n)tho": "kar",
@@ -582,6 +585,9 @@ export const dictionaryLookups: Record<string, string> = {
   "dhore(n)tho": "dhor", "dhorantho": "dhor",
   "fagai": "fagai", "fagaya(n)tho": "fagai", "fagayno": "fagai",
   "disa(n)tho": "disa(n)tho", "fagayetho": "fagai",
+  "pe(n)sa": "pe(n)sa", "hikro": "hikro", "kayose": "kan",
+  "khade": "khadho", "dhineese": "de", "dhya(n)": "de", "dye": "de",
+  "raja": "raja", "bapa": "bapa", "kape(n)": "kapetho",
   "pun": "pun", "se": "se", "savare": "savare", "kaal": "kaal",
   "haroj": "haroj", "hane": "hane", "kadaa": "kadaa",
   "ku’la": "ku’la", "kuroo": "kuroo", "jikee": "jikee",
