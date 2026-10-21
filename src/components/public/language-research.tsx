@@ -58,7 +58,10 @@ function ExampleCard({ example, article }: { example: ResearchExample; article: 
       <blockquote lang="und" className="research-example__sentence">
         <LinkedKutchi sentence={example.kutchi} article={article} />
       </blockquote>
-      <figcaption>{example.english}</figcaption>
+      <figcaption>
+        {example.captionKind === "structure" && <strong className="research-example__structure-label">Constituent order · </strong>}
+        {example.english}
+      </figcaption>
     </figure>
   );
 }

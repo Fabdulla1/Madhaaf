@@ -70,3 +70,25 @@ test("research articles have no horizontal page overflow on narrow phones", asyn
     expect(overflow, `horizontal page overflow for ${slug}`).toBeLessThanOrEqual(1);
   }
 });
+
+
+test("Case and syntax papers include three word-order alternatives as analyses, not invented translations", async ({ page }) => {
+  for (const slug of ["what-ke-marks", "connecting-kutchi-clauses"]) {
+    await page.goto(`/language/articles/${slug}`);
+    const orderCards = page.locator(".research-example").filter({
+      has: page.locator(".research-example__structure-label"),
+    });
+    await expect(orderCards).toHaveCount(3);
+    await expect(orderCards.locator(".research-example__sentence")).toHaveText([
+      "Au(n) chada(n)tho hin ke",
+      "Chada(n)tho au(n) hin ke",
+      "hin ke au(n) chada(n)tho",
+    ]);
+    await expect(orderCards.locator(".research-example__structure-label")).toHaveText([
+      "Constituent order · ",
+      "Constituent order · ",
+      "Constituent order · ",
+    ]);
+    await expect(page.getByText(/I have not yet tested whether a different position changes the emphasis or topic|I have not yet established whether these alternatives differ in topic/)).toBeVisible();
+  }
+});

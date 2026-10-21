@@ -141,3 +141,10 @@
 .public-site .research-tile__category span { margin: 0 5px; color: var(--ink-muted); }
 .public-site .research-tile__category time { white-space: nowrap; }
 .public-site .research-article__meta time { font-variant-numeric: tabular-nums; }
+
+/* Some elicited examples have structure labels, not literal English translations. */
+.public-site .research-example__structure-label {
+  color: var(--terracotta-ink);
+  font-size: .79rem;
+  letter-spacing: .02em;
+}

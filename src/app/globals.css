@@ -655,3 +655,37 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
 .public-site a.language-guide-byline, .public-site .language-guide-byline a { color: var(--terracotta-ink); text-decoration: underline; text-underline-offset: 4px; }
 .public-site a.language-guide-byline:hover, .public-site .language-guide-byline a:hover { color: var(--ink); }
 .public-site .grammar-status .language-guide-byline { margin: 0; }
+
+/* Attested alternative orders: no claim about default word order or emphasis. */
+.public-site .grammar-order-list {
+  list-style: none;
+  padding: 0;
+  margin: 26px 0 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.public-site .grammar-order-list li {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--terracotta);
+  background: var(--paper);
+  padding: clamp(18px, 3vw, 26px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.public-site .grammar-order-list__pattern {
+  font-family: var(--font-interface);
+  color: var(--terracotta-ink);
+  font-weight: 700;
+  font-size: .78rem;
+  letter-spacing: .02em;
+}
+.public-site .grammar-order-list strong {
+  font-family: var(--font-editorial);
+  font-weight: 400;
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
