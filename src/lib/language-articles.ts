@@ -7,6 +7,8 @@ export type ResearchExample = {
   kutchi: string;
   english: string;
   context?: string;
+  /** Indicates a word-order annotation rather than a speaker-provided English translation. */
+  captionKind?: "structure";
 };
 export type ResearchBlock =
   | { type: "text"; text: string }
@@ -43,6 +45,7 @@ export const researchArticles: ResearchArticle[] = [
     illustrationAlt: "Abstract editorial illustration of several lines linking separate circular forms, representing grammatical relationships.",
     wordNotes: [
       { word: "ke", meaning: "Case-like marker in several documented constructions; the full distribution is unresolved." },
+      { word: "au(n)", meaning: "I; first-person pronoun in these clauses." },
       { word: "hin", meaning: "Demonstrative or pronominal form in the recorded ke constructions." },
       { word: "hee", meaning: "Near demonstrative and, in other contexts, third-person reference." },
       { word: "chokro", meaning: "Boy; compare the attested form chokre." },
@@ -106,6 +109,19 @@ export const researchArticles: ResearchArticle[] = [
         ],
       },
       {
+        id: "order-with-ke",
+        title: "A ke-marked phrase can appear in more than one position",
+        blocks: [
+          { type: "text", text: "Another correction emerged when I moved the parts of a sentence with chad (‘let go / leave alone’) around. I can put the subject first, the verb first, or the ke-marked phrase first. These are three arrangements I supplied for the same intended construction. I have not yet tested whether a different position changes the emphasis or topic. The labels below describe word order only; they are not separate English translations." },
+          { type: "examples", label: "Three accepted arrangements — constituent-order labels, not translations", items: [
+            { kutchi: "Au(n) chada(n)tho hin ke", english: "Subject → Verb → ke-marked phrase", captionKind: "structure" },
+            { kutchi: "Chada(n)tho au(n) hin ke", english: "Verb → Subject → ke-marked phrase", captionKind: "structure" },
+            { kutchi: "hin ke au(n) chada(n)tho", english: "ke-marked phrase → Subject → Verb", captionKind: "structure" },
+          ] },
+          { type: "finding", strength: "attested", label: "A word-order correction", text: "I previously described Kutchi as tending to put verbs last. This was too broad. In my chad examples the verb occurs at the start, in the middle and at the end. This establishes flexibility in this construction, but not that every possible order works with every verb." },
+        ],
+      },
+      {
         id: "research-agenda",
         title: "What the evidence permits—and what it doesn't",
         blocks: [
@@ -115,6 +131,8 @@ export const researchArticles: ResearchArticle[] = [
             "Repeat omission judgments across eat, throw, take, see, and give, holding the noun phrase constant.",
             "Test whether the ke that introduces a desired event can occur after other verbs of saying or thinking.",
             "Record when chokro and chokre are both natural before ke, and whether speakers perceive a difference.",
+            "Test whether the reordered chad examples differ in emphasis, contrast or what is already known to listeners.",
+            "Try the same three relative orders with kan, fagai and other verbs, then test clauses without ke.",
           ] },
         ],
       },
@@ -432,6 +450,10 @@ export const researchArticles: ResearchArticle[] = [
       { word: "ker", meaning: "Interrogative ‘who’, per speaker explanation." },
       { word: "koi be", meaning: "Whoever, in an attested example." },
       { word: "tha poi", meaning: "So then, in an attested consequence clause." },
+      { word: "au(n)", meaning: "I; first-person singular subject in these examples." },
+      { word: "chad", meaning: "Let go or leave alone; chada(n)tho is an attested inflected form." },
+      { word: "hin", meaning: "A pronominal or demonstrative form used with ke here." },
+      { word: "ke", meaning: "Case-like element; the exact role of hin ke remains under investigation." },
     ],
     sections: [
       {
@@ -554,7 +576,7 @@ export const dictionaryLookups: Record<string, string> = {
   "vado": "vado", "vadi": "vado", "vadaa": "vado",
   "thadho": "thadho", "thadhee": "thadho",
   "bhaa": "bhaa", "acha": "acha", "ache": "ache", "hadaa": "hadaa",
-  "hudaa": "hudaa", "chad": "chad", "de": "de", "kheno": "kheno",
+  "hudaa": "hudaa", "chad": "chad", "chada(n)tho": "chad", "de": "de", "kheno": "kheno",
   "suthyaa": "sum", "thake’lo": "thake’lo", "varsaath": "varsaath",
   "pondhi": "pondhi", "rondhose": "rondhose",
 };
