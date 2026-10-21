@@ -151,6 +151,21 @@ export function ResearchIndex() {
             <span>First published online October 2026</span>
           </div>
         </header>
+        <section className="research-index__latest" aria-labelledby="research-latest-heading">
+          <div className="research-index__latest-heading">
+            <p className="eyebrow">From my latest field notes</p>
+            <h2 id="research-latest-heading">Two new questions, two new studies.</h2>
+          </div>
+          <div className="research-index__latest-links">
+            {researchArticles.slice(-2).map((article) => (
+              <Link href={`/language/articles/${article.slug}`} key={article.slug}>
+                <span className="research-index__latest-number">Study {article.number}</span>
+                <strong>{article.title}</strong>
+                <span className="research-index__latest-arrow" aria-hidden="true">↗</span>
+              </Link>
+            ))}
+          </div>
+        </section>
         <div className="research-index__feature">
           <div>
             <p className="eyebrow">Begin with the evidence</p>
