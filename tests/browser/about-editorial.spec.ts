@@ -7,14 +7,14 @@ const researchDates = [
   ["wanting-and-experiencers", "2026-09-14"],
   ["connecting-kutchi-clauses", "2026-10-19"],
   ["la-and-jo-beneficiary-and-possession", "2026-10-21"],
-  ["how-negation-works-in-my-kutchi", "2026-10-21"],
+  ["negation-in-mombasa-kutchi", "2026-10-21"],
 ] as const;
 
-test("About page credits Farhan, his East African Kutchi mission, and TokenWorks", async ({ page }) => {
+test("About page states the research scope and credits founder and support", async ({ page }) => {
   await page.goto("/about");
-  await expect(page.getByRole("heading", { level: 1, name: /I built Madhaaf because/ })).toBeVisible();
-  await expect(page.getByText(/My name is Farhan Abdulla/)).toBeVisible();
-  await expect(page.getByText(/Kutchi is my native tongue/)).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: /Recording Mombasa and Ethiopian Kutchi/ })).toBeVisible();
+  await expect(page.getByText(/Founder and researcher/)).toBeVisible();
+  await expect(page.getByText(/academic research and documentation project/)).toBeVisible();
   await expect(page.getByText(/Kenya and Ethiopia/).first()).toBeVisible();
   await expect(page.getByText(/Adam Anderson/)).toBeVisible();
   await expect(page.getByText(/TokenWorks LLC/).first()).toBeVisible();
@@ -43,16 +43,16 @@ test("Research papers have accurately labeled dates and a linked author", async 
     await page.goto(`/language/articles/${slug}`);
     await expect(page.locator(".research-article__meta time")).toHaveAttribute("datetime", date);
     await expect(page.locator(".research-article__meta a[href='/about']")).toHaveText("Farhan Abdulla");
-    await expect(page.locator(".research-article__lead")).toContainText("I ");
+    await expect(page.locator(".research-article__lead")).not.toContainText(/my Kutchi|my research/i);
     await expect(page.getByText(/first appeared online in October 2026/)).toBeVisible();
   }
 });
 
-test("Writing and grammar guides reflect the founder's first-person editorial voice", async ({ page }) => {
+test("Writing and grammar guides present a research-focused voice", async ({ page }) => {
   await page.goto("/language/grammar");
-  await expect(page.getByText(/I am trying to document how my Mombasa Kutchi works/)).toBeVisible();
+  await expect(page.getByText(/This guide documents grammatical patterns in Mombasa and Ethiopian Kutchi/)).toBeVisible();
   await page.goto("/orthography");
-  await expect(page.getByRole("heading", { name: "How I am learning to write our Kutchi." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Working Latin orthography for East African Kutchi." })).toBeVisible();
 });
 
 test("About page has no horizontal overflow on mobile and tablet", async ({ page }) => {
@@ -62,6 +62,6 @@ test("About page has no horizontal overflow on mobile and tablet", async ({ page
     const overflow = await page.evaluate(() =>
       document.documentElement.scrollWidth - document.documentElement.clientWidth);
     expect(overflow, `About layout overflow at ${width}px`).toBeLessThanOrEqual(2);
-    await expect(page.getByRole("heading", { name: /I built Madhaaf because/ })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /Recording Mombasa and Ethiopian Kutchi/ })).toBeVisible();
   }
 });

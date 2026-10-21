@@ -320,7 +320,7 @@ export function ResearchArticleView({ article }: { article: ResearchArticle }) {
                   The research has not been peer reviewed or independently
                   validated across multiple speakers. Issue dates organize
                   the 2026 series and do not indicate earlier online
-                  publication; the articles first appeared in October 2026.
+                  publication; the articles first appeared online in October 2026.
                 </p>
               </section>
             </div>
@@ -329,7 +329,7 @@ export function ResearchArticleView({ article }: { article: ResearchArticle }) {
         <div className="research-article__next">
           <div>
             <p className="eyebrow">Continue reading · Study {next.number}</p>
-            <h2><Link href={`/language/articles/${next.slug}`}>{next.title} ↗</Link></h2>
+            <h2><Link href={`/language/articles/${next.slug}`}>{next.title}</Link></h2>
           </div>
           <Link className="text-link" href="/language/articles">All research articles</Link>
         </div>

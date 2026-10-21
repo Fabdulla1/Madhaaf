@@ -261,8 +261,8 @@ export default function GrammarPage() {
               <h3>First-person future forms</h3>
               <p>
                 Eight elicited future forms share the written sequence
-                <strong> -dhose</strong>. That sequence might also show agreement. The forms have mainly been
-                collected it in first-person future contexts so far.
+                <strong> -dhose</strong>. Agreement has not been established for this sequence.
+                Most examples were elicited in first-person future contexts.
               </p>
               <div className="grammar-table-wrap">
                 <table className="grammar-table">
@@ -321,8 +321,7 @@ export default function GrammarPage() {
               </div>
               <p>
                 Recorded present negatives use <em>natho</em>, and
-                <em> nah</em> with future forms and commands. The available data cannot
-                yet say whether either is a simple particle or an
+                <em> nah</em> with future forms and commands. The evidence does not yet establish whether either is a simple particle or an
                 inflected auxiliary. The study records both <em>natho vina</em>
                 and <em>natho vina(n)tho</em>, alongside other supplied
                 cases where a negative comes after the lexical verb.
@@ -343,7 +342,7 @@ export default function GrammarPage() {
                 contexts, not a finished negative conjugation. In the giving
                 pair, both the negative and the giving verb change.
               </p>
-              <Link className="text-link" href="/language/articles/how-negation-works-in-my-kutchi">
+              <Link className="text-link" href="/language/articles/negation-in-mombasa-kutchi">
                 Read the Kutchi negation study <span aria-hidden="true">↗</span>
               </Link>
             </section>
