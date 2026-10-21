@@ -42,3 +42,23 @@ test("public family tree has a safe empty state when sharing is off", async ({ p
   await expect(page.getByText("The family tree is being prepared.")).toBeVisible();
   await expect(page.getByRole("link", { name: "Add first person" })).toHaveCount(0);
 });
+
+test("partnered parents with a shared child render all three connections", async ({ page }) => {
+  const people = ["Amina", "Hassan", "Laila"].map((preferred_name, index) => ({
+    id: `00000000-0000-4000-8000-00000000000${index + 1}`,
+    preferred_name,
+    living_status: "deceased",
+  }));
+  const relationships = [
+    { id: "parent-a", person_a_id: people[0].id, person_b_id: people[2].id, kind: "parent", confidence: "confirmed" },
+    { id: "parent-b", person_a_id: people[1].id, person_b_id: people[2].id, kind: "parent", confidence: "confirmed" },
+    { id: "partners", person_a_id: people[0].id, person_b_id: people[1].id, kind: "partner", confidence: "confirmed" },
+  ];
+  await page.route("**/api/family/tree", route => route.fulfill({ json: { data: { enabled: true, members: people, relationships } } }));
+  await page.goto("/family/tree?view=public");
+  await expect(page.locator(".react-flow__node")).toHaveCount(3);
+  await expect(page.locator(".react-flow__edge")).toHaveCount(3);
+  const parentPositions = await page.locator(".react-flow__node").evaluateAll(nodes =>
+    nodes.slice(0, 2).map(node => Math.round(node.getBoundingClientRect().top)));
+  expect(Math.abs(parentPositions[0] - parentPositions[1])).toBeLessThan(20);
+});
