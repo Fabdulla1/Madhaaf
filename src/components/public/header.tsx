@@ -9,6 +9,7 @@ const navigation = [
   { href: "/family", label: "Family Tree" },
   { href: "/language", label: "Language" },
   { href: "/history", label: "History" },
+  { href: "/about", label: "About" },
 ];
 
 export function PublicHeader() {

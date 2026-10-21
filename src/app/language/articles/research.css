@@ -127,3 +127,17 @@
 @media (prefers-reduced-motion: reduce) {
   .public-site .research-tile__art img { transition: none; }
 }
+
+/* Author credits and retrospective 2026 research-issue dates. */
+.public-site .research-index__meta a,
+.public-site .research-article__meta a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--terracotta);
+}
+.public-site .research-index__meta a:hover,
+.public-site .research-article__meta a:hover { color: var(--terracotta-ink); }
+.public-site .research-tile__category span { margin: 0 5px; color: var(--ink-muted); }
+.public-site .research-tile__category time { white-space: nowrap; }
+.public-site .research-article__meta time { font-variant-numeric: tabular-nums; }

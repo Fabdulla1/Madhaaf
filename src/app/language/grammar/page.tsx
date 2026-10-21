@@ -57,14 +57,15 @@ export default function GrammarPage() {
           <p className="eyebrow">Language / Grammar notebook</p>
           <h1>How Kutchi sentences work.</h1>
           <p>
-            A developing description of East African Kutchi spoken in Mombasa.
-            Every example below comes from speaker-supplied sentences; the
-            explanations distinguish what was heard from what remains to be tested.
+            I am trying to document how my Mombasa Kutchi works, one
+            natural sentence at a time. I have kept the forms I supplied
+            separate from the grammatical explanations I am still testing.
           </p>
         </header>
         <div className="grammar-status" role="note">
           <strong>Working grammar · Edition 0.2</strong>
-          <span>Attested examples are not a complete or standardized grammar. Forms are transcribed from speaker examples, with n immediately before th written (n) according to the updated notation.</span>
+          <Link className="language-guide-byline" href="/about">Research notes by Farhan Abdulla ↗</Link>
+          <span>These examples are part of my ongoing research, not a standardized grammar. I write n immediately before th as (n) in the working display spelling; the original forms remain evidence.</span>
         </div>
         <div className="grammar-layout">
           <nav className="grammar-toc" aria-label="On this page">
@@ -86,8 +87,9 @@ export default function GrammarPage() {
               <h2>Verbs tend to come last.</h2>
               <Evidence>Observed in these examples</Evidence>
               <p>
-                Examples with an explicit subject and object show a subject–object–verb
-                order. This does not yet establish the order of every sentence type.
+                When I put a subject and object into the same sentence, I
+                often place the verb last. I have not tested enough sentence
+                types to say that every Kutchi sentence must follow that order.
               </p>
               <div className="grammar-example">
                 <p className="grammar-example__kutchi">Au(n) khadho kya(n)tho</p>
@@ -112,15 +114,16 @@ export default function GrammarPage() {
                     <tr><td>hee</td><td>he / she</td><td>same recorded pronoun with different verb forms</td></tr>
                     <tr><td>paa(n)</td><td>we</td><td>first-person plural</td></tr>
                     <tr><td>hinee</td><td>they</td><td>third-person plural</td></tr>
-                    <tr><td>mere</td><td>everyone</td><td>collective meaning; not “we”</td></tr>
+                    <tr><td>mere</td><td>all / everyone in recorded contexts</td><td>its contrast with miri(n) remains under investigation</td></tr>
                     <tr><td>ai(n)</td><td>you</td><td>formal or plural, from a greeting</td></tr>
                   </tbody>
                 </table>
               </div>
               <p className="grammar-fineprint">
-                The pronoun <em>hee</em> is used for both “he” and “she” in the supplied
-                eating sentences. The possibility that it also means “this” needs
-                further testing.
+                I use <em>hee</em> for both “he” and “she” in the eating
+                sentences, and also for “this” in expressions such as
+                <em> hee cheej</em>. I still need to understand its
+                relationship to <em>hin</em> and <em>ke</em>.
               </p>
             </section>
             <section id="verbs" className="grammar-section">
@@ -128,7 +131,7 @@ export default function GrammarPage() {
               <h2>Action verbs agree with their subjects.</h2>
               <Evidence>Attested forms; interpretation provisional</Evidence>
               <p>
-                The present forms of “to eat” and “to do” differ by person,
+                In the examples I recorded, present forms of “to eat” and “to do” differ by person,
                 gender and number. In the recorded singular forms, masculine
                 often ends in <strong>-(n)tho</strong> and feminine in <strong>-(n)thi</strong>;
                 the recorded plural forms end in <strong>-(n)thaa</strong> in several paradigms. The (n) notation is used immediately before th where an n was previously written; its exact phonetic realization remains to be verified.
@@ -143,8 +146,10 @@ export default function GrammarPage() {
                 </table>
               </div>
               <p className="grammar-fineprint">
-                The final row is a question: “Mere kuroo kye(n)thaa?” — “What is everyone eating?”
-                The other example sentences use <em>khadho</em> (“food”).
+                I supplied the last example as “Mere kuroo kye(n)thaa?”
+                (“What is everyone eating?”). My newer notes also distinguish
+                <em> mere</em> from <em>miri(n)</em>; their full distribution
+                is still one of my open questions.
               </p>
               <h3>Doing</h3>
               <div className="grammar-table-wrap">
@@ -160,8 +165,8 @@ export default function GrammarPage() {
                 <p>
                   Compare <em>kara(n)tho / kya(n)tho</em>, <em>kare(n)tho / kye(n)tho</em>,
                   <em> karethi / kyethi</em>, and <em>karo(n)thaa / kyo(n)thaa</em>.
-                  The correspondence is consistent, but we have not proven
-                  where stems end or individual grammatical suffixes begin.
+                  I hear a repeated pattern, but I have not yet shown
+                  where each verb stem ends and a grammatical suffix begins.
                 </p>
               </div>
             </section>
@@ -170,7 +175,7 @@ export default function GrammarPage() {
               <h2>A pattern across eight verbs.</h2>
               <Evidence>Speaker-elicited paradigm; spelling convention updated</Evidence>
               <p>
-                These present forms were elicited with the subjects “I” (masculine),
+                I collected these present forms with the subjects “I” (masculine),
                 “you” (masculine), “he”, “we” and “they”. The full feminine
                 singular forms were also elicited for all eight verbs.
                 The spelling <strong>(n)</strong> is used wherever the previously
@@ -191,17 +196,17 @@ export default function GrammarPage() {
               <p>
                 Corresponding feminine singular forms include <em>kana(n)thi</em>,
                 <em> kane(n)thi</em>, <em>kanethi</em>, and similarly shaped forms
-                of the other verbs. The repeated patterns support person, gender,
-                and number agreement, but not a final division into morphemes.
+                of the other verbs. These patterns help me see person, gender and number agreement,
+                but I cannot yet identify every morpheme boundary.
               </p>
               <div className="grammar-note">
                 <strong>Pronunciation and transcription to revisit</strong>
                 <p>
-                  The “run” data contained <em>dhora(n)tho</em> for the masculine
-                  first person but <em>dora(n)thi</em> and <em>dore(n)tho</em> elsewhere.
-                  Here the first-person written form is represented
-                  <em> dhora(n)tho</em> following the supplied dictionary headword.
-                  Whether dh and d reflect different pronunciations is unresolved.
+                  My running examples contain <em>dhora(n)tho</em> for the
+                  masculine first person but <em>dora(n)thi</em> and
+                  <em> dore(n)tho</em> elsewhere. I have retained
+                  <em> dhora(n)tho</em> alongside the headword, while
+                  leaving open whether dh and d reflect a pronunciation difference.
                 </p>
               </div>
             </section>
@@ -217,15 +222,14 @@ export default function GrammarPage() {
                 <div><strong>Au(n) haroj vina(n)tho</strong><span>I go every day.</span></div>
               </div>
               <p>
-                <em>Haroj</em> means “every day” in these examples. Present
-                forms recur in both ongoing and habitual readings. We therefore
-                cannot call <em>-(n)tho</em> a dedicated progressive ending.
+                I use <em>haroj</em> for “every day” in these examples. Present
+                forms recur in both ongoing and habitual readings. I therefore cannot yet call <em>-(n)tho</em> a dedicated progressive ending.
               </p>
               <h3>First-person future forms</h3>
               <p>
-                The eight elicited future forms share the written sequence
-                <strong> -dhose</strong>. The full sequence may also encode
-                agreement; only first-person future contexts have been elicited.
+                My eight elicited future forms share the written sequence
+                <strong> -dhose</strong>. That sequence might also show agreement. I have mainly
+                collected it in first-person future contexts so far.
               </p>
               <div className="grammar-table-wrap">
                 <table className="grammar-table">
@@ -239,10 +243,10 @@ export default function GrammarPage() {
                 </table>
               </div>
               <p>
-                <em>Savare</em> (“tomorrow”) appears before or after the
-                subject in the supplied future sentences, including
+                In the sentences I supplied, <em>savare</em> (“tomorrow”)
+                appears before or after the subject, including
                 <em> Savare au(n) kandhose</em> and
-                <em> au(n) savare kandhose</em>. The subject can also be omitted:
+                <em> au(n) savare kandhose</em>. I can also omit the subject:
                 <em> savare fagayndhose</em>.
               </p>
               <h3>Past-tense stem changes and agreement</h3>
@@ -257,17 +261,17 @@ export default function GrammarPage() {
                 <div><strong>Mere kaal suthyaa</strong><span>Everyone slept yesterday</span></div>
               </div>
               <p>
-                <em>Kaal</em> means “yesterday” in these examples.
+                I use <em>kaal</em> for “yesterday” in these examples.
                 The past forms of <em>vin</em> (“go”) and <em>sum</em>
                 (“sleep”) differ substantially from their present stems and show
                 gender or number distinctions. We cannot yet identify a regular
                 past-tense suffix for all verbs.
               </p>
               <p>
-                The verb <em>chad</em> has two separately supplied past forms,
+                I supplied two past forms of <em>chad</em>,
                 <em> chadidinose</em> (“I let go of it yesterday”) and
                 <em> chadyavose</em> (“I left it yesterday”).
-                Their difference in meaning or construction is still under investigation.
+                I am still investigating how their meanings and constructions differ.
               </p>
             </section>
             <section id="negation" className="grammar-section">
@@ -283,13 +287,13 @@ export default function GrammarPage() {
                 <div><strong>Natho vina(n)tho</strong><span>I am not going. · alternative form</span></div>
               </div>
               <p>
-                <em>Natho</em> recurs in present negative expressions, while
-                <em> nah</em> occurs with future forms. It is not yet clear
-                whether either is an independent negative particle or an
-                inflected auxiliary. Both <em>natho vina</em> and
-                <em> natho vina(n)tho</em> were recorded; neither is discarded.
-                Some speaker examples also place the negative element
-                after the lexical verb, so a rigid word-order rule is premature.
+                I use <em>natho</em> in several present negatives and
+                <em> nah</em> with future forms and commands. I cannot
+                yet say whether either is a simple particle or an
+                inflected auxiliary. I recorded both <em>natho vina</em>
+                and <em>natho vina(n)tho</em>, and I have also supplied
+                cases where a negative comes after the lexical verb.
+                I want to preserve those alternatives.
               </p>
             </section>
             <section id="commands" className="grammar-section">
@@ -307,8 +311,11 @@ export default function GrammarPage() {
                 ))}
               </div>
               <p>
-                <em>Kar</em> and <em>khaa</em> are attested as commands.
-                Seven of the eight newly elicited singular commands match their supplied headwords; <em>nikar</em> differs from <em>nikro</em>. Polite and plural imperatives remain undocumented.
+                I have recorded <em>kar</em> and <em>khaa</em> as commands.
+                Seven of the eight newly elicited singular commands match
+                the headwords I supplied, while <em>nikar</em> differs
+                from <em>nikro</em>. I still need to document polite
+                and plural commands.
               </p>
             </section>
             <section id="questions" className="grammar-section">
@@ -322,8 +329,8 @@ export default function GrammarPage() {
                 <div><strong>Ai(n) kee(n) i(n)yo?</strong><span>How are you? · formal or plural</span></div>
               </div>
               <p>
-                These questions retain the verb at the end. The exact function
-                and placement of question words require additional examples.
+                I put the verb at the end of these questions. I want
+                longer examples to test where question words may appear.
               </p>
             </section>
             <section id="being" className="grammar-section">
@@ -337,10 +344,11 @@ export default function GrammarPage() {
                 <div><strong>Mujo maru sare’lo ai</strong><span>My man is rotten.</span></div>
               </div>
               <p>
-                The forms <em>i(n)ya</em>, <em>i(n)ye</em>, <em>i(n)yo</em> and
-                <em> ai</em> may belong to a connected conjugation system.
-                We cannot yet say whether <em>sare’lo</em> is an adjective or a
-                participle, or which agreement patterns apply to it.
+                I have recorded <em>i(n)ya</em>, <em>i(n)ye</em>,
+                <em> i(n)yo</em> and <em>ai</em> in sentences about
+                being or describing a state. I suspect related patterns,
+                but I cannot yet say whether <em>sare’lo</em> is an
+                adjective or participle, or what agreement it shows.
               </p>
             </section>
             <section id="open-questions" className="grammar-section">
@@ -357,8 +365,9 @@ export default function GrammarPage() {
                 <li>Does <em>(n)</em> indicate vowel nasalization or a consonant in each word?</li>
               </ul>
               <p>
-                Another recorded form is <em>Au(n) khadho kadhyose</em>,
-                translated as “I ate food yesterday.” It supplies an additional past-time form whose exact relationship to the newer elicited paradigms has not yet been established.
+                I also supplied <em>Au(n) khadho kadhyose</em> for
+                “I ate food yesterday.” I am preserving the earlier form
+                while I work out how it relates to the newer paradigms.
               </p>
               <Link className="text-link" href="/orthography">
                 Explore the draft writing guide <span aria-hidden="true">↗</span>

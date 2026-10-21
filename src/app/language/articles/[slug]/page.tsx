@@ -16,8 +16,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return {
     title: article.title,
     description: article.summary,
+    authors: [{ name: "Farhan Abdulla", url: "/about" }],
     alternates: { canonical: `/language/articles/${article.slug}` },
     openGraph: {
+      type: "article",
+      authors: ["Farhan Abdulla"],
+      publishedTime: "2026-10-21",
       title: article.title,
       description: article.summary,
       images: [{ url: article.illustration, width: 1200, height: 700 }],

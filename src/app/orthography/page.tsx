@@ -18,13 +18,14 @@ export default function OrthographyPage() {
         </nav>
         <div className="page-intro">
           <p className="eyebrow">Language / Writing</p>
-          <h1>How we write Kutchi.</h1>
+          <h1>How I am learning to write our Kutchi.</h1>
           <p>
-            This is a working Latin orthography. It takes some initial
-            influence from Roman Urdu while keeping Mombasa Kutchi forms
-            visible on their own terms.
+            I am developing a Latin way of writing the Kutchi I grew up
+            speaking. I have looked at Roman Urdu for some conventions,
+            but I want our own sounds, words and usage to guide the system.
           </p>
         </div>
+        <p className="language-guide-byline">Notes and examples by <Link href="/about">Farhan Abdulla</Link> · Working orthography</p>
         <OrthographyContent />
       </div>
     </PublicShell>

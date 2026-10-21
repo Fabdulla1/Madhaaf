@@ -41,3 +41,11 @@ Media uploads go directly to private Supabase Storage with an administrator-issu
 The editorial research collection lives at `/language/articles`, with one static, statically generated route per study. Content and evidence labels live in `src/lib/language-articles.ts`; the reusable article renderer lives in `src/components/public/language-research.tsx`; illustrations are original decorative SVGs in `public/language/research/`. They are **not** historical photographs or linguistic source material. No grammar article is written to the History CMS or the database.
 
 Every published example must come from speaker-supplied elicitation, and speaker judgments must remain distinct from proposed linguistic explanations. Maintain original wording and the project's `(n)`-before-`th` display convention. Word links lead to published dictionary searches, rather than assuming fixed IDs; unpublished entries may not appear. Check this evidence policy and the mobile reading experience whenever adding or changing a study.
+
+## Founder and editorial attribution
+
+Madhaaf was founded by **Farhan Abdulla**, a native speaker documenting East African Mombasa Kutchi as a personal language-preservation and cultural-history project. The About page (`/about`) describes the family-history context, the provisional nature of early migration accounts, and the role of **Adam Anderson** and **TokenWorks LLC** in supporting the work.
+
+The research papers, grammar guide, and writing guide use Farhan's first-person editorial voice. Preserve the speaker's exact Kutchi examples and distinguish observed grammaticality from interpretation. Do not claim the papers are peer reviewed or have been validated across other speakers.
+
+**Research article dating policy:** The five dates displayed in the series are retrospectively assigned **2026 editorial issue dates**, not claimed historical online publication dates or verified dates of elicitation. The papers first appeared on the website in October 2026. Keep this distinction visible on the index, article pages and in publication metadata; do not backdate `publishedTime` or provenance.

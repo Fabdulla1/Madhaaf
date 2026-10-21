@@ -9,7 +9,7 @@ export function PublicFooter() {
           <p className="footer-wordmark">Madhaaf</p>
           <p>
             A developing space for Mombasa Kutchi language, culture, and
-            carefully preserved family memory.
+            carefully preserved family memory. Founded by Farhan Abdulla.
           </p>
         </div>
         <nav aria-label="Footer navigation">
@@ -19,6 +19,7 @@ export function PublicFooter() {
           <Link href="/language/articles">Research articles</Link>
           <Link href="/orthography">Writing guide</Link>
           <Link href="/history">History &amp; culture</Link>
+          <Link href="/about">About Madhaaf</Link>
           <Link href="/family">Family space</Link>
         </nav>
         <p className="footer-note">
