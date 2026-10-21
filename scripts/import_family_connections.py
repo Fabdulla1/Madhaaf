@@ -140,7 +140,7 @@ def backup(cursor, directory: Path):
     for table in ("family_members", "member_names", "family_relationships"):
         cursor.execute(f"select * from public.{table}")
         data[table] = cursor.fetchall()
-    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
     path = directory / f"madhaaf-family-before-connections-{stamp}.json"
     with path.open("x", encoding="utf-8") as output:
         json.dump(data, output, ensure_ascii=False, default=str, indent=2)
