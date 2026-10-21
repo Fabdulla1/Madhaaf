@@ -24,6 +24,17 @@ test("Language pages remain navigable on narrow viewports", async ({ page }) => 
   await page.getByRole("link", { name: /Explore the grammar/i }).click();
   await expect(page).toHaveURL(/\/language\/grammar$/);
   await expect(page.getByRole("heading", { name: "How Kutchi sentences work." })).toBeVisible();
+  await page.getByText("Browse 17 grammar chapters").click();
+  await page.getByRole("navigation", { name: "Grammar chapters" }).getByRole("link", { name: /Case marking/ }).click();
+  await expect(page).toHaveURL(/#case-marking$/);
+  await expect(page.getByRole("heading", { name: "The environments of ke." })).toBeVisible();
+  await page.getByRole("link", { name: "↑ Chapters" }).click();
+  await expect(page).toHaveURL(/#grammar-chapters$/);
+  await expect(page.getByText("Browse 17 grammar chapters")).toBeInViewport();
+  await expect(page.locator("#nouns").getByText(/These recorded noun forms may be plural or contextual/)).toBeVisible();
+  await expect(page.locator("#nouns").getByRole("table", { name: /Attested noun forms/ })).toBeVisible();
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
+  expect(overflow).toBe(false);
 });
 
 test("Grammar includes eight-verb survey, habitual reading, future and negation", async ({ page }) => {
@@ -33,5 +44,30 @@ test("Grammar includes eight-verb survey, habitual reading, future and negation"
   await expect(page.getByRole("heading", { name: "Not doing, and not going to do." })).toBeVisible();
   await expect(page.getByText("Au(n) haroj suma(n)tho", { exact: true })).toBeVisible();
   await expect(page.getByText("Nah vendhose", { exact: true })).toBeVisible();
-  await expect(page.getByRole("link", { name: /08 · Questions/i })).toHaveAttribute("href", "#questions");
+  await expect(page.getByRole("navigation", { name: "On this page" }).getByRole("link", { name: /Questions/i })).toHaveAttribute("href", "#questions");
+});
+
+test("Grammar preserves complete ke judgments and labels hypotheses", async ({ page }) => {
+  await page.goto("/language/grammar");
+  const caseSection = page.locator("#case-marking");
+  await expect(caseSection.getByText("Au(n) hin chokro ke disa(n)tho", { exact: true })).toBeVisible();
+  await expect(caseSection.getByText("Au(n) hee chokro disa(n)tho", { exact: true })).toBeVisible();
+  await expect(caseSection.getByText("chokre ke kapetho", { exact: true })).toBeVisible();
+  await expect(caseSection.getByText("chokro ke kapetho", { exact: true })).toBeVisible();
+  await expect(caseSection.getByText(/Hypothesis · demonstrative form may reflect case/)).toBeVisible();
+  await expect(caseSection.getByText(/mixed combinations have not been confirmed/)).toBeVisible();
+  await expect(caseSection.getByRole("link", { name: /Search dictionary for “ke”/ }).last()).toHaveAttribute("href", "/dictionary?q=ke");
+});
+
+test("New grammar chapters retain forms, explicit uncertainty, and accessible tables", async ({ page }) => {
+  await page.goto("/language/grammar");
+  await expect(page.locator("#nouns").getByText("Chokreu(n) sume(n)thaa", { exact: true })).toBeVisible();
+  await expect(page.locator("#adjectives").getByText("Hee bhairee thadhee ai", { exact: true })).toBeVisible();
+  await expect(page.locator("#desire").getByText("hoonee ke hin cheejeu(n) kape(n)theu(n)", { exact: true })).toBeVisible();
+  await expect(page.locator("#desire").getByText(/do not establish a universal infinitive/)).toBeVisible();
+  await expect(page.locator("#negation").getByText("Nathi sume", { exact: true })).toBeVisible();
+  await expect(page.locator("#complex-sentences").getByText("savare varsaath pondhi, tha poi au(n) ghare rondhose", { exact: true })).toBeVisible();
+  await expect(page.locator("#demonstratives").getByRole("table", { name: /Recorded proximal and distal forms/ })).toBeVisible();
+  await expect(page.locator("#nouns").getByRole("table", { name: /Attested noun forms/ })).toBeVisible();
+  await expect(page.locator("#complex-sentences").getByRole("table", { name: /Recorded meanings/ })).toBeVisible();
 });
