@@ -1,0 +1,623 @@
+{
+  "source": {
+    "title": "Owner-supplied Kutchi word list ? further additions",
+    "citation": "Project owner, additional Kutchi vocabulary, 21 October 2026.",
+    "sha256": "7facce931b8be6d384b6b62b53805e1c86fcebfa9e4fa325a57f3d1a345b6aee",
+    "first_source_row": 368,
+    "last_source_row": 454
+  },
+  "rows": [
+    {
+      "source_row": 368,
+      "word": "ulti",
+      "english_definition": "vomit",
+      "action": "new_entry",
+      "part_of_speech": null
+    },
+    {
+      "source_row": 369,
+      "word": "bhevoosh",
+      "english_definition": "unconscious",
+      "action": "new_entry",
+      "part_of_speech": "adjective"
+    },
+    {
+      "source_row": 370,
+      "word": "joratho",
+      "english_definition": "strong (adjective)",
+      "action": "new_entry",
+      "part_of_speech": "adjective"
+    },
+    {
+      "source_row": 371,
+      "word": "jorathi",
+      "english_definition": "strong (adjective) (feminine)",
+      "action": "recorded_form",
+      "lemma": "joratho",
+      "gender": "feminine"
+    },
+    {
+      "source_row": 372,
+      "word": "tando",
+      "english_definition": "fire, campfire",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 373,
+      "word": "chu'lo",
+      "english_definition": "stove",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 374,
+      "word": "peti",
+      "english_definition": "chest, box, container",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 375,
+      "word": "athanoo",
+      "english_definition": "pickled foods",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 376,
+      "word": "daar",
+      "english_definition": "lentils",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 377,
+      "word": "keemo",
+      "english_definition": "ground meat",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 378,
+      "word": "heklo",
+      "english_definition": "alone (male)",
+      "action": "existing"
+    },
+    {
+      "source_row": 379,
+      "word": "hekli",
+      "english_definition": "alone (female)",
+      "action": "existing"
+    },
+    {
+      "source_row": 380,
+      "word": "a(n)soo",
+      "english_definition": "tears",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 381,
+      "word": "nindhar",
+      "english_definition": "sleep",
+      "action": "existing"
+    },
+    {
+      "source_row": 382,
+      "word": "sonoo",
+      "english_definition": "dream",
+      "action": "spelling_variant",
+      "lemma": "sono",
+      "existing_gloss": "dream"
+    },
+    {
+      "source_row": 383,
+      "word": "peedhe'lo",
+      "english_definition": "drunk (alcohol induced), to have been drunk out of",
+      "action": "new_entry",
+      "part_of_speech": "adjective"
+    },
+    {
+      "source_row": 384,
+      "word": "poi",
+      "english_definition": "next, then",
+      "action": "add_sense",
+      "lemma": "poi",
+      "gloss": "next",
+      "existing_gloss": "then"
+    },
+    {
+      "source_row": 385,
+      "word": "thu",
+      "english_definition": "so",
+      "action": "new_entry",
+      "part_of_speech": null
+    },
+    {
+      "source_row": 386,
+      "word": "se",
+      "english_definition": "because",
+      "action": "existing"
+    },
+    {
+      "source_row": 387,
+      "word": "chaklee",
+      "english_definition": "bird",
+      "action": "spelling_variant",
+      "lemma": "chakli",
+      "existing_gloss": "bird"
+    },
+    {
+      "source_row": 388,
+      "word": "kabuthar",
+      "english_definition": "pigeon",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 389,
+      "word": "kaagro",
+      "english_definition": "raven, crow",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 390,
+      "word": "fite'lo",
+      "english_definition": "ruined",
+      "action": "new_entry",
+      "part_of_speech": "adjective"
+    },
+    {
+      "source_row": 391,
+      "word": "neechlo",
+      "english_definition": "bottom one",
+      "action": "new_entry",
+      "part_of_speech": "adjective"
+    },
+    {
+      "source_row": 392,
+      "word": "mathlo",
+      "english_definition": "top one",
+      "action": "new_entry",
+      "part_of_speech": "adjective"
+    },
+    {
+      "source_row": 393,
+      "word": "vichlo",
+      "english_definition": "middle one",
+      "action": "new_entry",
+      "part_of_speech": "adjective"
+    },
+    {
+      "source_row": 394,
+      "word": "samlo",
+      "english_definition": "front one",
+      "action": "new_entry",
+      "part_of_speech": "adjective"
+    },
+    {
+      "source_row": 395,
+      "word": "parosee",
+      "english_definition": "neighbor",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 396,
+      "word": "ghaambryo",
+      "english_definition": "rural area",
+      "action": "new_entry",
+      "part_of_speech": "noun",
+      "note": "Similar to gaambriyo (rural); lexical relationship is not established."
+    },
+    {
+      "source_row": 397,
+      "word": "kit",
+      "english_definition": "rust",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 398,
+      "word": "kite'lo",
+      "english_definition": "rusted",
+      "action": "new_entry",
+      "part_of_speech": "adjective"
+    },
+    {
+      "source_row": 399,
+      "word": "sa(n)gan",
+      "english_definition": "chain",
+      "action": "spelling_variant",
+      "lemma": "sangan",
+      "existing_gloss": "chain"
+    },
+    {
+      "source_row": 400,
+      "word": "mani",
+      "english_definition": "roti, tortilla",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 401,
+      "word": "pao(n)",
+      "english_definition": "bread",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 402,
+      "word": "chaasnee",
+      "english_definition": "syrup",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 403,
+      "word": "nas",
+      "english_definition": "vein, nerve",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 404,
+      "word": "magaj",
+      "english_definition": "brain, head",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 405,
+      "word": "mee(n)yalo",
+      "english_definition": "bone marrow, brain",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 406,
+      "word": "hado",
+      "english_definition": "bone",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 407,
+      "word": "no",
+      "english_definition": "nail",
+      "action": "homograph",
+      "part_of_speech": "noun",
+      "existing_gloss": "nine"
+    },
+    {
+      "source_row": 408,
+      "word": "binyer",
+      "english_definition": "eyebrow",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 409,
+      "word": "mit",
+      "english_definition": "cheek",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 410,
+      "word": "chap",
+      "english_definition": "lips",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 411,
+      "word": "chup",
+      "english_definition": "silence! quiet!",
+      "action": "new_entry",
+      "part_of_speech": "interjection"
+    },
+    {
+      "source_row": 412,
+      "word": "haathi",
+      "english_definition": "elephant",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 413,
+      "word": "hen",
+      "english_definition": "deer",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 414,
+      "word": "magarmach",
+      "english_definition": "alligator, crocodile",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 415,
+      "word": "paari",
+      "english_definition": "ledge, windowsill",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 416,
+      "word": "pardho",
+      "english_definition": "cover, curtains",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 417,
+      "word": "kaaro",
+      "english_definition": "black",
+      "action": "existing"
+    },
+    {
+      "source_row": 418,
+      "word": "besharam",
+      "english_definition": "shameless",
+      "action": "new_entry",
+      "part_of_speech": "adjective"
+    },
+    {
+      "source_row": 419,
+      "word": "topee",
+      "english_definition": "hat",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 420,
+      "word": "bandhook",
+      "english_definition": "gun",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 421,
+      "word": "goli",
+      "english_definition": "bullet",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 422,
+      "word": "goree",
+      "english_definition": "pill",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 423,
+      "word": "pipar",
+      "english_definition": "candy",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 424,
+      "word": "aasthe",
+      "english_definition": "slowly",
+      "action": "new_entry",
+      "part_of_speech": "adverb"
+    },
+    {
+      "source_row": 425,
+      "word": "jaldi",
+      "english_definition": "quickly",
+      "action": "existing"
+    },
+    {
+      "source_row": 426,
+      "word": "ugaro",
+      "english_definition": "(male) naked",
+      "action": "new_entry",
+      "part_of_speech": "adjective"
+    },
+    {
+      "source_row": 427,
+      "word": "ugaree",
+      "english_definition": "(female) naked",
+      "action": "recorded_form",
+      "lemma": "ugaro",
+      "gender": "feminine"
+    },
+    {
+      "source_row": 428,
+      "word": "ugaraa",
+      "english_definition": "(group/formal) naked",
+      "action": "recorded_form",
+      "lemma": "ugaro",
+      "gender": null,
+      "note": "Owner gloss says group/formal; grammatical number and address remain unresolved."
+    },
+    {
+      "source_row": 429,
+      "word": "pat",
+      "english_definition": "floor",
+      "action": "existing"
+    },
+    {
+      "source_row": 430,
+      "word": "maar",
+      "english_definition": "apartment floor",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 431,
+      "word": "karaab",
+      "english_definition": "bad",
+      "action": "new_entry",
+      "part_of_speech": "adjective"
+    },
+    {
+      "source_row": 432,
+      "word": "kaaso",
+      "english_definition": "good",
+      "action": "new_entry",
+      "part_of_speech": "adjective"
+    },
+    {
+      "source_row": 433,
+      "word": "roop",
+      "english_definition": "beauty",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 434,
+      "word": "ruparo",
+      "english_definition": "beautiful (male)",
+      "action": "new_entry",
+      "part_of_speech": "adjective"
+    },
+    {
+      "source_row": 435,
+      "word": "ruparee",
+      "english_definition": "beautiful (female)",
+      "action": "recorded_form",
+      "lemma": "ruparo",
+      "gender": "feminine"
+    },
+    {
+      "source_row": 436,
+      "word": "khushbooh",
+      "english_definition": "fragrance",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 437,
+      "word": "vaan",
+      "english_definition": "boat, ship",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 438,
+      "word": "saaro",
+      "english_definition": "good, acceptable",
+      "action": "new_entry",
+      "part_of_speech": "adjective"
+    },
+    {
+      "source_row": 439,
+      "word": "sao(n)",
+      "english_definition": "right (direction), correct",
+      "action": "new_entry",
+      "part_of_speech": null
+    },
+    {
+      "source_row": 440,
+      "word": "undho",
+      "english_definition": "wrong",
+      "action": "new_entry",
+      "part_of_speech": "adjective"
+    },
+    {
+      "source_row": 441,
+      "word": "choka",
+      "english_definition": "rice",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 442,
+      "word": "neela dhana",
+      "english_definition": "cilantro",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 443,
+      "word": "doo(n)gree",
+      "english_definition": "onion",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 444,
+      "word": "miri(n)",
+      "english_definition": "everyone",
+      "action": "existing"
+    },
+    {
+      "source_row": 445,
+      "word": "halchal",
+      "english_definition": "walking",
+      "action": "new_entry",
+      "part_of_speech": null
+    },
+    {
+      "source_row": 446,
+      "word": "pandh",
+      "english_definition": "a walk",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 447,
+      "word": "goro",
+      "english_definition": "horse",
+      "action": "existing"
+    },
+    {
+      "source_row": 448,
+      "word": "putlo",
+      "english_definition": "the one behind",
+      "action": "new_entry",
+      "part_of_speech": null
+    },
+    {
+      "source_row": 449,
+      "word": "kinu",
+      "english_definition": "dirty",
+      "action": "new_entry",
+      "part_of_speech": "adjective"
+    },
+    {
+      "source_row": 450,
+      "word": "taanki",
+      "english_definition": "tank",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 451,
+      "word": "kaanch",
+      "english_definition": "glass",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 452,
+      "word": "ghuso",
+      "english_definition": "anger, rage",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 453,
+      "word": "bith",
+      "english_definition": "wall",
+      "action": "new_entry",
+      "part_of_speech": "noun"
+    },
+    {
+      "source_row": 454,
+      "word": "bandhe'lo",
+      "english_definition": "tied",
+      "action": "new_entry",
+      "part_of_speech": "adjective"
+    }
+  ]
+}
