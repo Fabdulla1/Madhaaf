@@ -56,3 +56,13 @@ test("Word-order comparison stays readable on a small viewport", async ({ page }
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   expect(overflow).toBeLessThanOrEqual(2);
 });
+
+test("Grammar reference includes la/jo and the expanded negative evidence", async ({ page }) => {
+  await page.goto("/language/grammar");
+  await expect(page.getByRole("heading", { name: "La and jo connect people to things differently." })).toBeVisible();
+  await expect(page.getByRole("link", { name: /10 · La and jo/ })).toHaveAttribute("href", "#postpositions");
+  await expect(page.getByText("Hin la au(n) pe(n)sa kayose", { exact: true })).toBeVisible();
+  await expect(page.getByText("Hin jo pe(n)sa au(n) kayose", { exact: true })).toBeVisible();
+  await expect(page.getByText("Hee mukhe pe(n)sa nai dhine", { exact: true })).toBeVisible();
+  await expect(page.getByText(/natho.*nathi.*nathaa/i).first()).toBeVisible();
+});
