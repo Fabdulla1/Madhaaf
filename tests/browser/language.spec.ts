@@ -39,7 +39,7 @@ test("Grammar includes eight-verb survey, habitual reading, future and negation"
 
 test("Grammar presents speaker-attested verb-first, medial and final arrangements without imposing verb-final order", async ({ page }) => {
   await page.goto("/language/grammar");
-  await expect(page.getByRole("heading", { name: "The verb does not have a fixed position." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Word order is not always verb-final." })).toBeVisible();
   await expect(page.locator(".grammar-order-list li strong")).toHaveText([
     "Au(n) chada(n)tho hin ke",
     "Chada(n)tho au(n) hin ke",
