@@ -7,6 +7,15 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/api/admin/locations": ["./node_modules/@countrystatecity/countries/dist/data/**/*"],
   },
+  async redirects() {
+    return [
+      {
+        source: "/language/articles/how-negation-works-in-my-kutchi",
+        destination: "/language/articles/negation-in-mombasa-kutchi",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [{
       source: "/:path*",
