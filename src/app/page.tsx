@@ -150,10 +150,10 @@ export default function Home() {
           <div>
             <h2 id="home-closing-title">There is always more to remember.</h2>
             <p>
-              Madhaaf is a growing archive. Its entries and histories are
+              I created Madhaaf to preserve my Kutchi language, our heritage and the identity I know. Its entries and histories are
               reviewed before publication, so the record can grow with care.
             </p>
-            <Link className="button button--outline" href="/history">Spend time in the archive <span aria-hidden="true">↗</span></Link>
+            <Link className="button button--outline" href="/about">Why I built Madhaaf <span aria-hidden="true">↗</span></Link>
           </div>
         </div>
       </section>
