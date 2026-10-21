@@ -17,6 +17,26 @@ export type DictionaryEntry = {
   usage_note?: string | null;
   etymology_note?: string | null;
   word_forms?: Array<{ id: string; spelling: string; is_preferred: boolean; note?: string | null }>;
+  inflected_forms?: Array<{
+    id: string;
+    written_form: string;
+    grammatical_person?: string | null;
+    grammatical_number?: string | null;
+    gender?: string | null;
+    tense?: string | null;
+    aspect?: string | null;
+    mood?: string | null;
+    politeness?: string | null;
+    original_transcription?: string | null;
+    evidence_status: "attested" | "provisional";
+    note?: string | null;
+  }>;
+  linked_examples?: Array<{
+    id: string;
+    kutchi_text: string;
+    english_translation?: string | null;
+    note?: string | null;
+  }>;
   senses?: Array<{
     id: string;
     gloss_en: string;

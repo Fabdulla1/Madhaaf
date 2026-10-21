@@ -77,7 +77,7 @@ function InflectionForm({ initial, sources, busy, onSave, onCancel }: {
 }) {
   const [values, setValues] = useState<FormValues>(initial);
   const set = (key: keyof FormValues, value: string) =>
-    setValues(current => ({ ...current, [key]: value || null }));
+    setValues(current => ({ ...current, [key]: key === "written_form" || key === "source_id" ? value : value || null }));
   return <form onSubmit={event => { event.preventDefault(); void onSave(values); }} className="mt-4 grid gap-4 rounded border border-[#d8d3c8] bg-[#fffcf6] p-5 sm:grid-cols-2 lg:grid-cols-4">
     <label className="text-sm font-semibold">Recorded form
       <input required maxLength={200} value={values.written_form} onChange={event => set("written_form", event.target.value)} className="mt-2 w-full rounded border border-[#aaa99e] bg-white p-3" />
@@ -146,10 +146,10 @@ export function DictionaryInflections({ lexemeId, locked }: { lexemeId: string; 
     setBusy(true); setError(""); setMessage("");
     try {
       const payload = formPayload(values, lexemeId);
-      if (id) delete (payload as Partial<typeof payload>).lexeme_id;
+      const { lexeme_id, ...changes } = payload;
       const response = await fetch(`/api/admin/inflections${id ? `/${id}` : ""}`, {
         method: id ? "PATCH" : "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(id ? changes : { ...changes, lexeme_id }),
       });
       const result = await response.json();
       if (!response.ok) throw Error(result.error || "Could not save recorded form");

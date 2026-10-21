@@ -3,7 +3,7 @@ import { error } from '@/lib/server/http'
 
 import { connection } from 'next/server'
 
-const fields = 'id,headword,part_of_speech,usage_note,etymology_note,orthography_version_id,word_forms(id,spelling,is_preferred,note),senses(id,gloss_en,definition_en,display_order,examples(id,kutchi_text,english_translation,note,display_order))'
+const fields = 'id,headword,part_of_speech,usage_note,etymology_note,orthography_version_id,word_forms(id,spelling,is_preferred,note),inflected_forms(id,written_form,original_transcription,evidence_status),senses(id,gloss_en,definition_en,display_order,examples(id,kutchi_text,english_translation,note,display_order))'
 
 export async function GET(request: Request) {
   await connection()

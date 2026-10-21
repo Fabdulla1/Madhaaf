@@ -236,7 +236,7 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
 .list-heading h2 { margin-bottom: 0; font-size: 2.2rem; }
 .list-heading span { color: var(--ink-muted); font-size: .8rem; white-space: nowrap; }
 .alphabet-nav { display: flex; flex-wrap: wrap; gap: 4px; padding-block: 20px 4px; }
-.alphabet-nav a { display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center; border: 1px solid var(--line); font-size: .76rem; font-weight: 700; }
+.alphabet-nav a { display: inline-flex; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid var(--line); font-size: .76rem; font-weight: 700; }
 .alphabet-nav a:hover, .alphabet-nav a.is-active { border-color: var(--ink); background: var(--ink); color: #fff; }
 .list-pagination { display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); margin-top: 38px; padding-top: 20px; font-size: .82rem; }
 .list-pagination a { min-height: 44px; display: inline-flex; align-items: center; border-bottom: 1px solid var(--ink); font-weight: 700; }
@@ -250,6 +250,9 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
 .dictionary-row strong { font-family: var(--font-editorial); font-size: 1.55rem; font-weight: 400; letter-spacing: -.025em; }
 .small-tag { color: var(--ink-muted); font-size: .72rem; font-style: italic; }
 .dictionary-row__gloss { color: var(--ink-muted); font-size: .88rem; }
+.dictionary-row__matched-form { display: block; margin-top: 5px; color: var(--ink); font-size: .82rem; }
+.dictionary-row__matched-form strong { font-family: var(--font-interface); font-size: inherit; font-weight: 700; letter-spacing: normal; }
+.dictionary-row__evidence { color: var(--ink-muted); }
 .dictionary-row__arrow { justify-self: end; font-size: 1.15rem; }
 .content-state { min-height: 200px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; border: 1px solid var(--line); padding: 32px; background: var(--paper); }
 .content-state__mark { margin-bottom: 12px; color: var(--terracotta); font-size: 1.55rem; }
@@ -326,6 +329,20 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
 .entry-linguistics__tags { display: flex; flex-wrap: wrap; gap: 9px; margin: 0; padding: 0; list-style: none; }
 .entry-linguistics__tags li { border: 1px solid var(--line); border-radius: 999px; background: var(--paper); padding: 7px 12px; color: var(--ink); font-size: .82rem; }
 .entry-linguistics__note { margin: 24px 0 0; color: var(--ink-muted); font-size: .86rem; }
+.conjugations__intro { margin: -9px 0 20px; color: var(--ink-muted); font-size: .94rem; line-height: 1.6; }
+.conjugations__group { margin-top: 31px; }
+.conjugations__group h3 { margin-bottom: 13px; font-family: var(--font-editorial); font-size: 1.5rem; }
+.conjugations__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.conjugations__item { min-width: 0; border: 1px solid var(--line); background: var(--paper); padding: 18px; overflow-wrap: anywhere; }
+.conjugations__form { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
+.conjugations__form strong { font-family: var(--font-editorial); font-size: 1.5rem; font-weight: 400; }
+.conjugations__evidence { border: 1px solid var(--line); border-radius: 3px; padding: 4px 7px; color: var(--ink-muted); font-size: .7rem; font-weight: 700; }
+.conjugations__features { display: flex; flex-wrap: wrap; gap: 10px 18px; margin: 15px 0 0; }
+.conjugations__features div { min-width: 70px; }
+.conjugations__features dt { color: var(--ink-muted); font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.conjugations__features dd { margin: 3px 0 0; font-size: .85rem; }
+.conjugations__source, .conjugations__note { margin: 13px 0 0; color: var(--ink-muted); font-size: .82rem; line-height: 1.5; }
+.conjugations__source span { color: var(--ink); }
 .sense-list { padding-left: 27px; }
 .sense-list > li { padding-left: 10px; margin-bottom: 35px; font-size: 1.05rem; }
 .sense-list > li::marker { color: var(--terracotta-ink); font-family: var(--font-editorial); font-size: 1.35rem; }
@@ -488,6 +505,7 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
   .dictionary-row { grid-template-columns: 1fr 18px; gap: 4px 12px; }
   .dictionary-row__gloss { grid-column: 1; grid-row: 2; }
   .dictionary-row__arrow { grid-column: 2; grid-row: 1 / 3; align-self: center; }
+  .conjugations__list { grid-template-columns: 1fr; }
   .list-heading h2 { font-size: 1.85rem; }
   .list-heading span { font-size: .7rem; }
   .detail-aside { grid-template-columns: 1fr; gap: 0; }
