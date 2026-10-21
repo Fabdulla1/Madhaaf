@@ -197,8 +197,8 @@ export default function GrammarPage() {
               <div className="grammar-note">
                 <strong>Pronunciation and transcription to revisit</strong>
                 <p>
-                  The “run” data contained <em>dhorantho</em> for the masculine
-                  first person but <em>doranthi</em> and <em>dorentho</em> elsewhere.
+                  The “run” data contained <em>dhora(n)tho</em> for the masculine
+                  first person but <em>dora(n)thi</em> and <em>dore(n)tho</em> elsewhere.
                   Here the first-person written form is represented
                   <em> dhora(n)tho</em> following the supplied dictionary headword.
                   Whether dh and d reflect different pronunciations is unresolved.
@@ -308,7 +308,7 @@ export default function GrammarPage() {
               </div>
               <p>
                 <em>Kar</em> and <em>khaa</em> are attested as commands.
-                Six of the eight newly elicited singular commands match their supplied headwords; <em>nikar</em> differs from <em>nikro</em>. Polite and plural imperatives remain undocumented.
+                Seven of the eight newly elicited singular commands match their supplied headwords; <em>nikar</em> differs from <em>nikro</em>. Polite and plural imperatives remain undocumented.
               </p>
             </section>
             <section id="questions" className="grammar-section">
