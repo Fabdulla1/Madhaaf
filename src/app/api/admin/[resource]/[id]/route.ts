@@ -32,6 +32,8 @@ export async function PATCH(request: Request, context: Context) {
     // a new editorial decision and must use a new row.
     if (resource === 'relationships' && ['person_a_id','person_b_id','kind'].some(k => k in payload))
       return error('Create a new relationship to change endpoints or kind')
+    if (resource === 'inflections' && 'lexeme_id' in payload)
+      return error('Create a new inflected form to change its dictionary entry')
     if (resource === 'articles' && payload.status === 'published') payload.published_at = new Date().toISOString()
     if (['members','lexemes','articles'].includes(resource)) payload.updated_by = admin.user.id
     let query = admin.supabase.from(resourceTables[resource]).update(payload).eq('id', id)
@@ -49,7 +51,7 @@ export async function DELETE(request: Request, context: Context) {
   if (!admin) return error('Unauthorized', 401)
   const { resource, id } = await context.params
   if (!isResource(resource) || !uuid.safeParse(id).success) return error('Not found', 404)
-  if (resource === 'spellings' || resource === 'senses' || resource === 'examples') {
+  if (resource === 'spellings' || resource === 'senses' || resource === 'examples' || resource === 'inflections') {
     if (resource === 'spellings') {
       const { data: form } = await admin.supabase.from('word_forms').select('is_preferred').eq('id',id).maybeSingle()
       if (!form) return error('Not found', 404)

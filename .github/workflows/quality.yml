@@ -51,7 +51,11 @@ jobs:
       - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610190002_lexeme_preferred_form.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610190003_public_family_tree.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610200001_dictionary_linguistics.sql
+      - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610210001_dictionary_attestations.sql
+      - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610210002_dictionary_example_provenance.sql
+      - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610210003_published_example_sources.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/foundation.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/public_family.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/dictionary_entry.sql
+      - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/dictionary_attestations.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/security_roles.sql

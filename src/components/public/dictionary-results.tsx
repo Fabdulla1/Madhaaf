@@ -16,8 +16,20 @@ function hasExactSpelling(entry: DictionaryEntry, query: string) {
   const q = query.toLocaleLowerCase();
   return (
     entry.headword.toLocaleLowerCase() === q ||
-    entry.word_forms?.some((form) => form.spelling.toLocaleLowerCase() === q)
+    entry.word_forms?.some((form) => form.spelling.toLocaleLowerCase() === q) ||
+    entry.inflected_forms?.some((form) =>
+      form.written_form.toLocaleLowerCase() === q ||
+      form.original_transcription?.toLocaleLowerCase() === q)
   );
+}
+
+function matchingInflection(entry: DictionaryEntry, query: string) {
+  const q = query.toLocaleLowerCase();
+  const forms = entry.inflected_forms ?? [];
+  const written = forms.filter(form => form.written_form.toLocaleLowerCase() === q);
+  const original = forms.filter(form => form.original_transcription?.toLocaleLowerCase() === q);
+  const matches = written.length ? written : original;
+  return matches.find(form => form.evidence_status === "attested") ?? matches[0];
 }
 
 function pageHref(query: string, letter: string, page: number) {
@@ -29,7 +41,11 @@ function pageHref(query: string, letter: string, page: number) {
   return suffix ? `/dictionary?${suffix}` : "/dictionary";
 }
 
-function EntryLink({ entry }: { entry: DictionaryEntry }) {
+function EntryLink({ entry, query = "" }: { entry: DictionaryEntry; query?: string }) {
+  const match = query && entry.headword.toLocaleLowerCase() !== query.toLocaleLowerCase()
+    ? matchingInflection(entry, query) : undefined;
+  const sourceSpelling = match?.original_transcription?.toLocaleLowerCase() === query.toLocaleLowerCase()
+    && match.original_transcription !== match.written_form;
   return (
     <Link href={`/dictionary/${entry.id}`} className="dictionary-row">
       <span className="dictionary-row__head">
@@ -38,6 +54,11 @@ function EntryLink({ entry }: { entry: DictionaryEntry }) {
       </span>
       <span className="dictionary-row__gloss">
         {entry.senses?.map((sense) => sense.gloss_en).filter(Boolean).slice(0, 2).join(" · ") || "View meanings"}
+        {match && <span className="dictionary-row__matched-form">
+          {sourceSpelling ? "Source transcription" : "Matched form"}: <strong>{sourceSpelling ? match.original_transcription : match.written_form}</strong>
+          {sourceSpelling && <> → {match.written_form}</>}
+          <span className="dictionary-row__evidence"> · {match.evidence_status === "attested" ? "speaker attested" : "provisional"}</span>
+        </span>}
       </span>
       <span className="dictionary-row__arrow" aria-hidden="true">↗</span>
     </Link>
@@ -139,21 +160,21 @@ export function DictionaryResults({
     const exact = entries.filter((entry) => hasExactSpelling(entry, query));
     const other = entries.filter((entry) => !hasExactSpelling(entry, query));
     return (
-      <section aria-live="polite">
+      <section>
         <div className="list-heading">
           <h2>Search results</h2>
-          <span>{total} {total === 1 ? "entry" : "entries"}</span>
+          <span role="status" aria-live="polite">{total} {total === 1 ? "entry" : "entries"}</span>
         </div>
         {exact.length > 0 && (
           <div className="dictionary-group">
             <h3>Exact spelling</h3>
-            {exact.map((entry) => <EntryLink key={entry.id} entry={entry} />)}
+            {exact.map((entry) => <EntryLink key={entry.id} entry={entry} query={query} />)}
           </div>
         )}
         {other.length > 0 && (
           <div className="dictionary-group">
             <h3>{exact.length ? "Other results" : "Matching entries"}</h3>
-            {other.map((entry) => <EntryLink key={entry.id} entry={entry} />)}
+            {other.map((entry) => <EntryLink key={entry.id} entry={entry} query={query} />)}
           </div>
         )}
         <Pager query={query} letter="" page={page} total={total} limit={limit} hasMore={hasMore} />

@@ -16,7 +16,7 @@ export async function GET(request: Request, context: { params: Promise<{ resourc
   const offset = (page-1)*limit
   let query = admin.supabase.from(table).select('*',{count:'exact'}).order('id').range(offset,offset+limit-1)
   const parentColumn: Partial<Record<typeof resource, string>> = {
-    spellings: 'lexeme_id', senses: 'lexeme_id', examples: 'sense_id',
+    spellings: 'lexeme_id', senses: 'lexeme_id', examples: 'sense_id', inflections: 'lexeme_id',
   }
   const column = parentColumn[resource]
   if (column && url.searchParams.get(column)) query = query.eq(column, url.searchParams.get(column)!)
