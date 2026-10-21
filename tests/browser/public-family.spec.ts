@@ -62,3 +62,21 @@ test("partnered parents with a shared child render all three connections", async
     nodes.slice(0, 2).map(node => Math.round(node.getBoundingClientRect().top)));
   expect(Math.abs(parentPositions[0] - parentPositions[1])).toBeLessThan(20);
 });
+
+test("a direct sibling connection appears on the map and in the list", async ({ page }) => {
+  const people = ["Older sibling", "Younger sibling"].map((preferred_name, index) => ({
+    id: `00000000-0000-4000-8000-00000000001${index + 1}`,
+    preferred_name,
+    living_status: "deceased",
+  }));
+  const relationships = [{
+    id: "siblings", person_a_id: people[0].id, person_b_id: people[1].id,
+    kind: "sibling", confidence: "confirmed", status: "published",
+  }];
+  await page.route("**/api/family/tree", route => route.fulfill({ json: { data: { enabled: true, members: people, relationships } } }));
+  await page.goto("/family/tree?view=public");
+  await expect(page.locator(".family-tree-edge--sibling")).toHaveCount(1);
+  await page.getByRole("button", { name: "List" }).click();
+  await page.getByRole("button", { name: "Older sibling" }).click();
+  await expect(page.getByRole("button", { name: "Sibling: Younger sibling" })).toBeVisible();
+});
