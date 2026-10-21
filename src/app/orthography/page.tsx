@@ -25,6 +25,7 @@ export default function OrthographyPage() {
             but I want our own sounds, words and usage to guide the system.
           </p>
         </div>
+        <p className="language-guide-byline">Notes and examples by <Link href="/about">Farhan Abdulla</Link> · Working orthography</p>
         <OrthographyContent />
       </div>
     </PublicShell>
