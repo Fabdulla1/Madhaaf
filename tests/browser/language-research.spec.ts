@@ -26,7 +26,9 @@ test("ke study preserves the critical paired construction and links terms to the
   await expect(page.getByText("Au(n) hee chokro disa(n)tho", { exact: true })).toBeVisible();
   await expect(page.getByText("chokre ke kapetho", { exact: true })).toBeVisible();
   await expect(page.getByText("chokro ke kapetho", { exact: true })).toBeVisible();
-  await expect(page.locator('a[href="/dictionary?q=ke"]').first()).toBeVisible();
+  await expect(page.locator('a[href="#word-note-ke"]').first()).toBeVisible();
+  await page.locator('a[href="#word-note-ke"]').first().click();
+  await expect(page.locator('#word-note-ke a[href="/dictionary?q=ke"]')).toBeVisible();
   await expect(page.getByRole("heading", { name: "How this article was prepared" })).toBeVisible();
 });
 
