@@ -45,10 +45,10 @@ Record the **attested constructions**, not an invented universal negative paradi
 
 | Exact speaker form | Speaker-provided meaning / context |
 | --- | --- |
-| `Natho sume` | He is not sleeping. |
-| `Nathi sume` | She is not sleeping. |
+| `Natho sume` | He won't sleep. (Speaker-corrected future meaning, not present progressive.) |
+| `Nathi sume` | She won't sleep. (Speaker-corrected future meaning, not present progressive.) |
 | `Hee mukhe pe(n)sa natho dye` | He doesn't give me money. |
-| `Hee mukhe pe(n)sa nai dhine` | He didn't give me money. |
+| `Hee mukhe pe(n)sa nai dhine` | He hasn't given me money. (Speaker correction, not English simple past.) |
 | `Paa(n) kaal na oosyasee` | We did not go yesterday. |
 | `Nah sum!` | Don't sleep! |
 | `Nah vin` | Don't go! |
@@ -67,7 +67,9 @@ Record the **attested constructions**, not an invented universal negative paradi
 
 Where source schema requires an English translation, store such forms as elicitation/morphology notes pending speaker clarification rather than fabricating one. The presence of `hin ke` plus `au(n)` is a live syntactic question. Likewise, `nathaa` occurs with a plural desired item, but the agreement controller is not proven.
 
-Do not claim `nai` is exclusively past: it also occurs with “there is no food.” Do not claim `nah` is exclusively imperative: a future-negative example is recorded. The future, negative and feminine suffix inventories are not proven.
+**Speaker correction, 21 October 2026:** The entries `Natho sume` and `Nathi sume` mean “He won't sleep” and “She won't sleep”, not “He is not sleeping” or “She is not sleeping”. `Hee mukhe pe(n)sa nai dhine` means “He hasn't given me money”, not “He didn't give me money”. Preserve the original Kutchi and retain a provenance/revision history if any earlier English gloss was entered into the database. The separate `Hee mukhe pe(n)sa natho dye` = “He doesn't give me money” remains confirmed.
+
+Do not claim `natho` or `nathi` is always future: `natho dye` has a present interpretation. Do not claim `nai` is exclusively simple past, perfect or existential: it also occurs with “there is no food”. The `nai dhine` example has a confirmed English “hasn't given” interpretation, but the particular element carrying completion or current relevance has not been isolated. Do not claim `nah` is exclusively imperative: a future-negative example is recorded. Future, negative and gender suffix inventories remain provisional.
 
 Review and enrich existing lexemes for `natho`, `nathi`, `nathaa`, `na`, `nah`, `nai`, the imperative `de` and attested giving forms `dye`, `dhine`, `dhya(n)`, `dhineese`, `dhinose` where appropriate. Review `kan`/`kayose` (took / picked up), `khadho`/`khade`, `pe(n)sa`, `mukhe`, `hin`, `hinjo`, `mujo`, `bhaa`, `raja` and `bapa` without inventing new senses. Do not conflate `raja` meaning permission/approval with similar spellings glossed “king.”
 
@@ -86,7 +88,7 @@ Produce an auditable structured evidence manifest (e.g., `data/kutchi-la-jo-nega
 
 ## Phase 5 — Verification and deliverables
 
-Test duplicate-safe reruns, public dictionary search for `la` and `jo`, preservation of the original jo “for” gloss, exposure of additional possessive sense, and searches for recorded negative forms. Verify private/unpublished entries remain inaccessible and existing dictionary pages and inflections work.
+Test duplicate-safe reruns, public dictionary search for `la` and `jo`, preservation of the original jo “for” gloss, exposure of additional possessive sense, and searches for recorded negative forms. Regression-test all three corrected English readings and confirm that `Hee mukhe pe(n)sa natho dye` retains its unchanged translation. Do not republish the superseded English glosses as attested meanings. Verify private/unpublished entries remain inaccessible and existing dictionary pages and inflections work.
 
 Run lint, typecheck, build, relevant Python/SQL/browser tests and GitHub CI; check Vercel if site behavior changed. Use a feature branch, focused commits, PR review, and resolve findings before merge. Provide a report with added/enriched entries, exemplar sentences, evidence status, source links, migration/production apply status, test results, conflicts and open linguistic questions.
 

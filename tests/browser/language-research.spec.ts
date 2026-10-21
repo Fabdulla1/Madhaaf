@@ -119,6 +119,14 @@ test("the negation article keeps attested contrasts apart from untranslated elic
   await expect(examples.filter({ hasText: "Nathi sume" })).toHaveCount(1);
   await expect(examples.filter({ hasText: "Hee mukhe pe(n)sa natho dye" })).toHaveCount(1);
   await expect(examples.filter({ hasText: "Hee mukhe pe(n)sa nai dhine" })).toHaveCount(1);
+  await expect(page.locator(".research-example").filter({ hasText: "Natho sume" }).getByText("He won't sleep.", { exact: true })).toBeVisible();
+  await expect(page.locator(".research-example").filter({ hasText: "Nathi sume" }).getByText("She won't sleep.", { exact: true })).toBeVisible();
+  await expect(page.locator(".research-example").filter({ hasText: "Hee mukhe pe(n)sa nai dhine" }).getByText("He hasn't given me money.", { exact: true })).toBeVisible();
+  await expect(page.locator(".research-example").filter({ hasText: "Hee mukhe pe(n)sa natho dye" }).getByText("He doesn't give me money.", { exact: true })).toBeVisible();
+  await expect(page.getByText("He is not sleeping.", { exact: true })).toHaveCount(0);
+  await expect(page.getByText("She is not sleeping.", { exact: true })).toHaveCount(0);
+  await expect(page.getByText("He didn't give me money.", { exact: true })).toHaveCount(0);
+  await expect(page.getByText("Correction to the earlier translations", { exact: true })).toBeVisible();
   await expect(examples.filter({ hasText: "Hin ke au(n) pe(n)sa nai dhineese" })).toHaveCount(1);
   await expect(examples.filter({ hasText: "hin ke au(n) pe(n)sa nathi dhya(n)" })).toHaveCount(1);
   await expect(page.locator(".research-example__structure-label").filter({ hasText: "Elicitation context" })).toHaveCount(2);

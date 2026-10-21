@@ -66,3 +66,15 @@ test("Grammar reference includes la/jo and the expanded negative evidence", asyn
   await expect(page.getByText("Hee mukhe pe(n)sa nai dhine", { exact: true })).toBeVisible();
   await expect(page.getByText(/natho.*nathi.*nathaa/i).first()).toBeVisible();
 });
+
+test("Speaker correction in negation retains three meanings and the unchanged giving example", async ({ page }) => {
+  await page.goto("/language/grammar#negation");
+  const contrasts = page.locator("#negation .grammar-pairs");
+  await expect(contrasts.getByText("He won't sleep. · speaker-corrected future reading", { exact: true })).toBeVisible();
+  await expect(contrasts.getByText("She won't sleep. · speaker-corrected future reading", { exact: true })).toBeVisible();
+  await expect(contrasts.getByText("He hasn't given me money. · speaker-corrected reading", { exact: true })).toBeVisible();
+  await expect(contrasts.getByText("He doesn't give me money.", { exact: true })).toBeVisible();
+  await expect(page.getByText("He is not sleeping.", { exact: true })).toHaveCount(0);
+  await expect(page.getByText("She is not sleeping.", { exact: true })).toHaveCount(0);
+  await expect(page.getByText("He didn't give me money.", { exact: true })).toHaveCount(0);
+});

@@ -320,7 +320,7 @@ export default function GrammarPage() {
                 <div><strong>Natho vina(n)tho</strong><span>I am not going. · alternative form</span></div>
               </div>
               <p>
-                Recorded present negatives use <em>natho</em>; future forms
+                Some recorded present negatives use <em>natho</em>; future forms
                 and commands include <em>nah</em>. Neither form has yet
                 been established as a simple particle or inflected auxiliary.
                 The study records both <em>natho vina</em>
@@ -330,15 +330,28 @@ export default function GrammarPage() {
               </p>
               <h3>Different negative forms can appear with the same verb</h3>
               <div className="grammar-pairs">
-                <div><strong>Natho sume</strong><span>He is not sleeping.</span></div>
-                <div><strong>Nathi sume</strong><span>She is not sleeping.</span></div>
+                <div><strong>Natho sume</strong><span>He won&apos;t sleep. · speaker-corrected future reading</span></div>
+                <div><strong>Nathi sume</strong><span>She won&apos;t sleep. · speaker-corrected future reading</span></div>
                 <div><strong>Hee mukhe pe(n)sa natho dye</strong><span>He doesn&apos;t give me money.</span></div>
-                <div><strong>Hee mukhe pe(n)sa nai dhine</strong><span>He didn&apos;t give me money.</span></div>
+                <div><strong>Hee mukhe pe(n)sa nai dhine</strong><span>He hasn&apos;t given me money. · speaker-corrected reading</span></div>
               </div>
+              <p>
+                The native speaker clarified that the two short sleeping
+                sentences mean “won&apos;t sleep”, not “is not sleeping”.
+                This does not make <em>natho</em> a universal future
+                marker, since the giving example with <em>natho dye</em>
+                means “doesn&apos;t give”.
+              </p>
+              <p>
+                The giving contrast also distinguishes “doesn&apos;t give”
+                from “hasn&apos;t given”. Since both the negative and
+                the verb form change, the source of this completed or
+                currently relevant reading remains unresolved.
+              </p>
               <p>
                 The study also records <em>nathaa</em> with plural desired things,
                 <em> na</em> in a past negative, <em>nah</em> in negative
-                commands, and <em>nai</em> for both past giving and an
+                commands, and <em>nai</em> with a “hasn&apos;t given” reading and an
                 expression meaning there is no food. These are attested
                 contexts, not a finished negative conjugation. In the giving
                 pair, both the negative and the giving verb change.
