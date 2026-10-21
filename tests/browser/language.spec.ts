@@ -46,7 +46,7 @@ test("Grammar presents speaker-attested verb-first, medial and final arrangement
     "hin ke au(n) chada(n)tho",
   ]);
   await expect(page.getByRole("heading", { name: "Verbs tend to come last." })).toHaveCount(0);
-  await expect(page.getByText(/not which is\s+most frequent in ordinary conversation/)).toBeVisible();
+  await expect(page.getByText(/do not establish which order is\s+most common/)).toBeVisible();
 });
 
 test("Word-order comparison stays readable on a small viewport", async ({ page }) => {
