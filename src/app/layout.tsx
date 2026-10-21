@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     template: "%s | Madhaaf",
   },
   description:
-    "A living archive of Kutchi language, family histories, and cultural memory.",
+    "An academic research archive documenting Mombasa and Ethiopian Kutchi language, history and culture.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

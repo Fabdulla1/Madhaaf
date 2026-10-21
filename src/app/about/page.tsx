@@ -4,34 +4,34 @@ import Link from "next/link";
 import { PublicShell } from "@/components/public/shell";
 
 export const metadata: Metadata = {
-  title: "About Madhaaf & Farhan Abdulla",
+  title: "About Madhaaf | East African Kutchi research",
   description:
-    "Why Farhan Abdulla founded Madhaaf: preserving his native East African Kutchi dialect, family history, and cultural identity through an evidence-led living archive.",
+    "Madhaaf documents Mombasa and Ethiopian Kutchi through linguistic research, speaker examples, oral histories and cultural records.",
   alternates: { canonical: "/about" },
 };
 
 const themes = [
   {
     number: "01",
-    title: "The language I speak",
+    title: "Vocabulary and usage",
     body:
-      "I'm collecting the words, expressions and sentence patterns I know from everyday Kutchi. I want to document not just what a word means, but how people actually use it.",
+      "The dictionary records words, meanings, grammatical information and examples in context. Original speaker spellings remain part of the evidence.",
     href: "/dictionary",
     link: "Explore the dictionary",
   },
   {
     number: "02",
-    title: "The grammar I'm uncovering",
+    title: "Grammar and language comparison",
     body:
-      "I've been comparing verb forms, questions, gender and number agreement, and words like ke that don't translate neatly into English. Every example helps me ask better questions.",
+      "The research examines word order, agreement, negation and case marking. Gujarati, Sindhi and other related languages provide comparisons, not substitutes for Kutchi evidence.",
     href: "/language/articles",
-    link: "Read my research notes",
+    link: "Read the language studies",
   },
   {
     number: "03",
-    title: "The history I want to preserve",
+    title: "History and oral records",
     body:
-      "Our family histories, migrations and cultural memories deserve a place where I can preserve them carefully, alongside sources and the knowledge of the people who share them.",
+      "Family histories, migration accounts and cultural practices are documented with their sources. Oral traditions and historical findings are distinguished.",
     href: "/history",
     link: "Explore the history archive",
   },
@@ -47,14 +47,14 @@ export default function AboutPage() {
         </nav>
         <header className="about-hero">
           <div className="about-hero__copy">
-            <p className="eyebrow">About Madhaaf / A note from its founder</p>
-            <h1>I built Madhaaf because I don&apos;t want our stories to disappear.</h1>
+            <p className="eyebrow">About Madhaaf / Research scope</p>
+            <h1>Recording Mombasa and Ethiopian Kutchi.</h1>
             <p className="about-hero__intro">
-              My name is Farhan Abdulla. Kutchi is my native tongue, and
-              preserving the culture, history and identity I grew up knowing
-              is the reason I started this project.
+              Madhaaf is an academic research and documentation project
+              focused on the language, history and cultural knowledge
+              of Kutchi communities in Mombasa and Ethiopia.
             </p>
-            <p className="about-hero__signature">Farhan Abdulla <span>Founder of Madhaaf</span></p>
+            <p className="about-hero__signature">Farhan Abdulla <span>Founder and researcher</span></p>
           </div>
           <figure className="about-hero__art">
             <Image
@@ -65,72 +65,65 @@ export default function AboutPage() {
               priority
               unoptimized
             />
-            <figcaption>Language, family and memory—threads I want to keep connected. Original editorial illustration.</figcaption>
+            <figcaption>Language, family and history. Original editorial illustration, not historical evidence.</figcaption>
           </figure>
         </header>
         <div className="about-opening">
-          <p className="about-opening__eyebrow">Why I started</p>
+          <p className="about-opening__eyebrow">Purpose</p>
           <div>
-            <h2>For me, a language is part of knowing where I come from.</h2>
+            <h2>Document the language as it is spoken.</h2>
             <p>
-              Madhaaf began with a personal concern: so much of what I know
-              about my family and our culture lives in conversations,
-              memories and words that are rarely written down. I don&apos;t want
-              that knowledge to be lost simply because nobody took the time
-              to record it.
+              Kutchi speech, family histories and cultural traditions in East
+              Africa are not always represented in written records. Madhaaf
+              brings these materials together so they can be studied,
+              compared and preserved with their original context.
             </p>
             <p>
-              Kutchi is the language I speak and recognize as my own. It
-              connects me to my family, to the people who came before us,
-              and to the places our communities have called home. I&apos;m
-              building Madhaaf as a place where I can document those
-              connections and keep learning from them.
+              The project is not an attempt to prescribe a single correct
+              form of Kutchi. It records speaker usage, variant forms and
+              unresolved questions. Each analysis is revised as further
+              evidence becomes available.
             </p>
           </div>
         </div>
         <section className="about-diaspora" aria-labelledby="about-roots-title">
           <div className="about-diaspora__heading">
-            <p className="eyebrow">Our East African roots</p>
-            <h2 id="about-roots-title">Our Kutchi has a history of movement.</h2>
+            <p className="eyebrow">Geographic focus</p>
+            <h2 id="about-roots-title">Kutchi communities in East Africa.</h2>
           </div>
           <div className="about-diaspora__copy">
             <p>
-              My family&apos;s roots are connected to Kutchi communities that
-              migrated from the Kutch region to East Africa, including
-              <strong> Kenya and Ethiopia</strong>. In our family histories,
-              some of these journeys are relatively recent, while other
-              accounts reach much further back—even more than a thousand
-              years. I want to document those accounts, trace their sources
-              where possible, and distinguish family tradition from what
-              historical records can establish.
+              The study focuses on Kutchi associated with <strong>Mombasa, Kenya,
+              and communities in Ethiopia</strong>. It also records oral and
+              family accounts of migration from the Kutch region. These
+              accounts are important historical sources, but their dates
+              and details require independent evaluation where possible.
             </p>
             <p>
-              The Kutchi I know isn&apos;t necessarily identical to the language
-              spoken in Kutch today. Generations living in East Africa may
-              have shaped our pronunciation, vocabulary and everyday
-              expressions. I&apos;m especially interested in words we may have
-              adopted through life in places such as Kenya and Ethiopia.
-              Those possible influences are questions for research, not
-              conclusions I want to assume in advance.
+              East African Kutchi may differ from varieties spoken in Kutch
+              today. Contact with other languages, movement between communities
+              and generational change are questions for investigation.
+              Comparisons with Gujarati, Sindhi and documented Kutchi varieties
+              help identify patterns without assuming that their grammar
+              describes Mombasa or Ethiopian speech exactly.
             </p>
             <p>
-              I&apos;ve found very little detailed documentation of the particular
-              East African Kutchi variety I speak. Rather than wait for
-              someone else to write it down, I decided to begin collecting
-              examples myself.
+              Current published examples are presented with their available
+              speaker context. A pattern attested in Mombasa Kutchi is not
+              automatically treated as established for Ethiopian Kutchi.
             </p>
           </div>
         </section>
         <section className="about-work" aria-labelledby="about-research-title">
           <div className="about-work__heading">
             <div>
-              <p className="eyebrow">What I&apos;m documenting</p>
-              <h2 id="about-research-title">Research that starts with the way we speak.</h2>
+              <p className="eyebrow">Research areas</p>
+              <h2 id="about-research-title">Language, culture and history.</h2>
             </div>
             <p>
-              I want Madhaaf to be more than a list of translations. The
-              language deserves its own grammar, vocabulary record and
-              collection of real examples.
+              Madhaaf combines language documentation with historical and
+              cultural research. The dictionary, grammar and archive are
+              connected but preserve their own sources and methods.
             </p>
           </div>
           <div className="about-work__grid">
@@ -144,46 +137,44 @@ export default function AboutPage() {
             ))}
           </div>
           <div className="about-work__note">
-            <p className="eyebrow">How I&apos;m working</p>
+            <p className="eyebrow">Research method</p>
             <p>
-              I start with the sentences I would naturally say, then compare
-              small differences: a verb when the speaker is male or female,
-              a noun in the singular and plural, or what happens when I
-              remove a word like <em>ke</em>. I record which forms I know
-              are natural and which explanations are still guesses. I&apos;m
-              developing a Latin writing guide alongside that work, so
-              the original spoken forms remain visible.
+              The linguistic studies begin with recorded or elicited speaker
+              sentences, translations and grammaticality judgments. Each study
+              distinguishes speaker-confirmed forms from interpretations that
+              still require testing. Original spellings remain visible; a
+              provisional Latin orthography supports consistent indexing.
             </p>
-            <Link className="text-link" href="/orthography">See my working writing guide ↗</Link>
+            <Link className="text-link" href="/orthography">Read the working writing guide <span aria-hidden="true">↗</span></Link>
           </div>
         </section>
         <section className="about-vision" aria-labelledby="about-future-title">
-          <p className="eyebrow">Looking ahead</p>
-          <h2 id="about-future-title">I want the next generation to have something to return to.</h2>
+          <p className="eyebrow">Research goals</p>
+          <h2 id="about-future-title">Build a record that future research can use.</h2>
           <p>
-            My hope is to build an archive that can grow with our knowledge:
-            a dictionary, grammar studies, recorded speech, family histories,
-            cultural research and, eventually, computational tools that make
-            the language easier to study and use. The work is unfinished by
-            design. I would rather preserve an honest question today than
-            publish an answer I cannot support.
+            The long-term aim is to publish documented vocabulary, grammatical
+            descriptions, speech examples and cultural histories with clear
+            provenance. Further recordings, comparative studies and
+            computational tools can extend this work as evidence and
+            community participation grow.
           </p>
         </section>
         <section className="about-support" aria-labelledby="about-support-title">
           <div>
             <p className="eyebrow">Acknowledgments</p>
-            <h2 id="about-support-title">Made possible with TokenWorks.</h2>
+            <h2 id="about-support-title">Research and technical support.</h2>
             <p>
-              None of this would be possible without <strong>TokenWorks LLC</strong>,
-              the company I co-founded alongside <strong>Adam Anderson</strong>,
-              my computational linguist co-founder. Through TokenWorks, I can
-              continue developing Madhaaf, carrying out linguistic research
-              and building the computational tools I hope will help preserve
-              this language.
+              Madhaaf was founded by <strong>Farhan Abdulla</strong> and is
+              supported by <strong>TokenWorks LLC</strong>, co-founded by
+              Farhan Abdulla and <strong>Adam Anderson</strong>.
+              TokenWorks supports the development of the archive, research
+              infrastructure and computational tools.
             </p>
             <p>
-              I&apos;m grateful for that support and for the opportunity to bring
-              the technical work together with something deeply personal to me.
+              Technical support does not imply that the findings have been
+              peer reviewed or endorsed by an academic institution.
+              Contributors and source material should be credited in the
+              records where they are used.
             </p>
             <a className="text-link" href="https://www.tokenworks.ai/" rel="noopener noreferrer">
               Visit TokenWorks <span aria-hidden="true">↗</span>
@@ -192,18 +183,18 @@ export default function AboutPage() {
           <div className="about-support__brand">
             <Image src="/tokenworks-logo.png" alt="TokenWorks logo" width={150} height={150} />
             <strong>TokenWorks LLC</strong>
-            <span>Supporting the preservation of East African Kutchi</span>
+            <span>Supporting East African Kutchi research and documentation</span>
           </div>
         </section>
         <footer className="about-endnote">
           <p>
-            This site is my ongoing research and preservation project, not a
-            claim to speak for every Kutchi community. I want to keep
-            documenting what I know, checking what I don&apos;t, and building
-            a place where our language and history can remain part of our lives.
+            Madhaaf documents selected Mombasa and Ethiopian Kutchi communities,
+            not every Kutchi variety. Its analyses are preliminary unless
+            stated otherwise. Uncertainty, differing speaker judgments and
+            incomplete historical evidence remain part of the published record.
           </p>
           <Link className="button button--primary" href="/language/articles">
-            Read my latest research <span aria-hidden="true">↗</span>
+            Read the language studies <span aria-hidden="true">↗</span>
           </Link>
         </footer>
       </div>

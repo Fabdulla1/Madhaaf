@@ -5,7 +5,7 @@ import { PublicShell } from "@/components/public/shell";
 
 export const metadata: Metadata = {
   title: "Writing guide",
-  description: "The developing Mombasa Kutchi Latin Orthography, Draft 0.3.",
+  description: "Provisional Latin orthography used to document Mombasa and Ethiopian Kutchi, Draft 0.3.",
 };
 
 export default function OrthographyPage() {
@@ -18,14 +18,15 @@ export default function OrthographyPage() {
         </nav>
         <div className="page-intro">
           <p className="eyebrow">Language / Writing</p>
-          <h1>How I am learning to write our Kutchi.</h1>
+          <h1>Working Latin orthography for East African Kutchi.</h1>
           <p>
-            I am developing a Latin way of writing the Kutchi I grew up
-            speaking. I have looked at Roman Urdu for some conventions,
-            but I want our own sounds, words and usage to guide the system.
+            This guide sets out provisional spelling conventions used in
+            Madhaaf's documentation of Mombasa and Ethiopian Kutchi.
+            Roman Urdu is one point of comparison, but recorded Kutchi
+            pronunciation and usage determine the research conventions.
           </p>
         </div>
-        <p className="language-guide-byline">Notes and examples by <Link href="/about">Farhan Abdulla</Link> · Working orthography</p>
+        <p className="language-guide-byline">Prepared by <Link href="/about">Farhan Abdulla</Link> · Working orthography</p>
         <OrthographyContent />
       </div>
     </PublicShell>

@@ -26,23 +26,23 @@ export function OrthographyContent() {
             ? (/^draft\b/i.test(published.label) ? published.label : `Draft ${published.label}`)
             : "Draft 0.3"}</strong>
           <p>
-            I am still testing these conventions with the words and
-            sentences I collect. This is a working draft, not an official
-            community or academic standard.
+            These conventions are being evaluated against speaker-supplied
+            words and sentences. This draft has not been adopted as an
+            official community or academic standard.
           </p>
         </div>
         <section className="orthography-rules">
           <h2>Letters and intended use</h2>
           <p>
-            I use this working letter list when recording Kutchi examples.
-            I keep apostrophes, vowel marks, and <code>(n)</code> visible
-            because changing a written detail can hide a useful distinction.
+            This letter reference is used for transcribing Kutchi examples.
+            Apostrophes, vowel marks and <code>(n)</code> are retained where
+            they preserve distinctions found in the original material.
           </p>
           <LetterReferenceTable />
         </section>
         <section className="orthography-editorial">
           <h2>Published editorial notes</h2>
-          <p>Here I collect notes from each version of the writing system, including ideas I may revise as I hear more examples.</p>
+          <p>Editorial notes explain revisions to the writing conventions and document points that still need speaker confirmation.</p>
           {!result ? <LoadingState label="Loading editorial notes…" /> : result.status === "success" && result.data ? (
             result.data.body_markdown
               ? <MarkdownContent content={result.data.body_markdown} />
@@ -57,14 +57,14 @@ export function OrthographyContent() {
         </section>
       </div>
       <aside className="side-note">
-        <p className="eyebrow">Writing together</p>
+        <p className="eyebrow">Transcription notes</p>
         <h2>Still developing.</h2>
         <p>
           Long vowels are shown with doubled letters and their marked forms:
           <code> aa (ā)</code>, <code>ee (ē)</code>, and <code>oo (ō)</code>.
           The list also includes <code>(n)</code> and <code>‘l</code>.
         </p>
-        <p>I treat these sound labels as provisional. I want to add pronunciations and everyday usage examples as my research grows.</p>
+        <p>The sound labels are provisional. Audio recordings and additional usage examples are needed to test and refine them.</p>
       </aside>
     </div>
   );

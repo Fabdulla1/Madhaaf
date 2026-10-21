@@ -8,18 +8,19 @@ export default function Home() {
       <section className="home-hero" aria-labelledby="home-title">
         <div className="page-width home-hero__grid">
           <div className="home-hero__copy">
-            <h1 id="home-title">What we carry, we can keep.</h1>
+            <h1 id="home-title">Documenting Mombasa and Ethiopian Kutchi.</h1>
             <p>
-              A language heard at home. A family connection remembered. A story
-              passed from one generation to the next. Madhaaf gives these
-              pieces of our shared history a place to live and grow.
+              Madhaaf is a research archive documenting Kutchi language, family
+              history and cultural knowledge in Mombasa and Ethiopian communities.
+              The aim is to record the evidence, its sources and the questions
+              that remain open.
             </p>
             <div className="action-row">
               <Link className="button home-hero__button" href="/history">
-                Explore our stories <span aria-hidden="true">↗</span>
+                Explore the research <span aria-hidden="true">↗</span>
               </Link>
               <Link className="home-hero__quiet-link" href="#the-journey">
-                Discover the archive <span aria-hidden="true">↓</span>
+                Explore the archive <span aria-hidden="true">↓</span>
               </Link>
             </div>
           </div>
@@ -33,7 +34,7 @@ export default function Home() {
             <span className="home-hero__point home-hero__point--one" />
             <span className="home-hero__point home-hero__point--two" />
             <span className="home-hero__point home-hero__point--three" />
-            <span className="home-hero__art-caption">Many lives, one unfolding story</span>
+            <span className="home-hero__art-caption">Language, history and community</span>
           </div>
         </div>
         <div className="page-width home-hero__foot">
@@ -45,11 +46,11 @@ export default function Home() {
         <div className="page-width home-intro__grid">
           <span className="home-intro__mark" aria-hidden="true" />
           <div>
-            <h2 id="home-intro-title">Every story begins somewhere.</h2>
+            <h2 id="home-intro-title">A record built from language and history.</h2>
             <p>
-              It might begin with a familiar phrase, a relative’s name, or a
-              memory of a place. Here, those threads become a growing record of
-              language and belonging, gathered with care and shared with context.
+              This work brings together spoken examples, grammatical analysis,
+              oral histories and genealogical records. Original forms are
+              preserved, and interpretations remain separate from documented evidence.
             </p>
           </div>
         </div>
@@ -58,12 +59,12 @@ export default function Home() {
       <section className="home-support" aria-labelledby="home-support-title">
         <div className="page-width home-support__inner">
           <div className="home-support__copy">
-            <p className="eyebrow">Our supporter</p>
-            <h2 id="home-support-title">A partner in preserving what matters.</h2>
+            <p className="eyebrow">Research support</p>
+            <h2 id="home-support-title">Research and technical support</h2>
             <p>
-              Madhaaf is made possible with support from TokenWorks. Together,
-              we are building a place for language, family memory, and history
-              to be preserved with care.
+              TokenWorks supports the development of Madhaaf's research
+              infrastructure, including the dictionary, language studies
+              and cultural archive.
             </p>
             <a className="text-link" href="https://www.tokenworks.ai/" rel="noopener noreferrer">
               Meet TokenWorks <span aria-hidden="true">↗</span>
@@ -80,11 +81,11 @@ export default function Home() {
         <div className="page-width">
           <article className="home-chapter home-chapter--language">
             <div className="home-chapter__copy">
-              <h2>Language lives in a voice worth hearing again.</h2>
+              <h2>Documenting the language</h2>
               <p>
-                Everyday speech holds more than definitions. Explore documented
-                Kutchi expressions, their meanings, and the developing writing
-                guide that helps preserve how they are spoken.
+                The dictionary records attested words, translations and usage.
+                The grammar studies examine sentence patterns, while the writing
+                guide sets out provisional Latin spelling conventions.
               </p>
               <div className="home-chapter__links">
                 <Link className="text-link" href="/language">Explore the language <span aria-hidden="true">↗</span></Link>
@@ -97,17 +98,17 @@ export default function Home() {
               <span className="home-language-mark home-language-mark--two" />
               <span className="home-language-mark home-language-mark--three" />
               <span className="home-language-mark home-language-mark--four" />
-              <span className="home-art-label">Spoken / remembered / recorded</span>
+              <span className="home-art-label">Words / examples / analysis</span>
             </div>
           </article>
 
           <article className="home-chapter home-chapter--family">
             <div className="home-chapter__copy">
-              <h2>Family gives us a place in the story.</h2>
+              <h2>Family and genealogical records</h2>
               <p>
-                A family tree is more than a list of names. Follow the
-                connections that have been reviewed for public sharing, and
-                see how generations meet. Private family records stay protected.
+                Family records document relationships across generations.
+                Only information reviewed and approved for publication is
+                visible publicly. Private family data remains restricted.
               </p>
               <Link className="text-link" href="/family">Explore the family space <span aria-hidden="true">↗</span></Link>
             </div>
@@ -119,17 +120,17 @@ export default function Home() {
               <span className="home-family-node home-family-node--two" />
               <span className="home-family-node home-family-node--three" />
               <span className="home-family-node home-family-node--four" />
-              <span className="home-art-label">Lives linked across generations</span>
+              <span className="home-art-label">Family relationships and sources</span>
             </div>
           </article>
 
           <article className="home-chapter home-chapter--history">
             <div className="home-chapter__copy">
-              <h2>History becomes a record we can return to.</h2>
+              <h2>History and oral traditions</h2>
               <p>
-                The history archive brings together documented accounts,
-                images, and oral traditions. Each published story has room
-                for its sources, the people behind it, and the context it needs.
+                Historical accounts, oral testimony and photographs are
+                presented with their sources and context. Where claims cannot
+                yet be verified, that uncertainty is recorded.
               </p>
               <Link className="text-link" href="/history">Read the histories <span aria-hidden="true">↗</span></Link>
             </div>
@@ -138,7 +139,7 @@ export default function Home() {
               <span className="home-history-frame home-history-frame--front" />
               <span className="home-history-sun" />
               <span className="home-history-horizon" />
-              <span className="home-art-label">A record still taking shape</span>
+              <span className="home-art-label">Documented accounts and context</span>
             </div>
           </article>
         </div>
@@ -148,12 +149,13 @@ export default function Home() {
         <div className="page-width home-closing__grid">
           <span className="home-closing__mark" aria-hidden="true" />
           <div>
-            <h2 id="home-closing-title">There is always more to remember.</h2>
+            <h2 id="home-closing-title">An archive that can be examined and expanded</h2>
             <p>
-              I created Madhaaf to preserve my Kutchi language, our heritage and the identity I know. Its entries and histories are
-              reviewed before publication, so the record can grow with care.
+              Madhaaf studies the Kutchi spoken in Mombasa and Ethiopian
+              communities. The material is developing, and publication depends
+              on source review, evidence and the appropriate permissions.
             </p>
-            <Link className="button button--outline" href="/about">Why I built Madhaaf <span aria-hidden="true">↗</span></Link>
+            <Link className="button button--outline" href="/about">About the research <span aria-hidden="true">↗</span></Link>
           </div>
         </div>
       </section>
