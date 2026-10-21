@@ -48,9 +48,17 @@ test("a saved draft connection appears in the private family map", async ({ page
     await page.goto("/family/tree");
     await expect(page.getByText(parentName, { exact: true }).first()).toBeVisible();
     await expect(page.getByText(childName, { exact: true }).first()).toBeVisible();
+    await page.getByRole("textbox", { name: "Search people" }).fill(parentName);
+    await page.getByRole("button", { name: parentName, exact: true }).click();
     const edgePath = page.locator(`.react-flow__edge[data-id="${relationshipId}"] path`).first();
     await expect.poll(async () => (await edgePath.boundingBox())?.height ?? 0).toBeGreaterThan(20);
-    await expect(edgePath).toBeInViewport();
+    await page.locator(".family-tree-canvas").scrollIntoViewIfNeeded();
+    await expect.poll(async () => {
+      const path = await edgePath.boundingBox();
+      const canvas = await page.locator(".family-tree-canvas").boundingBox();
+      return !!path && !!canvas && path.x >= canvas.x && path.x <= canvas.x + canvas.width
+        && path.y + path.height > canvas.y && path.y < canvas.y + canvas.height;
+    }).toBe(true);
   } finally {
     if (relationshipId) await manager.from("family_relationships").delete().eq("id", relationshipId);
     for (const id of memberIds.reverse()) await manager.from("family_members").delete().eq("id", id);

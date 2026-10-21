@@ -3,9 +3,8 @@
 import Link from "next/link";
 import { useCallback,useEffect,useMemo,useRef,useState } from "react";
 import {ReactFlow,Background,Controls,ReactFlowProvider,useNodesInitialized,useReactFlow, type Node,type Edge} from "@xyflow/react";
-import dagre from "@dagrejs/dagre";
 import { List, Network, Search, LocateFixed, Maximize2, Plus, X, Move, ZoomIn } from "lucide-react";
-import { relationshipsForTree } from "@/lib/family-tree";
+import { familyTreePositions, relationshipsForTree } from "@/lib/family-tree";
 import "@xyflow/react/dist/style.css";
 
 type Member={id:string;preferred_name:string;birth_date_text?:string|null;death_date_text?:string|null;short_bio?:string|null;living_status:string;status:string};
@@ -13,10 +12,9 @@ type Relation={id:string;person_a_id:string;person_b_id:string;kind:"parent"|"pa
 const W=238,H=100;
 function layout(members:Member[],relations:Relation[],selected:string|null,hidden:Set<string>){
   const visible=members.filter(m=>!hidden.has(m.id));const allowed=new Set(visible.map(m=>m.id));
-  const graph=new dagre.graphlib.Graph();graph.setGraph({rankdir:"TB",nodesep:72,ranksep:112,marginx:55,marginy:55});graph.setDefaultEdgeLabel(()=>({}));
-  visible.forEach(m=>graph.setNode(m.id,{width:W,height:H}));relations.filter(r=>r.kind==="parent"&&allowed.has(r.person_a_id)&&allowed.has(r.person_b_id)).forEach(r=>graph.setEdge(r.person_a_id,r.person_b_id));relations.filter(r=>r.kind==="partner"&&allowed.has(r.person_a_id)&&allowed.has(r.person_b_id)).forEach(r=>graph.setEdge(r.person_a_id,r.person_b_id,{minlen:0,weight:2}));dagre.layout(graph);
+  const positions=familyTreePositions(visible.map(m=>m.id),relations,{width:W,height:H});
   const direct=new Set(relations.filter(r=>r.person_a_id===selected||r.person_b_id===selected).flatMap(r=>[r.person_a_id,r.person_b_id]));
-  const nodes:Node[]=visible.map((m,i)=>{const pos=graph.node(m.id)||{x:(i%5)*290,y:Math.floor(i/5)*180};const active=m.id===selected;const related=direct.has(m.id);return {id:m.id,position:{x:pos.x-W/2,y:pos.y-H/2},data:{label:<div className="family-tree-node-content"><span className="family-tree-node-avatar" aria-hidden="true">{m.preferred_name.charAt(0)}</span><span className="min-w-0 text-left"><span className="block truncate font-semibold">{m.preferred_name}</span><span className="mt-1 block truncate text-xs opacity-75">{[m.birth_date_text,m.death_date_text].filter(Boolean).join(" - ")||"Dates not recorded"}</span></span></div>},className:`family-tree-node ${active?"family-tree-node--active":related?"family-tree-node--related":""}`,style:{width:W,minHeight:H},ariaLabel:`${m.preferred_name}, ${m.living_status} status, select to view family connections`}});
+  const nodes:Node[]=visible.map((m,i)=>{const pos=positions.get(m.id)||{x:(i%5)*290,y:Math.floor(i/5)*180};const active=m.id===selected;const related=direct.has(m.id);return {id:m.id,position:{x:pos.x-W/2,y:pos.y-H/2},data:{label:<div className="family-tree-node-content"><span className="family-tree-node-avatar" aria-hidden="true">{m.preferred_name.charAt(0)}</span><span className="min-w-0 text-left"><span className="block truncate font-semibold">{m.preferred_name}</span><span className="mt-1 block truncate text-xs opacity-75">{[m.birth_date_text,m.death_date_text].filter(Boolean).join(" - ")||"Dates not recorded"}</span></span></div>},className:`family-tree-node ${active?"family-tree-node--active":related?"family-tree-node--related":""}`,style:{width:W,minHeight:H},ariaLabel:`${m.preferred_name}, ${m.living_status} status, select to view family connections`}});
   const edges:Edge[]=relations.filter(r=>allowed.has(r.person_a_id)&&allowed.has(r.person_b_id)).map(r=>({id:r.id,source:r.person_a_id,target:r.person_b_id,label:r.status!=="published"?r.status:r.kind==="partner"?"partner":r.parent_kind==="adoptive"?"adoptive":undefined,type:"smoothstep",animated:!!selected&&(r.person_a_id===selected||r.person_b_id===selected),className:r.kind==="partner"?"family-tree-edge--partner":"family-tree-edge--parent",style:{stroke:r.confidence==="disputed"?"#b7674e":r.kind==="partner"?"#b7674e":"#487c70",strokeWidth:r.person_a_id===selected||r.person_b_id===selected?3:2,strokeDasharray:r.status!=="published"||r.confidence!=="confirmed"?"6 5":undefined,opacity:r.status==="published"?1:.7},labelStyle:{fill:"#4f625f",fontSize:11,fontWeight:600}}));return {nodes,edges};
 }
 function Canvas({members,relations,selected,setSelected,hidden}:{members:Member[];relations:Relation[];selected:string|null;setSelected:(id:string)=>void;hidden:Set<string>}){
