@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-label="Original abstract illustration for the Madhaaf language research series">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1D524C"/><stop offset=".57" stop-color="#1B4C47"/><stop offset="1" stop-color="#0E302E"/></linearGradient>
+  <radialGradient id="glow"><stop stop-color="#D58C6B" stop-opacity=".25"/><stop offset="1" stop-color="#D58C6B" stop-opacity="0"/></radialGradient>
+  <pattern id="grain" patternUnits="userSpaceOnUse" width="55" height="55"><path d="M0 55H55M55 0V55" stroke="#EDE7D7" stroke-opacity=".075" fill="none"/></pattern>
+</defs>
+<rect width="1200" height="700" fill="url(#bg)"/>
+<rect width="1200" height="700" fill="url(#grain)"/>
+<circle cx="890" cy="150" r="360" fill="url(#glow)"/>
+<rect x="31" y="31" width="1138" height="638" rx="3" stroke="#EDE4D1" stroke-opacity=".2" stroke-width="2" fill="none"/>
+<path d="M75 120H145M1055 580H1125" stroke="#E4A17C" stroke-width="3" stroke-opacity=".85"/>
+<g fill="none" stroke-linecap="round">
+<path d="M112 542C231 312 342 163 539 293C694 402 780 127 1083 210" stroke="#E9DDC5" stroke-width="4"/>
+<path d="M112 145C271 385 361 547 536 411C714 277 792 573 1083 495" stroke="#E9DDC5" stroke-width="4"/>
+<path d="M238 160C465 515 806 515 1031 150" stroke="#C78061" stroke-width="3" stroke-opacity=".85"/>
+<ellipse cx="603" cy="348" rx="169" ry="131" fill="#21554D" stroke="#F0E4CC" stroke-width="3"/>
+<ellipse cx="603" cy="348" rx="106" ry="84" fill="#D08665" stroke="none"/>
+<ellipse cx="603" cy="348" rx="53" ry="42" fill="#EFE0C6" stroke="none"/>
+<circle cx="116" cy="542" r="24" fill="#D08665"/><circle cx="112" cy="145" r="24" fill="#E9DDC5"/>
+<circle cx="1083" cy="210" r="24" fill="#E9DDC5"/><circle cx="1083" cy="495" r="24" fill="#D08665"/>
+</g>
+<path d="M75 612H280" stroke="#F4E8D5" stroke-opacity=".23"/>
+<circle cx="308" cy="612" r="4" fill="#CF8061"/>
+</svg>

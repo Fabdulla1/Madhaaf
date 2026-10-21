@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-label="Original abstract illustration for the Madhaaf language research series">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1D524C"/><stop offset=".57" stop-color="#1B4C47"/><stop offset="1" stop-color="#0E302E"/></linearGradient>
+  <radialGradient id="glow"><stop stop-color="#D58C6B" stop-opacity=".25"/><stop offset="1" stop-color="#D58C6B" stop-opacity="0"/></radialGradient>
+  <pattern id="grain" patternUnits="userSpaceOnUse" width="55" height="55"><path d="M0 55H55M55 0V55" stroke="#EDE7D7" stroke-opacity=".075" fill="none"/></pattern>
+</defs>
+<rect width="1200" height="700" fill="url(#bg)"/>
+<rect width="1200" height="700" fill="url(#grain)"/>
+<circle cx="890" cy="150" r="360" fill="url(#glow)"/>
+<rect x="31" y="31" width="1138" height="638" rx="3" stroke="#EDE4D1" stroke-opacity=".2" stroke-width="2" fill="none"/>
+<path d="M75 120H145M1055 580H1125" stroke="#E4A17C" stroke-width="3" stroke-opacity=".85"/>
+<g fill="none" stroke-linecap="round">
+<path d="M153 350C390 350 390 190 622 190S892 150 1075 150" stroke="#EDDFC5" stroke-width="4"/>
+<path d="M153 350C390 350 392 270 622 270S892 270 1075 270" stroke="#E9DCC1" stroke-width="4"/>
+<path d="M153 350H1075" stroke="#E9DCC1" stroke-width="4"/>
+<path d="M153 350C390 350 392 430 622 430S892 430 1075 430" stroke="#E9DCC1" stroke-width="4"/>
+<path d="M153 350C390 350 390 510 622 510S892 550 1075 550" stroke="#E9DCC1" stroke-width="4"/>
+<circle cx="153" cy="350" r="73" fill="#C77D5E" stroke="#EFE3D0" stroke-width="3"/>
+<circle cx="1075" cy="150" r="19" fill="#D5A785" stroke="none"/><circle cx="1075" cy="270" r="24" fill="#E6D9BD" stroke="none"/><circle cx="1075" cy="350" r="28" fill="#D08061" stroke="none"/><circle cx="1075" cy="430" r="24" fill="#E6D9BD" stroke="none"/><circle cx="1075" cy="550" r="19" fill="#D5A785" stroke="none"/>
+<circle cx="622" cy="190" r="8" fill="#C77D5E" stroke="none"/><circle cx="622" cy="510" r="8" fill="#C77D5E" stroke="none"/>
+</g>
+<path d="M75 612H280" stroke="#F4E8D5" stroke-opacity=".23"/>
+<circle cx="308" cy="612" r="4" fill="#CF8061"/>
+</svg>
