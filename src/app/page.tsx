@@ -89,6 +89,7 @@ export default function Home() {
               <div className="home-chapter__links">
                 <Link className="text-link" href="/language">Explore the language <span aria-hidden="true">↗</span></Link>
                 <Link className="text-link" href="/language/grammar">Discover the grammar <span aria-hidden="true">↗</span></Link>
+                <Link className="text-link" href="/language/articles">Read language research <span aria-hidden="true">↗</span></Link>
               </div>
             </div>
             <div className="home-chapter__art home-chapter__art--language" aria-hidden="true">
