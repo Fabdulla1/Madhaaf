@@ -35,3 +35,9 @@ Playwright tests cover public responsive pages, exact-spelling display, article 
 - [Engineering and security review](docs/reviews/engineering-security-round1.md)
 
 Media uploads go directly to private Supabase Storage with an administrator-issued upload intent, then the server validates the stored object before creating metadata. Public media needs recorded consent, administrator approval, and an association to published dictionary or history content. A database export does not include photograph or audio bytes; back up the bucket independently.
+
+## Language research articles
+
+The editorial research collection lives at `/language/articles`, with one static, statically generated route per study. Content and evidence labels live in `src/lib/language-articles.ts`; the reusable article renderer lives in `src/components/public/language-research.tsx`; illustrations are original decorative SVGs in `public/language/research/`. They are **not** historical photographs or linguistic source material. No grammar article is written to the History CMS or the database.
+
+Every published example must come from speaker-supplied elicitation, and speaker judgments must remain distinct from proposed linguistic explanations. Maintain original wording and the project's `(n)`-before-`th` display convention. Word links lead to published dictionary searches, rather than assuming fixed IDs; unpublished entries may not appear. Check this evidence policy and the mobile reading experience whenever adding or changing a study.
