@@ -57,14 +57,14 @@ export default function GrammarPage() {
           <p className="eyebrow">Language / Grammar notebook</p>
           <h1>How Kutchi sentences work.</h1>
           <p>
-            A developing description of East African Kutchi spoken in Mombasa.
-            Every example below comes from speaker-supplied sentences; the
-            explanations distinguish what was heard from what remains to be tested.
+            I am trying to document how my Mombasa Kutchi works, one
+            natural sentence at a time. I have kept the forms I supplied
+            separate from the grammatical explanations I am still testing.
           </p>
         </header>
         <div className="grammar-status" role="note">
           <strong>Working grammar · Edition 0.2</strong>
-          <span>Attested examples are not a complete or standardized grammar. Forms are transcribed from speaker examples, with n immediately before th written (n) according to the updated notation.</span>
+          <span>These examples are part of my ongoing research, not a standardized grammar. I write n immediately before th as (n) in the working display spelling; the original forms remain evidence.</span>
         </div>
         <div className="grammar-layout">
           <nav className="grammar-toc" aria-label="On this page">
@@ -86,8 +86,9 @@ export default function GrammarPage() {
               <h2>Verbs tend to come last.</h2>
               <Evidence>Observed in these examples</Evidence>
               <p>
-                Examples with an explicit subject and object show a subject–object–verb
-                order. This does not yet establish the order of every sentence type.
+                When I put a subject and object into the same sentence, I
+                often place the verb last. I have not tested enough sentence
+                types to say that every Kutchi sentence must follow that order.
               </p>
               <div className="grammar-example">
                 <p className="grammar-example__kutchi">Au(n) khadho kya(n)tho</p>
@@ -128,7 +129,7 @@ export default function GrammarPage() {
               <h2>Action verbs agree with their subjects.</h2>
               <Evidence>Attested forms; interpretation provisional</Evidence>
               <p>
-                The present forms of “to eat” and “to do” differ by person,
+                In the examples I recorded, present forms of “to eat” and “to do” differ by person,
                 gender and number. In the recorded singular forms, masculine
                 often ends in <strong>-(n)tho</strong> and feminine in <strong>-(n)thi</strong>;
                 the recorded plural forms end in <strong>-(n)thaa</strong> in several paradigms. The (n) notation is used immediately before th where an n was previously written; its exact phonetic realization remains to be verified.
@@ -170,7 +171,7 @@ export default function GrammarPage() {
               <h2>A pattern across eight verbs.</h2>
               <Evidence>Speaker-elicited paradigm; spelling convention updated</Evidence>
               <p>
-                These present forms were elicited with the subjects “I” (masculine),
+                I collected these present forms with the subjects “I” (masculine),
                 “you” (masculine), “he”, “we” and “they”. The full feminine
                 singular forms were also elicited for all eight verbs.
                 The spelling <strong>(n)</strong> is used wherever the previously
@@ -217,13 +218,13 @@ export default function GrammarPage() {
                 <div><strong>Au(n) haroj vina(n)tho</strong><span>I go every day.</span></div>
               </div>
               <p>
-                <em>Haroj</em> means “every day” in these examples. Present
+                I use <em>haroj</em> for “every day” in these examples. Present
                 forms recur in both ongoing and habitual readings. We therefore
                 cannot call <em>-(n)tho</em> a dedicated progressive ending.
               </p>
               <h3>First-person future forms</h3>
               <p>
-                The eight elicited future forms share the written sequence
+                My eight elicited future forms share the written sequence
                 <strong> -dhose</strong>. The full sequence may also encode
                 agreement; only first-person future contexts have been elicited.
               </p>
@@ -257,7 +258,7 @@ export default function GrammarPage() {
                 <div><strong>Mere kaal suthyaa</strong><span>Everyone slept yesterday</span></div>
               </div>
               <p>
-                <em>Kaal</em> means “yesterday” in these examples.
+                I use <em>kaal</em> for “yesterday” in these examples.
                 The past forms of <em>vin</em> (“go”) and <em>sum</em>
                 (“sleep”) differ substantially from their present stems and show
                 gender or number distinctions. We cannot yet identify a regular
