@@ -4,6 +4,12 @@ import { PublicShell as PublicSiteResearchLayout } from "@/components/public/she
 import type { ResearchArticle, ResearchBlock, ResearchExample } from "@/lib/language-articles";
 import { dictionaryLookups, researchArticles } from "@/lib/language-articles";
 
+function editorialDateLabel(date: string) {
+  return new Date(`${date}T00:00:00Z`).toLocaleDateString("en-GB", {
+    day: "numeric", month: "long", year: "numeric", timeZone: "UTC",
+  });
+}
+
 function DictionaryLink({ word, lookup }: { word: string; lookup?: string }) {
   const search = lookup ?? word;
   return (
@@ -125,21 +131,25 @@ export function ResearchIndex() {
           <p className="eyebrow">Madhaaf / Language research</p>
           <h1>What the sentences are teaching us.</h1>
           <p>
-            Five illustrated studies of Mombasa Kutchi, grounded in examples
-            supplied by a native speaker. Read them as an evolving descriptive
-            grammar: confident observations are separated from hypotheses
-            awaiting further testing.
+            I've been writing down the Kutchi sentences I grew up speaking
+            and trying to understand the grammar inside them. These five
+            articles are my working research notes: what I've observed,
+            what I've begun to understand, and what I still need to test.
           </p>
-          <div className="research-index__meta"><span>Research series 01–05</span><span>Working analyses · October 2026</span></div>
+          <div className="research-index__meta">
+            <span><Link href="/about">By Farhan Abdulla</Link></span>
+            <span>Research journal · March–October 2026</span>
+            <span>First published online October 2026</span>
+          </div>
         </header>
         <div className="research-index__feature">
           <div>
             <p className="eyebrow">Begin with the evidence</p>
             <h2>Every small word has a story.</h2>
             <p>
-              Why does <em>ke</em> follow a boy in one sentence but a person
-              experiencing desire in another? Our first study follows that question
-              through attested contrasts and speaker judgments.
+              I kept hearing <em>ke</em> in different places and realized
+              I couldn't explain it with one English word. My first study
+              follows the sentences and comparisons that made me notice why.
             </p>
             <Link className="button button--primary" href="/language/articles/what-ke-marks">
               Read the first study <span aria-hidden="true">↗</span>
@@ -158,7 +168,7 @@ export function ResearchIndex() {
         <section aria-labelledby="research-series-heading" className="research-index__series">
           <div className="research-index__series-heading">
             <h2 id="research-series-heading">Browse the series</h2>
-            <p>Read an individual article, then follow its highlighted Kutchi words into the dictionary.</p>
+            <p>Browse my research notes and follow the highlighted Kutchi words to their contextual meanings and dictionary entries.</p>
           </div>
           <div className="research-index__grid">
             {researchArticles.map((article) => (
@@ -168,7 +178,7 @@ export function ResearchIndex() {
                   <span>{article.number}</span>
                 </Link>
                 <div className="research-tile__body">
-                  <p className="research-tile__category">{article.subject}</p>
+                  <p className="research-tile__category">{article.subject} <span aria-hidden="true">/</span> <time dateTime={article.editorialDate}>{editorialDateLabel(article.editorialDate)}</time></p>
                   <h3><Link href={`/language/articles/${article.slug}`}>{article.title}</Link></h3>
                   <p>{article.summary}</p>
                   <Link className="text-link" href={`/language/articles/${article.slug}`}>
@@ -182,10 +192,11 @@ export function ResearchIndex() {
         <div className="research-index__closing">
           <h2>Evidence first, rules second.</h2>
           <p>
-            These articles are based on elicited Mombasa Kutchi examples. Alternative
-            forms, conflicting translations and gaps are documented rather than
-            smoothed away. Neither the series nor its illustrations claim to be
-            a standardized or independently verified grammar.
+            This is my attempt to preserve what I actually hear and say,
+            including the alternatives that don't fit a neat rule. I keep
+            unanswered questions visible because I'm still learning from
+            the language. The dates are retrospective editorial dates for
+            this 2026 series; the pages first appeared online in October 2026.
           </p>
           <Link className="text-link" href="/language/grammar">Explore the grammar notebook ↗</Link>
         </div>
@@ -212,9 +223,9 @@ export function ResearchArticleView({ article }: { article: ResearchArticle }) {
             <h1>{article.title}</h1>
             <p className="research-article__dek">{article.summary}</p>
             <div className="research-article__meta">
-              <span>Madhaaf Language Research</span>
-              <span>21 October 2026</span>
-              <span>Descriptive working paper</span>
+              <span>By <Link href="/about">Farhan Abdulla</Link></span>
+              <span>Research issue <time dateTime={article.editorialDate}>{editorialDateLabel(article.editorialDate)}</time></span>
+              <span>Working paper · First published online October 2026</span>
             </div>
           </header>
           <figure className="research-article__hero">
@@ -255,9 +266,9 @@ export function ResearchArticleView({ article }: { article: ResearchArticle }) {
                 <p className="eyebrow">A reading companion</p>
                 <h2>Words in this study</h2>
                 <p>
-                  These meanings describe the usage in the recorded examples. Follow
-                  each word to search the published dictionary; some entries may
-                  still be under review.
+                  I've included the meanings I recorded in these examples.
+                  Select a word to explore its contextual meaning and look it
+                  up in the public dictionary. Some entries are still being reviewed.
                 </p>
                 <dl className="research-wordnotes__grid">
                   {article.wordNotes.map((item) => (
@@ -272,18 +283,23 @@ export function ResearchArticleView({ article }: { article: ResearchArticle }) {
                 <p className="eyebrow">Source &amp; method</p>
                 <h2>How this article was prepared</h2>
                 <p>
-                  Primary evidence: native-speaker Mombasa Kutchi examples and
-                  grammaticality judgments supplied to the Madhaaf project in
-                  October 2026, including the completed 48-sentence elicitation
-                  questionnaire (Study 007) and prior verb and case studies.
-                  Examples are presented as recorded, using the project&apos;s
-                  agreed (n)-before-th display convention.
+                  I am a native speaker of this East African Kutchi variety.
+                  I have been collecting example sentences, translation pairs
+                  and judgments about what sounds natural in my speech. The
+                  material for these working papers includes my completed
+                  48-sentence questionnaire (Study 007) and earlier verb and
+                  case comparisons, documented in October 2026. I preserve
+                  the recorded forms and use my working (n)-before-th spelling
+                  convention where indicated.
                 </p>
                 <p>
-                  Interpretations marked as hypotheses remain open to correction.
-                  This is a preliminary descriptive research article, not a
-                  peer-reviewed paper or a claim about all Kutchi varieties.
-                  No independent multi-speaker validation has yet been incorporated.
+                  These are my preliminary interpretations, not claims about
+                  every speaker or every Kutchi variety. When I have only
+                  one example, I say so. This research has not been peer
+                  reviewed or independently checked across multiple speakers.
+                  The research issue dates are editorial dates assigned to
+                  organize the 2026 series, not proof of earlier online
+                  publication; the articles first appeared online in October 2026.
                 </p>
               </section>
             </div>
