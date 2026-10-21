@@ -295,7 +295,7 @@ export const octoberResearchArticles: ResearchArticle[] = [
     "subject": "Negation and verb agreement",
     "title": "Negation in Mombasa Kutchi: Forms and constructions",
     "summary": "The recorded forms natho, nathi, nathaa, na, nah and nai suggest interactions between negation, agreement, tense and clause type.",
-    "introduction": "The recorded Mombasa Kutchi examples distinguish several ways of expressing negation, including future refusal to sleep, not giving money, and not yet having given money. An earlier draft incorrectly glossed Natho sume and Nathi sume as ‘is not sleeping’. The native speaker explicitly corrected both to ‘won't sleep’, and also clarified that Hee mukhe pe(n)sa nai dhine means ‘He hasn't given me money’, not a simple past negative. The evidence is analyzed here without imposing one tense meaning on each negative element.",
+    "introduction": "The recorded Mombasa Kutchi examples distinguish several ways of expressing negation, including future-meaning negative sleeping, not giving money, and not having given money. An earlier draft incorrectly glossed Natho sume and Nathi sume as ‘is not sleeping’. The native speaker explicitly corrected both to ‘won't sleep’, and also clarified that Hee mukhe pe(n)sa nai dhine means ‘He hasn't given me money’, not a simple past negative. The evidence is analyzed here without imposing one tense meaning on each negative element.",
     "illustration": "/language/research/negation-patterns.svg",
     "illustrationAlt": "Original abstract editorial illustration of alternating light and dark circular forms connected by six paths, suggesting contrasting grammatical negative constructions.",
     "wordNotes": [
