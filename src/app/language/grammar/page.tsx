@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PublicShell } from "@/components/public/shell";
+import {
+  AdjectivesSection,
+  CaseSection,
+  ComplexSection,
+  DemonstrativesSection,
+  DesireSection,
+  NounsSection,
+  PossessionSection,
+} from "@/components/public/grammar-expansion";
 
 export const metadata: Metadata = {
   title: "Kutchi grammar",
@@ -44,6 +53,26 @@ function Evidence({ children }: { children: React.ReactNode }) {
   return <span className="grammar-evidence">{children}</span>;
 }
 
+const contents = [
+  ["word-order", "Word order"],
+  ["pronouns", "Pronouns"],
+  ["demonstratives", "Demonstratives"],
+  ["nouns", "Noun forms"],
+  ["adjectives", "Adjectives"],
+  ["verbs", "Verb agreement"],
+  ["verb-survey", "Eight-verb survey"],
+  ["tense-aspect", "Tense and aspect"],
+  ["negation", "Negation"],
+  ["commands", "Commands"],
+  ["case-marking", "Case marking · ke"],
+  ["desire", "Desire"],
+  ["possession", "Possession"],
+  ["questions", "Questions"],
+  ["complex-sentences", "Complex sentences"],
+  ["being", "Being and descriptions"],
+  ["open-questions", "Still investigating"],
+] as const;
+
 export default function GrammarPage() {
   return (
     <PublicShell>
@@ -63,26 +92,27 @@ export default function GrammarPage() {
           </p>
         </header>
         <div className="grammar-status" role="note">
-          <strong>Working grammar · Edition 0.2</strong>
-          <span>Attested examples are not a complete or standardized grammar. Forms are transcribed from speaker examples, with n immediately before th written (n) according to the updated notation.</span>
+          <strong>Working grammar · Edition 0.3</strong>
+          <span>Recorded examples and explicit speaker judgments are presented as evidence. Proposed analyses are labeled as hypotheses, and unresolved contrasts stay visible. The working notation writes n immediately before th as (n); supplied sentence spellings are retained.</span>
         </div>
         <div className="grammar-layout">
           <nav className="grammar-toc" aria-label="On this page">
             <p className="eyebrow">Contents</p>
-            <a href="#word-order">01 · Word order</a>
-            <a href="#pronouns">02 · Pronouns</a>
-            <a href="#verbs">03 · Verb agreement</a>
-            <a href="#verb-survey">04 · Eight-verb survey</a>
-            <a href="#tense-aspect">05 · Tense and aspect</a>
-            <a href="#negation">06 · Negation</a>
-            <a href="#commands">07 · Commands</a>
-            <a href="#questions">08 · Questions</a>
-            <a href="#being">09 · Being &amp; descriptions</a>
-            <a href="#open-questions">10 · Still investigating</a>
+            {contents.map(([anchor, label], index) => (
+              <a href={`#${anchor}`} key={anchor}><span aria-hidden="true">{String(index + 1).padStart(2, "0")} · </span>{label}</a>
+            ))}
           </nav>
+          <details className="grammar-mobile-toc">
+            <summary>Browse {contents.length} grammar chapters</summary>
+            <nav aria-label="Grammar chapters">
+              {contents.map(([anchor, label], index) => (
+                <a href={`#${anchor}`} key={anchor}><span aria-hidden="true">{String(index + 1).padStart(2, "0")} · </span>{label}</a>
+              ))}
+            </nav>
+          </details>
           <div className="grammar-articles">
             <section id="word-order" className="grammar-section">
-              <p className="eyebrow">01 / Sentence structure</p>
+              <p className="eyebrow">Sentence structure</p>
               <h2>Verbs tend to come last.</h2>
               <Evidence>Observed in these examples</Evidence>
               <p>
@@ -100,7 +130,7 @@ export default function GrammarPage() {
               </div>
             </section>
             <section id="pronouns" className="grammar-section">
-              <p className="eyebrow">02 / Reference</p>
+              <p className="eyebrow">Reference</p>
               <h2>Pronouns and subjects.</h2>
               <Evidence>Speaker-attested forms</Evidence>
               <div className="grammar-table-wrap">
@@ -118,13 +148,18 @@ export default function GrammarPage() {
                 </table>
               </div>
               <p className="grammar-fineprint">
-                The pronoun <em>hee</em> is used for both “he” and “she” in the supplied
-                eating sentences. The possibility that it also means “this” needs
-                further testing.
+                <em>Hee</em> was recorded with “he” and “she” readings in the earlier
+                eating sentences. New sentences also attest <em>hee</em> as “this”
+                before a noun. Whether these uses are one grammatical form or
+                separate lexical items remains unresolved. The dictionary currently
+                glosses <em>mere</em> as “all”; its “everyone” use here is contextual.
               </p>
             </section>
+            <DemonstrativesSection />
+            <NounsSection />
+            <AdjectivesSection />
             <section id="verbs" className="grammar-section">
-              <p className="eyebrow">03 / Verbs</p>
+              <p className="eyebrow">Verbs</p>
               <h2>Action verbs agree with their subjects.</h2>
               <Evidence>Attested forms; interpretation provisional</Evidence>
               <p>
@@ -166,7 +201,7 @@ export default function GrammarPage() {
               </div>
             </section>
             <section id="verb-survey" className="grammar-section">
-              <p className="eyebrow">04 / Eight-verb survey</p>
+              <p className="eyebrow">Eight-verb survey</p>
               <h2>A pattern across eight verbs.</h2>
               <Evidence>Speaker-elicited paradigm; spelling convention updated</Evidence>
               <p>
@@ -206,7 +241,7 @@ export default function GrammarPage() {
               </div>
             </section>
             <section id="tense-aspect" className="grammar-section">
-              <p className="eyebrow">05 / Tense and aspect</p>
+              <p className="eyebrow">Tense and aspect</p>
               <h2>The present, past and future.</h2>
               <Evidence>Attested examples; morphological analysis provisional</Evidence>
               <h3>The same present form can describe habits</h3>
@@ -271,9 +306,9 @@ export default function GrammarPage() {
               </p>
             </section>
             <section id="negation" className="grammar-section">
-              <p className="eyebrow">06 / Negation</p>
+              <p className="eyebrow">Negation</p>
               <h2>Not doing, and not going to do.</h2>
-              <Evidence>Observed negatives; scope and syntax unsettled</Evidence>
+              <Evidence>Observed negatives; agreement and syntax unsettled</Evidence>
               <div className="grammar-pairs">
                 <div><strong>Au(n) natho kara(n)</strong><span>I am not doing it.</span></div>
                 <div><strong>Natho sumaa(n)</strong><span>I am not sleeping.</span></div>
@@ -291,9 +326,24 @@ export default function GrammarPage() {
                 Some speaker examples also place the negative element
                 after the lexical verb, so a rigid word-order rule is premature.
               </p>
+              <h3>More recorded negative environments</h3>
+              <div className="grammar-pairs">
+                <div><strong>Natho sume</strong><span>He is not sleeping.</span></div>
+                <div><strong>Nathi sume</strong><span>She is not sleeping.</span></div>
+                <div><strong>Mukhe hinee cheejeu(n) nathaa kape(n)</strong><span>I don&apos;t want these things.</span></div>
+                <div><strong>Paa(n) kaal na oosyasee</strong><span>We did not go yesterday.</span></div>
+                <div><strong>Nah sum!</strong><span>Don&apos;t sleep!</span></div>
+                <div><strong>Nah vin!</strong><span>Don&apos;t go!</span></div>
+                <div><strong>Nah kar!</strong><span>Don&apos;t do it!</span></div>
+                <div><strong>Mukhe kheno ai, pun khadho nai</strong><span>I want to eat, but there is no food.</span></div>
+              </div>
+              <div className="grammar-note">
+                <strong>Hypothesis · possible negative auxiliary agreement</strong>
+                <p><em>Natho</em>, <em>nathi</em> and <em>nathaa</em> occur in different gender or number contexts, but their full distribution is not known. <em>Na</em> occurs in the recorded past negative, <em>nah</em> in negative commands and previously recorded future negatives, and <em>nai</em> in a negative existential expression. These are distinct observed contexts, not interchangeable negative forms. The dictionary&apos;s current gloss for <em>nah</em> does not yet encode every contextual use shown here.</p>
+              </div>
             </section>
             <section id="commands" className="grammar-section">
-              <p className="eyebrow">07 / Imperatives</p>
+              <p className="eyebrow">Imperatives</p>
               <h2>Short forms give commands.</h2>
               <Evidence>Attested</Evidence>
               <div className="grammar-pairs">
@@ -311,8 +361,11 @@ export default function GrammarPage() {
                 Seven of the eight newly elicited singular commands match their supplied headwords; <em>nikar</em> differs from <em>nikro</em>. Polite and plural imperatives remain undocumented.
               </p>
             </section>
+            <CaseSection />
+            <DesireSection />
+            <PossessionSection />
             <section id="questions" className="grammar-section">
-              <p className="eyebrow">08 / Questions</p>
+              <p className="eyebrow">Questions</p>
               <h2>Question words appear before the verb.</h2>
               <Evidence>Observed in these examples</Evidence>
               <div className="grammar-pairs">
@@ -326,8 +379,9 @@ export default function GrammarPage() {
                 and placement of question words require additional examples.
               </p>
             </section>
+            <ComplexSection />
             <section id="being" className="grammar-section">
-              <p className="eyebrow">09 / Descriptions and states</p>
+              <p className="eyebrow">Descriptions and states</p>
               <h2>Several forms express “to be.”</h2>
               <Evidence>Forms attested; shared paradigm unconfirmed</Evidence>
               <div className="grammar-pairs">
@@ -344,17 +398,21 @@ export default function GrammarPage() {
               </p>
             </section>
             <section id="open-questions" className="grammar-section">
-              <p className="eyebrow">10 / Field notes</p>
+              <p className="eyebrow">Field notes</p>
               <h2>What we still need to learn.</h2>
               <ul className="grammar-questions">
                 <li>Do the identical present forms always permit both ongoing and habitual interpretations, including with “to eat”?</li>
                 <li>How do past forms of <em>kan</em>, <em>kar</em>, and <em>chad</em> change across subjects?</li>
                 <li>Do future forms ending in <em>-dhose</em> change with person, number or gender?</li>
-                <li>Do <em>natho</em> and <em>nah</em> have feminine and plural counterparts?</li>
+                <li>How do <em>natho</em>, <em>nathi</em> and <em>nathaa</em> vary across the full set of negative constructions?</li>
                 <li>How are polite and plural commands formed?</li>
-                <li>How do adjectives and participles agree with nouns?</li>
+                <li>Which other adjectives and participles vary with noun gender or number?</li>
                 <li>Do formal and plural second-person forms always coincide?</li>
                 <li>Does <em>(n)</em> indicate vowel nasalization or a consonant in each word?</li>
+                <li>When does <em>ke</em> appear, and how does its presence interact with <em>hin</em> and <em>hee</em>?</li>
+                <li>What conditions the recorded <em>chokre ke</em> and <em>chokro ke</em> alternatives?</li>
+                <li>Are <em>ghare(n)</em> and <em>marue(n)</em> number forms, case forms, or both?</li>
+                <li>How do <em>kape(n)thaa</em> and <em>kape(n)theu(n)</em> differ?</li>
               </ul>
               <p>
                 Another recorded form is <em>Au(n) khadho kadhyose</em>,

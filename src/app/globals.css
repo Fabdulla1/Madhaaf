@@ -575,10 +575,12 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
 .grammar-status strong { font-size: .88rem; }
 .grammar-status span { font-size: .87rem; color: var(--ink-muted); }
 .grammar-layout { display: grid; grid-template-columns: 225px minmax(0,1fr); gap: clamp(45px, 6vw, 100px); align-items: start; }
-.grammar-toc { position: sticky; top: 24px; display: flex; flex-direction: column; gap: 5px; }
+.grammar-toc { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; display: flex; flex-direction: column; gap: 5px; }
 .grammar-toc .eyebrow { margin-bottom: 14px; }
 .grammar-toc a { display: block; padding: 11px 8px; border-bottom: 1px solid var(--line); font-size: .85rem; }
 .grammar-toc a:hover { background: var(--paper); }
+.grammar-toc a:focus-visible, .grammar-mobile-toc a:focus-visible, .grammar-mobile-toc summary:focus-visible { outline: 3px solid var(--terracotta); outline-offset: 2px; }
+.grammar-mobile-toc { display: none; }
 .grammar-articles { min-width: 0; }
 .grammar-section { padding: 0 0 65px; margin-bottom: 65px; border-bottom: 1px solid var(--line); scroll-margin-top: 28px; }
 .grammar-section:last-child { border-bottom: 0; margin-bottom: 0; }
@@ -598,6 +600,7 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
 .grammar-table { width: 100%; min-width: 560px; border-collapse: collapse; text-align: left; line-height: 1.5; }
 .grammar-table th, .grammar-table td { border-bottom: 1px solid var(--line); padding: 13px 12px; vertical-align: top; font-size: .87rem; overflow-wrap: anywhere; }
 .grammar-table thead th { border-top: 1px solid var(--ink); font-size: .72rem; color: var(--ink-muted); letter-spacing: .06em; text-transform: uppercase; }
+.grammar-table caption { text-align: left; padding: 0 0 8px; color: var(--ink-muted); font-size: .83rem; }
 .grammar-table tbody th { font-weight: 700; }
 .grammar-fineprint { font-size: .85rem; }
 .grammar-note { padding: 24px; background: #e4ebe3; border-left: 3px solid var(--ocean); }
@@ -607,6 +610,8 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
 .grammar-pairs > div { min-width: 0; display: flex; flex-direction: column; gap: 9px; background: var(--paper); padding: 22px; border: 1px solid var(--line); }
 .grammar-pairs strong { font-family: var(--font-editorial); font-size: 1.45rem; font-weight: 400; overflow-wrap: anywhere; }
 .grammar-pairs span { color: var(--ink-muted); font-size: .84rem; }
+.grammar-pairs .grammar-example-link { margin-top: 4px; color: var(--terracotta-ink); font-size: .78rem; text-decoration: underline; text-underline-offset: 3px; }
+.grammar-pairs .grammar-example-link:focus-visible { outline: 3px solid var(--terracotta); outline-offset: 2px; }
 .grammar-questions { padding-left: 22px; line-height: 1.7; }
 .grammar-questions li { padding-left: 5px; margin-bottom: 12px; }
 .grammar-return { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; border-top: 1px solid var(--line); padding-top: 28px; }
@@ -615,8 +620,11 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
   .language-card h3 { margin-top: 24px; }
   .language-card p { margin-bottom: 25px; }
   .grammar-layout { grid-template-columns: 1fr; gap: 38px; }
-  .grammar-toc { position: static; display: flex; flex-flow: row wrap; gap: 5px 15px; border-bottom: 1px solid var(--line); padding-bottom: 22px; }
-  .grammar-toc .eyebrow { width: 100%; }
+  .grammar-toc { display: none; }
+  .grammar-mobile-toc { display: block; border: 1px solid var(--line); background: var(--paper); }
+  .grammar-mobile-toc summary { cursor: pointer; padding: 16px 20px; font-weight: 700; }
+  .grammar-mobile-toc nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0 12px 12px; }
+  .grammar-mobile-toc a { min-height: 44px; padding: 12px 8px; border-top: 1px solid var(--line); font-size: .88rem; }
 }
 @media (max-width: 600px) {
   .language-section-heading { display: block; }
@@ -626,7 +634,7 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
   .grammar-breakdown span { padding: 12px 6px; }
   .grammar-breakdown strong { font-size: .88rem; }
   .grammar-breakdown small { font-size: .66rem; }
-  .grammar-toc a { padding-inline: 4px; }
+  .grammar-mobile-toc nav { grid-template-columns: 1fr; }
   .grammar-status { margin-bottom: 32px; }
   .grammar-section { padding-bottom: 44px; margin-bottom: 44px; }
 }
