@@ -330,18 +330,26 @@ export default function GrammarPage() {
               </p>
               <h3>Different negative forms can appear with the same verb</h3>
               <div className="grammar-pairs">
-                <div><strong>Natho sume</strong><span>He is not sleeping.</span></div>
-                <div><strong>Nathi sume</strong><span>She is not sleeping.</span></div>
+                <div><strong>Natho sume</strong><span>He won&apos;t sleep. · speaker-corrected future reading</span></div>
+                <div><strong>Nathi sume</strong><span>She won&apos;t sleep. · speaker-corrected future reading</span></div>
                 <div><strong>Hee mukhe pe(n)sa natho dye</strong><span>He doesn&apos;t give me money.</span></div>
-                <div><strong>Hee mukhe pe(n)sa nai dhine</strong><span>He didn&apos;t give me money.</span></div>
+                <div><strong>Hee mukhe pe(n)sa nai dhine</strong><span>He hasn&apos;t given me money. · speaker-corrected reading</span></div>
               </div>
               <p>
+                The two short negative sleep examples mean “won&apos;t sleep”, not “is not sleeping”.
+                Their future interpretation does not establish that <em>natho</em> or
+                <em>nathi</em> always means future, since I also use
+                <em>natho dye</em> for “doesn&apos;t give”. In the giving pair,
+                I distinguish “doesn&apos;t give” from “hasn&apos;t given”.
                 I have also recorded <em>nathaa</em> with plural desired things,
                 <em> na</em> in a past negative, <em>nah</em> in negative
                 commands, and <em>nai</em> for both past giving and an
                 expression meaning there is no food. These are attested
                 contexts, not a finished negative conjugation. In the giving
                 pair, both the negative and the giving verb change.
+                The exact grammatical sources of the tense and current-relevance
+                contrasts remain to be tested; the translations themselves
+                reflect my explicit corrections.
               </p>
               <Link className="text-link" href="/language/articles/how-negation-works-in-my-kutchi">
                 Read my full study of Kutchi negation <span aria-hidden="true">↗</span>
