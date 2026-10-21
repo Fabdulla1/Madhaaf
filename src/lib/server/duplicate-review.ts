@@ -10,11 +10,13 @@ export const duplicateConfirmationSchema = z.object({
 
 type Candidate = { id: string; text: string; score: number };
 type Sense = { gloss_en: string; definition_en: string | null };
+type DuplicateSource = { table: string; columns: string; id: string; text: string; alternative?: string };
 
 export async function findDuplicates(db: SupabaseClient, entity: DuplicateEntity, query: string, exactOnly = false, signal?: AbortSignal): Promise<DuplicateReview> {
   const candidates = new Map<string, Candidate>();
-  const sources = entity === "dictionary"
-    ? [{ table: "lexemes", columns: "id,headword", id: "id", text: "headword" }, { table: "word_forms", columns: "lexeme_id,spelling", id: "lexeme_id", text: "spelling" }]
+  const sources: DuplicateSource[] = entity === "dictionary"
+    ? [{ table: "lexemes", columns: "id,headword", id: "id", text: "headword" }, { table: "word_forms", columns: "lexeme_id,spelling", id: "lexeme_id", text: "spelling" },
+      { table: "inflected_forms", columns: "lexeme_id,written_form,original_transcription", id: "lexeme_id", text: "written_form", alternative: "original_transcription" }]
     : [{ table: "family_members", columns: "id,preferred_name", id: "id", text: "preferred_name" }, { table: "member_names", columns: "member_id,name", id: "member_id", text: "name" }];
   // Read narrow projections in pages: names beyond the first database page
   // must still be checked. No private record data is cached across requests.
@@ -24,12 +26,17 @@ export async function findDuplicates(db: SupabaseClient, entity: DuplicateEntity
       if (signal) request = request.abortSignal(signal);
       const { data, error: dbError } = await request;
       if (dbError) throw Error("Could not check existing records");
-      const rows = (data ?? []) as unknown as Record<string, string>[];
+      const rows = (data ?? []) as unknown as Record<string, string | null>[];
       for (const row of rows) {
-        const score = duplicateScore(query, row[source.text], entity, exactOnly);
-        if (score === null) continue;
-        const id = row[source.id], previous = candidates.get(id);
-        if (!previous || score < previous.score) candidates.set(id, { id, text: row[source.text], score });
+        const id = row[source.id];
+        if (!id) continue;
+        for (const text of [row[source.text], source.alternative ? row[source.alternative] : null]) {
+          if (!text) continue;
+          const score = duplicateScore(query, text, entity, exactOnly);
+          if (score === null) continue;
+          const previous = candidates.get(id);
+          if (!previous || score < previous.score) candidates.set(id, { id, text, score });
+        }
       }
       if (rows.length < 500) break;
     }

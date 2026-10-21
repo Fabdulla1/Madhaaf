@@ -21,15 +21,21 @@ declare
   draft_sense uuid;
   vin_example uuid;
   draft_example uuid;
+  evidence_source uuid;
 begin
+  insert into public.sources(title) values ('Test speaker elicitation') returning id into evidence_source;
   insert into public.lexemes(headword) values ('test kar') returning id into kar_id;
   insert into public.lexemes(headword) values ('test vin') returning id into vin_id;
   insert into public.lexemes(headword) values ('test draft') returning id into draft_id;
   insert into public.senses(lexeme_id, gloss_en) values (kar_id, 'do') returning id into kar_sense;
   insert into public.senses(lexeme_id, gloss_en) values (vin_id, 'go') returning id into vin_sense;
   insert into public.senses(lexeme_id, gloss_en) values (draft_id, 'hidden') returning id into draft_sense;
-  insert into public.examples(sense_id, kutchi_text, english_translation)
-    values (vin_sense, 'Au(n) test karantho', 'I do a test') returning id into vin_example;
+  insert into public.examples(sense_id, kutchi_text, english_translation, source_id, original_transcription)
+    values (vin_sense, 'Au(n) test kara(n)tho', 'I do a test', evidence_source, 'Au(n) test karantho') returning id into vin_example;
+  if not exists (select 1 from public.examples where id = vin_example
+      and source_id = evidence_source and original_transcription = 'Au(n) test karantho') then
+    raise exception 'Example source or original transcription was not preserved';
+  end if;
   insert into public.examples(sense_id, kutchi_text, english_translation)
     values (draft_sense, 'Hidden attestation', 'Hidden translation') returning id into draft_example;
   insert into public.example_lexemes(example_id, lexeme_id) values

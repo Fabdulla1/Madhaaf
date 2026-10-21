@@ -39,7 +39,7 @@ export const createSchemas = {
   }).strict(),
   spellings: z.object({ lexeme_id: uuid, spelling: short, is_preferred: z.boolean().optional(), note }).strict(),
   senses: z.object({ lexeme_id: uuid, gloss_en: short, definition_en: note, display_order: z.number().int().min(0).optional() }).strict(),
-  examples: z.object({ sense_id: uuid, kutchi_text: z.string().trim().min(1).max(2000), english_translation: z.string().max(2000).nullable().optional(), note, display_order: z.number().int().min(0).optional() }).strict(),
+  examples: z.object({ sense_id: uuid, kutchi_text: z.string().trim().min(1).max(2000), english_translation: z.string().max(2000).nullable().optional(), original_transcription: z.string().trim().min(1).max(2000).nullable().optional(), source_id: uuid.nullable().optional(), note, display_order: z.number().int().min(0).optional() }).strict(),
   inflections: z.object({
     lexeme_id: uuid, written_form: z.string().trim().min(1).max(200),
     grammatical_person: z.enum(['first','second','third']).nullable().optional(),

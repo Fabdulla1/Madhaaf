@@ -5,11 +5,15 @@ const ownedExample = {
   id: "55516d0f-e2f4-4bd4-bd37-26611598c002",
   kutchi_text: "Kuroo kare(n)tho?",
   english_translation: "What are you doing?",
+  original_transcription: "Kuroo karentho?",
+  source_title: "Owner-supplied East African Kutchi verb elicitation",
 };
 const linkedExample = {
   id: "e49fe86e-65bf-47f2-bceb-75f212574b6c",
   kutchi_text: "Jaldi kar!",
   english_translation: "Do it quickly!",
+  original_transcription: "Jaldi kar!",
+  source_title: "Owner-supplied East African Kutchi verb elicitation",
 };
 const entry = {
   id: entryId,
@@ -80,6 +84,9 @@ test("inflection search opens the published lemma and detail distinguishes evide
   await expect(page.getByText(/Original transcription: karentho/)).toBeVisible();
   await expect(page.getByText(ownedExample.kutchi_text, { exact: true })).toHaveCount(1);
   await expect(page.getByText(linkedExample.kutchi_text, { exact: true })).toBeVisible();
+  await expect(page.getByText("Original transcription: Kuroo karentho?")).toBeVisible();
+  await expect(page.getByText("Original transcription: Jaldi kar!")).toHaveCount(0);
+  await expect(page.getByText("Source: Owner-supplied East African Kutchi verb elicitation")).toHaveCount(2);
 
   await page.setViewportSize({ width: 375, height: 812 });
   await expect(page.locator(".conjugations__form").getByText("kare(n)tho", { exact: true })).toBeVisible();

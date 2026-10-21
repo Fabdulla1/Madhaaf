@@ -36,6 +36,8 @@ export type DictionaryEntry = {
     kutchi_text: string;
     english_translation?: string | null;
     note?: string | null;
+    original_transcription?: string | null;
+    source_title?: string | null;
   }>;
   senses?: Array<{
     id: string;
@@ -46,6 +48,8 @@ export type DictionaryEntry = {
       kutchi_text: string;
       english_translation?: string | null;
       note?: string | null;
+      original_transcription?: string | null;
+      source_title?: string | null;
     }>;
   }>;
   media?: PublicMedia[];

@@ -7,6 +7,23 @@ import { ContentState, LoadingState } from "./content-state";
 
 type InflectedForm = NonNullable<DictionaryEntry["inflected_forms"]>[number];
 const FORM_GROUPS = ["Present", "Past", "Future", "Imperative", "Other recorded forms"] as const;
+const NUMBER_ORDER = ["singular", "plural"] as const;
+const PERSON_ORDER = ["first", "second", "third"] as const;
+const GENDER_ORDER = ["masculine", "feminine"] as const;
+
+function featureOrder(value: string | null | undefined, order: readonly string[]) {
+  const index = order.indexOf(value?.toLowerCase() ?? "");
+  return index < 0 ? order.length : index;
+}
+
+function compareForms(a: InflectedForm, b: InflectedForm) {
+  return featureOrder(a.grammatical_number, NUMBER_ORDER) - featureOrder(b.grammatical_number, NUMBER_ORDER)
+    || featureOrder(a.grammatical_person, PERSON_ORDER) - featureOrder(b.grammatical_person, PERSON_ORDER)
+    || featureOrder(a.gender, GENDER_ORDER) - featureOrder(b.gender, GENDER_ORDER)
+    || a.written_form.localeCompare(b.written_form, "en", { sensitivity: "base" })
+    || a.written_form.localeCompare(b.written_form, "en")
+    || a.id.localeCompare(b.id, "en");
+}
 
 function formGroup(form: InflectedForm): (typeof FORM_GROUPS)[number] {
   if (form.mood?.toLowerCase() === "imperative") return "Imperative";
@@ -20,10 +37,23 @@ function featureLabel(value: string) {
   return value.replaceAll("_", " ").replace(/\b\w/g, letter => letter.toUpperCase());
 }
 
+function ExampleProvenance({ example }: { example: {
+  kutchi_text: string;
+  original_transcription?: string | null;
+  source_title?: string | null;
+} }) {
+  return <>
+    {example.original_transcription && example.original_transcription !== example.kutchi_text &&
+      <small>Original transcription: {example.original_transcription}</small>}
+    {example.source_title && <small>Source: {example.source_title}</small>}
+  </>;
+}
+
 function Conjugations({ forms }: { forms: InflectedForm[] }) {
   if (!forms.length) return null;
   const groups = new Map(FORM_GROUPS.map(label => [label, [] as InflectedForm[]]));
   for (const form of forms) groups.get(formGroup(form))?.push(form);
+  for (const group of groups.values()) group.sort(compareForms);
   return <section className="entry-section conjugations" aria-labelledby="conjugations-heading">
     <h2 id="conjugations-heading">Conjugations</h2>
     <p className="conjugations__intro">Recorded forms of this word. Forms not listed here have not been confirmed.</p>
@@ -113,6 +143,7 @@ function EntryContent({ entry }: { entry: DictionaryEntry }) {
                             <p>{example.kutchi_text}</p>
                             {example.english_translation && <footer>{example.english_translation}</footer>}
                             {example.note && <small>{example.note}</small>}
+                            <ExampleProvenance example={example} />
                           </blockquote>
                         ))}
                       </div>
@@ -130,6 +161,7 @@ function EntryContent({ entry }: { entry: DictionaryEntry }) {
               <p>{example.kutchi_text}</p>
               {example.english_translation && <footer>{example.english_translation}</footer>}
               {example.note && <small>{example.note}</small>}
+              <ExampleProvenance example={example} />
             </blockquote>)}</div>
           </section>}
           {(entry.part_of_speech || entry.linguistic_tags?.length) && (

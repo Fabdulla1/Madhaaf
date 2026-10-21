@@ -1,0 +1,84 @@
+{
+  "source": {
+    "title": "Owner-supplied East African Kutchi verb elicitation",
+    "citation": "Project owner, native-speaker vocabulary and grammatical evidence, supplied 21 October 2026.",
+    "notes": "Speaker-supplied forms in the Codex task attachment. Parenthesized n is editorial n-before-th notation; original transcription is recorded only where independently supplied. Analyses beyond the attested contexts remain provisional."
+  },
+  "verbs": [
+    {"lemma":"dhor","meaning":"run","note":"The attested present forms vary between dh and d; pronunciation and lexical analysis need speaker confirmation.","present":["dhora(n)tho","dora(n)thi","dore(n)tho","dore(n)thi","doretho","dorethi","doro(n)thaa","dore(n)thaa"],"past":[{"form":"dhoryose"}],"future":"dhordhose","imperative":"dhor"},
+    {"lemma":"kan","meaning":"take","present":["kana(n)tho","kana(n)thi","kane(n)tho","kane(n)thi","kanetho","kanethi","kano(n)thaa","kane(n)thaa"],"past":[{"form":"kayose"}],"future":"kandhose","imperative":"kan"},
+    {"lemma":"fagai","meaning":"throw","present":["fagaya(n)tho","fagaya(n)thi","fagaye(n)tho","fagaye(n)thi","fagayetho","fagayethi","fagayo(n)thaa","fagaye(n)thaa"],"past":[{"form":"fagayose"}],"future":"fagayndhose","imperative":"fagai"},
+    {"lemma":"nikro","meaning":"leave, depart","present":["nikra(n)tho","nikra(n)thi","nikre(n)tho","nikre(n)thi","nikretho","nikrethi","nikro(n)thaa","nikre(n)thaa"],"past":[{"form":"nikryose"}],"future":"nikardhose","imperative":"nikar"},
+    {"lemma":"vin","meaning":"go","present":["vina(n)tho","vina(n)thi","vine(n)tho","vine(n)thi","vinetho","vinethi","vino(n)thaa","vine(n)thaa"],"past":[{"form":"oosyose","gender":"masculine"},{"form":"ooseise","gender":"feminine"},{"form":"oosyasee","person":"first","number":"plural","context":"Paa(n) kaal oosyasee"},{"form":"oosyaa","context":"Mere kaal oosyaa; collective subject, grammatical person/number unresolved"}],"future":"vendhose","imperative":"vin"},
+    {"lemma":"kar","meaning":"do, perform","present":["kara(n)tho","kara(n)thi","kare(n)tho","kare(n)thi","karetho","karethi","karo(n)thaa","kare(n)thaa"],"past":[{"form":"kyose"}],"future":"kardhose","imperative":"kar"},
+    {"lemma":"chad","meaning":"leave it, let go","note":"The two recorded past forms may differ in meaning or aspect; do not treat them as interchangeable.","present":["chada(n)tho","chada(n)thi","chade(n)tho","chade(n)thi","chadetho","chadethi","chado(n)thaa","chade(n)thaa"],"past":[{"form":"chadidinose","person":"first","number":"singular","context":"I let go of it yesterday"},{"form":"chadyavose","person":"first","number":"singular","context":"I left it yesterday"}],"future":"chadadhose","imperative":"chad"},
+    {"lemma":"sum","meaning":"sleep","present":["suma(n)tho","suma(n)thi","sume(n)tho","sume(n)thi","sumetho","sumethi","sumo(n)thaa","sume(n)thaa"],"past":[{"form":"suthose","gender":"masculine"},{"form":"suthese","gender":"feminine"},{"form":"suthyaa","context":"Hinee/Mere kaal suthyaa; grammatical person/number unresolved"}],"future":"sumdhose","imperative":"sum"}
+  ],
+  "imperative_only": [
+    {"form":"khaa","meaning":"eat","note":"Attested singular command only. Citation lemma has not been established."}
+  ],
+  "explicit_original_transcriptions": {
+    "kara(n)tho": "karantho",
+    "kare(n)tho": "karentho",
+    "kare(n)thi": "karenthi",
+    "karo(n)thaa": "karonthaa",
+    "vina(n)tho": "vinantho",
+    "dore(n)thaa": "dorenthaa"
+  },
+  "vocabulary": [
+    {"headword":"au(n)","meaning":"I","part_of_speech":"pronoun","note":"First-person singular."},
+    {"headword":"thu(n)","meaning":"you","part_of_speech":"pronoun","note":"Second-person singular."},
+    {"headword":"hee","meaning":"he, she","part_of_speech":"pronoun","note":"Existing dictionary meaning this must be preserved; demonstrative function remains unresolved."},
+    {"headword":"paa(n)","meaning":"we","part_of_speech":"pronoun","note":"First-person plural. Existing meaning us (inclusive) must be preserved."},
+    {"headword":"hinee","meaning":"they","part_of_speech":"pronoun","note":"Third-person plural."},
+    {"headword":"mere","meaning":"everyone","part_of_speech":null,"note":"Collective pronoun or quantifier; existing meaning all must be preserved."},
+    {"headword":"ai(n)","meaning":"you","part_of_speech":"pronoun","note":"Formal or plural address, provisional."},
+    {"headword":"khadho","meaning":"food","part_of_speech":"noun","near_existing":"khaadho"},
+    {"headword":"kaal","meaning":"yesterday","part_of_speech":null,"note":"Time expression."},
+    {"headword":"savare","meaning":"tomorrow","part_of_speech":null,"note":"Time expression."},
+    {"headword":"haroj","meaning":"every day","part_of_speech":null,"note":"Habitual time expression."},
+    {"headword":"jaldi","meaning":"quickly","part_of_speech":"adverb"},
+    {"headword":"kuroo","meaning":"what","part_of_speech":null,"note":"Interrogative."},
+    {"headword":"kee(n)","meaning":"how","part_of_speech":null,"note":"Interrogative."},
+    {"headword":"hadaa","meaning":"here","part_of_speech":null,"near_existing":"hada"},
+    {"headword":"hoodaa","meaning":"there","part_of_speech":null,"near_existing":"hooda"},
+    {"headword":"hoo","meaning":"that","part_of_speech":null,"note":"Demonstrative."},
+    {"headword":"masthi","meaning":"fun, mischief","part_of_speech":null,"note":"Meaning depends on construction; existing meanings mischief and tease must be preserved."},
+    {"headword":"sanas","meaning":"defecation / defecate in sanas kar","part_of_speech":null,"note":"Lexical classification unresolved."},
+    {"headword":"natho","meaning":"negative form in present constructions","part_of_speech":null,"note":"Exact grammatical classification unresolved."},
+    {"headword":"nah","meaning":"not","part_of_speech":null,"note":"Attested in future negation; existing interjection no must be preserved."},
+    {"headword":"mujo","meaning":"my","part_of_speech":null,"note":"Possessive; existing meaning mine must be preserved."},
+    {"headword":"maru","meaning":"man","part_of_speech":null,"near_existing":"maroo","note":"Meaning and context require verification."},
+    {"headword":"sare’lo","meaning":"rotten","part_of_speech":null,"near_existing":"sare'lo, sarelo","note":"Adjective versus participle unresolved; existing two published entries must not be silently merged."}
+  ],
+  "copula_forms": [
+    {"form":"i(n)ya"},{"form":"i(n)ye"},{"form":"i(n)yo"},{"form":"ai"}
+  ],
+  "examples": [
+    {"kutchi":"Au(n) khadho kya(n)tho","english":"I am eating food.","lemmas":["au(n)","khadho"],"note":"Eating verb citation lemma unresolved."},
+    {"kutchi":"Au(n) haroj suma(n)tho","english":"I sleep every day.","lemmas":["au(n)","haroj","sum"]},
+    {"kutchi":"Au(n) haroj vina(n)tho","english":"I go every day.","lemmas":["au(n)","haroj","vin"]},
+    {"kutchi":"Kuroo kare(n)tho?","english":"What are you doing? (masculine)","lemmas":["kuroo","kar"]},
+    {"kutchi":"Kuroo kare(n)thi?","english":"What are you doing? (feminine)","lemmas":["kuroo","kar"]},
+    {"kutchi":"Mere kuroo kye(n)thaa?","english":"What is everyone eating?","lemmas":["mere","kuroo"],"note":"Eating verb citation lemma unresolved."},
+    {"kutchi":"Ai(n) kee(n) i(n)yo?","english":"How are you? (formal/plural)","lemmas":["ai(n)","kee(n)","i(n)yo"],"note":"Copula analysis provisional."},
+    {"kutchi":"Jaldi kar!","english":"Do it quickly!","lemmas":["jaldi","kar"]},
+    {"kutchi":"Hadaa kar!","english":"Do it here!","lemmas":["hadaa","kar"]},
+    {"kutchi":"Hoodaa kar!","english":"Do it there!","lemmas":["hoodaa","kar"]},
+    {"kutchi":"Sanas kar!","english":"Defecate!","lemmas":["sanas","kar"]},
+    {"kutchi":"Khaa!","english":"Eat!","lemmas":["khaa"],"note":"Attested imperative; citation lemma unresolved."},
+    {"kutchi":"Au(n) kaal oosyose","english":"I went yesterday. (masculine)","lemmas":["au(n)","kaal","vin"]},
+    {"kutchi":"Au(n) kaal ooseise","english":"I went yesterday. (feminine)","lemmas":["au(n)","kaal","vin"]},
+    {"kutchi":"Au(n) kaal suthose","english":"I slept yesterday. (masculine)","lemmas":["au(n)","kaal","sum"]},
+    {"kutchi":"Savare au(n) kandhose","english":"I will take it tomorrow.","lemmas":["savare","au(n)","kan"]},
+    {"kutchi":"Au(n) savare kandhose","english":"I will take it tomorrow.","lemmas":["au(n)","savare","kan"]},
+    {"kutchi":"Au(n) natho kara(n)","english":"I am not doing it.","lemmas":["au(n)","natho","kar"]},
+    {"kutchi":"Natho sumaa(n)","english":"I am not sleeping.","lemmas":["natho","sum"]},
+    {"kutchi":"Nah kardhose","english":"I will not do it.","lemmas":["nah","kar"]},
+    {"kutchi":"Nah vendhose","english":"I will not go.","lemmas":["nah","vin"]},
+    {"kutchi":"Paa(n) kaal oosyasee","english":"We went yesterday.","lemmas":["paa(n)","kaal","vin"]},
+    {"kutchi":"Mere kaal oosyaa","english":"Everyone went yesterday.","lemmas":["mere","kaal","vin"]},
+    {"kutchi":"Hinee kaal suthyaa","english":"They slept yesterday.","lemmas":["hinee","kaal","sum"]},
+    {"kutchi":"Mere kaal suthyaa","english":"Everyone slept yesterday.","lemmas":["mere","kaal","sum"]}
+  ]
+}

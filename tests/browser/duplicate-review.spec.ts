@@ -70,6 +70,19 @@ test("dictionary lookup covers later pages and variants, deduplicates records an
   expect(requests.some(url => url.searchParams.get("senses.limit") === "3")).toBe(true);
 });
 
+test("a recorded inflection suggests its parent lemma before another entry is created", async () => {
+  const { db } = database({
+    lexemes: [{ id: wordId, headword: "kar", status: "published", part_of_speech: "verb", senses: [{ gloss_en: "do" }] }],
+    word_forms: [],
+    inflected_forms: [{ id: "form-1", lexeme_id: wordId, written_form: "kare(n)tho", original_transcription: "karentho" }],
+  });
+  for (const spelling of ["kare(n)tho", "karentho"]) {
+    const review = await findDuplicates(db, "dictionary", spelling, true);
+    expect(review.exactIds).toEqual([wordId]);
+    expect(review.matches[0]).toMatchObject({ label: "kar", matchedText: spelling, exact: true, summary: "do" });
+  }
+});
+
 test("person aliases trigger review and previews exclude private editorial notes", async () => {
   const { db, requests } = database({ family_members: [{ id: personId, preferred_name: "Amina Abdulla", status: "draft", short_bio: "A teacher", birthplace: "Bhuj, Gujarat, India", birth_date_text: "1940", private_notes: "PRIVATE SECRET" }], member_names: [{ id: "name-1", member_id: personId, name: "Amina Patel" }] });
   const review = await findDuplicates(db, "people", "Amina Patel");

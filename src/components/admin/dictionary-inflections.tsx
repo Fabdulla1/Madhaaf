@@ -106,7 +106,7 @@ function InflectionForm({ initial, sources, busy, onSave, onCancel }: {
         <option value="">No source selected</option>{sources.map(source => <option key={source.id} value={source.id}>{source.title}</option>)}
       </select>
     </label>
-    <label className="text-sm font-semibold sm:col-span-2">Evidence or editorial note
+    <label className="text-sm font-semibold sm:col-span-2">Public evidence note
       <textarea rows={2} value={values.note || ""} onChange={event => set("note", event.target.value)} className="mt-2 w-full rounded border border-[#aaa99e] bg-white p-3" />
     </label>
     <div className="flex items-end gap-4 sm:col-span-2 lg:col-span-4">
