@@ -21,7 +21,7 @@ export default function OrthographyPage() {
           <h1>Working Latin orthography for East African Kutchi.</h1>
           <p>
             This guide sets out provisional spelling conventions used in
-            Madhaaf's documentation of Mombasa and Ethiopian Kutchi.
+            Madhaaf&apos;s documentation of Mombasa and Ethiopian Kutchi.
             Roman Urdu is one point of comparison, but recorded Kutchi
             pronunciation and usage determine the research conventions.
           </p>

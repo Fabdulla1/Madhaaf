@@ -62,7 +62,7 @@ export default function Home() {
             <p className="eyebrow">Research support</p>
             <h2 id="home-support-title">Research and technical support</h2>
             <p>
-              TokenWorks supports the development of Madhaaf's research
+              TokenWorks supports the development of Madhaaf&apos;s research
               infrastructure, including the dictionary, language studies
               and cultural archive.
             </p>
