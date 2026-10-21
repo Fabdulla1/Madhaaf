@@ -84,12 +84,38 @@ export default function GrammarPage() {
           <div className="grammar-articles">
             <section id="word-order" className="grammar-section">
               <p className="eyebrow">01 / Sentence structure</p>
-              <h2>Verbs tend to come last.</h2>
-              <Evidence>Observed in these examples</Evidence>
+              <h2>The verb does not have a fixed position.</h2>
+              <Evidence>Three native-speaker-attested word orders</Evidence>
               <p>
-                When I put a subject and object into the same sentence, I
-                often place the verb last. I have not tested enough sentence
-                types to say that every Kutchi sentence must follow that order.
+                I previously described Kutchi verbs as tending to come last.
+                That was too strong. I can arrange the same elements of a
+                sentence with <em>chad</em> (“let go / leave alone”) in at
+                least three ways. The verb may come between the subject and
+                <em> hin ke</em>, before both, or after both.
+              </p>
+              <ol className="grammar-order-list" aria-label="Three attested arrangements of the same grammatical elements">
+                <li>
+                  <span className="grammar-order-list__pattern">Subject → Verb → ke-marked phrase</span>
+                  <strong lang="und">Au(n) chada(n)tho hin ke</strong>
+                </li>
+                <li>
+                  <span className="grammar-order-list__pattern">Verb → Subject → ke-marked phrase</span>
+                  <strong lang="und">Chada(n)tho au(n) hin ke</strong>
+                </li>
+                <li>
+                  <span className="grammar-order-list__pattern">ke-marked phrase → Subject → Verb</span>
+                  <strong lang="und">hin ke au(n) chada(n)tho</strong>
+                </li>
+              </ol>
+              <p className="grammar-fineprint">
+                These are the original speaker-supplied variants.
+                <em> Au(n)</em> is “I”, <em>chada(n)tho</em> is a form of
+                <em> chad</em>, and <em>hin ke</em> is a ke-marked phrase.
+                I have not yet established whether changing their order affects
+                emphasis, topic, or another aspect of meaning.
+              </p>
+              <p>
+                Some other attested sentences do end in the verb. For example:
               </p>
               <div className="grammar-example">
                 <p className="grammar-example__kutchi">Au(n) khadho kya(n)tho</p>
@@ -100,6 +126,12 @@ export default function GrammarPage() {
                   <span><strong>kya(n)tho</strong><small>verb · am eating</small></span>
                 </div>
               </div>
+              <p className="grammar-fineprint">
+                I have documented several possible orders, but not which is
+                most frequent in ordinary conversation or whether every verb
+                allows them. “Always verb-final” and “verbs tend to be last”
+                would both go beyond my current evidence.
+              </p>
             </section>
             <section id="pronouns" className="grammar-section">
               <p className="eyebrow">02 / Reference</p>
@@ -329,8 +361,10 @@ export default function GrammarPage() {
                 <div><strong>Ai(n) kee(n) i(n)yo?</strong><span>How are you? · formal or plural</span></div>
               </div>
               <p>
-                I put the verb at the end of these questions. I want
-                longer examples to test where question words may appear.
+                These particular questions place the verb at the end, but
+                my other examples show that verbs need not be final.
+                I still need longer questions and alternative orders to
+                understand where question words can appear.
               </p>
             </section>
             <section id="being" className="grammar-section">
