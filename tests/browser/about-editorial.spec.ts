@@ -6,6 +6,8 @@ const researchDates = [
   ["nouns-gender-and-distance", "2026-07-02"],
   ["wanting-and-experiencers", "2026-09-14"],
   ["connecting-kutchi-clauses", "2026-10-19"],
+  ["la-and-jo-beneficiary-and-possession", "2026-10-21"],
+  ["how-negation-works-in-my-kutchi", "2026-10-21"],
 ] as const;
 
 test("About page credits Farhan, his East African Kutchi mission, and TokenWorks", async ({ page }) => {
@@ -31,7 +33,7 @@ test("About can be reached from global navigation and footer", async ({ page }) 
   await expect(page).toHaveURL(/\/about$/);
 });
 
-test("Research papers have distinct, transparently labeled dates and a linked author", async ({ page }) => {
+test("Research papers have accurately labeled dates and a linked author", async ({ page }) => {
   await page.goto("/language/articles");
   await expect(page.getByRole("link", { name: "By Farhan Abdulla" })).toHaveAttribute("href", "/about");
   const times = await page.locator(".research-tile__category time").evaluateAll((nodes) =>

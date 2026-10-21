@@ -79,7 +79,8 @@ export default function GrammarPage() {
             <a href="#commands">07 · Commands</a>
             <a href="#questions">08 · Questions</a>
             <a href="#being">09 · Being &amp; descriptions</a>
-            <a href="#open-questions">10 · Still investigating</a>
+            <a href="#postpositions">10 · La and jo</a>
+            <a href="#open-questions">11 · Still investigating</a>
           </nav>
           <div className="grammar-articles">
             <section id="word-order" className="grammar-section">
@@ -327,6 +328,24 @@ export default function GrammarPage() {
                 cases where a negative comes after the lexical verb.
                 I want to preserve those alternatives.
               </p>
+              <h3>Different negative forms can appear with the same verb</h3>
+              <div className="grammar-pairs">
+                <div><strong>Natho sume</strong><span>He is not sleeping.</span></div>
+                <div><strong>Nathi sume</strong><span>She is not sleeping.</span></div>
+                <div><strong>Hee mukhe pe(n)sa natho dye</strong><span>He doesn&apos;t give me money.</span></div>
+                <div><strong>Hee mukhe pe(n)sa nai dhine</strong><span>He didn&apos;t give me money.</span></div>
+              </div>
+              <p>
+                I have also recorded <em>nathaa</em> with plural desired things,
+                <em> na</em> in a past negative, <em>nah</em> in negative
+                commands, and <em>nai</em> for both past giving and an
+                expression meaning there is no food. These are attested
+                contexts, not a finished negative conjugation. In the giving
+                pair, both the negative and the giving verb change.
+              </p>
+              <Link className="text-link" href="/language/articles/how-negation-works-in-my-kutchi">
+                Read my full study of Kutchi negation <span aria-hidden="true">↗</span>
+              </Link>
             </section>
             <section id="commands" className="grammar-section">
               <p className="eyebrow">07 / Imperatives</p>
@@ -385,14 +404,43 @@ export default function GrammarPage() {
                 adjective or participle, or what agreement it shows.
               </p>
             </section>
+            <section id="postpositions" className="grammar-section">
+              <p className="eyebrow">10 / Postpositions and possession</p>
+              <h2>La and jo connect people to things differently.</h2>
+              <Evidence>A directly attested distinction; other senses remain open</Evidence>
+              <p>
+                I supplied two sentences that mean different things in English:
+                picking up money <em>for</em> someone and picking up money
+                that <em>belongs to</em> them. The first uses <em>la</em>,
+                while the second uses <em>jo</em>.
+              </p>
+              <div className="grammar-pairs">
+                <div><strong>Hin la au(n) pe(n)sa kayose</strong><span>I picked up money for him.</span></div>
+                <div><strong>Hin jo pe(n)sa au(n) kayose</strong><span>I picked up his money.</span></div>
+                <div><strong>khadho la au(n) kana(n)tho</strong><span>for the food, I am taking it.</span></div>
+                <div><strong>Hee mujo bhaa jo ghar ai</strong><span>This is my brother&apos;s house.</span></div>
+              </div>
+              <p>
+                <em>La</em> has a beneficiary or food-related “for” reading
+                in these sentences; <em>jo</em> links a possessor to
+                something possessed. I accept both <em>khadho la</em> and
+                <em>khade la</em>, but their form difference is unresolved.
+                An older dictionary note also glossed <em>jo</em> as “for”,
+                so I am keeping that open until I have examples for it.
+              </p>
+              <Link className="text-link" href="/language/articles/la-and-jo-beneficiary-and-possession">
+                Read the full research article about la and jo <span aria-hidden="true">↗</span>
+              </Link>
+            </section>
             <section id="open-questions" className="grammar-section">
-              <p className="eyebrow">10 / Field notes</p>
+              <p className="eyebrow">11 / Field notes</p>
               <h2>What we still need to learn.</h2>
               <ul className="grammar-questions">
                 <li>Do the identical present forms always permit both ongoing and habitual interpretations, including with “to eat”?</li>
                 <li>How do past forms of <em>kan</em>, <em>kar</em>, and <em>chad</em> change across subjects?</li>
                 <li>Do future forms ending in <em>-dhose</em> change with person, number or gender?</li>
-                <li>Do <em>natho</em> and <em>nah</em> have feminine and plural counterparts?</li>
+                <li>Which participant or grammatical feature controls the attested <em>natho</em>, <em>nathi</em> and <em>nathaa</em> forms?</li>
+                <li>When can <em>jo</em> mean “for” rather than a possessor, and how do <em>khadho</em> and <em>khade</em> vary before <em>la</em>?</li>
                 <li>How are polite and plural commands formed?</li>
                 <li>How do adjectives and participles agree with nouns?</li>
                 <li>Do formal and plural second-person forms always coincide?</li>

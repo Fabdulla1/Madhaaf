@@ -91,9 +91,10 @@ export default function LanguagePage() {
             <p className="eyebrow">New / Language research</p>
             <h2 id="language-research-title">Ideas that begin with a sentence.</h2>
             <p>
-              I wrote five research essays about the questions I have been
-              working through—from ke and verb endings to noun plurals.
-              Every claim is tied to the examples I recorded.
+              My research articles follow questions I have been working
+              through—from ke and verb endings to the distinction between
+              la and jo, noun plurals, and negation. I keep each explanation
+              tied to the examples I recorded.
             </p>
             <Link className="button button--outline" href="/language/articles">
               Browse research articles <span aria-hidden="true">↗</span>

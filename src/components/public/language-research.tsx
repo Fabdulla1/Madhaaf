@@ -38,7 +38,9 @@ function LinkedKutchi({ sentence, article }: { sentence: string; article: Resear
         const [, prefix, word, suffix] = match;
         const lookup = dictionaryLookups[word.toLowerCase()];
         if (!lookup) return <span key={index}>{part}</span>;
-        const note = article.wordNotes.find((item) => (item.search ?? item.word).toLowerCase() === lookup.toLowerCase());
+        // Surface forms can share a lemma; retain their separate contextual definitions.
+        const note = article.wordNotes.find((item) => item.word.toLowerCase() === word.toLowerCase())
+          ?? article.wordNotes.find((item) => (item.search ?? item.word).toLowerCase() === lookup.toLowerCase());
         return (
           <span key={index}>
             {prefix}{note
@@ -59,7 +61,11 @@ function ExampleCard({ example, article }: { example: ResearchExample; article: 
         <LinkedKutchi sentence={example.kutchi} article={article} />
       </blockquote>
       <figcaption>
-        {example.captionKind === "structure" && <strong className="research-example__structure-label">Constituent order · </strong>}
+        {example.captionKind && (
+          <strong className="research-example__structure-label">
+            {example.captionKind === "structure" ? "Constituent order · " : "Elicitation context · "}
+          </strong>
+        )}
         {example.english}
       </figcaption>
     </figure>
@@ -135,7 +141,7 @@ export function ResearchIndex() {
           <h1>What the sentences are teaching us.</h1>
           <p>
             I&apos;ve been writing down the Kutchi sentences I grew up speaking
-            and trying to understand the grammar inside them. These five
+            and trying to understand the grammar inside them. These
             articles are my working research notes: what I&apos;ve observed,
             what I&apos;ve begun to understand, and what I still need to test.
           </p>
@@ -145,6 +151,21 @@ export function ResearchIndex() {
             <span>First published online October 2026</span>
           </div>
         </header>
+        <section className="research-index__latest" aria-labelledby="research-latest-heading">
+          <div className="research-index__latest-heading">
+            <p className="eyebrow">From my latest field notes</p>
+            <h2 id="research-latest-heading">Two new questions, two new studies.</h2>
+          </div>
+          <div className="research-index__latest-links">
+            {researchArticles.slice(-2).map((article) => (
+              <Link href={`/language/articles/${article.slug}`} key={article.slug}>
+                <span className="research-index__latest-number">Study {article.number}</span>
+                <strong>{article.title}</strong>
+                <span className="research-index__latest-arrow" aria-hidden="true">↗</span>
+              </Link>
+            ))}
+          </div>
+        </section>
         <div className="research-index__feature">
           <div>
             <p className="eyebrow">Begin with the evidence</p>
@@ -290,10 +311,11 @@ export function ResearchArticleView({ article }: { article: ResearchArticle }) {
                   I have been collecting example sentences, translation pairs
                   and judgments about what sounds natural in my speech. The
                   material for these working papers includes my completed
-                  48-sentence questionnaire (Study 007) and earlier verb and
-                  case comparisons, documented in October 2026. I preserve
-                  the recorded forms and use my working (n)-before-th spelling
-                  convention where indicated.
+                  48-sentence questionnaire (Study 007), earlier verb and
+                  case comparisons, and the later targeted studies of
+                  possession and negation (Studies 008–011), documented in
+                  October 2026. I preserve the recorded forms and use my
+                  working (n)-before-th spelling convention where indicated.
                 </p>
                 <p>
                   These are my preliminary interpretations, not claims about
