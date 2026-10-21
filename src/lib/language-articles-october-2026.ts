@@ -295,17 +295,17 @@ export const octoberResearchArticles: ResearchArticle[] = [
     "subject": "Negation and verb agreement",
     "title": "Not just one way to say no: How negation works in my Kutchi",
     "summary": "From natho and nathi to nai, na and nah, my recorded sentences suggest that negation interacts with gender, tense, commands, and even wanting.",
-    "introduction": "For a long time I could translate sentences such as ‘he isn't sleeping’ or ‘I didn't get permission’ without wondering why I used a different negative form each time. Once I started writing down my Kutchi, the contrast became impossible to ignore. I have recorded natho, nathi, nathaa, na, nah and nai, but they are not simply interchangeable ways of saying English ‘not’. In this article I want to show where I actually use them, which comparisons are strongest, and where the grammar is still unclear.",
+    "introduction": "I can say ‘He won’t sleep’, ‘He doesn’t give me money’ and ‘He hasn’t given me money’, but my Kutchi does not express all three negatives in the same way. As I documented the language, I started noticing natho, nathi, nathaa, na, nah and nai across different contexts. I first translated Natho sume and Nathi sume as ‘is not sleeping’ in the published notes, but on reviewing my own examples I corrected both to future meanings: ‘won’t sleep’. This study preserves that correction rather than forcing the forms into a simple present-versus-past rule.",
     "illustration": "/language/research/negation-patterns.svg",
     "illustrationAlt": "Original abstract editorial illustration of alternating light and dark circular forms connected by six paths, suggesting contrasting grammatical negative constructions.",
     "wordNotes": [
       {
         "word": "natho",
-        "meaning": "Negative element in recorded present clauses, including masculine-subject examples."
+        "meaning": "Negative element attested in a masculine ‘won’t sleep’ sentence and other present negative constructions, including giving and desire; meaning depends on construction."
       },
       {
         "word": "nathi",
-        "meaning": "Negative element in recorded feminine-subject present clauses."
+        "meaning": "Negative element attested in ‘She won’t sleep’ and a separate feminine-context giving elicitation; not exclusively present or future."
       },
       {
         "word": "nathaa",
@@ -321,11 +321,11 @@ export const octoberResearchArticles: ResearchArticle[] = [
       },
       {
         "word": "nai",
-        "meaning": "Negative element recorded with a past giving verb and in ‘there is no food’; not exclusively past or existential."
+        "meaning": "Negative element attested in ‘He hasn’t given me money’ and ‘there is no food’, among other contexts; not exclusively simple past or existential."
       },
       {
         "word": "sum",
-        "meaning": "Sleep; compare sume in the present negatives."
+        "meaning": "Sleep; compare sume in the speaker-confirmed ‘won’t sleep’ examples."
       },
       {
         "word": "mukhe",
@@ -371,47 +371,53 @@ export const octoberResearchArticles: ResearchArticle[] = [
     "sections": [
       {
         "id": "negative-gender",
-        "title": "Natho and nathi: the first contrast I noticed",
+        "title": "Natho and nathi: a correction about future sleeping",
         "blocks": [
           {
             "type": "text",
-            "text": "I can put two sentences about sleeping side by side and change the negative without changing the word sume. These examples give me some of the clearest evidence that the negative construction can distinguish gender. They do not yet tell me whether natho and nathi form a complete auxiliary paradigm."
+            "text": "When I reviewed two negative sentences involving sleep, I corrected an earlier translation mistake. Natho sume does not mean ‘He is not sleeping’ in my intended example; it means ‘He won’t sleep’. Nathi sume similarly means ‘She won’t sleep’. I want the correction displayed openly so the grammar and dictionary do not continue repeating the older glosses."
           },
           {
             "type": "examples",
-            "label": "Present negatives with the same lexical verb",
+            "label": "Future readings confirmed by the native speaker",
             "items": [
               {
                 "kutchi": "Natho sume",
-                "english": "He is not sleeping.",
-                "context": "Masculine-subject reading"
+                "english": "He won't sleep.",
+                "context": "Masculine · future meaning confirmed"
               },
               {
                 "kutchi": "Nathi sume",
-                "english": "She is not sleeping.",
-                "context": "Feminine-subject reading"
+                "english": "She won't sleep.",
+                "context": "Feminine · future meaning confirmed"
               }
             ]
           },
           {
             "type": "text",
-            "text": "What changes here is natho versus nathi; sume stays the same. That makes it plausible that some agreement is expressed by the negative element rather than by the ordinary lexical verb. I still want to test the same contrast across people, verbs and numbers."
+            "text": "The negative forms differ between the masculine and feminine subjects, while sume stays the same. That supports a gender contrast for these particular future-meaning expressions. But I also supplied natho dye for ‘doesn’t give’, a present interpretation, so I cannot claim that natho or nathi by itself always expresses future time. The verb and whole construction matter."
           },
           {
             "type": "finding",
             "strength": "hypothesis",
             "label": "Agreement on the negative element",
-            "text": "These two sentences support gender-sensitive negative forms in their recorded contexts. I cannot yet conclude how to segment the endings, or that every negative verb construction works this way."
+            "text": "Natho and nathi contrast in the speaker-confirmed ‘won’t sleep’ sentences. They may show agreement, but I have not yet established the morpheme boundaries, whether the future interpretation comes from the negative or verb construction, or whether this agreement works the same way with other verbs."
+          },
+          {
+            "type": "finding",
+            "strength": "attested",
+            "label": "Editorial correction from the speaker",
+            "text": "The earlier published translations ‘He is not sleeping’ and ‘She is not sleeping’ for Natho sume and Nathi sume have been superseded. Their confirmed translations are ‘He won’t sleep’ and ‘She won’t sleep’. Do not change the Kutchi spellings."
           }
         ]
       },
       {
         "id": "giving-time",
-        "title": "Not giving money: a particularly useful present/past pair",
+        "title": "He doesn't give vs he hasn't given: a useful contrast",
         "blocks": [
           {
             "type": "text",
-            "text": "The next comparison is valuable because I kept the subject, the recipient and the money the same. I changed the intended time reference from ‘doesn't give’ to ‘didn't give’. Both the negative element and the giving form changed."
+            "text": "In my money-giving examples, the subject, recipient and money stay the same, but the negative construction changes. One sentence means ‘He doesn’t give me money’. I corrected the second translation: it means ‘He hasn’t given me money’, not simply ‘He didn’t give me money’. Both the negative element and the giving form differ."
           },
           {
             "type": "examples",
@@ -424,8 +430,8 @@ export const octoberResearchArticles: ResearchArticle[] = [
               },
               {
                 "kutchi": "Hee mukhe pe(n)sa nai dhine",
-                "english": "He didn't give me money.",
-                "context": "Past negative"
+                "english": "He hasn't given me money.",
+                "context": "Speaker-corrected ‘hasn’t given’ reading"
               }
             ]
           },
@@ -433,8 +439,8 @@ export const octoberResearchArticles: ResearchArticle[] = [
             "type": "table",
             "headers": [
               "Element",
-              "Present negative",
-              "Past negative"
+              "He doesn't give",
+              "He hasn't given"
             ],
             "rows": [
               [
@@ -463,11 +469,11 @@ export const octoberResearchArticles: ResearchArticle[] = [
                 "dhine"
               ]
             ],
-            "caption": "Two forms change together. The contrast does not by itself establish that swapping only the negative word would produce a grammatical tense change."
+            "caption": "The negative element and the giving form change together. The English meanings are speaker-confirmed, but the Kutchi morphology of completion or current relevance is not yet independently analyzed."
           },
           {
             "type": "text",
-            "text": "Because both natho → nai and dye → dhine change, I cannot say the negative alone marks the past. These are two attested constructions. The forms belong with the verb de (‘give’), but I will not invent a complete negative conjugation from this one pair."
+            "text": "I cannot tell from this pair which part independently conveys the ‘hasn’t given’ meaning: both natho → nai and dye → dhine change. I should not treat nai as a universal past marker or automatically label dhine a perfect suffix. These are attested constructions to compare with other verbs and contexts."
           }
         ]
       },
@@ -549,11 +555,11 @@ export const octoberResearchArticles: ResearchArticle[] = [
       },
       {
         "id": "na-and-nai",
-        "title": "Why nai cannot mean only ‘past’ or only ‘there is no’",
+        "title": "Nai across ‘hasn't given’, absence and denied permission",
         "blocks": [
           {
             "type": "text",
-            "text": "My past negative ‘we did not go’ uses na. My sentence about there being no food uses nai without a past verb. And my money examples use nai with a giving form in the past. I should not give each negative one English definition and pretend it covers every construction."
+            "text": "My recorded ‘we did not go yesterday’ uses na. My sentence ‘there is no food’ uses nai. And I now confirm that Hee mukhe pe(n)sa nai dhine means ‘He hasn’t given me money’. All three differ in their English time reference or meaning. I do not want to reduce them to one uniform English ‘not’ or teach nai as a simple past negative."
           },
           {
             "type": "examples",
@@ -578,13 +584,13 @@ export const octoberResearchArticles: ResearchArticle[] = [
           },
           {
             "type": "text",
-            "text": "In that last sentence, I used natho in the main clause and nai dhine in the explanation involving my father. It strengthens the distinction between constructions, but it does not yet tell me whether nai is an independent negative, a special auxiliary form, or part of a larger phrase with dhine."
+            "text": "In the father's-permission sentence, nai dhine occurs where I translated the reason as ‘has not allowed me’. That is compatible with the corrected ‘hasn’t given’ reading, but I still need controlled pairs to determine the role of nai and the giving form in the interpretation."
           },
           {
             "type": "finding",
             "strength": "unresolved",
             "label": "Two easy conclusions I want to avoid",
-            "text": "Nai is attested in past giving and in ‘there is no food’; it is therefore not supported as exclusively a past marker or exclusively an existential negative. Na occurs in a past negative, but I have not tested enough examples to limit its use to the past."
+            "text": "Nai is attested in ‘He hasn’t given me money’, ‘there is no food’, and a sentence about permission not being given. It is therefore not supported as exclusively a simple past marker or exclusively an existential negative. Na appears in a past negative, but I have not tested enough examples to restrict it to past time."
           }
         ]
       },
@@ -639,12 +645,12 @@ export const octoberResearchArticles: ResearchArticle[] = [
             "rows": [
               [
                 "natho",
-                "Masculine present sleeping; present giving; negative desire",
+                "‘He won’t sleep’; present negative giving; negative desire",
                 "Full agreement system and distribution"
               ],
               [
                 "nathi",
-                "Feminine present sleeping; feminine-context giving example",
+                "‘She won’t sleep’; present-negative feminine elicitation",
                 "Which participant controls agreement in giving"
               ],
               [
@@ -664,7 +670,7 @@ export const octoberResearchArticles: ResearchArticle[] = [
               ],
               [
                 "nai",
-                "There is no food; past giving; permission denied",
+                "‘There is no food’; ‘hasn’t given’ money; permission not given",
                 "Whether one or several constructions are involved"
               ]
             ],
@@ -679,7 +685,7 @@ export const octoberResearchArticles: ResearchArticle[] = [
             "items": [
               "In Hin ke au(n) pe(n)sa nai dhineese, exactly who is giving the money, and who is receiving it?",
               "How does a plural person, rather than a plural desired object, affect natho/nathi/nathaa?",
-              "Does nai combine with verbs other than de in the past, and in what order?",
+              "Can nai combine with verbs other than de with a ‘has not …’ interpretation? How is this distinct from an ordinary past negative?",
               "Can I change the order of a negative sentence without changing the meaning or emphasis?",
               "How do I negate future clauses with feminine and plural subjects?"
             ]
