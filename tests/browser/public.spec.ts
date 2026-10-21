@@ -33,3 +33,17 @@ test("admin data routes reject unauthenticated requests", async ({ request }) =>
   const response = await request.post("/api/admin/lexemes", { data: { headword: "unauthorized" } });
   expect(response.status()).not.toBe(201);
 });
+
+test("mobile navigation and links do not show decorative emoji or arrow symbols", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  for (const route of ["/", "/language", "/language/articles", "/dictionary", "/history"]) {
+    await page.goto(route);
+    const decorativeLinks = await page.locator("a > span[aria-hidden='true']").evaluateAll((nodes) =>
+      nodes.filter((node) => /[↗↓☰]/u.test(node.textContent ?? "") && getComputedStyle(node).display !== "none")
+        .map((node) => node.textContent));
+    expect(decorativeLinks, `decorative link symbols on ${route}`).toEqual([]);
+  }
+  await expect(page.locator(".mobile-nav summary")).not.toContainText("☰");
+  await page.locator(".mobile-nav summary").click();
+  await expect(page.getByRole("navigation", { name: "Mobile navigation" })).toBeVisible();
+});

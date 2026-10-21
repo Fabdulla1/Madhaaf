@@ -458,7 +458,7 @@ export default function GrammarPage() {
         </div>
         <div className="grammar-return">
           <Link className="text-link" href="/language/articles">Read the research articles</Link>
-          <Link className="text-link" href="/language">← Back to Language</Link>
+          <Link className="text-link" href="/language">Back to Language</Link>
           <Link className="text-link" href="/dictionary">Open the dictionary</Link>
         </div>
       </div>

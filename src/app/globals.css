@@ -692,7 +692,7 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
 
 /* Keep mobile controls and calls to action free of decorative symbols. */
 @media (max-width: 760px) {
-  .public-site .text-link > span[aria-hidden="true"],
+  .public-site a > span[aria-hidden="true"],
   .public-site .button > span[aria-hidden="true"],
   .public-site .header-signin > span[aria-hidden="true"],
   .public-site .home-hero__quiet-link > span[aria-hidden="true"],
