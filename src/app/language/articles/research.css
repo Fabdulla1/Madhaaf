@@ -85,7 +85,8 @@
 .public-site .research-wordnotes > p:not(.eyebrow), .public-site .research-method > p:not(.eyebrow) { color: var(--ink-muted); line-height: 1.8; max-width: 72ch; }
 .public-site .research-wordnotes__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 25px; }
 .public-site .research-wordnotes__grid > div { border-bottom: 1px solid var(--line); padding: 17px 0; }
-.public-site .research-wordnotes__grid dt { font-family: var(--font-editorial); font-size: 1.32rem; margin-bottom: 7px; }
+.public-site .research-wordnotes__grid dt { scroll-margin-top: 26px; font-family: var(--font-editorial); font-size: 1.32rem; margin-bottom: 7px; }
+.public-site .research-wordnotes__grid dt:target { outline: 2px solid var(--terracotta); outline-offset: 7px; }
 .public-site .research-wordnotes__grid dd { margin: 0; color: var(--ink-muted); font-size: .87rem; line-height: 1.6; }
 .public-site .research-method { border-top-color: var(--line); margin-bottom: 55px; }
 .public-site .research-method h2 { font-size: clamp(2rem, 3vw, 2.8rem); }
