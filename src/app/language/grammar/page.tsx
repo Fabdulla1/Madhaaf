@@ -57,15 +57,15 @@ export default function GrammarPage() {
           <p className="eyebrow">Language / Grammar research</p>
           <h1>How Kutchi sentences work.</h1>
           <p>
-            This guide documents grammatical patterns in Mombasa and Ethiopian Kutchi, one
-            recorded sentence at a time. It keeps speaker forms
-            separate from proposed grammatical explanations.
+            This guide documents grammatical patterns in Mombasa and
+            Ethiopian Kutchi using recorded sentences. It distinguishes
+            speaker evidence from proposed explanations.
           </p>
         </header>
         <div className="grammar-status" role="note">
           <strong>Working grammar · Edition 0.2</strong>
           <Link className="language-guide-byline" href="/about">Grammar research by Farhan Abdulla</Link>
-          <span>These examples are preliminary evidence, not a standardized grammar. The working display spelling writes n before th as (n); original forms remain recorded.</span>
+          <span>This is a preliminary grammatical analysis, not an established standard. The working display spelling represents n before th as (n), while original recorded forms remain part of the evidence.</span>
         </div>
         <div className="grammar-layout">
           <nav className="grammar-toc" aria-label="On this page">
@@ -89,10 +89,10 @@ export default function GrammarPage() {
               <Evidence>Three native-speaker-attested word orders</Evidence>
               <p>
                 An earlier analysis described Kutchi verbs as tending to come last.
-                The speaker accepted three different arrangements of the same elements in a
-                sentence with <em>chad</em> (“let go / leave alone”) in at
-                least three ways. The verb may come between the subject and
-                <em> hin ke</em>, before both, or after both.
+                The speaker accepted three arrangements of a sentence
+                with <em>chad</em> (“let go / leave alone”). The verb can
+                appear between the subject and <em>hin ke</em>, before
+                both, or after both.
               </p>
               <ol className="grammar-order-list" aria-label="Three attested arrangements of the same grammatical elements">
                 <li>
@@ -128,10 +128,10 @@ export default function GrammarPage() {
                 </div>
               </div>
               <p className="grammar-fineprint">
-                Several orders are documented, but not which is
-                most frequent in ordinary conversation or whether every verb
-                allows them. “Always verb-final” and “verbs tend to be last”
-                would both go beyond the available evidence.
+                The available examples do not establish which order is
+                most common or whether other verbs allow the same options.
+                Neither obligatory nor preferred verb-final order has been
+                demonstrated.
               </p>
             </section>
             <section id="pronouns" className="grammar-section">
@@ -194,12 +194,12 @@ export default function GrammarPage() {
                 </table>
               </div>
               <div className="grammar-note">
-                <strong>Emerging pattern ,  not a fixed rule yet</strong>
+                <strong>Emerging pattern, not yet a rule</strong>
                 <p>
                   Compare <em>kara(n)tho / kya(n)tho</em>, <em>kare(n)tho / kye(n)tho</em>,
                   <em> karethi / kyethi</em>, and <em>karo(n)thaa / kyo(n)thaa</em>.
-                  The repeated pattern is visible, but it has not been shown
-                  where each verb stem ends and a grammatical suffix begins.
+                  Similar endings appear in several forms, but the boundaries
+                  between stems and grammatical suffixes remain unconfirmed.
                 </p>
               </div>
             </section>
@@ -320,9 +320,10 @@ export default function GrammarPage() {
                 <div><strong>Natho vina(n)tho</strong><span>I am not going. · alternative form</span></div>
               </div>
               <p>
-                Recorded present negatives use <em>natho</em>, and
-                <em> nah</em> with future forms and commands. The evidence does not yet establish whether either is a simple particle or an
-                inflected auxiliary. The study records both <em>natho vina</em>
+                Recorded present negatives use <em>natho</em>; future forms
+                and commands include <em>nah</em>. Neither form has yet
+                been established as a simple particle or inflected auxiliary.
+                The study records both <em>natho vina</em>
                 and <em>natho vina(n)tho</em>, alongside other supplied
                 cases where a negative comes after the lexical verb.
                 These alternatives are retained.
@@ -451,7 +452,7 @@ export default function GrammarPage() {
                 until its relationship to newer paradigms is established.
               </p>
               <Link className="text-link" href="/orthography">
-                Explore the draft writing guide <span aria-hidden="true">↗</span>
+                Explore the draft writing guide
               </Link>
             </section>
           </div>
