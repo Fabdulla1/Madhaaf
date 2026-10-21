@@ -43,8 +43,8 @@ test("mobile navigation and links do not show decorative emoji or arrow symbols"
         .map((node) => node.textContent));
     expect(decorativeLinks, `decorative link symbols on ${route}`).toEqual([]);
   }
-  await expect(page.locator(".wordmark__symbol")).toBeVisible();
-  await expect(page.locator(".mobile-nav summary")).not.toContainText("☰");
-  await page.locator(".mobile-nav summary").click();
-  await expect(page.getByRole("navigation", { name: "Mobile navigation" })).toBeVisible();
+  await expect(page.locator(".wordmark__symbol:visible").first()).toBeVisible();
+  await expect(page.locator(".mobile-nav summary:visible").first()).not.toContainText("☰");
+  await page.locator(".mobile-nav summary:visible").first().click();
+  await expect(page.getByRole("navigation", { name: "Mobile navigation" }).first()).toBeVisible();
 });
