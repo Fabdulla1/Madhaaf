@@ -131,10 +131,10 @@ export function ResearchIndex() {
           <p className="eyebrow">Madhaaf / Language research</p>
           <h1>What the sentences are teaching us.</h1>
           <p>
-            I've been writing down the Kutchi sentences I grew up speaking
+            I&apos;ve been writing down the Kutchi sentences I grew up speaking
             and trying to understand the grammar inside them. These five
-            articles are my working research notes: what I've observed,
-            what I've begun to understand, and what I still need to test.
+            articles are my working research notes: what I&apos;ve observed,
+            what I&apos;ve begun to understand, and what I still need to test.
           </p>
           <div className="research-index__meta">
             <span><Link href="/about">By Farhan Abdulla</Link></span>
@@ -148,7 +148,7 @@ export function ResearchIndex() {
             <h2>Every small word has a story.</h2>
             <p>
               I kept hearing <em>ke</em> in different places and realized
-              I couldn't explain it with one English word. My first study
+              I couldn&apos;t explain it with one English word. My first study
               follows the sentences and comparisons that made me notice why.
             </p>
             <Link className="button button--primary" href="/language/articles/what-ke-marks">
@@ -193,8 +193,8 @@ export function ResearchIndex() {
           <h2>Evidence first, rules second.</h2>
           <p>
             This is my attempt to preserve what I actually hear and say,
-            including the alternatives that don't fit a neat rule. I keep
-            unanswered questions visible because I'm still learning from
+            including the alternatives that don&apos;t fit a neat rule. I keep
+            unanswered questions visible because I&apos;m still learning from
             the language. The dates are retrospective editorial dates for
             this 2026 series; the pages first appeared online in October 2026.
           </p>
@@ -266,7 +266,7 @@ export function ResearchArticleView({ article }: { article: ResearchArticle }) {
                 <p className="eyebrow">A reading companion</p>
                 <h2>Words in this study</h2>
                 <p>
-                  I've included the meanings I recorded in these examples.
+                  I&apos;ve included the meanings I recorded in these examples.
                   Select a word to explore its contextual meaning and look it
                   up in the public dictionary. Some entries are still being reviewed.
                 </p>
