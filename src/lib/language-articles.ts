@@ -321,7 +321,7 @@ export const researchArticles: ResearchArticle[] = [
     slug: "wanting-and-experiencers",
     number: "04",
     subject: "Desire and non-finite forms",
-    title: "Who wants what? Desire, experiencers and unfinished verbs",
+    title: "Who wants what? Desire, experiencers and possible non-finite forms",
     summary: "Wanting water, wanting many things and wanting to go reveal several constructions rather than one literal English-to-Kutchi rule.",
     introduction: "English uses ‘want’ for a thing, an action and a request for someone else to act. The speaker's Kutchi examples distinguish these meanings. They also challenge the expectation that the verb must agree with the person who wants something: kapetho stays unchanged when the experiencer changes, but the form changes when the wanted items are plural.",
     illustration: "/language/research/desire-constructions.svg",
@@ -513,7 +513,7 @@ export const researchArticles: ResearchArticle[] = [
  */
 export const dictionaryLookups: Record<string, string> = {
   "au(n)": "au(n)", "paa(n)": "paa(n)", "thu(n)": "thu(n)",
-  "hin": "hin", "hee": "hee", "he": "hee", "hoo": "hoo",
+  "hin": "hin", "hee": "hee", "hoo": "hoo",
   "hinee": "hinee", "hoonee": "hoonee", "mukhe": "mukhe",
   "miri(n)": "miri(n)", "mere": "mere", "chokro": "chokro",
   "chokra": "chokro", "chokre": "chokro", "chokri": "chokri",
