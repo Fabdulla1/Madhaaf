@@ -43,9 +43,9 @@ export default function LanguagePage() {
           <p className="eyebrow">The language archive</p>
           <h1>A language in words, patterns and voices.</h1>
           <p>
-            Discover the words people use, how they fit together, and how we are
-            learning to write them. This is a developing record of Mombasa Kutchi
-            shaped by examples from speakers, not a finished grammar.
+            I am documenting the Kutchi I grew up speaking: the words we use,
+            how they fit together, and how we can write them. This is my
+            growing record of Mombasa Kutchi, not a finished grammar.
           </p>
         </header>
         <section aria-labelledby="language-explore">
@@ -71,8 +71,9 @@ export default function LanguagePage() {
             <p className="eyebrow">From the grammar notebook</p>
             <h2 id="language-feature-title">One action, many forms.</h2>
             <p>
-              In the recorded sentences, the verb for “to do” changes with its
-              subject. Compare forms used when speaking to a man, a woman, and a group.
+              As I compared the different forms of “to do,” I began to see
+              how the verb changes with the subject. These are some of the
+              examples that made me want to document our grammar.
             </p>
             <Link className="text-link" href="/language/grammar#verbs">
               See the examples <span aria-hidden="true">↗</span>
@@ -90,9 +91,9 @@ export default function LanguagePage() {
             <p className="eyebrow">New / Language research</p>
             <h2 id="language-research-title">Ideas that begin with a sentence.</h2>
             <p>
-              Five illustrated essays bring the emerging grammar into focus:
-              how ke works, why verbs change, and what noun forms reveal.
-              Every finding stays tied to speaker-supplied evidence.
+              I wrote five research essays about the questions I have been
+              working through—from ke and verb endings to noun plurals.
+              Every claim is tied to the examples I recorded.
             </p>
             <Link className="button button--outline" href="/language/articles">
               Browse research articles <span aria-hidden="true">↗</span>
@@ -103,9 +104,9 @@ export default function LanguagePage() {
           </Link>
         </section>
         <p className="language-method-note">
-          <strong>How to read this archive:</strong> Sentence examples are provided by
-          a speaker of East African Kutchi. Proposed grammatical explanations are
-          labeled as hypotheses until more usage is collected.
+          <strong>A note on my research:</strong> I document the sentences I know
+          as a native speaker. When an explanation is still a hypothesis, I
+          say so and keep the examples available for further study.
         </p>
       </div>
     </PublicShell>
