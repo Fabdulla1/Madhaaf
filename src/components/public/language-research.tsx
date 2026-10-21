@@ -17,8 +17,12 @@ function DictionaryLink({ word, lookup }: { word: string; lookup?: string }) {
   );
 }
 
-/** Link only documented forms; do not turn unknown morphology into invented lemmas. */
-function LinkedKutchi({ sentence }: { sentence: string }) {
+function noteId(word: string) {
+  return `word-note-${word.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
+}
+
+/** Link attested forms to a guaranteed contextual definition before searching the dictionary. */
+function LinkedKutchi({ sentence, article }: { sentence: string; article: ResearchArticle }) {
   return (
     <>
       {sentence.split(/(\s+)/u).map((part, index) => {
@@ -27,29 +31,33 @@ function LinkedKutchi({ sentence }: { sentence: string }) {
         if (!match) return part;
         const [, prefix, word, suffix] = match;
         const lookup = dictionaryLookups[word.toLowerCase()];
-        return lookup ? (
+        if (!lookup) return <span key={index}>{part}</span>;
+        const note = article.wordNotes.find((item) => (item.search ?? item.word).toLowerCase() === lookup.toLowerCase());
+        return (
           <span key={index}>
-            {prefix}<DictionaryLink word={word} lookup={lookup} />{suffix}
+            {prefix}{note
+              ? <a className="research-word-link" href={`#${noteId(note.word)}`} title={`Read the meaning of ${note.word} in this article`}>{word}</a>
+              : <DictionaryLink word={word} lookup={lookup} />}{suffix}
           </span>
-        ) : <span key={index}>{part}</span>;
+        );
       })}
     </>
   );
 }
 
-function ExampleCard({ example }: { example: ResearchExample }) {
+function ExampleCard({ example, article }: { example: ResearchExample; article: ResearchArticle }) {
   return (
     <figure className="research-example">
       {example.context && <span className="research-example__context">{example.context}</span>}
       <blockquote lang="und" className="research-example__sentence">
-        <LinkedKutchi sentence={example.kutchi} />
+        <LinkedKutchi sentence={example.kutchi} article={article} />
       </blockquote>
       <figcaption>{example.english}</figcaption>
     </figure>
   );
 }
 
-function ResearchBlockView({ block }: { block: ResearchBlock }) {
+function ResearchBlockView({ block, article }: { block: ResearchBlock; article: ResearchArticle }) {
   switch (block.type) {
     case "text":
       return <p className="research-prose">{block.text}</p>;
@@ -58,7 +66,7 @@ function ResearchBlockView({ block }: { block: ResearchBlock }) {
         <div className="research-example-group">
           {block.label && <p className="research-block-label">{block.label}</p>}
           <div className="research-example-grid">
-            {block.items.map((example, index) => <ExampleCard example={example} key={index} />)}
+            {block.items.map((example, index) => <ExampleCard example={example} article={article} key={index} />)}
           </div>
         </div>
       );
@@ -239,7 +247,7 @@ export function ResearchArticleView({ article }: { article: ResearchArticle }) {
                   <p className="research-article__number">Section {String(sectionIndex + 1).padStart(2, "0")}</p>
                   <h2>{section.title}</h2>
                   {section.blocks.map((block, blockIndex) => (
-                    <ResearchBlockView key={blockIndex} block={block} />
+                    <ResearchBlockView key={blockIndex} block={block} article={article} />
                   ))}
                 </section>
               ))}
@@ -254,7 +262,7 @@ export function ResearchArticleView({ article }: { article: ResearchArticle }) {
                 <dl className="research-wordnotes__grid">
                   {article.wordNotes.map((item) => (
                     <div key={item.word}>
-                      <dt><DictionaryLink word={item.word} lookup={item.search ?? item.word} /></dt>
+                      <dt id={noteId(item.word)}><DictionaryLink word={item.word} lookup={item.search ?? item.word} /></dt>
                       <dd>{item.meaning}</dd>
                     </div>
                   ))}
