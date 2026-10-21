@@ -19,6 +19,7 @@ export function DictionaryDetail({ id }: { id: string }) {
     <div className="page-width interior-page detail-page">
       <nav className="breadcrumbs" aria-label="Breadcrumb">
         <Link href="/">Home</Link><span aria-hidden="true">/</span>
+        <Link href="/language">Language</Link><span aria-hidden="true">/</span>
         <Link href="/dictionary">Dictionary</Link>
       </nav>
       {!result ? <LoadingState label="Loading entry…" /> : result.status !== "success" ? (
