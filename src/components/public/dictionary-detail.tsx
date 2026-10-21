@@ -7,6 +7,7 @@ import { ContentState, LoadingState } from "./content-state";
 
 type InflectedForm = NonNullable<DictionaryEntry["inflected_forms"]>[number];
 const FORM_GROUPS = ["Present", "Past", "Future", "Imperative", "Other recorded forms"] as const;
+const NONVERB_GROUPS = ["Singular", "Plural", "Context not settled"] as const;
 const NUMBER_ORDER = ["singular", "plural"] as const;
 const PERSON_ORDER = ["first", "second", "third"] as const;
 const GENDER_ORDER = ["masculine", "feminine"] as const;
@@ -49,15 +50,25 @@ function ExampleProvenance({ example }: { example: {
   </>;
 }
 
-function Conjugations({ forms }: { forms: InflectedForm[] }) {
+function RecordedForms({ forms, partOfSpeech }: { forms: InflectedForm[]; partOfSpeech?: string | null }) {
   if (!forms.length) return null;
-  const groups = new Map(FORM_GROUPS.map(label => [label, [] as InflectedForm[]]));
-  for (const form of forms) groups.get(formGroup(form))?.push(form);
+  const isVerb = partOfSpeech?.toLowerCase() === "verb";
+  const labels: readonly string[] = isVerb ? FORM_GROUPS : NONVERB_GROUPS;
+  const groups = new Map(labels.map(label => [label, [] as InflectedForm[]]));
+  for (const form of forms) {
+    const group = isVerb ? formGroup(form)
+      : form.grammatical_number === "singular" ? "Singular"
+      : form.grammatical_number === "plural" ? "Plural"
+      : "Context not settled";
+    groups.get(group)?.push(form);
+  }
   for (const group of groups.values()) group.sort(compareForms);
-  return <section className="entry-section conjugations" aria-labelledby="conjugations-heading">
-    <h2 id="conjugations-heading">Conjugations</h2>
-    <p className="conjugations__intro">Recorded forms of this word. Forms not listed here have not been confirmed.</p>
-    {FORM_GROUPS.map(group => {
+  return <section className="entry-section conjugations" aria-labelledby="recorded-forms-heading">
+    <h2 id="recorded-forms-heading">{isVerb ? "Conjugations" : "Recorded forms"}</h2>
+    <p className="conjugations__intro">{isVerb
+      ? "Recorded forms of this word. Forms not listed here have not been confirmed."
+      : "Recorded forms of this word, grouped only where number is documented. Other relationships remain under review."}</p>
+    {labels.map(group => {
       const groupForms = groups.get(group) ?? [];
       if (!groupForms.length) return null;
       return <section className="conjugations__group" key={group}>
@@ -153,7 +164,7 @@ function EntryContent({ entry }: { entry: DictionaryEntry }) {
               </ol>
             ) : <p>Meanings are being prepared for this entry.</p>}
           </section>
-          <Conjugations forms={entry.inflected_forms ?? []} />
+          <RecordedForms forms={entry.inflected_forms ?? []} partOfSpeech={entry.part_of_speech} />
           {linkedExamples.length > 0 && <section className="entry-section" aria-labelledby="linked-examples-heading">
             <h2 id="linked-examples-heading">In recorded sentences</h2>
             <p className="conjugations__intro">Sentences that also use this word.</p>

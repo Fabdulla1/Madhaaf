@@ -97,3 +97,21 @@ test("inflection search opens the published lemma and detail distinguishes evide
   await expect(page.getByRole("heading", { name: "Exact spelling" })).toBeVisible();
   await expect(page.getByText(/Source transcription: karentho → kare\(n\)tho/)).toBeVisible();
 });
+
+test("noun forms are shown as recorded forms without implying verb conjugation", async ({ page }) => {
+  const noun = {
+    ...entry,
+    headword: "chokro",
+    part_of_speech: "noun",
+    inflected_forms: [
+      { id: "plural", written_form: "chokra", grammatical_number: "plural", gender: "masculine", evidence_status: "attested" },
+      { id: "context", written_form: "chokre", grammatical_number: null, gender: null, evidence_status: "provisional" },
+    ],
+  };
+  await page.route(`**/api/dictionary/${entryId}`, route => route.fulfill({ json: { data: noun } }));
+  await page.goto(`/dictionary/${entryId}`);
+  await expect(page.getByRole("heading", { name: "Recorded forms" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Plural", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Context not settled" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Conjugations" })).toHaveCount(0);
+});
