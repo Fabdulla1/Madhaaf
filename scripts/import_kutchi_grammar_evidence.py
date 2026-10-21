@@ -37,6 +37,22 @@ def evidence():
     return payload
 
 
+def read_state(cursor):
+    """Read the shared dictionary state plus provenance fields needed for identity."""
+    existing = read_existing(cursor)
+    cursor.execute("select id,note,original_transcription from public.examples")
+    example_details = {row["id"]: row for row in cursor.fetchall()}
+    for row in existing["examples"]:
+        row.update(example_details[row["id"]])
+    cursor.execute("select id,citation,notes from public.sources")
+    source_details = {row["id"]: row for row in cursor.fetchall()}
+    for row in existing["sources"]:
+        row.update(source_details[row["id"]])
+    cursor.execute("select id,lexeme_id,spelling,is_preferred,note from public.word_forms")
+    existing["spellings"] = cursor.fetchall()
+    return existing
+
+
 def build_plan(payload, existing):
     """Resolve exact lexical identities only; hold semantic/orthographic conflicts."""
     by_headword = defaultdict(list)
@@ -90,6 +106,21 @@ def resolve_refs(cursor, new_ids):
     return resolve
 
 
+def example_conflicts(matches, item, source_id, primary_id):
+    if len(matches) > 1:
+        return True
+    if not matches:
+        return False
+    old = matches[0]
+    return (
+        old["english_translation"] != item["english"]
+        or old["source_id"] != source_id
+        or old["lexeme_id"] != primary_id
+        or old["note"] != item.get("note")
+        or old["original_transcription"] != item.get("original_transcription")
+    )
+
+
 def apply_import(cursor, payload, existing, plan):
     counts = Counter()
     source_title = payload["source"]["title"]
@@ -97,6 +128,9 @@ def apply_import(cursor, payload, existing, plan):
     if len(source_matches) > 1:
         raise RuntimeError("Duplicate source title requires review")
     if source_matches:
+        if (source_matches[0]["citation"] != payload["source"]["citation"]
+                or source_matches[0]["notes"] != payload["source"]["notes"]):
+            raise RuntimeError("Existing source title has different provenance")
         source_id = source_matches[0]["id"]
     else:
         cursor.execute(
@@ -138,6 +172,46 @@ def apply_import(cursor, payload, existing, plan):
             )
             counts["new_source_links"] += cursor.rowcount
 
+    old_spellings = {
+        (row["lexeme_id"], row["spelling"].casefold()): row
+        for row in existing["spellings"]
+    }
+    for variant in payload["spelling_variants"]:
+        entry_id = resolve(variant["lemma"])
+        key = (entry_id, variant["spelling"].casefold())
+        if any(row["id"] != entry_id and row["headword"].casefold() == key[1]
+               for row in existing["lexemes"]) or any(
+                   row["lexeme_id"] != entry_id
+                   and row["spelling"].casefold() == key[1]
+                   for row in existing["spellings"]
+               ):
+            counts["conflicting_spellings"] += 1
+            continue
+        if key in old_spellings:
+            old = old_spellings[key]
+            counts["skipped_spellings" if (
+                old["note"] == variant["note"] and not old["is_preferred"]
+            ) else "conflicting_spellings"] += 1
+            continue
+        ensure_draft(cursor, entry_id, statuses, changed)
+        cursor.execute(
+            "insert into public.word_forms(lexeme_id,spelling,is_preferred,note) "
+            "values (%s,%s,false,%s)",
+            (entry_id, variant["spelling"], variant["note"]),
+        )
+        counts["new_spellings"] += 1
+        if entry_id in old_ids:
+            touched_old.add(entry_id)
+        old_spellings[key] = {"note": variant["note"], "is_preferred": False}
+        if (entry_id, source_id) not in source_links:
+            cursor.execute(
+                "insert into public.lexeme_sources(lexeme_id,source_id) "
+                "values (%s,%s) on conflict do nothing",
+                (entry_id, source_id),
+            )
+            counts["new_source_links"] += cursor.rowcount
+            source_links.add((entry_id, source_id))
+
     old_forms = {tuple(row.get(field) for field in FORM_FIELDS): row
                  for row in existing["inflections"]}
     for form in payload["forms"]:
@@ -174,11 +248,7 @@ def apply_import(cursor, payload, existing, plan):
         primary_id = resolve(item["primary"])
         linked_ids = {resolve(ref) for ref in item.get("links", [])} - {primary_id}
         matches = old_examples[item["kutchi"].casefold()]
-        if len(matches) > 1 or (matches and (
-            matches[0]["english_translation"] != item["english"]
-            or matches[0]["source_id"] != source_id
-            or matches[0]["lexeme_id"] != primary_id
-        )):
+        if example_conflicts(matches, item, source_id, primary_id):
             counts["conflicting_examples"] += 1
             continue
         if matches:
@@ -196,9 +266,11 @@ def apply_import(cursor, payload, existing, plan):
             sense_id = sense["id"]
             cursor.execute(
                 "insert into public.examples(sense_id,kutchi_text,english_translation,"
-                "source_id,note,display_order) values (%s,%s,%s,%s,%s,%s) returning id",
+                "source_id,note,original_transcription,display_order) "
+                "values (%s,%s,%s,%s,%s,%s,%s) returning id",
                 (sense_id, item["kutchi"], item["english"], source_id,
-                 item.get("note"), next_order(cursor, "examples", "sense_id", sense_id)),
+                 item.get("note"), item.get("original_transcription"),
+                 next_order(cursor, "examples", "sense_id", sense_id)),
             )
             example_id = cursor.fetchone()["id"]
             counts["new_examples"] += 1
@@ -248,17 +320,34 @@ def rehearse(cursor, payload, existing, plan):
     for row in cursor.fetchall():
         if row["status"] != expected_status[row["headword"]]:
             raise RuntimeError(f"Wrong publication status for {row['headword']}")
-    second_existing = read_existing(cursor)
+    for spelling, lemma in (("chokre", "chokro"), ("ku’la", "ku'la")):
+        cursor.execute(
+            "select l.id from public.search_dictionary(%s,24,0) result "
+            "join public.lexemes l on l.id=result.lexeme_id where l.headword=%s",
+            (spelling, lemma),
+        )
+        if cursor.fetchone() is None:
+            raise RuntimeError(f"Search did not resolve {spelling} to {lemma}")
+    cursor.execute(
+        "select l.id from public.search_dictionary('thadho',24,0) result "
+        "join public.lexemes l on l.id=result.lexeme_id where l.headword='thadho'"
+    )
+    if cursor.fetchone() is not None:
+        raise RuntimeError("Draft thadho was exposed in dictionary search")
+    second_existing = read_state(cursor)
     second_plan = build_plan(payload, second_existing)
     if second_plan["new"] or second_plan["conflicts"]:
         raise RuntimeError("Second pass did not resolve lexical identities")
     second = apply_import(cursor, payload, second_existing, second_plan)
     if any(value for key, value in second.items() if key.startswith("new_") or key == "updated_existing_lexemes"):
         raise RuntimeError(f"Second pass was not idempotent: {dict(second)}")
-    if first["conflicting_forms"] or first["conflicting_examples"] or second["conflicting_forms"] or second["conflicting_examples"]:
+    if any(result[key] for result in (first, second) for key in
+           ("conflicting_spellings", "conflicting_forms", "conflicting_examples")):
         raise RuntimeError("Existing evidence conflicts require manual review")
     return {"first": dict(first), "second": dict(second),
-            "existing_statuses_preserved": True, "rolled_back": True}
+            "existing_statuses_preserved": True,
+            "form_and_variant_search_verified": True,
+            "draft_hidden_from_search": True, "rolled_back": True}
 
 
 def main():
@@ -290,7 +379,7 @@ def main():
             target = cursor.fetchone()
             if not target["forms_table"] or not target["links_table"] or not target["can_edit"]:
                 raise RuntimeError("Required migration or dictionary edit privilege missing")
-            existing = read_existing(cursor)
+            existing = read_state(cursor)
             plan = build_plan(payload, existing)
             summary = {
                 "mode": "apply" if args.apply else "rehearse" if args.rehearse else "dry-run",
@@ -301,6 +390,7 @@ def main():
                 "planned_draft_holds": [item["headword"] for item in plan["new"]
                                         if not item.get("publish", True)],
                 "supplied_forms": len(payload["forms"]),
+                "supplied_spelling_variants": len(payload["spelling_variants"]),
                 "supplied_examples": len(payload["examples"]),
                 "conflicts": plan["conflicts"],
                 "held_analyses": [
@@ -332,7 +422,8 @@ def main():
             path.write_text(json.dumps(snapshot(cursor), ensure_ascii=False, default=str, indent=2),
                             encoding="utf-8")
             counts = apply_import(cursor, payload, existing, plan)
-            if counts["conflicting_forms"] or counts["conflicting_examples"]:
+            if any(counts[key] for key in
+                   ("conflicting_spellings", "conflicting_forms", "conflicting_examples")):
                 raise RuntimeError("Evidence conflict prevents commit")
             print(json.dumps({"backup": str(path), "counts": dict(counts)}, indent=2))
         connection.commit()

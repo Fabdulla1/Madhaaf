@@ -7,19 +7,23 @@
   "new_lexemes": [
     {"headword":"ke","meaning":"particle in attested object-related, recipient, and experiencer constructions","part_of_speech":null,"note":"Its distribution and possible clause-linking use remain under investigation; it is neither universally obligatory nor freely optional."},
     {"headword":"hin","meaning":"this (form in attested ke constructions)","part_of_speech":null,"note":"An oblique demonstrative analysis is a hypothesis; the contrast with hee is attested only in complete constructions."},
-    {"headword":"hoonee","meaning":"those; they (plural distal demonstrative context)","part_of_speech":"pronoun","note":"Proximity and number are supported by attested examples; finer grammatical classification remains provisional."},
+    {"headword":"hoonee","meaning":"those / they (in two attested contexts)","part_of_speech":null,"note":"A distal plural form modifies chokra in one sentence and is translated as they in a desire sentence. Whether these uses have the same grammatical category is unresolved."},
     {"headword":"mukhe","meaning":"me (in attested desire constructions)","part_of_speech":null,"note":"Experiencer use is attested; case analysis remains provisional."},
     {"headword":"miri(n)","meaning":"everyone (in an attested desire construction)","part_of_speech":null,"note":"Relationship to mere is unresolved and is not assumed here."},
     {"headword":"vado","meaning":"big","part_of_speech":"adjective","note":"Attested with ghar and maru; agreement across all adjectives is not established."},
     {"headword":"thadho","meaning":"cold","part_of_speech":"adjective","publish":false,"note":"Attested with paani. Held as draft because relation to existing thadh remains for speaker review."},
-    {"headword":"me","meaning":"in (attested postpositional context)","part_of_speech":null,"note":"Only the supplied context is analyzed."},
+    {"headword":"me","meaning":"in (contextual translation)","part_of_speech":null,"note":"The gloss is inferred from the translation of Hinee ghare(n) me, not separately elicited. Grammatical classification remains open."},
     {"headword":"jikee","meaning":"who/which (relative expression)","part_of_speech":null,"note":"Attested in a relative clause; not interchangeable with interrogative ker."},
-    {"headword":"tha poi","meaning":"then (in an attested conditional consequence)","part_of_speech":null,"note":"Exact syntactic analysis remains open."},
+    {"headword":"tha poi","meaning":"then (contextual translation)","part_of_speech":null,"note":"The gloss is inferred from the supplied conditional-sentence translation, not separately elicited. Exact syntactic analysis remains open."},
     {"headword":"na","meaning":"negative element in an attested past construction","part_of_speech":null,"note":"Distinct attested environment from nah, natho, nathi, nathaa, and nai."},
     {"headword":"nai","meaning":"negative existential element in an attested expression","part_of_speech":null,"note":"Exact grammatical classification remains open; distinct from the other negative forms."}
   ],
+  "spelling_variants": [
+    {"lemma":"ku'la","spelling":"ku’la","note":"Exact U+2019 spelling in owner-supplied grammatical evidence; same 'why' entry as existing ku'la, with no pronunciation difference established."}
+  ],
   "forms": [
     {"lemma":"chokro","written_form":"chokra","grammatical_number":"plural","note":"Attested plural boys."},
+    {"lemma":"chokro","written_form":"chokre","note":"Speaker-approved in chokre ke kapetho alongside chokro ke kapetho. Form-to-lemma analysis is provisional; case, number, and distribution are unresolved."},
     {"lemma":"chokri","written_form":"chokreu(n)","grammatical_number":"plural","note":"Attested plural girls."},
     {"lemma":"cheej","written_form":"cheejeu(n)","grammatical_number":"plural","note":"Attested plural things."},
     {"lemma":"ghar","written_form":"ghare(n)","note":"Attested in Hinee ghare(n) me; number/case analysis unresolved."},
@@ -33,7 +37,7 @@
   "examples": [
     {"kutchi":"Au(n) hin chokro ke disa(n)tho","english":"I am seeing this boy.","primary":"ke","links":["hin","chokro"],"note":"Native-speaker-approved full construction; paired with Au(n) hee chokro disa(n)tho. Oblique analysis is a hypothesis."},
     {"kutchi":"Au(n) hee chokro disa(n)tho","english":"I am seeing this boy.","primary":"chokro","links":["hee"],"note":"Native-speaker-approved full construction; changing ke coincides with changing hin to hee. Other combinations untested."},
-    {"kutchi":"chokre ke kapetho","english":"The boy wants it.","primary":"ke","links":[],"note":"Native-speaker-approved alongside chokro ke kapetho. Boy is experiencer; distribution of chokre/chokro unresolved and no lemma link is asserted."},
+    {"kutchi":"chokre ke kapetho","english":"The boy wants it.","primary":"chokro","links":["ke"],"note":"Native-speaker-approved alongside chokro ke kapetho. Boy is experiencer; form-to-lemma analysis and distribution of chokre/chokro remain unresolved."},
     {"kutchi":"chokro ke kapetho","english":"The boy wants it.","primary":"chokro","links":["ke"],"note":"Native-speaker-approved alongside chokre ke kapetho. Boy is experiencer; no obligatory chokre rule."},
     {"kutchi":"Chokro sumetho","english":"The boy is sleeping.","primary":"chokro","links":["sum"]},
     {"kutchi":"Chokri sumethi","english":"The girl is sleeping.","primary":"chokri","links":["sum"]},

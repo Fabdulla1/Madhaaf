@@ -26,11 +26,13 @@ class GrammarEvidenceTest(unittest.TestCase):
     def test_only_known_lemma_forms_are_attached(self):
         payload = importer.evidence()
         forms = {item["written_form"]: item for item in payload["forms"]}
-        self.assertEqual(len(forms), 10)
+        self.assertEqual(len(forms), 11)
         self.assertEqual(forms["chokra"]["grammatical_number"], "plural")
         self.assertEqual(forms["chokreu(n)"]["grammatical_number"], "plural")
         self.assertNotIn("grammatical_number", forms["ghare(n)"])
-        self.assertNotIn("chokre", forms)
+        self.assertNotIn("grammatical_number", forms["chokre"])
+        self.assertNotIn("gender", forms["chokre"])
+        self.assertIn("provisional", forms["chokre"]["note"])
         self.assertNotIn("kape(n)thaa", forms)
         self.assertNotIn("kape(n)theu(n)", forms)
         self.assertNotIn("dhinose", forms)
@@ -55,6 +57,25 @@ class GrammarEvidenceTest(unittest.TestCase):
         sentence = next(item for item in payload["examples"] if "pun khadho nai" in item["kutchi"])
         self.assertIn("pun|conjunction", sentence["links"])
         self.assertNotIn("pun", sentence["links"])
+
+    def test_curly_apostrophe_why_is_spelling_not_duplicate_lemma(self):
+        payload = importer.evidence()
+        self.assertEqual(payload["spelling_variants"][0]["spelling"], "ku’la")
+        self.assertEqual(payload["spelling_variants"][0]["lemma"], "ku'la")
+        self.assertNotIn("ku’la", {item["headword"] for item in payload["new_lexemes"]})
+
+    def test_existing_example_provenance_changes_are_conflicts(self):
+        item = {"english": "I am seeing this boy.", "note": "Original judgment"}
+        row = {
+            "english_translation": item["english"], "source_id": "source",
+            "lexeme_id": "lemma", "note": item["note"],
+            "original_transcription": None,
+        }
+        self.assertFalse(importer.example_conflicts([row], item, "source", "lemma"))
+        changed_note = {**row, "note": "Different judgment"}
+        self.assertTrue(importer.example_conflicts([changed_note], item, "source", "lemma"))
+        changed_transcription = {**row, "original_transcription": "different"}
+        self.assertTrue(importer.example_conflicts([changed_transcription], item, "source", "lemma"))
 
 
 if __name__ == "__main__":
