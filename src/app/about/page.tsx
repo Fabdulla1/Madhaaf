@@ -48,7 +48,7 @@ export default function AboutPage() {
         <header className="about-hero">
           <div className="about-hero__copy">
             <p className="eyebrow">About Madhaaf / A note from its founder</p>
-            <h1>I built Madhaaf because I don't want our stories to disappear.</h1>
+            <h1>I built Madhaaf because I don&apos;t want our stories to disappear.</h1>
             <p className="about-hero__intro">
               My name is Farhan Abdulla. Kutchi is my native tongue, and
               preserving the culture, history and identity I grew up knowing
@@ -75,14 +75,14 @@ export default function AboutPage() {
             <p>
               Madhaaf began with a personal concern: so much of what I know
               about my family and our culture lives in conversations,
-              memories and words that are rarely written down. I don't want
+              memories and words that are rarely written down. I don&apos;t want
               that knowledge to be lost simply because nobody took the time
               to record it.
             </p>
             <p>
               Kutchi is the language I speak and recognize as my own. It
               connects me to my family, to the people who came before us,
-              and to the places our communities have called home. I'm
+              and to the places our communities have called home. I&apos;m
               building Madhaaf as a place where I can document those
               connections and keep learning from them.
             </p>
@@ -95,7 +95,7 @@ export default function AboutPage() {
           </div>
           <div className="about-diaspora__copy">
             <p>
-              My family's roots are connected to Kutchi communities that
+              My family&apos;s roots are connected to Kutchi communities that
               migrated from the Kutch region to East Africa, including
               <strong> Kenya and Ethiopia</strong>. In our family histories,
               some of these journeys are relatively recent, while other
@@ -105,16 +105,16 @@ export default function AboutPage() {
               historical records can establish.
             </p>
             <p>
-              The Kutchi I know isn't necessarily identical to the language
+              The Kutchi I know isn&apos;t necessarily identical to the language
               spoken in Kutch today. Generations living in East Africa may
               have shaped our pronunciation, vocabulary and everyday
-              expressions. I'm especially interested in words we may have
+              expressions. I&apos;m especially interested in words we may have
               adopted through life in places such as Kenya and Ethiopia.
               Those possible influences are questions for research, not
               conclusions I want to assume in advance.
             </p>
             <p>
-              I've found very little detailed documentation of the particular
+              I&apos;ve found very little detailed documentation of the particular
               East African Kutchi variety I speak. Rather than wait for
               someone else to write it down, I decided to begin collecting
               examples myself.
@@ -124,7 +124,7 @@ export default function AboutPage() {
         <section className="about-work" aria-labelledby="about-research-title">
           <div className="about-work__heading">
             <div>
-              <p className="eyebrow">What I'm documenting</p>
+              <p className="eyebrow">What I&apos;m documenting</p>
               <h2 id="about-research-title">Research that starts with the way we speak.</h2>
             </div>
             <p>
@@ -144,13 +144,13 @@ export default function AboutPage() {
             ))}
           </div>
           <div className="about-work__note">
-            <p className="eyebrow">How I'm working</p>
+            <p className="eyebrow">How I&apos;m working</p>
             <p>
               I start with the sentences I would naturally say, then compare
               small differences: a verb when the speaker is male or female,
               a noun in the singular and plural, or what happens when I
               remove a word like <em>ke</em>. I record which forms I know
-              are natural and which explanations are still guesses. I'm
+              are natural and which explanations are still guesses. I&apos;m
               developing a Latin writing guide alongside that work, so
               the original spoken forms remain visible.
             </p>
@@ -182,7 +182,7 @@ export default function AboutPage() {
               this language.
             </p>
             <p>
-              I'm grateful for that support and for the opportunity to bring
+              I&apos;m grateful for that support and for the opportunity to bring
               the technical work together with something deeply personal to me.
             </p>
             <a className="text-link" href="https://www.tokenworks.ai/" rel="noopener noreferrer">
@@ -199,7 +199,7 @@ export default function AboutPage() {
           <p>
             This site is my ongoing research and preservation project, not a
             claim to speak for every Kutchi community. I want to keep
-            documenting what I know, checking what I don't, and building
+            documenting what I know, checking what I don&apos;t, and building
             a place where our language and history can remain part of our lives.
           </p>
           <Link className="button button--primary" href="/language/articles">
