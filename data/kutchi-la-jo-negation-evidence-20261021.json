@@ -54,10 +54,18 @@
     {
       "headword": "natho",
       "action": "existing",
-      "expected_existing_glosses": ["negative form in present constructions"],
       "publication": "published",
       "part_of_speech": null,
-      "glosses": [],
+      "glosses": [
+        {
+          "gloss_en": "negative form in attested constructions",
+          "supersedes_gloss_en": "negative form in present constructions",
+          "supersedes_definition_en": null,
+          "definition_en": "Occurs in speaker-corrected Natho sume ('He won't sleep') and Hee mukhe pe(n)sa natho dye ('He doesn't give me money'). These contexts do not establish one exclusive tense or a full negative paradigm.",
+          "note": "The grammatical contribution of natho beyond the recorded constructions remains under investigation.",
+          "evidence_status": "attested_context"
+        }
+      ],
       "usage_note": null,
       "linguistic_tags": [],
       "source_keys": ["negation_article"]
@@ -69,8 +77,10 @@
       "part_of_speech": null,
       "glosses": [
         {
-          "gloss_en": "negative element in an attested feminine-subject present clause",
-          "definition_en": "Occurs in Nathi sume ('She is not sleeping'); also recorded in an untranslated female-giver elicitation form.",
+          "gloss_en": "negative element in attested feminine-subject clauses",
+          "supersedes_gloss_en": "negative element in an attested feminine-subject present clause",
+          "supersedes_definition_contains": "She is not sleeping",
+          "definition_en": "Occurs in Nathi sume ('She won't sleep'); also recorded in an untranslated female-giver elicitation form. The sleep sentence has a speaker-confirmed future meaning, but this does not establish an exclusively future function for nathi.",
           "note": "Do not assign the agreement controller or participant roles in hin ke au(n) pe(n)sa nathi dhya(n).",
           "evidence_status": "attested_context"
         }
@@ -134,7 +144,8 @@
       "glosses": [
         {
           "gloss_en": "negative element in attested giving constructions",
-          "definition_en": "Occurs with dhine in the recorded past giving and permission examples; nai also occurs in an untranslated past-negative elicitation form.",
+          "supersedes_definition_contains": "recorded past giving and permission",
+          "definition_en": "Occurs with dhine in the speaker-corrected 'hasn't given me money' and permission examples; nai also occurs in an untranslated negative-giving elicitation form.",
           "note": "Preserve the existing no-food sense. Nai is not established as exclusively past or existential.",
           "evidence_status": "attested_context"
         }
@@ -264,44 +275,52 @@
       "written_form": "dhine",
       "source_key": "negation_article",
       "evidence_status": "attested_form",
-      "tense": "past",
+      "tense": null,
+      "supersedes_tense": "past",
+      "supersedes_note_contains": "recorded past-negative giving",
       "grammatical_person": null,
       "grammatical_number": null,
       "gender": null,
-      "note": "Occurs in recorded past-negative giving and permission sentences; no full paradigm inferred."
+      "note": "Occurs in the speaker-corrected 'hasn't given' sentence and the father's-permission sentence. Its own tense/aspect contribution is unresolved."
     },
     {
       "lemma": "de",
       "written_form": "dhineese",
       "source_key": "negation_article",
       "evidence_status": "elicited_form_unresolved_roles",
-      "tense": "past",
+      "tense": null,
+      "supersedes_tense": "past",
+      "supersedes_note_contains": "Past-negative female-giver elicitation",
       "grammatical_person": null,
       "grammatical_number": null,
       "gender": null,
-      "note": "Past-negative female-giver elicitation; giver and recipient roles, agreement controller and full translation are unresolved."
+      "note": "Female-giver elicitation in a past-negative context; the giving form's own tense/aspect, giver and recipient roles, agreement controller and full translation are unresolved."
     },
     {
       "lemma": "de",
       "written_form": "dhya(n)",
       "source_key": "negation_article",
       "evidence_status": "elicited_form_unresolved_roles",
-      "tense": "present",
+      "tense": null,
+      "supersedes_tense": "present",
+      "supersedes_note_contains": "Present-negative female-giver elicitation",
       "grammatical_person": null,
       "grammatical_number": null,
       "gender": null,
-      "note": "Present-negative female-giver elicitation; giver and recipient roles, agreement controller and full translation are unresolved."
+      "note": "Female-giver elicitation in a present-negative context; the giving form's own tense/aspect, giver and recipient roles, agreement controller and full translation are unresolved."
     },
     {
       "lemma": "de",
       "written_form": "dhinose",
       "source_key": "la_jo_article",
       "evidence_status": "attested_form",
-      "tense": "past",
+      "tense": null,
+      "supersedes_tense": "past",
+      "supersedes_note_contains": "Occurs in the food-and-money account translated",
       "grammatical_person": null,
       "grammatical_number": null,
       "gender": null,
-      "note": "Occurs in the food-and-money account translated 'I gave a man food'; no further agreement features assigned."
+      "note": "Occurs in the food-and-money account translated 'I gave a man food'; the giving form's own tense/aspect and agreement features are unresolved."
     }
   ],
   "examples": [
@@ -397,43 +416,46 @@
     },
     {
       "kutchi_text": "Natho sume",
-      "english_translation": "He is not sleeping.",
+      "english_translation": "He won't sleep.",
+      "supersedes_translation": "He is not sleeping.",
       "primary_headword": "natho",
-      "primary_gloss_en": "negative form in present constructions",
+      "primary_gloss_en": "negative form in attested constructions",
       "linked_headwords": ["sum"],
       "source_key": "negation_article",
       "evidence_status": "attested",
-      "note": "Masculine-subject reading. The lexical verb sume stays unchanged in the paired Nathi sume sentence; a full negative paradigm is unproven."
+      "note": "Speaker correction in Negation in Mombasa Kutchi: Forms and constructions (21 October 2026): future-meaning sleep clause, not present progressive. The lexical verb sume stays unchanged in the paired Nathi sume sentence; a full negative paradigm is unproven."
     },
     {
       "kutchi_text": "Nathi sume",
-      "english_translation": "She is not sleeping.",
+      "english_translation": "She won't sleep.",
+      "supersedes_translation": "She is not sleeping.",
       "primary_headword": "nathi",
-      "primary_gloss_en": "negative element in an attested feminine-subject present clause",
+      "primary_gloss_en": "negative element in attested feminine-subject clauses",
       "linked_headwords": ["sum"],
       "source_key": "negation_article",
       "evidence_status": "attested",
-      "note": "Feminine-subject reading; do not infer a full agreement paradigm."
+      "note": "Speaker correction in Negation in Mombasa Kutchi: Forms and constructions (21 October 2026): future-meaning sleep clause, not present progressive. Feminine-subject reading; do not infer a full agreement paradigm."
     },
     {
       "kutchi_text": "Hee mukhe pe(n)sa natho dye",
       "english_translation": "He doesn't give me money.",
       "primary_headword": "natho",
-      "primary_gloss_en": "negative form in present constructions",
+      "primary_gloss_en": "negative form in attested constructions",
       "linked_headwords": ["mukhe", "pe(n)sa", "de"],
       "source_key": "negation_article",
       "evidence_status": "attested",
-      "note": "Recorded present negative. Both negative element and giving form differ from the paired past sentence."
+      "note": "Recorded present negative. Both the negative element and giving form differ from the other money sentence, which the speaker translates 'hasn't given'."
     },
     {
       "kutchi_text": "Hee mukhe pe(n)sa nai dhine",
-      "english_translation": "He didn't give me money.",
+      "english_translation": "He hasn't given me money.",
+      "supersedes_translation": "He didn't give me money.",
       "primary_headword": "nai",
       "primary_gloss_en": "negative element in attested giving constructions",
       "linked_headwords": ["mukhe", "pe(n)sa", "de"],
       "source_key": "negation_article",
       "evidence_status": "attested",
-      "note": "Recorded past negative; nai is not claimed to be exclusively past."
+      "note": "Speaker correction in Negation in Mombasa Kutchi: Forms and constructions (21 October 2026): 'hasn't given', not English simple past. The form responsible for completion/current relevance is unresolved; nai is not exclusively past."
     },
     {
       "kutchi_text": "Paa(n) kaal na oosyasee",
@@ -509,7 +531,7 @@
       "kutchi_text": "paani mukhe natho kape",
       "english_translation": "I don't want water.",
       "primary_headword": "natho",
-      "primary_gloss_en": "negative form in present constructions",
+      "primary_gloss_en": "negative form in attested constructions",
       "linked_headwords": ["paani", "mukhe"],
       "source_key": "negation_article",
       "evidence_status": "attested",
@@ -519,7 +541,7 @@
       "kutchi_text": "paani hin ke natho kape",
       "english_translation": "He doesn't want water.",
       "primary_headword": "natho",
-      "primary_gloss_en": "negative form in present constructions",
+      "primary_gloss_en": "negative form in attested constructions",
       "linked_headwords": ["paani", "ke"],
       "source_key": "negation_article",
       "evidence_status": "attested",
@@ -549,7 +571,7 @@
       "kutchi_text": "hin ke au(n) pe(n)sa nathi dhya(n)",
       "english_translation": null,
       "primary_headword": "nathi",
-      "primary_gloss_en": "negative element in an attested feminine-subject present clause",
+      "primary_gloss_en": "negative element in attested feminine-subject clauses",
       "linked_headwords": ["ke", "au(n)", "pe(n)sa", "de"],
       "source_key": "negation_article",
       "evidence_status": "elicitation_unresolved",
@@ -566,6 +588,6 @@
     "Do not create independent headwords for dye, dhine, dhineese, dhya(n), dhinose or kayose. The attested giving forms are recorded under de; kayose is already recorded under kan.",
     "Kapetho and kape(n) appear in cited desire examples, but a citation lemma and their distribution have not been established; do not generate a paradigm or new headwords from them.",
     "Natho/nathi/nathaa are not a complete agreement paradigm; the feminine elicitation pair does not independently establish who gives or receives.",
-    "Nai is attested in both past giving and no-food contexts; nah is attested in commands and a future negative. Neither has an exclusive tense or sentence-type classification."
+    "The speaker corrected Natho sume and Nathi sume to future-meaning English, and nai dhine to 'hasn't given'; prior English translations are superseded and retained only in revision history. Nai is also attested in a no-food context; nah is attested in commands and a future negative. None has an exclusive tense or sentence-type classification."
   ]
 }

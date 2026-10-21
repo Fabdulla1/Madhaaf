@@ -117,7 +117,7 @@ def plan_import(payload, state):
     """Plan from a snapshot; reject ambiguous homographs and conflicting evidence."""
     plan = {key: [] for key in (
         "sources", "entries", "senses", "forms", "examples", "example_links",
-        "source_links",
+        "source_links", "sense_updates", "form_updates", "example_updates",
     )}
     conflicts = []
     sources_by_title = defaultdict(list)
@@ -173,10 +173,19 @@ def plan_import(payload, state):
             name_ids[name] = old["id"]
             expected = {g.casefold() for g in row.get("expected_existing_glosses", [])}
             actual = {s["gloss_en"].casefold() for s in senses[old["id"]]}
-            if row["action"] == "existing" and expected and not expected <= actual:
+            corrected_expected = {
+                gloss["supersedes_gloss_en"].casefold(): gloss["gloss_en"].casefold()
+                for gloss in row.get("glosses", []) if gloss.get("supersedes_gloss_en")
+            }
+            if row["action"] == "existing" and any(
+                old_gloss not in actual and corrected_expected.get(old_gloss) not in actual
+                for old_gloss in expected
+            ):
                 conflicts.append(f"{row['headword']}: previously reviewed gloss changed")
             if row["action"] == "new" and not any(
-                g["gloss_en"].casefold() in actual for g in row.get("glosses", [])
+                g["gloss_en"].casefold() in actual or
+                (g.get("supersedes_gloss_en") and g["supersedes_gloss_en"].casefold() in actual)
+                for g in row.get("glosses", [])
             ):
                 conflicts.append(f"{row['headword']}: unexpected pre-existing homograph")
             if row.get("publication", "published") != old["status"] and row["action"] == "new":
@@ -188,12 +197,29 @@ def plan_import(payload, state):
             continue
         old_senses = senses[owner] if owner in senses else []
         for gloss in row.get("glosses", []):
-            same = [s for s in old_senses if s["gloss_en"].casefold() == gloss["gloss_en"].casefold()]
+            accepted_glosses = {gloss["gloss_en"].casefold()}
+            if gloss.get("supersedes_gloss_en"):
+                accepted_glosses.add(gloss["supersedes_gloss_en"].casefold())
+            same = [s for s in old_senses if s["gloss_en"].casefold() in accepted_glosses]
             if len(same) > 1:
                 conflicts.append(f"{row['headword']}: duplicate existing gloss {gloss['gloss_en']}")
             elif same:
-                if same[0]["definition_en"] != sense_definition(gloss):
-                    conflicts.append(f"{row['headword']}: existing definition differs for {gloss['gloss_en']}")
+                old = same[0]
+                desired_definition = sense_definition(gloss)
+                if old["gloss_en"].casefold() == gloss["gloss_en"].casefold() and old["definition_en"] == desired_definition:
+                    continue
+                if gloss.get("supersedes_gloss_en") and old["gloss_en"].casefold() != gloss["supersedes_gloss_en"].casefold():
+                    conflicts.append(f"{row['headword']}: gloss correction precondition differs")
+                elif not gloss.get("supersedes_gloss_en") and old["gloss_en"].casefold() != gloss["gloss_en"].casefold():
+                    conflicts.append(f"{row['headword']}: gloss changed unexpectedly")
+                elif not (
+                    ("supersedes_definition_en" in gloss and old["definition_en"] == gloss["supersedes_definition_en"])
+                    or (gloss.get("supersedes_definition_contains")
+                        and gloss["supersedes_definition_contains"] in (old["definition_en"] or ""))
+                ):
+                    conflicts.append(f"{row['headword']}: definition correction precondition differs for {gloss['gloss_en']}")
+                else:
+                    plan["sense_updates"].append((old["id"], row["headword"], gloss))
             else:
                 plan["senses"].append((row["headword"], gloss))
 
@@ -234,7 +260,12 @@ def plan_import(payload, state):
             if old["kutchi_text"] != row["kutchi_text"]:
                 conflicts.append(f"{row['kutchi_text']}: existing capitalization or transcription differs")
             if old["english_translation"] != row.get("english_translation"):
-                conflicts.append(f"{row['kutchi_text']}: existing translation differs")
+                if row.get("supersedes_translation") == old["english_translation"]:
+                    plan["example_updates"].append((old["id"], row))
+                else:
+                    conflicts.append(f"{row['kutchi_text']}: existing translation differs")
+            elif row.get("supersedes_translation") and old["note"] != example_note(row):
+                conflicts.append(f"{row['kutchi_text']}: corrected translation has unexpected note")
             example_id = old["id"]
             if old["lexeme_id"] != primary:
                 targets.append(primary)
@@ -254,23 +285,32 @@ def plan_import(payload, state):
         if any(old["lexeme_id"] != owner for old in same_word):
             conflicts.append(f"{row['written_form']}: form belongs to another lemma")
             continue
-        same_identity = [old for old in same_word if old["lexeme_id"] == owner and
-                         all(old[field] == row.get(field) for field in FORM_IDENTITY)]
-        if len(same_identity) > 1:
-            conflicts.append(f"{row['written_form']}: duplicate form identity")
-        elif same_identity:
-            old = same_identity[0]
-            if old["evidence_status"] != FORM_EVIDENCE_STATUS[row["evidence_status"]]:
-                conflicts.append(f"{row['written_form']}: evidence status differs")
-            if (old["original_transcription"], old["source_id"], old["note"]) != (
-                row.get("original_transcription"), source_ids[row["source_key"]], row.get("note")
+        candidates = [old for old in same_word if old["lexeme_id"] == owner and
+                      all(old[field] == row.get(field) for field in FORM_IDENTITY if field != "tense")]
+        if len(candidates) > 1:
+            conflicts.append(f"{row['written_form']}: multiple forms match reviewed correction")
+            continue
+        if candidates:
+            old = candidates[0]
+            if (old["evidence_status"], old["original_transcription"], old["source_id"]) != (
+                FORM_EVIDENCE_STATUS[row["evidence_status"]], row.get("original_transcription"),
+                source_ids[row["source_key"]]
             ):
                 conflicts.append(f"{row['written_form']}: existing form provenance differs")
-        else:
-            if row["written_form"].casefold() in heads or row["written_form"].casefold() in spellings:
-                conflicts.append(f"{row['written_form']}: independent headword or spelling exists")
+            elif old["tense"] == row.get("tense") and old["note"] == row.get("note"):
+                pass
+            elif ("supersedes_tense" in row and old["tense"] == row["supersedes_tense"]
+                  and row.get("supersedes_note_contains")
+                  and row["supersedes_note_contains"] in (old["note"] or "")):
+                plan["form_updates"].append((old["id"], row))
             else:
-                plan["forms"].append(row)
+                conflicts.append(f"{row['written_form']}: form correction precondition differs")
+        elif "supersedes_tense" in row and same_word:
+            conflicts.append(f"{row['written_form']}: reviewed form context differs")
+        elif row["written_form"].casefold() in heads or row["written_form"].casefold() in spellings:
+            conflicts.append(f"{row['written_form']}: independent headword or spelling exists")
+        else:
+            plan["forms"].append(row)
 
     source_links = {(r["lexeme_id"], r["source_id"]) for r in state["source_links"]}
     required_links = set()
@@ -294,10 +334,25 @@ def plan_import(payload, state):
     touched = set()
     for headword, _ in plan["senses"]:
         touched.add(owner_id(headword))
+    example_owner = {row["id"]: row["lexeme_id"] for row in state["examples"]}
+    example_sense = {row["id"]: row["sense_id"] for row in state["examples"]}
+    linked_targets = defaultdict(set)
+    for link in state["example_links"]:
+        linked_targets[link["example_id"]].add(link["lexeme_id"])
+    for sense_id, headword, _ in plan["sense_updates"]:
+        touched.add(owner_id(headword))
+        for example_id, attached_sense in example_sense.items():
+            if attached_sense == sense_id:
+                touched.update(linked_targets[example_id])
     for row in plan["forms"]:
+        touched.add(owner_id(row["lemma"]))
+    for _, row in plan["form_updates"]:
         touched.add(owner_id(row["lemma"]))
     for row in plan["examples"]:
         touched.add(owner_id(row["primary_headword"]))
+    for example_id, _ in plan["example_updates"]:
+        touched.add(example_owner[example_id])
+        touched.update(linked_targets[example_id])
     for text, target in plan["example_links"]:
         touched.add(target)
         matches = old_examples[example_key(text)]
@@ -312,9 +367,27 @@ def plan_import(payload, state):
     return plan, conflicts
 
 
+def record_correction(cursor, table, record_id):
+    """Child tables lack the lexeme audit trigger; retain the exact old row."""
+    if table not in ("senses", "inflected_forms", "examples"):
+        raise RuntimeError("Unexpected correction table")
+    cursor.execute(
+        f"insert into public.editorial_revisions(table_name,record_id,old_record,changed_by) "
+        f"select %s,item.id,to_jsonb(item),auth.uid() from public.{table} item where item.id=%s",
+        (table, record_id),
+    )
+    if cursor.rowcount != 1:
+        raise RuntimeError(f"{table}: correction target disappeared")
+    cursor.execute("insert into public.audit_events(table_name,record_id,operation,actor_id) "
+                   "values (%s,%s,'UPDATE',auth.uid())", (table, record_id))
+
+
 def apply_import(cursor, payload, state, plan):
     counts = Counter()
-    if not any(plan[key] for key in ("sources", "entries", "senses", "forms", "examples", "example_links", "source_links")):
+    if not any(plan[key] for key in (
+        "sources", "entries", "senses", "forms", "examples", "example_links",
+        "source_links", "sense_updates", "form_updates", "example_updates",
+    )):
         return counts
     original_statuses = {row["id"]: row["status"] for row in state["lexemes"]}
     for entry_id in plan["draft_ids"]:
@@ -334,6 +407,17 @@ def apply_import(cursor, payload, state, plan):
                         row.get("linguistic_tags", [])))
         entry_ids[row["headword"].casefold()] = cursor.fetchone()["id"]
         counts["lexemes"] += 1
+    for sense_id, _, gloss in plan["sense_updates"]:
+        record_correction(cursor, "senses", sense_id)
+        cursor.execute("update public.senses set gloss_en=%s,definition_en=%s where id=%s "
+                       "returning gloss_en,definition_en",
+                       (gloss["gloss_en"], sense_definition(gloss), sense_id))
+        updated = cursor.fetchone()
+        if updated is None or (updated["gloss_en"], updated["definition_en"]) != (
+            gloss["gloss_en"], sense_definition(gloss)
+        ):
+            raise RuntimeError("Sense correction was suppressed by a database trigger")
+        counts["sense_corrections"] += 1
     for headword, gloss in plan["senses"]:
         entry_id = entry_ids[headword.casefold()]
         cursor.execute("select coalesce(max(display_order),-1)+1 as n from public.senses where lexeme_id=%s", (entry_id,))
@@ -341,6 +425,14 @@ def apply_import(cursor, payload, state, plan):
         cursor.execute("insert into public.senses(lexeme_id,gloss_en,definition_en,display_order) values (%s,%s,%s,%s)",
                        (entry_id, gloss["gloss_en"], sense_definition(gloss), order))
         counts["senses"] += 1
+    for form_id, row in plan["form_updates"]:
+        record_correction(cursor, "inflected_forms", form_id)
+        cursor.execute("update public.inflected_forms set tense=%s,note=%s where id=%s returning tense,note",
+                       (row.get("tense"), row.get("note"), form_id))
+        updated = cursor.fetchone()
+        if updated is None or (updated["tense"], updated["note"]) != (row.get("tense"), row.get("note")):
+            raise RuntimeError("Form correction was suppressed by a database trigger")
+        counts["form_corrections"] += 1
     for row in plan["forms"]:
         cursor.execute("insert into public.inflected_forms "
                        "(lexeme_id,written_form,grammatical_person,grammatical_number,gender,tense,aspect,mood,politeness,original_transcription,evidence_status,source_id,note) "
@@ -350,6 +442,17 @@ def apply_import(cursor, payload, state, plan):
                         FORM_EVIDENCE_STATUS[row["evidence_status"]], source_ids[row["source_key"]], row.get("note")))
         counts["forms"] += 1
     example_ids = {row["kutchi_text"].casefold(): row["id"] for row in state["examples"]}
+    for example_id, row in plan["example_updates"]:
+        record_correction(cursor, "examples", example_id)
+        cursor.execute("update public.examples set english_translation=%s,note=%s where id=%s "
+                       "returning english_translation,note",
+                       (row.get("english_translation"), example_note(row), example_id))
+        updated = cursor.fetchone()
+        if updated is None or (updated["english_translation"], updated["note"]) != (
+            row.get("english_translation"), example_note(row)
+        ):
+            raise RuntimeError("Example correction was suppressed by a database trigger")
+        counts["example_corrections"] += 1
     for row in plan["examples"]:
         entry_id = entry_ids[row["primary_headword"].casefold()]
         cursor.execute("select id,gloss_en from public.senses where lexeme_id=%s order by display_order", (entry_id,))

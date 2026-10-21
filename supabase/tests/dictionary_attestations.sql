@@ -158,4 +158,42 @@ begin
   end;
 end $$;
 
+-- The cross-link guard must reject edits while a linked entry is published,
+-- then actually apply UPDATE (rather than silently returning OLD) in draft.
+do $$
+declare
+  kar_id uuid := (select id from attestation_fixture where name = 'kar');
+  vin_id uuid := (select id from attestation_fixture where name = 'vin');
+  vin_example uuid := (select id from attestation_fixture where name = 'vin_example');
+  draft_example uuid := (select id from attestation_fixture where name = 'draft_example');
+  vin_sense uuid;
+begin
+  select id into vin_sense from public.senses where lexeme_id = vin_id and gloss_en = 'go';
+  -- vin is already draft; the published kar cross-link still protects both rows.
+  begin
+    update public.senses set definition_en = 'blocked by linked publication' where id = vin_sense;
+    raise exception 'Published cross-link did not protect the source sense';
+  exception when check_violation then null;
+  end;
+  begin
+    update public.examples set english_translation = 'blocked by linked publication'
+      where id = vin_example;
+    raise exception 'Published cross-link did not protect the source example';
+  exception when check_violation then null;
+  end;
+  update public.lexemes set status = 'draft' where id = kar_id;
+  update public.senses set definition_en = 'reviewed correction' where id = vin_sense;
+  if (select definition_en from public.senses where id = vin_sense) is distinct from 'reviewed correction' then
+    raise exception 'Draft sense correction was silently discarded';
+  end if;
+  update public.examples set english_translation = 'Reviewed translation' where id = vin_example;
+  if (select english_translation from public.examples where id = vin_example) is distinct from 'Reviewed translation' then
+    raise exception 'Draft example correction was silently discarded';
+  end if;
+  delete from public.examples where id = draft_example;
+  if exists (select 1 from public.examples where id = draft_example) then
+    raise exception 'Draft example deletion was blocked';
+  end if;
+end $$;
+
 rollback;

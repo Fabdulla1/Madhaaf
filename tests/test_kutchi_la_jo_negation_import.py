@@ -144,6 +144,109 @@ class LaJoNegationImportTests(unittest.TestCase):
         _, conflicts = plan_import(payload, state)
         self.assertTrue(any("existing form provenance differs" in item for item in conflicts))
 
+    def test_reviewed_corrections_plan_once_and_draft_crosslinked_owners(self):
+        source = {"key": "speaker", "title": "Speaker study", "citation": "Native speaker",
+                  "url": "/language/articles/test", "notes": "Reviewed."}
+        corrected_gloss = {"gloss_en": "negative form in attested constructions",
+                           "supersedes_gloss_en": "negative form in present constructions",
+                           "supersedes_definition_en": None,
+                           "definition_en": "The sleep sentence has a future meaning.",
+                           "evidence_status": "attested_context"}
+        corrected_form = {"lemma": "de", "written_form": "dhine", "source_key": "speaker",
+                          "evidence_status": "attested_form", "tense": None,
+                          "supersedes_tense": "past", "supersedes_note_contains": "past-negative",
+                          "note": "The form's tense contribution remains unresolved."}
+        corrected_example = {"kutchi_text": "Natho sume", "english_translation": "He won't sleep.",
+                             "supersedes_translation": "He is not sleeping.",
+                             "primary_headword": "natho",
+                             "primary_gloss_en": corrected_gloss["gloss_en"],
+                             "linked_headwords": ["sum"], "source_key": "speaker",
+                             "evidence_status": "attested", "note": "Speaker-corrected future meaning."}
+        payload = {"sources": [source], "entries": [
+            {"headword": "natho", "action": "existing", "publication": "published",
+             "expected_existing_glosses": ["negative form in present constructions"],
+             "glosses": [corrected_gloss], "source_keys": ["speaker"]},
+            {"headword": "de", "action": "existing", "publication": "published",
+             "expected_existing_glosses": ["give"], "glosses": [], "source_keys": ["speaker"]},
+        ], "forms": [corrected_form], "examples": [corrected_example]}
+        state = empty_state()
+        state["sources"] = [{"id": "source-id", **{k: v for k, v in source.items() if k != "key"}}]
+        state["lexemes"] = [
+            {"id": "natho-id", "headword": "natho", "status": "published", "part_of_speech": None},
+            {"id": "de-id", "headword": "de", "status": "published", "part_of_speech": "verb"},
+            {"id": "sum-id", "headword": "sum", "status": "published", "part_of_speech": "verb"},
+        ]
+        state["senses"] = [
+            {"id": "negative-sense", "lexeme_id": "natho-id",
+             "gloss_en": "negative form in present constructions", "definition_en": None},
+            {"id": "give-sense", "lexeme_id": "de-id", "gloss_en": "give", "definition_en": None},
+        ]
+        state["source_links"] = [{"lexeme_id": owner, "source_id": "source-id"}
+                                 for owner in ("natho-id", "de-id", "sum-id")]
+        state["forms"] = [{"id": "dhine-id", "lexeme_id": "de-id", "written_form": "dhine",
+                           **{field: None for field in (
+                               "grammatical_person", "grammatical_number", "gender", "aspect",
+                               "mood", "politeness", "original_transcription")},
+                           "tense": "past", "evidence_status": "attested", "source_id": "source-id",
+                           "note": "Recorded past-negative giving."}]
+        state["examples"] = [{"id": "sleep-example", "sense_id": "negative-sense",
+                              "lexeme_id": "natho-id", "kutchi_text": "Natho sume",
+                              "english_translation": "He is not sleeping.", "note": "Older analysis",
+                              "source_id": "old-example-source"}]
+        state["example_links"] = [{"example_id": "sleep-example", "lexeme_id": "sum-id"}]
+
+        first, conflicts = plan_import(payload, state)
+        self.assertEqual(conflicts, [])
+        self.assertEqual([len(first[key]) for key in
+                          ("sense_updates", "form_updates", "example_updates")], [1, 1, 1])
+        self.assertEqual(set(first["draft_ids"]), {"natho-id", "de-id", "sum-id"})
+
+        state["senses"][0]["gloss_en"] = corrected_gloss["gloss_en"]
+        state["senses"][0]["definition_en"] = sense_definition(corrected_gloss)
+        state["forms"][0]["tense"] = corrected_form["tense"]
+        state["forms"][0]["note"] = corrected_form["note"]
+        state["examples"][0]["english_translation"] = corrected_example["english_translation"]
+        state["examples"][0]["note"] = example_note(corrected_example)
+        second, conflicts = plan_import(payload, state)
+        self.assertEqual(conflicts, [])
+        self.assertFalse(any(second[key] for key in second))
+
+    def test_correction_refuses_unreviewed_old_value(self):
+        payload = small_payload()
+        payload["entries"] = [{"headword": "jo", "action": "existing", "publication": "published",
+                               "expected_existing_glosses": ["for"], "glosses": [{
+                                   "gloss_en": "of; 's", "supersedes_gloss_en": "for",
+                                   "supersedes_definition_en": None,
+                                   "definition_en": "Possession", "evidence_status": "attested_context"}]}]
+        payload["examples"] = []
+        state = empty_state()
+        state["lexemes"] = [{"id": "jo-id", "headword": "jo", "status": "published",
+                             "part_of_speech": None}]
+        state["senses"] = [{"id": "for-id", "lexeme_id": "jo-id", "gloss_en": "for",
+                            "definition_en": "unexpected editorial change"}]
+        _, conflicts = plan_import(payload, state)
+        self.assertTrue(any("definition correction precondition differs" in item for item in conflicts))
+
+    def test_new_entry_from_prior_import_accepts_reviewed_old_gloss(self):
+        payload = small_payload()
+        payload["entries"] = [{"headword": "nathi", "action": "new", "publication": "published",
+                               "part_of_speech": None, "glosses": [{
+                                   "gloss_en": "negative form in attested clauses",
+                                   "supersedes_gloss_en": "negative form in present clauses",
+                                   "supersedes_definition_en": None,
+                                   "definition_en": "The sleep example means won't sleep.",
+                                   "evidence_status": "attested_context"}]}]
+        payload["examples"] = []
+        state = empty_state()
+        state["lexemes"] = [{"id": "nathi-id", "headword": "nathi", "status": "published",
+                             "part_of_speech": None}]
+        state["senses"] = [{"id": "nathi-sense", "lexeme_id": "nathi-id",
+                            "gloss_en": "negative form in present clauses", "definition_en": None}]
+        plan, conflicts = plan_import(payload, state)
+        self.assertEqual(conflicts, [])
+        self.assertEqual(len(plan["sense_updates"]), 1)
+        self.assertEqual(plan["entries"], [])
+
 
 if __name__ == "__main__":
     unittest.main()
