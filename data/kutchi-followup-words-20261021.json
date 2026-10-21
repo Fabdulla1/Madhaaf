@@ -1,0 +1,21 @@
+{
+  "source": {
+    "title": "Owner-supplied Kutchi words — follow-up",
+    "citation": "Project owner, twelve additional Kutchi words, 21 October 2026.",
+    "notes": "Owner-supplied spellings and English glosses from the follow-up request; grammatical labels are provisional."
+  },
+  "entries": [
+    { "headword": "chiknuh", "gloss_en": "sticky", "part_of_speech": "adjective" },
+    { "headword": "chikaas", "gloss_en": "stickiness", "part_of_speech": "noun" },
+    { "headword": "gaato", "gloss_en": "thick (liquid)", "part_of_speech": "adjective" },
+    { "headword": "mare'lo", "gloss_en": "dead", "part_of_speech": "adjective" },
+    { "headword": "madhath", "gloss_en": "help", "part_of_speech": null },
+    { "headword": "mudh", "gloss_en": "honey", "part_of_speech": "noun" },
+    { "headword": "ful", "gloss_en": "flower", "part_of_speech": "noun" },
+    { "headword": "panaa", "gloss_en": "pages", "part_of_speech": "noun", "usage_note": "Plural gloss supplied; singular form unconfirmed." },
+    { "headword": "ronak", "gloss_en": "liveliness", "part_of_speech": "noun" },
+    { "headword": "uno", "gloss_en": "deep (water)", "part_of_speech": "adjective" },
+    { "headword": "byaa", "gloss_en": "others", "part_of_speech": null, "usage_note": "Relationship to byo is not yet established." },
+    { "headword": "byo", "gloss_en": "another, what else", "part_of_speech": null, "usage_note": "Relationship to byaa is not yet established." }
+  ]
+}
