@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-label="Original editorial illustration for Madhaaf Kutchi linguistic research">
+<defs>
+  <linearGradient id="archive-bg" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#163E3A"/><stop offset=".62" stop-color="#215A50"/><stop offset="1" stop-color="#103630"/>
+  </linearGradient>
+  <radialGradient id="archive-warm"><stop stop-color="#D9A481" stop-opacity=".22"/><stop offset="1" stop-color="#D9A481" stop-opacity="0"/></radialGradient>
+  <pattern id="archive-lines" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#F3E6D0" stroke-opacity=".075" stroke-width="1"/></pattern>
+</defs>
+<rect width="1200" height="700" fill="url(#archive-bg)"/>
+<rect width="1200" height="700" fill="url(#archive-lines)"/>
+<ellipse cx="885" cy="189" rx="380" ry="318" fill="url(#archive-warm)"/>
+<rect x="32" y="32" width="1136" height="636" rx="5" stroke="#EFDDC4" stroke-opacity=".26" stroke-width="2" fill="none"/>
+<path d="M72 611H268M930 90H1126" stroke="#D39A7B" stroke-opacity=".7" stroke-width="2"/>
+<g fill="none" stroke-linecap="round">
+<circle cx="600" cy="348" r="214" stroke="#F0E3CB" stroke-opacity=".45" stroke-width="3" stroke-dasharray="7 17"/>
+<circle cx="600" cy="348" r="143" stroke="#F0E3CB" stroke-width="3" fill="#1D534C"/>
+<circle cx="600" cy="348" r="79" stroke="#E2AE8A" stroke-width="3" fill="#D08768"/>
+<circle cx="600" cy="348" r="27" fill="#F2E4CF"/>
+<path d="M600 205L600 113M724 277L887 182M724 420L888 516M600 490L600 590M476 420L307 516M476 277L307 182" stroke="#F0E3CB" stroke-width="4" stroke-opacity=".9"/>
+<circle cx="600" cy="113" r="41" fill="#D08768" stroke="#EDE1CA" stroke-width="3"/>
+<circle cx="887" cy="182" r="41" fill="#EDE1CA" stroke="#EDE1CA" stroke-width="3"/>
+<circle cx="888" cy="516" r="41" fill="#D08768" stroke="#EDE1CA" stroke-width="3"/>
+<circle cx="600" cy="590" r="41" fill="#EDE1CA" stroke="#EDE1CA" stroke-width="3"/>
+<circle cx="307" cy="516" r="41" fill="#D08768" stroke="#EDE1CA" stroke-width="3"/>
+<circle cx="307" cy="182" r="41" fill="#EDE1CA" stroke="#EDE1CA" stroke-width="3"/>
+</g>
+</svg>

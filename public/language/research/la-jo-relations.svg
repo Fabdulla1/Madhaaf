@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-label="Original editorial illustration for Madhaaf Kutchi linguistic research">
+<defs>
+  <linearGradient id="archive-bg" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#163E3A"/><stop offset=".62" stop-color="#215A50"/><stop offset="1" stop-color="#103630"/>
+  </linearGradient>
+  <radialGradient id="archive-warm"><stop stop-color="#D9A481" stop-opacity=".22"/><stop offset="1" stop-color="#D9A481" stop-opacity="0"/></radialGradient>
+  <pattern id="archive-lines" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#F3E6D0" stroke-opacity=".075" stroke-width="1"/></pattern>
+</defs>
+<rect width="1200" height="700" fill="url(#archive-bg)"/>
+<rect width="1200" height="700" fill="url(#archive-lines)"/>
+<ellipse cx="885" cy="189" rx="380" ry="318" fill="url(#archive-warm)"/>
+<rect x="32" y="32" width="1136" height="636" rx="5" stroke="#EFDDC4" stroke-opacity=".26" stroke-width="2" fill="none"/>
+<path d="M72 611H268M930 90H1126" stroke="#D39A7B" stroke-opacity=".7" stroke-width="2"/>
+<g fill="none" stroke-linecap="round">
+<path d="M184 345C337 345 375 210 558 210S811 181 1028 181" stroke="#EBDEC7" stroke-width="4" stroke-opacity=".85"/>
+<path d="M184 345C337 345 378 486 558 486S811 516 1028 516" stroke="#D68865" stroke-width="4" stroke-opacity=".95"/>
+<path d="M181 345H1030" stroke="#EDE2CC" stroke-opacity=".19" stroke-width="2" stroke-dasharray="8 18"/>
+<circle cx="184" cy="345" r="111" fill="#1D4D45" stroke="#EBDEC7" stroke-width="3"/>
+<circle cx="184" cy="345" r="66" fill="#C97B58"/>
+<circle cx="558" cy="210" r="68" fill="#17443F" stroke="#F5E4CF" stroke-width="3"/>
+<circle cx="558" cy="210" r="28" fill="#E7D5B8"/>
+<circle cx="558" cy="486" r="68" fill="#17443F" stroke="#F5E4CF" stroke-width="3"/>
+<circle cx="558" cy="486" r="28" fill="#D68865"/>
+<circle cx="1028" cy="181" r="83" fill="#1D5049" stroke="#F5E4CF" stroke-width="3"/>
+<circle cx="1028" cy="181" r="43" fill="#E7D5B8"/>
+<circle cx="1028" cy="516" r="83" fill="#1D5049" stroke="#F5E4CF" stroke-width="3"/>
+<circle cx="1028" cy="516" r="43" fill="#D68865"/>
+</g>
+</svg>
