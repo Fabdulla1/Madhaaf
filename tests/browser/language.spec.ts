@@ -66,3 +66,16 @@ test("Grammar reference includes la/jo and the expanded negative evidence", asyn
   await expect(page.getByText("Hee mukhe pe(n)sa nai dhine", { exact: true })).toBeVisible();
   await expect(page.getByText(/natho.*nathi.*nathaa/i).first()).toBeVisible();
 });
+
+test("Grammar honors the speaker-corrected sleeping and giving negative translations", async ({ page }) => {
+  await page.goto("/language/grammar#negation");
+  const pairs = page.locator("#negation .grammar-pairs");
+  await expect(pairs.getByText("He won't sleep. · speaker-corrected future reading", { exact: true })).toBeVisible();
+  await expect(pairs.getByText("She won't sleep. · speaker-corrected future reading", { exact: true })).toBeVisible();
+  await expect(pairs.getByText("He hasn't given me money. · speaker-corrected reading", { exact: true })).toBeVisible();
+  await expect(pairs.getByText("He doesn't give me money.", { exact: true })).toBeVisible();
+  await expect(page.getByText("He is not sleeping.", { exact: true })).toHaveCount(0);
+  await expect(page.getByText("She is not sleeping.", { exact: true })).toHaveCount(0);
+  await expect(page.getByText("He didn't give me money.", { exact: true })).toHaveCount(0);
+  await expect(page.getByText(/natho.*or.*nathi.*always means future/)).toBeVisible();
+});
