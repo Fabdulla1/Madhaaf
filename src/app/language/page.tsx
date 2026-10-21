@@ -78,9 +78,9 @@ export default function LanguagePage() {
             </Link>
           </div>
           <div className="language-feature__examples">
-            <p><strong>Kuroo karentho?</strong><span>What are you doing? · masculine</span></p>
-            <p><strong>Kuroo karenthi?</strong><span>What are you doing? · feminine</span></p>
-            <p><strong>Mere sanas karenthaa</strong><span>Everyone is defecating</span></p>
+            <p><strong>Kuroo kare(n)tho?</strong><span>What are you doing? · masculine</span></p>
+            <p><strong>Kuroo kare(n)thi?</strong><span>What are you doing? · feminine</span></p>
+            <p><strong>Mere sanas kare(n)thaa</strong><span>Everyone is defecating</span></p>
           </div>
         </section>
         <p className="language-method-note">
