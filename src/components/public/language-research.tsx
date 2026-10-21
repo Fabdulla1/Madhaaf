@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { PublicShell as PublicSiteResearchLayout } from "@/components/public/shell";
 import type { ResearchArticle, ResearchBlock, ResearchExample } from "@/lib/language-articles";
 import { dictionaryLookups, researchArticles } from "@/lib/language-articles";
 
@@ -185,8 +186,6 @@ export function ResearchIndex() {
   );
 }
 
-/** Avoid turning the entire static research collection into a client component. */
-import { PublicShell as PublicSiteResearchLayout } from "@/components/public/shell";
 
 export function ResearchArticleView({ article }: { article: ResearchArticle }) {
   const index = researchArticles.findIndex((item) => item.slug === article.slug);
