@@ -590,7 +590,7 @@ export const octoberResearchArticles: ResearchArticle[] = [
             "type": "finding",
             "strength": "unresolved",
             "label": "Generalizations not supported by the data",
-            "text": "Nai appears in negative existence, not-yet-given money, and permission not granted. Na is recorded in a different past negative. A fuller distributional and aspectual analysis requires matched contexts across more verbs and persons."
+            "text": "Nai appears in negative existence, money that he hasn't given, and permission not granted. Na is recorded in a different past negative. A fuller distributional and aspectual analysis requires matched contexts across more verbs and persons."
           }
         ]
       },

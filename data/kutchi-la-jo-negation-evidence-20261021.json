@@ -1,0 +1,593 @@
+{
+  "sources": [
+    {
+      "key": "la_jo_article",
+      "title": "For him, or his? What la and jo reveal about my Kutchi",
+      "citation": "Farhan Abdulla, native-speaker East African Mombasa Kutchi research, October 2026 (Studies 008–011).",
+      "url": "/language/articles/la-and-jo-beneficiary-and-possession",
+      "notes": "Speaker-supplied translations and judgments. Beneficiary and possession are attested for the cited constructions; a universal postposition analysis and the morphology of khade remain provisional. The source does not assign an individual study number to each sentence."
+    },
+    {
+      "key": "negation_article",
+      "title": "Not just one way to say no: How negation works in my Kutchi",
+      "citation": "Farhan Abdulla, native-speaker East African Mombasa Kutchi research, October 2026 (Studies 008–011).",
+      "url": "/language/articles/how-negation-works-in-my-kutchi",
+      "notes": "Speaker-supplied sentence forms and meanings. The two female-giver elicitation forms lack independently confirmed participant roles or full translations. Negative forms are recorded in their observed contexts, not as a predictive paradigm. The source does not assign an individual study number to each sentence."
+    }
+  ],
+  "entries": [
+    {
+      "headword": "la",
+      "action": "new",
+      "publication": "published",
+      "part_of_speech": null,
+      "glosses": [
+        {
+          "gloss_en": "for",
+          "definition_en": "Marks a beneficiary in Hin la au(n) pe(n)sa kayose; also occurs in speaker-accepted food-related 'for' phrases.",
+          "note": "Postposition is a provisional grammatical analysis. The food examples do not establish that beneficiary, purpose, payment and exchange uses are interchangeable.",
+          "evidence_status": "attested_context"
+        }
+      ],
+      "usage_note": "Speaker attests Hin la, khadho la and khade la in the recorded constructions. Distribution outside these contexts remains untested.",
+      "linguistic_tags": [],
+      "source_keys": ["la_jo_article"]
+    },
+    {
+      "headword": "jo",
+      "action": "existing",
+      "expected_existing_glosses": ["for"],
+      "publication": "published",
+      "part_of_speech": null,
+      "glosses": [
+        {
+          "gloss_en": "of; 's",
+          "definition_en": "Links a possessor with what is possessed in Hin jo pe(n)sa and mujo bhaa jo ghar.",
+          "note": "Preserve the older 'for' sense. Whether spaced Hin jo and written Hinjo have the same structure is unresolved.",
+          "evidence_status": "attested_context"
+        }
+      ],
+      "usage_note": null,
+      "linguistic_tags": [],
+      "source_keys": ["la_jo_article"]
+    },
+    {
+      "headword": "natho",
+      "action": "existing",
+      "publication": "published",
+      "part_of_speech": null,
+      "glosses": [
+        {
+          "gloss_en": "negative form in attested constructions",
+          "supersedes_gloss_en": "negative form in present constructions",
+          "supersedes_definition_en": null,
+          "definition_en": "Occurs in speaker-corrected Natho sume ('He won't sleep') and Hee mukhe pe(n)sa natho dye ('He doesn't give me money'). These contexts do not establish one exclusive tense or a full negative paradigm.",
+          "note": "The grammatical contribution of natho beyond the recorded constructions remains under investigation.",
+          "evidence_status": "attested_context"
+        }
+      ],
+      "usage_note": null,
+      "linguistic_tags": [],
+      "source_keys": ["negation_article"]
+    },
+    {
+      "headword": "nathi",
+      "action": "new",
+      "publication": "published",
+      "part_of_speech": null,
+      "glosses": [
+        {
+          "gloss_en": "negative element in attested feminine-subject clauses",
+          "supersedes_gloss_en": "negative element in an attested feminine-subject present clause",
+          "supersedes_definition_contains": "She is not sleeping",
+          "definition_en": "Occurs in Nathi sume ('She won't sleep'); also recorded in an untranslated female-giver elicitation form. The sleep sentence has a speaker-confirmed future meaning, but this does not establish an exclusively future function for nathi.",
+          "note": "Do not assign the agreement controller or participant roles in hin ke au(n) pe(n)sa nathi dhya(n).",
+          "evidence_status": "attested_context"
+        }
+      ],
+      "usage_note": "A complete negative agreement paradigm has not been established.",
+      "linguistic_tags": [],
+      "source_keys": ["negation_article"]
+    },
+    {
+      "headword": "nathaa",
+      "action": "new",
+      "publication": "published",
+      "part_of_speech": null,
+      "glosses": [
+        {
+          "gloss_en": "negative element in an attested desire clause",
+          "definition_en": "Occurs with plural desired things in Mukhe hinee cheejeu(n) nathaa kape(n).",
+          "note": "The grammatical feature controlling nathaa has not been confirmed.",
+          "evidence_status": "attested_context"
+        }
+      ],
+      "usage_note": "Recorded with plural desired things; do not infer a universal plural-agreement rule.",
+      "linguistic_tags": [],
+      "source_keys": ["negation_article"]
+    },
+    {
+      "headword": "na",
+      "action": "existing",
+      "expected_existing_glosses": ["negative element in an attested past construction"],
+      "publication": "published",
+      "part_of_speech": null,
+      "glosses": [],
+      "usage_note": null,
+      "linguistic_tags": [],
+      "source_keys": ["negation_article"]
+    },
+    {
+      "headword": "nah",
+      "action": "existing",
+      "expected_existing_glosses": ["no"],
+      "publication": "published",
+      "part_of_speech": null,
+      "glosses": [
+        {
+          "gloss_en": "not; don't",
+          "definition_en": "Occurs before command forms in recorded prohibitions and before vendhose in a recorded future negative.",
+          "note": "The contexts do not justify classifying nah as exclusively imperative.",
+          "evidence_status": "attested_context"
+        }
+      ],
+      "usage_note": null,
+      "linguistic_tags": [],
+      "source_keys": ["negation_article"]
+    },
+    {
+      "headword": "nai",
+      "action": "existing",
+      "expected_existing_glosses": ["negative existential element in an attested expression"],
+      "publication": "published",
+      "part_of_speech": null,
+      "glosses": [
+        {
+          "gloss_en": "negative element in attested giving constructions",
+          "supersedes_definition_contains": "recorded past giving and permission",
+          "definition_en": "Occurs with dhine in the speaker-corrected 'hasn't given me money' and permission examples; nai also occurs in an untranslated negative-giving elicitation form.",
+          "note": "Preserve the existing no-food sense. Nai is not established as exclusively past or existential.",
+          "evidence_status": "attested_context"
+        }
+      ],
+      "usage_note": null,
+      "linguistic_tags": [],
+      "source_keys": ["negation_article"]
+    },
+    {
+      "headword": "mujo",
+      "action": "existing",
+      "expected_existing_glosses": ["mine"],
+      "publication": "published",
+      "part_of_speech": null,
+      "glosses": [
+        {
+          "gloss_en": "my",
+          "definition_en": "Recorded before bhaa in 'my brother' and before ghar in 'my house'.",
+          "note": "Do not remove the older 'mine' gloss.",
+          "evidence_status": "attested_context"
+        }
+      ],
+      "usage_note": null,
+      "linguistic_tags": [],
+      "source_keys": ["la_jo_article", "negation_article"]
+    },
+    {
+      "headword": "bhaa",
+      "action": "new",
+      "publication": "published",
+      "part_of_speech": "noun",
+      "glosses": [
+        {
+          "gloss_en": "brother",
+          "definition_en": "Brother in Hee mujo bhaa jo ghar ai ('This is my brother's house').",
+          "note": null,
+          "evidence_status": "attested_context"
+        }
+      ],
+      "usage_note": null,
+      "linguistic_tags": [],
+      "source_keys": ["la_jo_article"]
+    },
+    {
+      "headword": "khadho",
+      "action": "new",
+      "publication": "draft",
+      "part_of_speech": "noun",
+      "glosses": [
+        {
+          "gloss_en": "food",
+          "definition_en": "Recorded in khadho la ('for the food') and in negative food constructions.",
+          "note": "Exact speaker spelling is distinct from existing published khaadho. Whether the spellings denote one lexeme is unresolved.",
+          "evidence_status": "attested_context"
+        }
+      ],
+      "usage_note": "Held for review because published khaadho also means food; do not silently merge near spellings.",
+      "linguistic_tags": [],
+      "source_keys": ["la_jo_article", "negation_article"]
+    },
+    {
+      "headword": "khade",
+      "action": "new",
+      "publication": "draft",
+      "part_of_speech": null,
+      "glosses": [
+        {
+          "gloss_en": "food (in khade la)",
+          "definition_en": "Form referring to food in the speaker-accepted phrase khade la ('for the food').",
+          "note": "Whether khade is a separate headword, a form of khadho, or another relation remains unresolved.",
+          "evidence_status": "attested_context"
+        }
+      ],
+      "usage_note": "Held for review; do not infer a khadho-to-khade case alternation from the two acceptable phrases.",
+      "linguistic_tags": [],
+      "source_keys": ["la_jo_article"]
+    },
+    {
+      "headword": "de",
+      "action": "new",
+      "publication": "published",
+      "part_of_speech": "verb",
+      "glosses": [
+        {
+          "gloss_en": "give",
+          "definition_en": "Command form recorded as 'Give!'; the source also records giving forms dye, dhine, dhineese, dhya(n) and dhinose.",
+          "note": "The attested contexts do not establish a complete giving paradigm or feminine suffix analysis.",
+          "evidence_status": "attested_context"
+        }
+      ],
+      "usage_note": "Grouping the recorded giving forms under de for search is a provisional lemma analysis; unelicited forms must not be generated.",
+      "linguistic_tags": [],
+      "source_keys": ["la_jo_article", "negation_article"]
+    },
+    {
+      "headword": "raja",
+      "action": "new",
+      "publication": "draft",
+      "part_of_speech": "noun",
+      "glosses": [
+        {
+          "gloss_en": "permission; approval",
+          "definition_en": "Permission or approval in the speaker's father's-permission sentence.",
+          "note": "Exact raja is distinct from published rajaa ('approval'); do not normalize or merge without review. No 'king' meaning is supplied here.",
+          "evidence_status": "attested_context"
+        }
+      ],
+      "usage_note": "Held for review because of a near-spelling collision with published rajaa.",
+      "linguistic_tags": [],
+      "source_keys": ["negation_article"]
+    }
+  ],
+  "forms": [
+    {
+      "lemma": "de",
+      "written_form": "dye",
+      "source_key": "negation_article",
+      "evidence_status": "attested_form",
+      "tense": null,
+      "grammatical_person": null,
+      "grammatical_number": null,
+      "gender": null,
+      "note": "Occurs in Hee mukhe pe(n)sa natho dye, translated as a present negative. Do not assign an unconfirmed agreement feature to the giving form."
+    },
+    {
+      "lemma": "de",
+      "written_form": "dhine",
+      "source_key": "negation_article",
+      "evidence_status": "attested_form",
+      "tense": null,
+      "supersedes_tense": "past",
+      "supersedes_note_contains": "recorded past-negative giving",
+      "grammatical_person": null,
+      "grammatical_number": null,
+      "gender": null,
+      "note": "Occurs in the speaker-corrected 'hasn't given' sentence and the father's-permission sentence. Its own tense/aspect contribution is unresolved."
+    },
+    {
+      "lemma": "de",
+      "written_form": "dhineese",
+      "source_key": "negation_article",
+      "evidence_status": "elicited_form_unresolved_roles",
+      "tense": null,
+      "supersedes_tense": "past",
+      "supersedes_note_contains": "Past-negative female-giver elicitation",
+      "grammatical_person": null,
+      "grammatical_number": null,
+      "gender": null,
+      "note": "Female-giver elicitation in a past-negative context; the giving form's own tense/aspect, giver and recipient roles, agreement controller and full translation are unresolved."
+    },
+    {
+      "lemma": "de",
+      "written_form": "dhya(n)",
+      "source_key": "negation_article",
+      "evidence_status": "elicited_form_unresolved_roles",
+      "tense": null,
+      "supersedes_tense": "present",
+      "supersedes_note_contains": "Present-negative female-giver elicitation",
+      "grammatical_person": null,
+      "grammatical_number": null,
+      "gender": null,
+      "note": "Female-giver elicitation in a present-negative context; the giving form's own tense/aspect, giver and recipient roles, agreement controller and full translation are unresolved."
+    },
+    {
+      "lemma": "de",
+      "written_form": "dhinose",
+      "source_key": "la_jo_article",
+      "evidence_status": "attested_form",
+      "tense": null,
+      "supersedes_tense": "past",
+      "supersedes_note_contains": "Occurs in the food-and-money account translated",
+      "grammatical_person": null,
+      "grammatical_number": null,
+      "gender": null,
+      "note": "Occurs in the food-and-money account translated 'I gave a man food'; the giving form's own tense/aspect and agreement features are unresolved."
+    }
+  ],
+  "examples": [
+    {
+      "kutchi_text": "Hin la au(n) pe(n)sa kayose",
+      "english_translation": "I picked up money for him.",
+      "primary_headword": "la",
+      "primary_gloss_en": "for",
+      "linked_headwords": ["au(n)", "pe(n)sa", "kan"],
+      "source_key": "la_jo_article",
+      "evidence_status": "attested",
+      "note": "Beneficiary reading of Hin la in the speaker's paired translation; ownership of the money is not asserted."
+    },
+    {
+      "kutchi_text": "Hin jo pe(n)sa au(n) kayose",
+      "english_translation": "I picked up his money.",
+      "primary_headword": "jo",
+      "primary_gloss_en": "of; 's",
+      "linked_headwords": ["au(n)", "pe(n)sa", "kan"],
+      "source_key": "la_jo_article",
+      "evidence_status": "attested",
+      "note": "Possessive reading of spaced Hin jo; relationship to written Hinjo is untested."
+    },
+    {
+      "kutchi_text": "khadho la au(n) kana(n)tho",
+      "english_translation": "for the food, I am taking it.",
+      "primary_headword": "la",
+      "primary_gloss_en": "for",
+      "linked_headwords": ["khadho", "au(n)", "kan"],
+      "source_key": "la_jo_article",
+      "evidence_status": "attested",
+      "note": "Food-related 'for' reading; beneficiary, purpose, exchange and payment are not claimed interchangeable."
+    },
+    {
+      "kutchi_text": "Au(n) hikro maru ke khadho dhinose. Hoo maru mukhe pe(n)sa dhine, khade la.",
+      "english_translation": "I gave a man food. That man gave me money for the food.",
+      "primary_headword": "la",
+      "primary_gloss_en": "for",
+      "linked_headwords": ["au(n)", "hikro", "ke", "khadho", "khade", "hoo", "mukhe", "pe(n)sa", "de"],
+      "source_key": "la_jo_article",
+      "evidence_status": "attested",
+      "note": "Ke marks the food recipient in the first sentence; khade la is food-related in the second. The two sentences are kept together as supplied."
+    },
+    {
+      "kutchi_text": "Hee mujo bhaa jo ghar ai",
+      "english_translation": "This is my brother's house.",
+      "primary_headword": "jo",
+      "primary_gloss_en": "of; 's",
+      "linked_headwords": ["hee", "mujo", "bhaa", "ghar"],
+      "source_key": "la_jo_article",
+      "evidence_status": "attested",
+      "note": "Brother's house is a possessive construction; do not infer every function of jo from this example."
+    },
+    {
+      "kutchi_text": "Mujo ghar",
+      "english_translation": "My house.",
+      "primary_headword": "mujo",
+      "primary_gloss_en": "my",
+      "linked_headwords": ["ghar"],
+      "source_key": "la_jo_article",
+      "evidence_status": "attested",
+      "note": "Recorded possessive phrase; keep separate from the older 'mine' gloss."
+    },
+    {
+      "kutchi_text": "Hinjo ghar",
+      "english_translation": "His house.",
+      "primary_headword": "hinjo",
+      "primary_gloss_en": "his",
+      "linked_headwords": ["ghar"],
+      "source_key": "la_jo_article",
+      "evidence_status": "attested",
+      "note": "Written Hinjo is independently recorded; equivalence with spaced Hin jo remains untested."
+    },
+    {
+      "kutchi_text": "khadho la",
+      "english_translation": "for the food",
+      "primary_headword": "la",
+      "primary_gloss_en": "for",
+      "linked_headwords": ["khadho"],
+      "source_key": "la_jo_article",
+      "evidence_status": "attested",
+      "note": "Speaker-confirmed acceptable phrase. No obligatory khadho-to-khade rule."
+    },
+    {
+      "kutchi_text": "khade la",
+      "english_translation": "for the food",
+      "primary_headword": "la",
+      "primary_gloss_en": "for",
+      "linked_headwords": ["khade"],
+      "source_key": "la_jo_article",
+      "evidence_status": "attested",
+      "note": "Speaker-confirmed acceptable phrase; relationship of khade to khadho unresolved."
+    },
+    {
+      "kutchi_text": "Natho sume",
+      "english_translation": "He won't sleep.",
+      "supersedes_translation": "He is not sleeping.",
+      "primary_headword": "natho",
+      "primary_gloss_en": "negative form in attested constructions",
+      "linked_headwords": ["sum"],
+      "source_key": "negation_article",
+      "evidence_status": "attested",
+      "note": "Speaker correction in Negation in Mombasa Kutchi: Forms and constructions (21 October 2026): future-meaning sleep clause, not present progressive. The lexical verb sume stays unchanged in the paired Nathi sume sentence; a full negative paradigm is unproven."
+    },
+    {
+      "kutchi_text": "Nathi sume",
+      "english_translation": "She won't sleep.",
+      "supersedes_translation": "She is not sleeping.",
+      "primary_headword": "nathi",
+      "primary_gloss_en": "negative element in attested feminine-subject clauses",
+      "linked_headwords": ["sum"],
+      "source_key": "negation_article",
+      "evidence_status": "attested",
+      "note": "Speaker correction in Negation in Mombasa Kutchi: Forms and constructions (21 October 2026): future-meaning sleep clause, not present progressive. Feminine-subject reading; do not infer a full agreement paradigm."
+    },
+    {
+      "kutchi_text": "Hee mukhe pe(n)sa natho dye",
+      "english_translation": "He doesn't give me money.",
+      "primary_headword": "natho",
+      "primary_gloss_en": "negative form in attested constructions",
+      "linked_headwords": ["mukhe", "pe(n)sa", "de"],
+      "source_key": "negation_article",
+      "evidence_status": "attested",
+      "note": "Recorded present negative. Both the negative element and giving form differ from the other money sentence, which the speaker translates 'hasn't given'."
+    },
+    {
+      "kutchi_text": "Hee mukhe pe(n)sa nai dhine",
+      "english_translation": "He hasn't given me money.",
+      "supersedes_translation": "He didn't give me money.",
+      "primary_headword": "nai",
+      "primary_gloss_en": "negative element in attested giving constructions",
+      "linked_headwords": ["mukhe", "pe(n)sa", "de"],
+      "source_key": "negation_article",
+      "evidence_status": "attested",
+      "note": "Speaker correction in Negation in Mombasa Kutchi: Forms and constructions (21 October 2026): 'hasn't given', not English simple past. The form responsible for completion/current relevance is unresolved; nai is not exclusively past."
+    },
+    {
+      "kutchi_text": "Paa(n) kaal na oosyasee",
+      "english_translation": "We did not go yesterday.",
+      "primary_headword": "na",
+      "primary_gloss_en": "negative element in an attested past construction",
+      "linked_headwords": ["paa(n)", "kaal", "vin"],
+      "source_key": "negation_article",
+      "evidence_status": "attested",
+      "note": "Na is attested in this past construction; other distributions are not ruled out."
+    },
+    {
+      "kutchi_text": "Nah sum!",
+      "english_translation": "Don't sleep!",
+      "primary_headword": "nah",
+      "primary_gloss_en": "not; don't",
+      "linked_headwords": ["sum"],
+      "source_key": "negation_article",
+      "evidence_status": "attested",
+      "note": "Recorded negative command; nah also occurs in a future negative."
+    },
+    {
+      "kutchi_text": "Nah vin",
+      "english_translation": "Don't go!",
+      "primary_headword": "nah",
+      "primary_gloss_en": "not; don't",
+      "linked_headwords": ["vin"],
+      "source_key": "negation_article",
+      "evidence_status": "attested",
+      "note": "Recorded negative command; nah is not exclusively imperative."
+    },
+    {
+      "kutchi_text": "Nah kar",
+      "english_translation": "Don't do it!",
+      "primary_headword": "nah",
+      "primary_gloss_en": "not; don't",
+      "linked_headwords": ["kar"],
+      "source_key": "negation_article",
+      "evidence_status": "attested",
+      "note": "Recorded negative command; nah is not exclusively imperative."
+    },
+    {
+      "kutchi_text": "Nah vendhose",
+      "english_translation": "I will not go.",
+      "primary_headword": "nah",
+      "primary_gloss_en": "not; don't",
+      "linked_headwords": ["vin"],
+      "source_key": "negation_article",
+      "evidence_status": "attested",
+      "note": "Previously recorded future-negative context, which prevents an exclusively imperative analysis of nah."
+    },
+    {
+      "kutchi_text": "Mukhe kheno ai, pun khadho nai",
+      "english_translation": "I want to eat, but there is no food.",
+      "primary_headword": "nai",
+      "primary_gloss_en": "negative existential element in an attested expression",
+      "linked_headwords": ["mukhe", "khadho"],
+      "source_key": "negation_article",
+      "evidence_status": "attested",
+      "note": "No-food use; nai is not exclusively past."
+    },
+    {
+      "kutchi_text": "Natho kanaa(n) se mujo bapa mukhe raja nai dhine",
+      "english_translation": "I am not taking it because my father has not allowed me to do so.",
+      "primary_headword": "nai",
+      "primary_gloss_en": "negative element in attested giving constructions",
+      "linked_headwords": ["natho", "kan", "se", "mujo", "bapa", "mukhe", "raja", "de"],
+      "source_key": "negation_article",
+      "evidence_status": "attested",
+      "note": "Main clause has natho; reason clause has nai dhine. Raja means permission/approval here, not king."
+    },
+    {
+      "kutchi_text": "paani mukhe natho kape",
+      "english_translation": "I don't want water.",
+      "primary_headword": "natho",
+      "primary_gloss_en": "negative form in attested constructions",
+      "linked_headwords": ["paani", "mukhe"],
+      "source_key": "negation_article",
+      "evidence_status": "attested",
+      "note": "Desire construction with singular desired water; no general word-order rule inferred."
+    },
+    {
+      "kutchi_text": "paani hin ke natho kape",
+      "english_translation": "He doesn't want water.",
+      "primary_headword": "natho",
+      "primary_gloss_en": "negative form in attested constructions",
+      "linked_headwords": ["paani", "ke"],
+      "source_key": "negation_article",
+      "evidence_status": "attested",
+      "note": "Negative desire construction; grammatical controller of natho is not established from this sentence alone."
+    },
+    {
+      "kutchi_text": "Mukhe hinee cheejeu(n) nathaa kape(n)",
+      "english_translation": "I don't want these things.",
+      "primary_headword": "nathaa",
+      "primary_gloss_en": "negative element in an attested desire clause",
+      "linked_headwords": ["mukhe", "cheej"],
+      "source_key": "negation_article",
+      "evidence_status": "attested",
+      "note": "Plural desired things occur with nathaa; the agreement controller has not been demonstrated."
+    },
+    {
+      "kutchi_text": "Hin ke au(n) pe(n)sa nai dhineese",
+      "english_translation": null,
+      "primary_headword": "nai",
+      "primary_gloss_en": "negative element in attested giving constructions",
+      "linked_headwords": ["ke", "au(n)", "pe(n)sa", "de"],
+      "source_key": "negation_article",
+      "evidence_status": "elicitation_unresolved",
+      "note": "Past-negative form supplied to a female-giver prompt. Full English translation, giver/recipient roles and agreement controller have not been independently confirmed."
+    },
+    {
+      "kutchi_text": "hin ke au(n) pe(n)sa nathi dhya(n)",
+      "english_translation": null,
+      "primary_headword": "nathi",
+      "primary_gloss_en": "negative element in attested feminine-subject clauses",
+      "linked_headwords": ["ke", "au(n)", "pe(n)sa", "de"],
+      "source_key": "negation_article",
+      "evidence_status": "elicitation_unresolved",
+      "note": "Present-negative form supplied to a female-giver prompt. Full English translation, giver/recipient roles and agreement controller have not been independently confirmed."
+    }
+  ],
+  "review_notes": [
+    "The paired la/jo examples differ in phrase order; they do not establish a simple particle-swap test or general interchangeability.",
+    "Keep spaced Hin jo and written Hinjo distinct until a speaker confirms their relationship.",
+    "The added possessive jo and attributive mujo senses describe the recorded contexts; whether they are polysemy or separate homographs relative to older glosses remains to be reviewed.",
+    "Hin in the new paired translations refers to him/a possessor, while an existing published hin has a 'this' gloss. Do not attach a new sense or assert a homograph relationship before speaker review.",
+    "Existing ai is a draft with provisional copula analysis; do not link it from the recorded sentences until its relationship to the surface ai is confirmed.",
+    "Keep exact khadho and raja separate from existing khaadho and rajaa; these new entries are drafts for near-spelling review. Keep khade as a distinct draft until its relationship to khadho is confirmed.",
+    "Do not create independent headwords for dye, dhine, dhineese, dhya(n), dhinose or kayose. The attested giving forms are recorded under de; kayose is already recorded under kan.",
+    "Kapetho and kape(n) appear in cited desire examples, but a citation lemma and their distribution have not been established; do not generate a paradigm or new headwords from them.",
+    "Natho/nathi/nathaa are not a complete agreement paradigm; the feminine elicitation pair does not independently establish who gives or receives.",
+    "The speaker corrected Natho sume and Nathi sume to future-meaning English, and nai dhine to 'hasn't given'; prior English translations are superseded and retained only in revision history. Nai is also attested in a no-food context; nah is attested in commands and a future negative. None has an exclusive tense or sentence-type classification."
+  ]
+}

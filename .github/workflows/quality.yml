@@ -15,6 +15,10 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -p 'test_kutchi_*_import.py'
       - run: npm ci
       - run: npm run lint
       - run: npm run typecheck
@@ -54,6 +58,7 @@ jobs:
       - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610210001_dictionary_attestations.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610210002_dictionary_example_provenance.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610210003_published_example_sources.sql
+      - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610210004_dictionary_crosslink_update_guard.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/foundation.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/public_family.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/dictionary_entry.sql
