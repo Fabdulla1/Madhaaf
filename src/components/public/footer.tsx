@@ -13,7 +13,9 @@ export function PublicFooter() {
           </p>
         </div>
         <nav aria-label="Footer navigation">
+          <Link href="/language">Language</Link>
           <Link href="/dictionary">Dictionary</Link>
+          <Link href="/language/grammar">Grammar</Link>
           <Link href="/orthography">Writing guide</Link>
           <Link href="/history">History &amp; culture</Link>
           <Link href="/family">Family space</Link>

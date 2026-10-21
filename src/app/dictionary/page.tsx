@@ -26,6 +26,11 @@ export default async function DictionaryPage({
   return (
     <PublicShell>
       <div className="page-width interior-page">
+        <nav className="breadcrumbs" aria-label="Breadcrumb">
+          <Link href="/">Home</Link><span aria-hidden="true">/</span>
+          <Link href="/language">Language</Link><span aria-hidden="true">/</span>
+          <span aria-current="page">Dictionary</span>
+        </nav>
         <div className="page-intro">
           <p className="eyebrow">Language / Dictionary</p>
           <h1>Words to carry forward.</h1>
@@ -67,6 +72,9 @@ export default async function DictionaryPage({
             </p>
             <Link className="text-link" href="/orthography">
               Read the orthography guide <span aria-hidden="true">↗</span>
+            </Link>
+          <Link className="text-link" href="/language/grammar">
+              Explore Kutchi grammar <span aria-hidden="true">↗</span>
             </Link>
           </aside>
         </div>

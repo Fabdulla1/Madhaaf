@@ -87,8 +87,8 @@ export default function Home() {
                 guide that helps preserve how they are spoken.
               </p>
               <div className="home-chapter__links">
-                <Link className="text-link" href="/dictionary">Enter the dictionary <span aria-hidden="true">↗</span></Link>
-                <Link className="text-link" href="/orthography">Read the writing guide <span aria-hidden="true">↗</span></Link>
+                <Link className="text-link" href="/language">Explore the language <span aria-hidden="true">↗</span></Link>
+                <Link className="text-link" href="/language/grammar">Discover the grammar <span aria-hidden="true">↗</span></Link>
               </div>
             </div>
             <div className="home-chapter__art home-chapter__art--language" aria-hidden="true">

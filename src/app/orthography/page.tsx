@@ -14,7 +14,7 @@ export default function OrthographyPage() {
       <div className="page-width interior-page">
         <nav className="breadcrumbs" aria-label="Breadcrumb">
           <Link href="/">Home</Link><span aria-hidden="true">/</span>
-          <Link href="/dictionary">Dictionary</Link>
+          <Link href="/language">Language</Link>
         </nav>
         <div className="page-intro">
           <p className="eyebrow">Language / Writing</p>
