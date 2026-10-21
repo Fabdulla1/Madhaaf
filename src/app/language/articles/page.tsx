@@ -3,7 +3,7 @@ import { ResearchIndex } from "@/components/public/language-research";
 
 export const metadata: Metadata = {
   title: "Language research articles",
-  description: "Five illustrated, evidence-led research articles on Mombasa East African Kutchi grammar.",
+  description: "Illustrated, speaker-led research articles on the grammar of East African Mombasa Kutchi, including case marking, possession, and negation.",
   alternates: { canonical: "/language/articles" },
 };
 
