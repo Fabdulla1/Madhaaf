@@ -77,9 +77,12 @@ begin
      (select count(*) from public.app_users) <> 0 then
     raise exception 'Viewer can read private rows';
   end if;
-  update public.app_users set role = 'admin'
-    where user_id = 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb';
-  get diagnostics affected = row_count;
+  begin
+    update public.app_users set role = 'admin'
+      where user_id = 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb';
+    get diagnostics affected = row_count;
+  exception when insufficient_privilege then affected := 0;
+  end;
   if affected <> 0 or public.is_admin() then raise exception 'Viewer promoted themselves'; end if;
   update public.family_tree_publication set enabled = false where singleton;
   get diagnostics affected = row_count;
@@ -104,6 +107,22 @@ begin
   result := public.get_public_family_tree();
   if jsonb_array_length(result->'members') <> 1 then
     raise exception 'Admin call to public projection changed its privacy rules';
+  end if;
+end $$;
+
+reset role;
+update public.app_users set must_change_password = true
+  where user_id = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa';
+set local role authenticated;
+select set_config('request.jwt.claim.sub', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', true);
+do $$
+begin
+  if public.is_admin() then raise exception 'Temporary-password account has editorial access'; end if;
+  if (select count(*) from public.family_members) <> 0 then
+    raise exception 'Temporary-password account can read private records';
+  end if;
+  if (select count(*) from public.app_users where user_id = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa') <> 1 then
+    raise exception 'Temporary-password account cannot read its setup flag';
   end if;
 end $$;
 

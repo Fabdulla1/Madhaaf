@@ -5,83 +5,55 @@ import { expect, test } from "@playwright/test";
 
 loadEnvConfig(process.cwd());
 
-test("administrator can create, rename, readdress, and reset another administrator", async ({ page }) => {
-  test.skip(!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SECRET_KEY, "Requires a configured Supabase project");
+test("a new administrator changes their temporary password and cannot manage users", async ({ page }) => {
+  test.skip(process.env.MADHAAF_E2E_STAGING !== "1" || !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SECRET_KEY,
+    "Account writes are allowed only against an explicitly configured staging project");
   test.setTimeout(120_000);
 
   const manager = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SECRET_KEY!, {
     auth: { persistSession: false, autoRefreshToken: false },
   });
-  const suffix = randomBytes(8).toString("hex");
-  const firstEmail = `kutchi-e2e-owner-${suffix}@example.com`;
-  const secondEmail = `kutchi-e2e-editor-${suffix}@example.com`;
-  const changedEmail = `kutchi-e2e-renamed-${suffix}@example.com`;
-  const firstPassword = `First-${randomBytes(20).toString("hex")}`;
-  const secondPassword = `Second-${randomBytes(20).toString("hex")}`;
-  const changedPassword = `Changed-${randomBytes(20).toString("hex")}`;
-  const userIds: string[] = [];
+  const email = `kutchi-e2e-editor-${randomBytes(8).toString("hex")}@example.com`;
+  const temporaryPassword = `Temporary-${randomBytes(20).toString("hex")}`;
+  const ownPassword = `Personal-${randomBytes(20).toString("hex")}`;
+  let userId: string | undefined;
 
   try {
-    const { data: initial, error: createError } = await manager.auth.admin.createUser({
-      email: firstEmail, password: firstPassword, email_confirm: true,
-      user_metadata: { display_name: "Temporary test owner" },
+    const { data, error: createError } = await manager.auth.admin.createUser({
+      email, password: temporaryPassword, email_confirm: true,
+      user_metadata: { display_name: "Temporary editor" },
     });
     expect(createError).toBeNull();
-    expect(initial.user).toBeTruthy();
-    userIds.push(initial.user!.id);
-    const { error: roleError } = await manager.from("app_users").insert({ user_id: initial.user!.id, role: "admin" });
+    userId = data.user!.id;
+    const { error: roleError } = await manager.from("app_users").insert({
+      user_id: userId, role: "admin", must_change_password: true,
+    });
     expect(roleError).toBeNull();
 
     await page.goto("/login");
-    await page.getByLabel("Email address").fill(firstEmail);
-    await page.locator("#password").fill(firstPassword);
+    await page.getByLabel("Email address").fill(email);
+    await page.locator("#password").fill(temporaryPassword);
     await page.getByRole("button", { name: "Sign in" }).click();
-    await expect(page).toHaveURL(/\/admin$/);
+    await expect(page).toHaveURL(/\/admin\/account\/setup$/);
     await page.goto("/admin/users");
-    await expect(page.getByRole("heading", { name: "Users", exact: true })).toBeVisible();
-
-    const createForm = page.locator("form").filter({ has: page.getByRole("heading", { name: "Add administrator" }) });
-    await createForm.getByLabel("Display name").fill("Temporary test editor");
-    await createForm.getByLabel("Sign-in email").fill(secondEmail);
-    await createForm.getByLabel("Temporary password").fill(secondPassword);
-    await createForm.getByRole("button", { name: "Create user" }).click();
-    await expect(page.getByText("Administrator created.", { exact: false })).toBeVisible();
-
-    const { data: found } = await manager.auth.admin.listUsers({ page: 1, perPage: 100 });
-    const second = found.users.find(user => user.email === secondEmail);
-    expect(second).toBeTruthy();
-    userIds.push(second!.id);
-    const editor = page.locator("form").filter({ has: page.getByRole("heading", { name: "Temporary test editor" }) });
-    await editor.getByLabel("Display name").fill("Renamed test editor");
-    await editor.getByLabel("Sign-in email").fill(changedEmail);
-    await editor.getByLabel("New password, if changing").fill(changedPassword);
-    await editor.getByRole("button", { name: "Save user" }).click();
-    await expect(page.getByRole("heading", { name: "Renamed test editor" })).toBeVisible();
-
-    await page.getByRole("button", { name: "Sign out" }).click();
-    await expect(page).toHaveURL(/\/login$/);
-    await page.goto("/login");
-    await page.getByLabel("Email address").fill(changedEmail);
-    await page.locator("#password").fill(changedPassword);
-    await page.getByRole("button", { name: "Sign in" }).click();
+    await expect(page).toHaveURL(/\/admin\/account\/setup$/);
+    await page.getByLabel("Temporary password").fill(temporaryPassword);
+    await page.getByLabel("New password", { exact: true }).fill(ownPassword);
+    await page.getByLabel("Confirm new password").fill(ownPassword);
+    await page.getByRole("button", { name: "Save password and continue" }).click();
     await expect(page).toHaveURL(/\/admin$/);
+    await expect(page.getByRole("link", { name: "Users" })).toHaveCount(0);
 
-    const selfChangedPassword = `Self-${randomBytes(20).toString("hex")}`;
+    const result = await page.evaluate(async () => {
+      const response = await fetch("/api/admin/users");
+      return { status: response.status, body: await response.json() };
+    });
+    expect(result.status).toBe(403);
+    await page.goto("/admin/users");
+    await expect(page.getByRole("heading", { name: "Users", exact: true })).toHaveCount(0);
     await page.goto("/admin/settings");
-    await page.getByLabel("New password", { exact: true }).fill(selfChangedPassword);
-    await page.getByRole("button", { name: "Update password" }).click();
-    await expect(page.getByText("Password updated.")).toBeVisible();
-    await page.getByRole("button", { name: "Sign out" }).click();
-    await page.goto("/login");
-    await page.getByLabel("Email address").fill(changedEmail);
-    await page.locator("#password").fill(selfChangedPassword);
-    await page.getByRole("button", { name: "Sign in" }).click();
-    await expect(page).toHaveURL(/\/admin$/);
+    await expect(page.getByRole("heading", { name: "Your account" })).toBeVisible();
   } finally {
-    const { data: remaining } = await manager.auth.admin.listUsers({ page: 1, perPage: 100 });
-    for (const user of remaining.users.filter(user => user.email?.includes(suffix))) {
-      if (!userIds.includes(user.id)) userIds.push(user.id);
-    }
-    for (const id of userIds.reverse()) await manager.auth.admin.deleteUser(id);
+    if (userId) await manager.auth.admin.deleteUser(userId);
   }
 });

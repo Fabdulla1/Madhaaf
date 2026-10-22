@@ -27,7 +27,7 @@ export default function LoginPage() {
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || "We could not complete your request.");
       if (resetMode) setMessage("If this account can receive reset email, instructions are on their way.");
-      else { router.push("/admin"); router.refresh(); }
+      else { router.push(result.data?.must_change_password ? "/admin/account/setup" : "/admin"); router.refresh(); }
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Please try again.");
     } finally { setBusy(false); }

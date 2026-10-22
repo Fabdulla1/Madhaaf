@@ -1,20 +1,7 @@
-"use client";
+import { requireAdminPage } from "@/lib/server/auth";
+import AdminOverview from "@/components/admin/overview-page";
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { ArrowUpRight, BookOpen, Network, ScrollText } from "lucide-react";
-
-type Overview = {counts:{table:string;status:string;count:number}[];recent:{table:string;records:{id:string;updated_at:string;status:string}[]}[];activity:{id:number;table_name:string;operation:string;occurred_at:string}[]};
-const tableNames: Record<string,string> = {family_members:"Family members",lexemes:"Dictionary entries",articles:"Articles"};
-
-export default function AdminOverview() {
-  const [data,setData]=useState<Overview|null>(null);
-  const [error,setError]=useState("");
-  useEffect(()=>{fetch("/api/admin/overview").then(async r=>{const j=await r.json();if(!r.ok)throw Error(j.error||"Overview unavailable");setData(j.data)}).catch(e=>setError(e.message))},[]);
-  const total=(status:string)=>data?.counts.filter(c=>c.status===status).reduce((n,c)=>n+c.count,0) ?? 0;
-  return <><div className="flex flex-wrap items-end justify-between gap-4"><div><p className="text-xs font-bold uppercase tracking-[.2em] text-[#9a533e]">Editorial workspace</p><h1 className="mt-2 font-serif text-4xl sm:text-5xl">Overview</h1><p className="mt-3 text-[#4f625f]">Manage records, evidence, and publication in one place.</p></div><Link href="/family/tree" className="inline-flex items-center gap-2 border-b border-current pb-1 font-semibold">Explore private tree <ArrowUpRight size={17}/></Link></div>
-  <div className="mt-9 grid gap-3 sm:grid-cols-3">{["draft","review","published"].map(status=><div key={status} className="border border-[#d8d3c8] bg-[#fffcf6] p-5"><p className="text-sm font-semibold capitalize text-[#4f625f]">{status === "review" ? "Pending review" : status}</p><p className="mt-3 font-serif text-4xl">{data ? total(status) : "—"}</p><p className="mt-2 text-xs text-[#66736c]">Across people, words, and articles</p></div>)}</div>
-  {error && <p role="alert" className="mt-6 rounded border border-[#9a2e2e] p-4 text-[#9a2e2e]">{error}</p>}
-  <div className="mt-12 grid gap-10 xl:grid-cols-[1.35fr_1fr]"><section><h2 className="font-serif text-3xl">Start an entry</h2><p className="mt-2 text-[#4f625f]">New records begin as drafts until you publish them.</p><div className="mt-5 grid gap-3 sm:grid-cols-3">{[{href:"/admin/family-members/new",label:"Add a person",icon:Network},{href:"/admin/dictionary/new",label:"Add a word",icon:BookOpen},{href:"/admin/history/new",label:"Write a story",icon:ScrollText}].map(({href,label,icon:Icon})=><Link key={href} href={href} className="group flex min-h-36 flex-col justify-between border border-[#b8c5bd] bg-[#e8eee6] p-5 hover:bg-[#dce8df]"><Icon size={23}/><span className="flex items-center justify-between font-semibold">{label}<ArrowUpRight size={17}/></span></Link>)}</div><h2 className="mt-12 font-serif text-3xl">Recent edits</h2>{data && data.recent.every(g=>g.records.length===0) ? <p className="mt-4 border-t border-[#d8d3c8] py-6 text-[#4f625f]">No entries have been edited yet.</p> : <div className="mt-4 divide-y divide-[#d8d3c8] border-t border-[#d8d3c8]">{data?.recent.flatMap(g=>g.records.map(row=><div key={g.table+row.id} className="flex flex-wrap justify-between gap-2 py-3 text-sm"><span>{tableNames[g.table]}</span><span className="capitalize text-[#4f625f]">{row.status}</span><time className="text-[#4f625f]">{new Date(row.updated_at).toLocaleDateString()}</time></div>))}</div>}</section>
-  <section><h2 className="font-serif text-3xl">Administrative activity</h2><p className="mt-2 text-[#4f625f]">Recorded changes to the archive.</p><div className="mt-5 divide-y divide-[#d8d3c8] border-t border-[#d8d3c8]">{data?.activity.length ? data.activity.slice(0,10).map(row=><div key={row.id} className="flex justify-between gap-4 py-3 text-sm"><span className="capitalize">{row.operation.toLowerCase()} · {tableNames[row.table_name] ?? row.table_name.replaceAll("_"," ")}</span><time className="shrink-0 text-[#4f625f]">{new Date(row.occurred_at).toLocaleDateString()}</time></div>) : <p className="py-6 text-[#4f625f]">No changes recorded yet.</p>}</div></section></div></>;
+export default async function AdminPage() {
+  await requireAdminPage();
+  return <AdminOverview />;
 }

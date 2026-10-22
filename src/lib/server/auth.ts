@@ -9,7 +9,15 @@ export async function getAdminSession() {
 
 export async function requireAdminPage() {
   await connection()
-  const session = await getAdmin()
+  const session = await getAdmin({ allowPasswordChange: true })
+  if (!session) redirect('/login')
+  if (session.mustChangePassword) redirect('/admin/account/setup')
+  return session
+}
+
+export async function requireAdminLayout() {
+  await connection()
+  const session = await getAdmin({ allowPasswordChange: true })
   if (!session) redirect('/login')
   return session
 }

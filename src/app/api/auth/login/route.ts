@@ -11,11 +11,11 @@ export async function POST(request: Request) {
     const db = await createSessionClient()
     const { data, error: authError } = await db.auth.signInWithPassword({ email, password })
     if (authError || !data.user) return error('Invalid email or password', 401)
-    const { data: account } = await db.from('app_users').select('role').eq('user_id', data.user.id).eq('role', 'admin').maybeSingle()
+    const { data: account } = await db.from('app_users').select('role,is_founder,must_change_password').eq('user_id', data.user.id).eq('role', 'admin').maybeSingle()
     if (!account) {
       await db.auth.signOut()
       return error('This account is not authorized to administer the site', 403)
     }
-    return json({ user: { id: data.user.id, email: data.user.email }, role: 'admin' })
+    return json({ user: { id: data.user.id, email: data.user.email }, role: 'admin', is_founder: account.is_founder, must_change_password: account.must_change_password })
   } catch (cause) { return requestError(cause) }
 }

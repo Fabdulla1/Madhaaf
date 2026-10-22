@@ -11,14 +11,16 @@ const updateUser = z.object({
 
 export async function PATCH(request: Request, context: { params: Promise<{ id: string }> }) {
   if (!sameOrigin(request)) return error('Invalid request origin', 403)
-  if (!await getAdmin()) return error('Unauthorized', 401)
+  const session = await getAdmin()
+  if (!session) return error('Unauthorized', 401)
+  if (!session.isFounder) return error('Founder access required', 403)
   try {
     const { id } = await context.params
     if (!z.uuid().safeParse(id).success) return error('Not found', 404)
     const input = await parseJson(request, updateUser)
     const manager = createAuthAdminClient()
     const { data: account, error: accountError } = await manager.from('app_users')
-      .select('user_id').eq('user_id', id).eq('role', 'admin').maybeSingle()
+      .select('user_id,is_founder,must_change_password').eq('user_id', id).eq('role', 'admin').maybeSingle()
     if (accountError || !account) return error('User not found', 404)
     const { data: current, error: currentError } = await manager.auth.admin.getUserById(id)
     if (currentError || !current.user) return error('User not found', 404)
@@ -38,11 +40,17 @@ export async function PATCH(request: Request, context: { params: Promise<{ id: s
     if (input.password !== undefined) attributes.password = input.password
     const { data: updated, error: updateError } = await manager.auth.admin.updateUserById(id, attributes)
     if (updateError || !updated.user) return error('Could not update user. Check the address and password policy.', 400)
+    if (input.password !== undefined && id !== session.user.id) {
+      const { error: flagError } = await manager.from('app_users').update({ must_change_password: true }).eq('user_id', id)
+      if (flagError) return error('Password changed, but first-login requirement could not be set', 500)
+    }
     return Response.json({ data: {
       id: updated.user.id,
       email: updated.user.email || '',
       display_name: updated.user.user_metadata?.display_name || '',
       role: 'admin',
+      must_change_password: input.password !== undefined && id !== session.user.id ? true : account.must_change_password,
+      is_founder: account.is_founder,
     } }, { headers: { 'Cache-Control': 'private, no-store' } })
   } catch (cause) {
     return requestError(cause)

@@ -49,7 +49,7 @@ export function createServiceClient() {
   })
 }
 
-export async function getAdmin() {
+export async function getAdmin(options: { allowPasswordChange?: boolean } = {}) {
   // Accessing request cookies before optional configuration prevents admin
   // routes from being prerendered as a cached 401 during an unconfigured build.
   await cookies()
@@ -59,6 +59,7 @@ export async function getAdmin() {
   const { data: { user }, error } = await supabase.auth.getUser()
   if (error || !user) return null
   const { data: account } = await supabase.from('app_users')
-    .select('role').eq('user_id', user.id).eq('role', 'admin').maybeSingle()
-  return account ? { supabase, user } : null
+    .select('role,is_founder,must_change_password').eq('user_id', user.id).eq('role', 'admin').maybeSingle()
+  if (!account || (account.must_change_password && !options.allowPasswordChange)) return null
+  return { supabase, user, isFounder: account.is_founder, mustChangePassword: account.must_change_password }
 }
