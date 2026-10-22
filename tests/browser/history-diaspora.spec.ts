@@ -59,7 +59,9 @@ test("references resolve, image files load and layouts fit mobile and desktop", 
   for (const width of [1440, 768, 375]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto(articlePath);
-    await expect(page.locator("#sources li")).toHaveCount(24);
+    await expect(page.locator("#sources li")).toHaveCount(33);
+    await expect(page.locator("#before-protectorate")).toContainText("January 1857");
+    await expect(page.locator("#ethiopian-connections")).toContainText("three years, not one year's trade");
     const invalidAnchors = await page.locator('.diaspora-study a[href^="#"]').evaluateAll((links) => links
       .map((link) => link.getAttribute("href")!.slice(1)).filter((id) => !document.getElementById(id)));
     expect(invalidAnchors).toEqual([]);
@@ -83,7 +85,7 @@ test("article and complete map transcript remain readable without JavaScript", a
   const page = await context.newPage();
   await page.goto(articlePath);
   await expect(page.getByRole("heading", { level: 1, name: title })).toBeVisible();
-  await expect(page.locator("#sources li")).toHaveCount(24);
+  await expect(page.locator("#sources li")).toHaveCount(33);
   await page.getByText("Read all map connections as text", { exact: true }).click();
   await expect(page.locator(".diaspora-transcript")).toContainText("Kenya to Britain");
   await context.close();
