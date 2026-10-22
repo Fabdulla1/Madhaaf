@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { diasporaStudy, diasporaSections, diasporaSources, diasporaEvidence } from "@/lib/history-diaspora";
+import { diasporaStudy, diasporaSections, diasporaSources, diasporaEvidence, diasporaBohraResidents, diasporaArchiveCoverage } from "@/lib/history-diaspora";
 import { diasporaMapStages } from "@/lib/diaspora-map";
 import { DiasporaMap } from "./diaspora-map";
 
@@ -74,7 +74,7 @@ export function DiasporaHistoryArticle() {
 
       <div className="page-width diaspora-reading-layout">
         <aside className="diaspora-contents">
-          <nav aria-label="Article contents"><p className="eyebrow">In this study</p><ol>{diasporaSections.map((section) => <li key={section.id}><a href={`#${section.id}`}>{section.title.replace(/^\d+\. /, "")}</a></li>)}<li><a href="#sources">Sources and evidence</a></li></ol></nav>
+          <nav aria-label="Article contents"><p className="eyebrow">In this study</p><ol>{diasporaSections.map((section) => <li key={section.id}><a href={`#${section.id}`}>{section.title.replace(/^\d+\. /, "")}</a></li>)}<li><a href="#archive-coverage">Archival coverage</a></li><li><a href="#sources">Sources and evidence</a></li></ol></nav>
         </aside>
         <div className="diaspora-reading">
           <section className="diaspora-abstract" aria-labelledby="diaspora-abstract-title"><h2 id="diaspora-abstract-title">Abstract</h2><p>{diasporaStudy.abstract}</p><p className="diaspora-keywords"><strong>Keywords:</strong> Kutch, Kutchi diaspora, Mombasa, Kenya, Ethiopia, Zanzibar, Indian Ocean, migration</p></section>
@@ -90,11 +90,30 @@ export function DiasporaHistoryArticle() {
               {section.paragraphs.map((paragraph, p) => <p key={p}>{paragraph.text}<Citations refs={paragraph.refs} /></p>)}
               {section.image && <HistoricalFigure kind={section.image} />}
               {index === 2 && <>
+                <div className="diaspora-evidence" aria-labelledby="bohra-residents-title">
+                  <h3 id="bohra-residents-title">Recorded Bohra residents, 1870<Citations refs={[36]} /></h3>
+                  <div className="diaspora-table-scroll" role="region" aria-label="Bohra population table; scroll horizontally on small screens" tabIndex={0}>
+                    <table>
+                      <caption>Selected coastal entries from the 1870 Zanzibar Agency statistics, reproduced in Saldanha (1906), p. 15.</caption>
+                      <thead><tr><th scope="col">Place</th><th scope="col">Adult men</th><th scope="col">Adult women</th><th scope="col">Children</th><th scope="col">Total</th><th scope="col">Houses</th></tr></thead>
+                      <tbody>{diasporaBohraResidents.map((row) => <tr key={row.place}><th scope="row">{row.place}</th><td>{row.men}</td><td>{row.women}</td><td>{row.children}</td><td>{row.total}</td><td>{row.houses}</td></tr>)}</tbody>
+                    </table>
+                  </div>
+                  <p>The table records a religious community. It does not supply a Kutchi population count. Houses retain the source&apos;s meaning and are not counted as families.</p>
+                </div>
                 <DiasporaMap />
                 <details className="diaspora-transcript"><summary>Read all map connections as text</summary>{diasporaMapStages.map((stage) => <section key={stage.title}><h3>{stage.period}: {stage.title}</h3><p>{stage.description}</p><ul>{stage.routes.map((route) => <li key={route.label}><strong>{route.label}.</strong> {route.note}<Citations refs={route.refs} /></li>)}</ul></section>)}</details>
               </>}
             </section>
           ))}
+          <section className="diaspora-section" id="archive-coverage" aria-labelledby="archive-coverage-title">
+            <h2 id="archive-coverage-title">Archival coverage and remaining work</h2>
+            <p>This investigation draws on publicly retrievable records checked on 22 October 2026. The register below distinguishes material inspected from holdings that need further retrieval. It does not claim a complete inventory of surviving evidence.</p>
+            <details className="diaspora-transcript">
+              <summary>Read the search coverage and outstanding records</summary>
+              {diasporaArchiveCoverage.map((area) => <section key={area.area}><h3>{area.area}</h3><p>{area.inspected}</p><p>{area.further}</p></section>)}
+            </details>
+          </section>
           <section className="diaspora-bibliography" id="sources" aria-labelledby="sources-title">
             <p className="eyebrow">References / Evidence register</p><h2 id="sources-title">Sources and evidence</h2>
             <p>Numbered references connect the text and map to the material consulted. Access checked 22 October 2026. Access limits are recorded individually. These sources differ in purpose and scope; their categories and claims need to be read in that context.</p>

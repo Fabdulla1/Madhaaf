@@ -63,3 +63,17 @@ Three parallel research searches covered Kenya's coast, Kutch's maritime records
 | 15, Harre 2015 | Printed pp. 286–290 | Sidhpur origins of both merchants; approximate 1885 departure and 1893/early 1894 Harar arrival from distinct retrospective sources. Do not infer an 1886 personal arrival from the title. |
 
 Further leads, not verified original holdings: Emery's journal (UK National Archives ADM 52/3940), correspondence with W. D. Cooley in the RGS Emery manuscript file, and the Bombay/Maharashtra State Archives correspondence cited by Ibrahim. These belong in a future retrieval plan, not the public chronology as established findings. A 1901 Mombasa probate notice naming Cutch Mandvi was discoverable in search, but its source scan could not be retrieved; it was not added as independently inspected evidence.
+
+## Extended institutional investigation, 22 October 2026
+
+Four research searches covered Kenyan, British, European and museum/heritage holdings, with an independent evidence review. The bibliography grew from 33 to 46 entries. Detailed search and retrieval records are preserved in `docs/research/diaspora-archives/`. They include inspected material, weaker finds, unresolved identifiers and access limits; they do not claim an exhaustive search of surviving archives.
+
+The principal new chronology comes from John Kirk's letter of 6 November 1873, forwarded in January 1874 (reference 34). Memon leaders reported arrivals about twenty years earlier, approximately 1853. The same letter describes wives and families residing in Mombasa by 1873. Do not combine those statements into a claim that entire households arrived in 1853. Its phrase about Sindhi descent and Kutch birth does not independently establish the birthplace of every resident.
+
+The population table (reference 36) reproduces the Mombasa and Lamu rows of the 1870 Zanzibar Agency administrative statistics, preserved in Saldanha's 1906 compilation. The source chain is explicit on printed pp. 13–15. Columns retain Bohra adults, children, total and houses; houses are not relabelled families and Bohra totals are not relabelled Kutchi totals. Both central scans were checked visually as well as through OCR.
+
+Other additions document rotating agents in Guillain's French expedition account, Mandvi cargo in 1923, a widow and estate across Kutch/Kenya/Uganda in 1961, family births in Kutch and Nairobi recorded in 1963, and a Mombasa court's assessment of one woman's Cutchi/Kiswahili repertoire in 2008. Museum research adds named objects associated with Janbai; the heritage interview is explicitly summary-only; the Harar–Diu manuscript is material circulation without demonstrated Kutchi identity.
+
+Reference 41 is a Council of Europe Commission report, not an EU record or a Court judgment. Its Article 3 conclusions distinguish 25 citizens of the United Kingdom and Colonies from six British protected persons. Actual EU portal searches did not establish a new Kutchi-specific institutional record. That result is a limitation of this search, not a finding that no relevant material exists.
+
+The public article now includes a collapsible archival coverage register. The map's Kutch–Mombasa note cites the 1873 report alongside the 1915 judgment. No new route is inferred from birthplaces, an estate notice, a museum object's style or an undigitised catalogue entry.

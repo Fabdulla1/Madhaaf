@@ -29,7 +29,7 @@ export const diasporaMapStages: { period: string; title: string; description: st
       { from: "mandvi", to: "zanzibar", bend: -35, kind: "kutchi", label: "Mandvi and Zanzibar: 1837 trade account", note: "Leech describes an annual trading cycle, outward in December and returning in April. This connection is commerce, not a household migration or an exact sailing track.", refs: [27] },
       { from: "mandvi", to: "aden", bend: 12, kind: "kutchi", label: "The Veerasil's 1835 voyage", note: "Burnes records Mandvi, al-Shihr, al-Mukalla, Aden and Berbera. Only Mandvi and Aden are shown here; the other stops are not plotted. A commercial voyage, not an Ethiopian settlement route.", refs: [31] },
       { from: "muscat", to: "zanzibar", bend: -55, kind: "kutchi", label: "Muscat and Zanzibar", note: "Ports within the Kachchhi trading network. Exchange was reciprocal, so no migration arrow is assigned.", refs: [3, 4] },
-      { from: "mandvi", to: "mombasa", bend: -70, kind: "kutchi", label: "Kutch to Mombasa", note: "Settlement described retrospectively in 1915. Mandvi represents Kutch; embarkation port and intermediate stops are unknown.", refs: [6] },
+      { from: "mandvi", to: "mombasa", bend: -70, kind: "kutchi", label: "Kutch to Mombasa", note: "Kirk's 1873 letter reports Memon arrivals around 1853 and family residence by 1873. The 1915 judgment adds a family chronology. Mandvi represents Kutch; embarkation and intermediate stops are unknown.", refs: [34, 6] },
     ],
   },
   {
