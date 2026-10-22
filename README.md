@@ -43,6 +43,10 @@ The editorial research collection lives at `/language/articles`, with one static
 
 Every published example must come from speaker-supplied elicitation, and speaker judgments must remain distinct from proposed linguistic explanations. Maintain original wording and the project's `(n)`-before-`th` display convention. Word links lead to published dictionary searches, rather than assuming fixed IDs; unpublished entries may not appear. Check this evidence policy and the mobile reading experience whenever adding or changing a study.
 
+## Historical research studies
+
+The History section also includes a source-controlled study of the Kutchi diaspora in Kenya and Ethiopia, with numbered references, attributed images and an optional animated map. The study is published at `/history/kutchi-diaspora-kenya-ethiopia`; [maintenance and evidence notes](docs/history-diaspora-study.md) describe its sources, route limitations, assets and verification. It sits alongside the administrator-managed community archive and is not a CMS database record.
+
 ## Research scope, attribution and editorial policy
 
 Madhaaf was founded by **Farhan Abdulla** to document Kutchi spoken in Mombasa and Ethiopian communities, alongside relevant oral history and cultural records. **TokenWorks LLC** and **Adam Anderson** are acknowledged for research infrastructure and technical support. This does not imply formal university sponsorship or peer review.

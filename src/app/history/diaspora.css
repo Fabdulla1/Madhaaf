@@ -1,0 +1,131 @@
+.diaspora-feature { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: clamp(26px,5vw,70px); background: var(--paper); padding: 32px; margin: 36px 0 58px; border: 1px solid var(--line); align-items: center; }
+.diaspora-feature__image img { display: block; width: 100%; height: auto; }
+.diaspora-feature h2 { font-size: clamp(1.9rem,3vw,2.9rem); line-height: 1.1; margin-bottom: 18px; }
+.diaspora-feature__meta { font-size: .8rem; color: var(--ink-muted); }
+.diaspora-header { padding-top: 30px; padding-bottom: 60px; border-bottom: 1px solid var(--line); }
+.diaspora-header .breadcrumbs { margin-bottom: 54px; flex-wrap: wrap; }
+.diaspora-header__grid { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,.8fr); gap: clamp(28px,5vw,72px); align-items: center; }
+.diaspora-header h1 { font-size: clamp(2.8rem,4.7vw,4.8rem); line-height: 1.04; margin: 0 0 26px; }
+.diaspora-deck { font-size: 1.13rem; color: var(--ink-muted); max-width: 620px; }
+.diaspora-byline { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 26px 0 12px; font-size: .85rem; }
+.diaspora-byline a { font-weight: 700; }
+.diaspora-status { color: var(--ink-muted); font-size: .75rem; margin-bottom: 26px; }
+.diaspora-header figure { margin: 0; }
+.diaspora-header figure img { display: block; width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; }
+.diaspora-study figcaption { margin-top: 14px; font-size: .77rem; line-height: 1.6; color: var(--ink-muted); }
+.diaspora-study figcaption strong { color: var(--ink); }
+.diaspora-study figcaption a, .diaspora-study .diaspora-source-note a, .diaspora-credits a, .diaspora-map__note a { text-decoration: underline; text-underline-offset: 3px; }
+.diaspora-reading-layout { display: grid; grid-template-columns: 230px minmax(0,800px); gap: clamp(40px,6vw,95px); justify-content: center; padding-block: 62px 80px; }
+.diaspora-contents nav { position: sticky; top: 30px; }
+.diaspora-contents ol { margin: 0; padding-left: 19px; font-size: .82rem; line-height: 1.55; }
+.diaspora-contents li { margin-bottom: 16px; padding-left: 4px; }
+.diaspora-reading { min-width: 0; }
+.diaspora-reading > section { scroll-margin-top: 30px; }
+.diaspora-reading h2 { font-size: clamp(1.9rem,2.5vw,2.4rem); line-height: 1.18; margin-bottom: 26px; }
+.diaspora-reading p, .diaspora-reading li { line-height: 1.85; }
+.diaspora-reading > section > p { font-size: 1.01rem; margin-bottom: 23px; }
+.diaspora-abstract { padding: 32px; border-left: 3px solid var(--terracotta); background: var(--paper); margin-bottom: 54px; }
+.diaspora-abstract .diaspora-keywords { font-size: .8rem; margin: 24px 0 0; color: var(--ink-muted); }
+.diaspora-citations { display: inline; white-space: normal; font-family: var(--font-interface); font-size: .76em; font-weight: 700; vertical-align: super; line-height: 0; margin-left: .24em; }
+.diaspora-citations a { display: inline-block; margin-inline: .1em; padding: 6px 2px; color: var(--terracotta-ink); line-height: 1; }
+.diaspora-citations a:hover { text-decoration: underline; }
+.diaspora-section { border-top: 1px solid var(--line); margin-top: 48px; padding-top: 42px; }
+.diaspora-table-scroll { overflow-x: auto; margin-bottom: 42px; border: 1px solid var(--line); }
+.diaspora-evidence table { width: 100%; min-width: 560px; border-collapse: collapse; text-align: left; background: var(--paper); font-size: .8rem; }
+.diaspora-evidence caption { text-align: left; padding: 14px 18px; font-weight: 700; background: var(--ink); color: var(--paper); }
+.diaspora-evidence th, .diaspora-evidence td { padding: 16px; vertical-align: top; border-bottom: 1px solid var(--line); line-height: 1.65; }
+.diaspora-evidence thead { background: #e4ebe2; }
+.diaspora-evidence tbody th { width: 23%; }
+.diaspora-figure { margin: 34px 0 8px; }
+.diaspora-figure img { width: 100%; height: auto; display: block; }
+.diaspora-figure:has(img[src*="kilindini"]) img { max-height: 520px; object-fit: contain; background: #e9e5d9; }
+.diaspora-map { margin: 44px 0 0; border: 1px solid var(--line); background: var(--paper); }
+.diaspora-map__intro { padding: 26px 26px 0; }
+.diaspora-map__intro h2 { margin-bottom: 15px; }
+.diaspora-map__intro .eyebrow { margin-bottom: 12px; }
+.diaspora-map__intro p:not(.eyebrow) { font-size: .88rem; }
+.diaspora-map__controls { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border-block: 1px solid var(--line); }
+.diaspora-map__controls button { border: 0; background: var(--paper); color: var(--ink); min-height: 55px; padding: 12px 15px; text-align: left; font-size: .78rem; cursor: pointer; }
+.diaspora-map__controls button span { opacity: .75; margin-right: 10px; }
+.diaspora-map__controls button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+.diaspora-map__playback { padding: 18px 22px; display: flex; gap: 12px 18px; align-items: center; flex-wrap: wrap; }
+.diaspora-map__playback button { border: 1px solid var(--ink); background: transparent; color: var(--ink); padding: 10px 14px; min-height: 44px; cursor: pointer; font-size: .8rem; }
+.diaspora-map__playback button:disabled { opacity: .65; cursor: default; }
+.diaspora-map__playback span { font-size: .72rem; line-height: 1.5; color: var(--ink-muted); flex: 1 1 210px; }
+.diaspora-map__canvas { overflow-x: auto; background: #e1eeeb; }
+.diaspora-map__canvas svg { width: 100%; min-width: 640px; height: auto; display: block; }
+.diaspora-map__grid line { stroke: #c1d9d4; stroke-width: .55; }
+.diaspora-map__land path { fill: #f1f0df; stroke: #a6b8a1; stroke-width: .65; }
+.diaspora-map__geography { font-size: 9px; letter-spacing: 1.6px; fill: #647763; }
+.diaspora-map__geography--global { font-size: 14px; }
+.diaspora-map__ocean { font-family: Georgia,serif; font-style: italic; font-size: 19px; letter-spacing: .3px; fill: #598681; }
+.diaspora-map__route { fill: none; stroke: #a34e33; stroke-width: 1.8; }
+.diaspora-map__route--context { stroke: #235d56; stroke-dasharray: 5 4; }
+.diaspora-map__places circle { fill: var(--ink); stroke: #fffdf2; stroke-width: 1; }
+.diaspora-map__places text { font-size: 11px; font-weight: 700; fill: #153b36; paint-order: stroke; stroke: #f6f6ec; stroke-width: 3.2; stroke-linejoin: round; }
+.diaspora-map__places--global text { font-size: 17px; }
+.diaspora-map__routes.is-playing .diaspora-map__route--kutchi { animation: diaspora-route-draw 3s ease both; stroke-dasharray: 100; }
+.diaspora-map__routes.is-playing .diaspora-map__route--context { animation: diaspora-route-flow 3s linear infinite; }
+@keyframes diaspora-route-draw { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+@keyframes diaspora-route-flow { from { stroke-dashoffset: 18; } to { stroke-dashoffset: 0; } }
+.diaspora-map__legend { display: flex; gap: 12px 20px; flex-wrap: wrap; padding: 15px 22px; border-bottom: 1px solid var(--line); font-size: .72rem; }
+.diaspora-map__legend span { display: flex; gap: 8px; align-items: center; }
+.diaspora-map__legend i { width: 24px; border-top: 2px solid #a34e33; }
+.diaspora-map__legend i.is-context { border-top: 2px dashed #235d56; }
+.diaspora-map__reading { padding: 25px 26px 0; }
+.diaspora-map__reading h3 { font-size: 1.6rem; margin-bottom: 12px; }
+.diaspora-map__reading .eyebrow { margin-bottom: 10px; }
+.diaspora-map__reading p:not(.eyebrow), .diaspora-map__reading li { font-size: .84rem; }
+.diaspora-map__reading ol { padding-left: 20px; }
+.diaspora-map__reading li { margin-bottom: 14px; padding-left: 4px; }
+.diaspora-map__note { padding: 8px 26px 22px; margin: 0; color: var(--ink-muted); font-size: .72rem; }
+.diaspora-transcript { border: 1px solid var(--line); border-top: 0; padding: 18px 25px; font-size: .85rem; }
+.diaspora-transcript summary { cursor: pointer; font-weight: 700; padding-block: 5px; }
+.diaspora-transcript h3 { font-size: 1.3rem; margin-top: 26px; }
+.diaspora-transcript li { margin-bottom: 12px; }
+.diaspora-bibliography { margin-top: 64px; padding-top: 38px; border-top: 3px solid var(--ink); }
+.diaspora-bibliography ol { padding-left: 28px; }
+.diaspora-bibliography li { padding: 22px 0 24px 8px; border-bottom: 1px solid var(--line); scroll-margin-top: 25px; }
+.diaspora-bibliography li:target { background: #f3e9d7; outline: 2px solid var(--terracotta); outline-offset: 5px; }
+.diaspora-source-kind { display: block; font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--terracotta-ink); margin-bottom: 10px; }
+.diaspora-bibliography li p { font-size: .85rem; margin: 0 0 10px; overflow-wrap: anywhere; }
+.diaspora-bibliography li p.diaspora-source-note { color: var(--ink-muted); font-size: .78rem; margin-bottom: 0; }
+.diaspora-bibliography li a { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; }
+.diaspora-credits { padding-top: 45px; margin-top: 30px; }
+.diaspora-credits li { margin-bottom: 18px; font-size: .82rem; }
+.diaspora-credits ul { padding-left: 20px; }
+.diaspora-cite-this { margin-top: 30px; padding: 24px; background: var(--paper); border: 1px solid var(--line); font-size: .8rem !important; overflow-wrap: anywhere; }
+.diaspora-return { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin: 45px 0 0; font-size: .8rem; }
+@media (prefers-reduced-motion: reduce) { .diaspora-map__routes.is-playing .diaspora-map__route { animation: none; stroke-dasharray: none; } .diaspora-map__routes.is-playing .diaspora-map__route--context { stroke-dasharray: 5 4; } }
+@media (max-width: 1000px) { .diaspora-reading-layout { grid-template-columns: 180px minmax(0,1fr); gap: 35px; } .diaspora-contents ol { font-size: .75rem; } }
+@media (max-width: 760px) {
+  .diaspora-feature { grid-template-columns: 1fr; padding: 20px; margin-top: 28px; }
+  .diaspora-feature__image img { aspect-ratio: 16/9; object-fit: cover; }
+  .diaspora-header { padding-bottom: 38px; }
+  .diaspora-header .breadcrumbs { margin-bottom: 32px; font-size: .72rem; }
+  .diaspora-header__grid { grid-template-columns: 1fr; gap: 35px; }
+  .diaspora-header h1 { font-size: clamp(2.5rem,8vw,3.8rem); }
+  .diaspora-header figure img { aspect-ratio: 8/5; }
+  .diaspora-deck { font-size: 1rem; }
+  .diaspora-reading-layout { display: block; padding-top: 30px; }
+  .diaspora-contents { padding-bottom: 25px; margin-bottom: 35px; border-bottom: 1px solid var(--line); }
+  .diaspora-contents ol { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 26px; font-size: .75rem; }
+  .diaspora-abstract { padding: 23px; }
+  .diaspora-reading > section > p { font-size: .96rem; }
+  .diaspora-map__controls button { padding: 12px; font-size: .72rem; }
+  .diaspora-map__intro, .diaspora-map__reading { padding-inline: 18px; }
+  .diaspora-map__note { padding-inline: 18px; }
+  .diaspora-bibliography ol { padding-left: 22px; }
+}
+@media print {
+  .site-header, .site-footer, .diaspora-contents, .diaspora-map__controls, .diaspora-map__playback, .diaspora-return { display: none; }
+  .diaspora-header, .diaspora-reading-layout { width: 100%; padding: 20px 0; display: block; }
+  .diaspora-study { color: #111; background: #fff; }
+  .diaspora-header h1 { font-size: 34pt; }
+  .diaspora-header figure { max-width: 450px; margin-top: 25px; }
+  .diaspora-header figure img { aspect-ratio: auto; }
+  .diaspora-section h2, .diaspora-figure, .diaspora-bibliography li { break-inside: avoid; }
+  .diaspora-map__canvas svg { min-width: 0; }
+  .diaspora-table-scroll { overflow: visible; }
+  .diaspora-evidence table { min-width: 0; }
+}

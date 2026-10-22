@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { HistoryList } from "@/components/public/history-list";
 import { PublicShell } from "@/components/public/shell";
+import { DiasporaHistoryFeature } from "@/components/public/history-diaspora";
 
 export const metadata: Metadata = {
   title: "History & culture",
@@ -32,9 +33,9 @@ export default async function HistoryPage({
           <p className="eyebrow">The archive / History &amp; culture</p>
           <h1>Stories, carefully told.</h1>
           <p>
-            This collection will grow with documented articles, oral histories,
-            images, and recordings. Material appears publicly after editorial
-            review and the appropriate permission to share.
+            Research articles, oral histories, images and recordings documenting
+            Kutchi communities. Each study records its sources, the evidence
+            they provide and the questions still open.
           </p>
         </div>
         <div className="history-topics">
@@ -52,6 +53,7 @@ export default async function HistoryPage({
             ))}
           </div>
         </div>
+        {(!category || category.slug === "diaspora" || category.slug === "mombasa-community") && <DiasporaHistoryFeature />}
         <HistoryList key={category?.slug ?? "all"} category={category} />
       </div>
     </PublicShell>

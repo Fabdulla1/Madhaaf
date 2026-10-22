@@ -29,8 +29,8 @@ export function HistoryList({ category }: { category?: { slug: string; label: st
   />;
   const articles = Array.isArray(result.data) ? result.data : [];
   if (articles.length === 0) return <ContentState
-    title={category ? `No published ${category.label.toLowerCase()} stories yet` : "No published stories yet"}
-    description="Documented articles will appear here after they are reviewed and approved for publication."
+    title={category ? `No additional ${category.label.toLowerCase()} stories yet` : "No additional community stories yet"}
+    description="Contributed stories will appear here after they are reviewed and approved for publication."
     action={category ? { label: "View all stories", href: "/history" } : undefined}
   />;
 
