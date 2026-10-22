@@ -157,6 +157,9 @@ reset role;
 set local role authenticated;
 select set_config('request.jwt.claim.sub','66666666-6666-4666-8666-666666666666',true);
 do $$ declare video uuid; family uuid; dictionary uuid; word uuid; revision integer; begin
+  if has_table_privilege('authenticated','public.media_details','DELETE') then
+    raise exception 'Administrator client can delete private media context';
+  end if;
   select id into video from media_test_ids where name='video';
   select id into family from media_test_ids where name='family';
   select id into dictionary from media_test_ids where name='dictionary';
@@ -231,7 +234,10 @@ set local role anon;
 select set_config('request.jwt.claim.sub','',true);
 do $$ declare visible jsonb; begin
   if has_table_privilege('anon','public.media_assets','SELECT') or has_table_privilege('anon','public.media_details','SELECT')
-    or has_table_privilege('anon','public.media_upload_intents','SELECT') then raise exception 'Private base-table grants exposed'; end if;
+    or has_table_privilege('anon','public.media_upload_intents','SELECT')
+    or has_table_privilege('anon','public.member_media','SELECT')
+    or has_table_privilege('anon','public.media_details','INSERT')
+    or has_table_privilege('anon','public.public_media','INSERT') then raise exception 'Private base-table or view grants exposed'; end if;
   if has_function_privilege('anon','public.finalize_media_upload(uuid,uuid)','EXECUTE') then raise exception 'Anonymous finalization granted'; end if;
   if (select count(*) from storage.objects)<>0 then raise exception 'Anonymous storage access allows independent signed links'; end if;
   if (select count(*) from public.public_media)<>1 then raise exception 'Public media view leaked or hid assets'; end if;

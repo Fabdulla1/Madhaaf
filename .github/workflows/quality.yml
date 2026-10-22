@@ -66,6 +66,7 @@ jobs:
       - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610220001_video_media_kind.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/media_legacy_before.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610220002_private_media_library.sql
+      - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610220003_private_media_grants.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/media_legacy_after.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/foundation.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/public_family.sql
