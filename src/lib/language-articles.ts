@@ -36,6 +36,66 @@ export type ResearchArticle = {
 
 export const researchArticles: ResearchArticle[] = [
   {
+    slug: "vathe-possession-and-association",
+    editorialDate: "2026-10-22",
+    number: "V1",
+    subject: "Possession and postpositions",
+    title: "Vathe: possession and association in Mombasa Kutchi",
+    summary: "Five speaker-supplied examples show vathe with person references, affirmative and negative possession, and an item associated with a person.",
+    introduction: "Vathe occurs after a person-reference in the recorded examples. English translations include having something and something being with someone. These are speaker-attested sentences; the postposition analysis is provisional and does not establish ownership or a full possession paradigm.",
+    illustration: "/language/research/ke-relations.svg",
+    illustrationAlt: "Abstract illustration of relationships between linked forms; not linguistic evidence.",
+    wordNotes: [
+      { word: "vathe", meaning: "With; in the possession or company of (provisional postposition classification)." },
+      { word: "mu", meaning: "First-person form in mu vathe; the grammatical relationship to other first-person forms requires analysis." },
+      { word: "hin", meaning: "Third-person form here, translated as him or her depending on context." },
+      { word: "nai", meaning: "Negation in the recorded possession examples." },
+      { word: "pe(n)sa", meaning: "Money." },
+      { word: "chopri", meaning: "Book." },
+      { word: "ai", meaning: "Affirmative predicate form in two examples; its distribution is not yet established." },
+      { word: "i(n)ye", meaning: "Affirmative predicate form in the money example; its distribution is not yet established." },
+    ],
+    sections: [
+      {
+        id: "speaker-examples",
+        title: "The attested expressions",
+        blocks: [
+          { type: "examples", items: [
+            { kutchi: "Hin vathe nai", english: "It is not with him; he does not have it; he/she is not with him.", context: "Original reported translations; referents depend on context." },
+            { kutchi: "Mu vathe nai", english: "I don't have it." },
+            { kutchi: "Hin vathe pe(n)sa i(n)ye", english: "He has money." },
+            { kutchi: "Chopri hin vathe ai", english: "The book is with her." },
+            { kutchi: "Hin vathe ai", english: "He has it.", context: "The speaker explicitly accepted this interpretation." },
+          ] },
+          { type: "finding", strength: "attested", label: "Speaker evidence", text: "Vathe follows mu and hin in these examples. Affirmatives include ai and i(n)ye, and negatives include nai without an overt positive predicate." },
+        ],
+      },
+      {
+        id: "working-analysis",
+        title: "A provisional construction",
+        blocks: [
+          { type: "text", text: "The examples support treating vathe as a person-associated relational element, tentatively a postposition. A useful descriptive template is: person-reference + vathe + optional overt item + affirmative or negative predicate. Chopri hin vathe ai places the item before the vathe phrase, while hin vathe pe(n)sa i(n)ye places it after. This establishes two attested arrangements, not free word order." },
+          { type: "finding", strength: "hypothesis", label: "Possession and association", text: "Vathe may express physical association, availability or possession rather than necessarily legal ownership. Whether accompaniment of another person is fully productive remains untested." },
+          { type: "finding", strength: "unresolved", label: "Predicate selection", text: "Why one affirmative clause uses i(n)ye and others use ai is not known. Do not attribute the difference to number, gender or tense without controlled contrasts." },
+          { type: "text", text: "Do not merge mu vathe with the distinct attested experiencer expression mukhe used with kap ('want'). The alternation may involve different grammatical constructions and needs direct testing." },
+        ],
+      },
+      {
+        id: "future-tests",
+        title: "Questions for further elicitation",
+        blocks: [
+          { type: "questions", items: [
+            "Compare singular and plural possessed items with the same person-reference to test ai against i(n)ye.",
+            "Test whether vathe also expresses a person accompanying someone, without an ownership reading.",
+            "Compare a physically held item with a legally owned but absent item.",
+            "Test whether mu, hin and other person forms consistently occur before vathe.",
+            "Check whether an overt possessed noun changes the interpretation of nai.",
+          ] },
+        ],
+      },
+    ],
+  },
+  {
     slug: "what-ke-marks",
     editorialDate: "2026-03-12",
     number: "01",
@@ -558,7 +618,7 @@ export const researchArticles: ResearchArticle[] = [
  */
 export const dictionaryLookups: Record<string, string> = {
   "au(n)": "au(n)", "paa(n)": "paa(n)", "thu(n)": "thu(n)",
-  "hin": "hin", "hee": "hee", "hoo": "hoo",
+  "hin": "hin", "hee": "hee", "hoo": "hoo", "mu": "mu", "vathe": "vathe", "chopri": "chopri",
   "hinee": "hinee", "hoonee": "hoonee", "mukhe": "mukhe",
   "miri(n)": "miri(n)", "mere": "mere", "chokro": "chokro",
   "chokra": "chokro", "chokre": "chokro", "chokri": "chokri",
