@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 const studies = [
+  "vathe-possession-and-association",
   "what-ke-marks",
   "verbs-agreement-and-time",
   "nouns-gender-and-distance",
@@ -10,15 +11,15 @@ const studies = [
   "negation-in-mombasa-kutchi",
 ] as const;
 
-test("research library displays seven illustrated, navigable studies", async ({ page }) => {
+test("research library displays eight illustrated, navigable studies", async ({ page }) => {
   await page.goto("/language/articles");
   await expect(page.getByRole("heading", { name: "Research on East African Kutchi." })).toBeVisible();
   const tiles = page.locator(".research-tile");
-  await expect(tiles).toHaveCount(7);
+  await expect(tiles).toHaveCount(8);
   for (const slug of studies) {
     await expect(tiles.locator(`a[href="/language/articles/${slug}"]`).first()).toBeVisible();
   }
-  await expect(page.locator(".research-tile img")).toHaveCount(7);
+  await expect(page.locator(".research-tile img")).toHaveCount(8);
 });
 
 test("ke study preserves the critical paired construction and links terms to the dictionary", async ({ page }) => {

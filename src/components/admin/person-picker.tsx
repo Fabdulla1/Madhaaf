@@ -13,9 +13,9 @@ function personDetails(person: ConnectionPerson) {
   return [person.birth_date_text && `Born ${person.birth_date_text}`, person.death_date_text && `Died ${person.death_date_text}`, person.birthplace].filter(Boolean).join(" · ");
 }
 
-export function PersonPicker({ label, people, value, onChange, excludeId, loading, failed, disabled }: {
+export function PersonPicker({ label, people, value, onChange, excludeId, loading, failed, disabled, required = true }: {
   label: string; people: ConnectionPerson[]; value: string; onChange: (id: string) => void;
-  excludeId?: string; loading: boolean; failed: boolean; disabled: boolean;
+  excludeId?: string; loading: boolean; failed: boolean; disabled: boolean; required?: boolean;
 }) {
   const id = useId(), listId = `${id}-people`, statusId = `${id}-status`;
   const input = useRef<HTMLInputElement>(null);
@@ -34,7 +34,7 @@ export function PersonPicker({ label, people, value, onChange, excludeId, loadin
   const active = matches.findIndex(person => person.id === activeId);
   const expanded = open && !disabled;
 
-  useEffect(() => { input.current?.setCustomValidity(valid ? "" : "Choose a person from the suggestions."); }, [valid]);
+  useEffect(() => { input.current?.setCustomValidity(valid || (!required && !text.trim()) ? "" : "Choose a person from the suggestions."); }, [valid, required, text]);
   useEffect(() => {
     if (expanded && activeId) document.getElementById(`${listId}-${activeId}`)?.scrollIntoView({ block: "nearest" });
   }, [activeId, expanded, listId]);
@@ -46,7 +46,7 @@ export function PersonPicker({ label, people, value, onChange, excludeId, loadin
   return <div className="min-w-0">
     <label htmlFor={id} className="block text-sm font-semibold">{label}</label>
     <div className="relative">
-      <input ref={input} id={id} role="combobox" required disabled={disabled} autoComplete="off" maxLength={300}
+      <input ref={input} id={id} role="combobox" required={required} disabled={disabled} autoComplete="off" maxLength={300}
         aria-autocomplete="list" aria-expanded={expanded} aria-controls={expanded ? listId : undefined}
         aria-activedescendant={expanded && active >= 0 ? `${listId}-${activeId}` : undefined}
         aria-describedby={statusId} aria-invalid={invalid && !valid || undefined}

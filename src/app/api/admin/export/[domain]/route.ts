@@ -5,13 +5,13 @@ const domains = {
   family: {
     family_members: 'id', member_names: 'id', family_relationships: 'id',
     member_media: 'member_id', member_sources: 'member_id',
-    media_assets: 'id', sources: 'id',
+    media_assets: 'id', media_details: 'media_id', sources: 'id',
   },
   dictionary: {
     lexemes: 'id', word_forms: 'id', senses: 'id', examples: 'id',
     orthography_versions: 'id', lexeme_media: 'lexeme_id',
     example_media: 'example_id', related_lexemes: 'lexeme_id',
-    lexeme_sources: 'lexeme_id', media_assets: 'id', sources: 'id',
+    lexeme_sources: 'lexeme_id', media_assets: 'id', media_details: 'media_id', sources: 'id',
   },
 } as const
 const secondaryOrder: Record<string, string> = {

@@ -2,6 +2,19 @@
 begin;
 insert into auth.users(id) values ('11111111-1111-1111-1111-111111111111');
 insert into public.app_users(user_id, role) values ('11111111-1111-1111-1111-111111111111','admin');
+create temporary table media_fixture(name text primary key, id uuid not null);
+grant select on media_fixture to authenticated;
+with created as (
+  insert into public.media_assets(kind,storage_path,mime_type,bytes,original_name,alt_text,consent_confirmed)
+  values ('audio','public.mp3','audio/mpeg',10,'public.mp3',null,true),
+    ('audio','private.mp3','audio/mpeg',10,'private.mp3',null,true),
+    ('audio','family-shared.mp3','audio/mpeg',10,'family-shared.mp3',null,true),
+    ('image','portrait-shared.png','image/png',10,'portrait-shared.png','Private portrait',true)
+  returning id,storage_path
+) insert into media_fixture select storage_path,id from created;
+insert into public.media_details(media_id,title,subject_description)
+select id,name,'Foundation media fixture' from media_fixture;
+insert into storage.objects(bucket_id,name) values('heritage-media','public.mp3'),('heritage-media','private.mp3'),('heritage-media','family-shared.mp3'),('heritage-media','portrait-shared.png');
 set local role authenticated;
 select set_config('request.jwt.claim.sub','11111111-1111-1111-1111-111111111111',true);
 do $$ declare a uuid; b uuid; c uuid; count_words integer; public_asset uuid; private_asset uuid; family_asset uuid; portrait_asset uuid; entry uuid; draft_entry uuid; connected jsonb; published_article_id uuid; draft_article uuid; citation_source_id uuid; begin
@@ -28,14 +41,10 @@ do $$ declare a uuid; b uuid; c uuid; count_words integer; public_asset uuid; pr
   if not exists(select 1 from public.word_forms where lexeme_id=entry and spelling='maa' and not is_preferred) then
     raise exception 'Former preferred spelling was lost';
   end if;
-  insert into public.media_assets(kind,storage_path,mime_type,bytes,original_name,consent_confirmed,public_approved)
-    values('audio','public.mp3','audio/mpeg',10,'public.mp3',true,true) returning id into public_asset;
-  insert into public.media_assets(kind,storage_path,mime_type,bytes,original_name,consent_confirmed,public_approved)
-    values('audio','private.mp3','audio/mpeg',10,'private.mp3',true,true) returning id into private_asset;
-  insert into public.media_assets(kind,storage_path,mime_type,bytes,original_name,consent_confirmed,public_approved)
-    values('audio','family-shared.mp3','audio/mpeg',10,'family-shared.mp3',true,true) returning id into family_asset;
-  insert into public.media_assets(kind,storage_path,mime_type,bytes,original_name,alt_text,consent_confirmed,public_approved)
-    values('image','portrait-shared.png','image/png',10,'portrait-shared.png','Portrait used in the private family tree',true,true) returning id into portrait_asset;
+  select id into public_asset from media_fixture where name='public.mp3';
+  select id into private_asset from media_fixture where name='private.mp3';
+  select id into family_asset from media_fixture where name='family-shared.mp3';
+  select id into portrait_asset from media_fixture where name='portrait-shared.png';
   insert into public.lexeme_media(lexeme_id,media_id,purpose) values(entry,public_asset,'pronunciation');
   insert into public.lexeme_media(lexeme_id,media_id,purpose) values(entry,family_asset,'other');
   insert into public.lexeme_media(lexeme_id,media_id,purpose) values(entry,portrait_asset,'other');
@@ -50,6 +59,7 @@ do $$ declare a uuid; b uuid; c uuid; count_words integer; public_asset uuid; pr
   insert into public.articles(slug,title) values('old-test-slug','Test history') returning id into published_article_id;
   insert into public.article_sources(article_id,source_id) values(published_article_id,citation_source_id);
   insert into public.article_media(article_id,media_id) values(published_article_id,public_asset);
+  update public.media_assets set public_approved=true where id=public_asset;
   update public.articles set slug='new-test-slug' where id=published_article_id;
   update public.articles set status='published',published_at=now() where id=published_article_id;
   insert into public.articles(slug,title) values('draft-test-slug','Draft article') returning id into draft_article;
@@ -63,7 +73,6 @@ do $$ declare a uuid; b uuid; c uuid; count_words integer; public_asset uuid; pr
     raise exception 'Published article field edit was accepted';
   exception when check_violation then null;
   end;
-  insert into storage.objects(bucket_id,name) values('heritage-media','public.mp3'),('heritage-media','private.mp3'),('heritage-media','family-shared.mp3'),('heritage-media','portrait-shared.png');
   insert into public.family_members(preferred_name,portrait_media_id) values ('Test A',portrait_asset) returning id into a;
   insert into public.member_media(member_id,media_id) values(a,family_asset);
   insert into public.family_members(preferred_name) values ('Test B') returning id into b;
@@ -100,8 +109,9 @@ do $$ begin
     'EXECUTE') then raise exception 'Anonymous connected-member mutation granted'; end if;
   if (select count(*) from public.lexemes) <> 6 then raise exception 'Published lexemes inaccessible'; end if;
   if not exists(select 1 from public.search_dictionary('ku''la',24,0) where match_rank=0) then raise exception 'Exact punctuation search failed'; end if;
-  if (select count(*) from public.media_assets) <> 1 then raise exception 'Public media policy leaked or hid asset'; end if;
-  if (select count(*) from storage.objects) <> 1 then raise exception 'Storage policy leaked or hid object'; end if;
+  if has_table_privilege('anon','public.media_assets','SELECT') then raise exception 'Public media base table exposed'; end if;
+  if (select count(*) from public.public_media) <> 1 then raise exception 'Public media view leaked or hid asset'; end if;
+  if (select count(*) from storage.objects) <> 0 then raise exception 'Direct public storage access leaked an original'; end if;
   if not exists(select 1 from public.article_slug_history where slug='old-test-slug') then raise exception 'Article slug history unavailable'; end if;
   if not exists(select 1 from public.published_article_sources where title='Test source' and citation='Test citation') then raise exception 'Published citation unavailable'; end if;
 end $$;

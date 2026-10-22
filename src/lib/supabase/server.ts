@@ -39,6 +39,16 @@ export function createPublicClient() {
   })
 }
 
+// Only server-verified media operations may use this client; it bypasses RLS.
+export function createServiceClient() {
+  const { url } = config()
+  const key = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY
+  if (!key) throw new Error('Media service credentials are not configured')
+  return createClient(url, key, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  })
+}
+
 export async function getAdmin() {
   // Accessing request cookies before optional configuration prevents admin
   // routes from being prerendered as a cached 401 during an unconfigured build.

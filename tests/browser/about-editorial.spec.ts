@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 const researchDates = [
+  ["vathe-possession-and-association", "2026-10-22"],
   ["what-ke-marks", "2026-03-12"],
   ["verbs-agreement-and-time", "2026-05-08"],
   ["nouns-gender-and-distance", "2026-07-02"],

@@ -1,5 +1,6 @@
 import { createPublicClient, supabaseConfigured } from '@/lib/supabase/server'
 import { error, json } from '@/lib/server/http'
+import { publicMediaByIds } from '@/lib/server/public-media'
 import { z } from 'zod'
 
 import { connection } from 'next/server'
@@ -38,11 +39,12 @@ export async function GET(_request: Request, context: { params: Promise<{ id: st
     ...sense,
     examples: (sense.examples || []).map(example => withPublicSource(example, sourceTitles)),
   }))
-  const { data: links } = await db.from('lexeme_media').select('purpose,media_assets(id,kind,storage_path,alt_text,caption,speaker_name,attribution)').eq('lexeme_id', id)
-  const media = await Promise.all((links || []).filter(x => x.media_assets).map(async x => {
-    const asset = x.media_assets as unknown as { id: string; kind: string; storage_path: string; alt_text: string | null; caption: string | null; speaker_name: string | null; attribution: string | null }
-    const { data: signed } = await db.storage.from('heritage-media').createSignedUrl(asset.storage_path, 300)
-    return signed ? { ...asset, purpose: x.purpose, url: signed.signedUrl } : null
-  }))
+  const { data: links, error: mediaError } = await db.from('lexeme_media').select('purpose,media_id').eq('lexeme_id', id)
+  if (mediaError) return error('Unable to load media links', 503)
+  let media
+  try {
+    const assets = await publicMediaByIds(db, (links || []).map(link => link.media_id))
+    media = assets.map(asset => ({ ...asset, purpose: links?.find(link => link.media_id === asset.id)?.purpose }))
+  } catch { return error('Unable to load published media', 503) }
   return json({ ...data, senses, linked_examples: linkedExamples.map(example => withPublicSource(example, sourceTitles)), media: media.filter(Boolean) })
 }

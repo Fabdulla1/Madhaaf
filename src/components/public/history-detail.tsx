@@ -74,7 +74,7 @@ function ArticleContent({ article }: { article: HistoryArticle }) {
           : <p>The text of this story is being prepared.</p>}
         {article.media?.length ? (
           <section className="article-media" aria-labelledby="article-media-heading">
-            <h2 id="article-media-heading">Images &amp; recordings</h2>
+            <h2 id="article-media-heading">Images, audio &amp; video</h2>
             {article.media.filter((item) => item.url).map((item) => (
               <figure key={item.id}>
                 {item.kind === "image" ? (
@@ -85,12 +85,14 @@ function ArticleContent({ article }: { article: HistoryArticle }) {
                     height={720}
                     unoptimized
                   />
+                ) : item.kind === "video" ? (
+                  <video controls playsInline preload="metadata" aria-label={item.caption || "Video associated with this story"} src={item.url!} className="max-h-[70vh] w-full bg-black">Your browser cannot play this video.</video>
                 ) : (
-                  <audio controls preload="none" src={item.url!}>Your browser cannot play this recording.</audio>
+                  <audio controls preload="none" aria-label={item.caption || "Recording associated with this story"} src={item.url!}>Your browser cannot play this recording.</audio>
                 )}
                 {(item.caption || item.speaker_name || item.attribution) && (
                   <figcaption>
-                    {item.caption || (item.kind === "audio" ? "Recording" : "Archive image")}
+                    {item.caption || (item.kind === "audio" ? "Recording" : item.kind === "video" ? "Video" : "Archive image")}
                     {item.speaker_name && ` · ${item.speaker_name}`}
                     {item.attribution && <small>{item.attribution}</small>}
                   </figcaption>

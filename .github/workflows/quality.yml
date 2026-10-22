@@ -26,6 +26,7 @@ jobs:
       - run: npm run build
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
+      - run: npx playwright test --config tests/media-ui/playwright.config.ts
 
   database:
     runs-on: ubuntu-latest
@@ -62,9 +63,14 @@ jobs:
       - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610210004_dictionary_crosslink_update_guard.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610210005_family_sibling_kind.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610210006_family_sibling_connections.sql
+      - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610220001_video_media_kind.sql
+      - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/media_legacy_before.sql
+      - run: psql -v ON_ERROR_STOP=1 -f supabase/migrations/202610220002_private_media_library.sql
+      - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/media_legacy_after.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/foundation.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/public_family.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/family_siblings.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/dictionary_entry.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/dictionary_attestations.sql
       - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/security_roles.sql
+      - run: psql -v ON_ERROR_STOP=1 -f supabase/tests/media_library.sql

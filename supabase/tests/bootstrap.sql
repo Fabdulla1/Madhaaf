@@ -1,6 +1,7 @@
 -- Minimal Supabase-shaped schemas for migration smoke tests in plain Postgres.
 create role anon nologin;
 create role authenticated nologin;
+create role service_role nologin bypassrls;
 create schema auth;
 create schema storage;
 create table auth.users(id uuid primary key);
@@ -13,6 +14,6 @@ create table storage.buckets(
 );
 create table storage.objects(id uuid primary key default gen_random_uuid(), bucket_id text, name text);
 alter table storage.objects enable row level security;
-grant usage on schema auth, storage to anon, authenticated;
-grant select on auth.users to authenticated;
-grant select, insert, update, delete on storage.objects to anon, authenticated;
+grant usage on schema auth, storage to anon, authenticated, service_role;
+grant select on auth.users to authenticated, service_role;
+grant select, insert, update, delete on storage.objects to anon, authenticated, service_role;

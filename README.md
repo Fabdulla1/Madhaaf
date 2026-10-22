@@ -31,10 +31,11 @@ Playwright tests cover public responsive pages, exact-spelling display, article 
 - [Implementation plan](docs/implementation-plan.md)
 - [Product design system](docs/design-system.md)
 - [API contract](docs/backend-api.md)
+- [Media library, privacy, and rollout](docs/media-library.md)
 - [Backup and recovery](docs/backup-recovery.md)
 - [Engineering and security review](docs/reviews/engineering-security-round1.md)
 
-Media uploads go directly to private Supabase Storage with an administrator-issued upload intent, then the server validates the stored object before creating metadata. Public media needs recorded consent, administrator approval, and an association to published dictionary or history content. A database export does not include photograph or audio bytes; back up the bucket independently.
+Media uploads go directly to private Supabase Storage with an administrator-issued upload intent, then the server validates the stored object before creating metadata. Uploads require a title, subject description, and storage permission, and support photographs, audio, and video. Public media needs explicit approval and an association to a published article or story; family-linked media remains private. Media delivery checks access on every request without sharing Storage download tokens. A database export does not include media bytes; back up the bucket independently. See the [media rollout guide](docs/media-library.md) before deploying the two media migrations.
 
 ## Language research articles
 

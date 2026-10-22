@@ -1,6 +1,6 @@
 export type PublicMedia = {
   id: string;
-  kind: "image" | "audio";
+  kind: "image" | "audio" | "video";
   alt_text?: string | null;
   caption?: string | null;
   speaker_name?: string | null;
