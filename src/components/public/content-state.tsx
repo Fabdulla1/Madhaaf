@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Asterisk } from "lucide-react";
 
 export function ContentState({
   title,
@@ -11,7 +12,7 @@ export function ContentState({
 }) {
   return (
     <div className="content-state" role="status">
-      <span className="content-state__mark" aria-hidden="true">✳</span>
+      <Asterisk className="content-state__mark" aria-hidden="true" />
       <h2>{title}</h2>
       <p>{description}</p>
       {action && <Link className="text-link" href={action.href}>{action.label} <span aria-hidden="true">↗</span></Link>}
