@@ -49,6 +49,8 @@ The History section also includes a source-controlled study of the Kutchi diaspo
 
 ## Research scope, attribution and editorial policy
 
+Original published dictionary data is licensed under [CC BY 4.0](LICENSE-DICTIONARY-DATA.md). The public [dictionary license and citation page](https://madhaaf.vercel.app/dictionary/license) gives readers a suggested reference and identifies material outside this license.
+
 Madhaaf was founded by **Farhan Abdulla** to document Kutchi spoken in Mombasa and Ethiopian communities, alongside relevant oral history and cultural records. **TokenWorks LLC** and **Adam Anderson** are acknowledged for research infrastructure and technical support. This does not imply formal university sponsorship or peer review.
 
 The public site uses concise, evidence-focused academic language. It is not a personal memoir or a hobby project. Author credit remains visible, but project descriptions should refer to Mombasa and Ethiopian Kutchi rather than "my Kutchi". Published articles preserve native-speaker wording, original forms, supplied translations and explicit grammaticality judgments. Analyses, comparisons with Gujarati or Sindhi, and unverified historical accounts must be labeled as such. Do not claim findings are representative of speakers who have not been studied.

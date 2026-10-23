@@ -1,6 +1,7 @@
 import { createPublicClient, supabaseConfigured } from '@/lib/supabase/server'
-import { error, json } from '@/lib/server/http'
+import { error } from '@/lib/server/http'
 import { publicMediaByIds } from '@/lib/server/public-media'
+import { dictionaryLicense } from '@/lib/dictionary-license'
 import { z } from 'zod'
 
 import { connection } from 'next/server'
@@ -46,5 +47,8 @@ export async function GET(_request: Request, context: { params: Promise<{ id: st
     const assets = await publicMediaByIds(db, (links || []).map(link => link.media_id))
     media = assets.map(asset => ({ ...asset, purpose: links?.find(link => link.media_id === asset.id)?.purpose }))
   } catch { return error('Unable to load published media', 503) }
-  return json({ ...data, senses, linked_examples: linkedExamples.map(example => withPublicSource(example, sourceTitles)), media: media.filter(Boolean) })
+  return Response.json({
+    data: { ...data, senses, linked_examples: linkedExamples.map(example => withPublicSource(example, sourceTitles)), media: media.filter(Boolean) },
+    license: dictionaryLicense,
+  }, { headers: { 'Cache-Control': 'private, no-store' } })
 }

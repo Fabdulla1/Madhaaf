@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { dictionaryLicense } from "@/lib/dictionary-license";
 import { type ApiResult, type DictionaryEntry, readPublicApi } from "./content-api";
 import { ContentState, LoadingState } from "./content-state";
 
@@ -113,6 +114,7 @@ export function DictionaryDetail({ id }: { id: string }) {
 }
 
 function EntryContent({ entry }: { entry: DictionaryEntry }) {
+  const entryUrl = `${dictionaryLicense.source}/${entry.id}`;
   const forms = entry.word_forms?.filter((form) => form.spelling !== entry.headword) ?? [];
   const ownedExampleIds = new Set(entry.senses?.flatMap(sense => sense.examples?.map(example => example.id) ?? []) ?? []);
   const linkedExamples = [...new Map((entry.linked_examples ?? [])
@@ -203,6 +205,11 @@ function EntryContent({ entry }: { entry: DictionaryEntry }) {
             <h2>About this spelling</h2>
             <p>The writing system is a working draft. Apostrophes and <code>(n)</code> are preserved as written.</p>
             <Link className="text-link" href="/orthography">Read the guide <span aria-hidden="true">↗</span></Link>
+          </div>
+          <div>
+            <h2>Cite this entry</h2>
+            <p>Madhaaf (Farhan Abdulla). “{entry.headword}.” <cite>Madhaaf Dictionary</cite>. <a href={entryUrl}>{entryUrl}</a>. Accessed [date].</p>
+            <Link className="text-link" href="/dictionary/license">License and citation: CC BY 4.0</Link>
           </div>
         </aside>
       </div>

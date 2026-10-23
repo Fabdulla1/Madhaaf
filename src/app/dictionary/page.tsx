@@ -76,6 +76,9 @@ export default async function DictionaryPage({
           <Link className="text-link" href="/language/grammar">
               Explore Kutchi grammar <span aria-hidden="true">↗</span>
             </Link>
+            <Link className="text-link" href="/dictionary/license">
+              License and citation: CC BY 4.0
+            </Link>
           </aside>
         </div>
       </div>

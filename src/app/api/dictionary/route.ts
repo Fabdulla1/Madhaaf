@@ -1,5 +1,6 @@
 import { createPublicClient, supabaseConfigured } from '@/lib/supabase/server'
 import { error } from '@/lib/server/http'
+import { dictionaryLicense } from '@/lib/dictionary-license'
 
 import { connection } from 'next/server'
 
@@ -27,7 +28,7 @@ export async function GET(request: Request) {
     const matchingIds = matchingRows.map(v => v.lexeme_id)
     ids = matchingIds
     searchTotal = Number(matchingRows[0]?.total_count || 0)
-    if (!matchingIds.length) return Response.json({ data: [], pagination: { page, limit, total: 0, hasMore: false } })
+    if (!matchingIds.length) return Response.json({ data: [], pagination: { page, limit, total: 0, hasMore: false }, license: dictionaryLicense })
   }
   let query = db.from('lexemes').select(fields, { count: 'exact' }).eq('status','published')
   if (ids) query = query.in('id', ids)
@@ -38,6 +39,6 @@ export async function GET(request: Request) {
   const result = data || []
   if (ids) result.sort((a,b) => ids!.indexOf(a.id) - ids!.indexOf(b.id))
   const total = ids ? searchTotal : (count || 0)
-  return Response.json({ data: result, pagination: { page, limit, total, hasMore: offset+result.length < total } },
+  return Response.json({ data: result, pagination: { page, limit, total, hasMore: offset+result.length < total }, license: dictionaryLicense },
     { headers: { 'Cache-Control': 'public, no-store' } })
 }
